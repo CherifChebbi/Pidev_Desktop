@@ -34,6 +34,14 @@
                         <Insets right="5.0" />
                      </HBox.margin>
                   </TextField>
+                  <Button fx:id="listeMonuments" mnemonicParsing="false" onAction="#listeMonuments" prefHeight="31.0" prefWidth="214.0" style="-fx-background-color: rgb(27, 60, 115);" text="Liste des Monuments" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="200.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
                <VBox.margin>
                   <Insets left="50.0" top="20.0" />
@@ -41,11 +49,12 @@
             </HBox>
                 <TableView fx:id="VilleTable" cache="true" prefHeight="371.0" prefWidth="860.0">
                     <columns>
-                        <TableColumn fx:id="id_Column" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="id_Pays_Column" prefWidth="75.0" text="Id_Pays" />
+                        <TableColumn fx:id="id_Ville_Column" prefWidth="75.0" text="Id_Ville" />
                         <TableColumn fx:id="nom_Column" prefWidth="75.0" text="Nom" />
                         <TableColumn fx:id="img_Column" prefWidth="75.0" text="Image" />
                         <TableColumn fx:id="desc_Column" prefWidth="75.0" text="Desciption" />
-                        <TableColumn fx:id="nbrVilles_Column" prefWidth="75.0" text="Nbr_Monuments" />
+                        <TableColumn fx:id="nbrMonuments_Column" prefWidth="75.0" text="Nbr_Monuments" />
                         <TableColumn fx:id="latitude_Column" prefWidth="75.0" text="Latitude" />
                         <TableColumn fx:id="longitude_Column" prefWidth="75.0" text="Longitude" />
                     </columns>
@@ -92,6 +101,14 @@
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                     </HBox.margin>
                 </Button>
+            <Button fx:id="returnToListPays" mnemonicParsing="false" onAction="#returnToListPays" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: rgb(108, 3, 69);" text="Return" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+               </HBox.margin>
+            </Button>
             </children>
         </HBox>
     </children>

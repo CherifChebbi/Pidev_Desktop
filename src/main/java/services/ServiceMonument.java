@@ -68,6 +68,7 @@ import java.util.List;
                 Monument p = new Monument();
 
                 p.setId_monument(rs.getInt("id_monument"));
+                p.setId_ville(rs.getInt("id_ville"));
                 p.setNom_monument(rs.getString("nom_monument"));
                 p.setImg_monument(rs.getString("img_monument"));
                 p.setDesc_monument(rs.getString("desc_monument"));
@@ -94,6 +95,7 @@ import java.util.List;
                 Monument p = new Monument();
 
                 p.setId_monument(rs.getInt("id_monument"));
+                p.setId_ville(rs.getInt("id_ville"));
                 p.setNom_monument(rs.getString("nom_monument"));
                 p.setImg_monument(rs.getString("img_monument"));
                 p.setDesc_monument(rs.getString("desc_monument"));

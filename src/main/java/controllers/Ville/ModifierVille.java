@@ -40,7 +40,7 @@ public class ModifierVille {
     private TextField tf_longitude;
 
     @FXML
-    private TextField tf_nbrVillesVille;
+    private TextField tf_nbrMonuments;
 
     @FXML
     private TextField tf_nomVille;
@@ -67,11 +67,9 @@ public class ModifierVille {
         // Vérifiez si le Ville sélectionné n'est pas nul
         if (selectedVille != null) {
             // Mettez à jour les propriétés du Ville avec les valeurs des champs de texte
-            selectedVille.setNom_Ville(tf_nomVille.getText());
-            selectedVille.setImg_Ville(tf_imgVille.getText());
-            selectedVille.setDesc_Ville(tf_descVille.getText());
-            selectedVille.setLangue(tf_langueVille.getText());
-            selectedVille.setContinent(choiceContinent.getValue());
+            selectedVille.setNom_ville(tf_nomVille.getText());
+            selectedVille.setImg_ville(tf_imgVille.getText());
+            selectedVille.setDesc_ville(tf_descVille.getText());
 
             // Vérifiez si les champs de latitude et de longitude ne sont pas vides avant de les mettre à jour
             if (!tf_latitude.getText().isEmpty()) {
@@ -82,8 +80,8 @@ public class ModifierVille {
             }
 
             // Mettez à jour le nombre de villes si le champ n'est pas vide
-            if (!tf_nbrVillesVille.getText().isEmpty()) {
-                selectedVille.setNb_villes(Integer.parseInt(tf_nbrVillesVille.getText()));
+            if (!tf_nbrMonuments.getText().isEmpty()) {
+                selectedVille.setNb_monuments(Integer.parseInt(tf_nbrMonuments.getText()));
             }
 
             try {
@@ -115,15 +113,13 @@ public class ModifierVille {
     public void initData(Ville selectedVille) {
         this.selectedVille = selectedVille;
         // Initialisez les champs de texte avec les données du Ville sélectionné
-        tf_nomVille.setText(selectedVille.getNom_Ville());
-        tf_imgVille.setText(selectedVille.getImg_Ville());
-        tf_descVille.setText(selectedVille.getDesc_Ville());
-        tf_langueVille.setText(selectedVille.getLangue());
-        choiceContinent.setValue(selectedVille.getContinent());
+        tf_nomVille.setText(selectedVille.getNom_ville());
+        tf_imgVille.setText(selectedVille.getImg_ville());
+        tf_descVille.setText(selectedVille.getDesc_ville());
         tf_nbrMonuments.setText(String.valueOf(selectedVille.getNb_monuments()));
         tf_latitude.setText(String.valueOf(selectedVille.getLatitude()));
         tf_longitude.setText(String.valueOf(selectedVille.getLongitude()));
-        choiceContinent.setValue(selectedVille.getId_pays());
+        //choicelabel
 
     }
     private void switchToAfficherVille() throws IOException {

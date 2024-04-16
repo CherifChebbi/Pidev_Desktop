@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -39,7 +40,7 @@ public class AfficherPays {
     private TableColumn<Pays, String> desc_Column;
 
     @FXML
-    private TableColumn<Pays, Integer> id_Column;
+    private TableColumn<Pays, Integer> id_Pays_Column;
 
     @FXML
     private TableColumn<Pays, String> img_Column;
@@ -68,6 +69,8 @@ public class AfficherPays {
 
     @FXML
     private TextField maxVillesField;
+    private TextField tf_nomVille;
+
     @FXML
     private void initialize() {
         servicePays = new ServicePays();
@@ -75,7 +78,7 @@ public class AfficherPays {
         loadPaysData();
     }
     private void initializeTable() {
-        id_Column.setCellValueFactory(new PropertyValueFactory<>("id_pays"));
+        id_Pays_Column.setCellValueFactory(new PropertyValueFactory<>("id_pays"));
         nom_Column.setCellValueFactory(new PropertyValueFactory<>("nom_pays"));
         img_Column.setCellFactory(param -> new ImageTableCell());
 
@@ -219,4 +222,19 @@ public class AfficherPays {
             // Gérer les erreurs
         }
     }
+    @FXML
+    void listeVille(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ville/AfficherVille.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error loading FXML file: " + e.getMessage());
+        }
+    }
+
 }

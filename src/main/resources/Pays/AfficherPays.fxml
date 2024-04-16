@@ -10,8 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.image.ImageView?>
 <AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Pays.AfficherPays">
    <children>
       <VBox layoutX="-1.0" layoutY="72.0" prefHeight="474.0" prefWidth="900.0" style="-fx-background-color: rgb(238, 245, 255);">
@@ -33,6 +31,14 @@
                      <HBox.margin>
                         <Insets right="5.0" />
                      </HBox.margin></TextField>
+                  <Button fx:id="listeVille" mnemonicParsing="false" onAction="#listeVille" prefHeight="31.0" prefWidth="214.0" style="-fx-background-color: rgb(27, 60, 115);" text="Liste des Villes" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="200.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
                <VBox.margin>
                   <Insets left="50.0" top="20.0" />
@@ -40,7 +46,7 @@
             </HBox>
             <TableView fx:id="paysTable" cache="true" prefHeight="371.0" prefWidth="860.0">
                <columns>
-                  <TableColumn fx:id="id_Column" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="id_Pays_Column" prefWidth="75.0" text="ID" />
                   <TableColumn fx:id="nom_Column" prefWidth="75.0" text="Nom" />
                   <TableColumn fx:id="img_Column" prefWidth="75.0" text="Image" />
                   <TableColumn fx:id="desc_Column" prefWidth="75.0" text="Desciption" />

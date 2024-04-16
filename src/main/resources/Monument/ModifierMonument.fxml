@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Monuments.ModifierMonuments">
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Monument.ModifierMonument">
     <children>
         <VBox layoutY="70.0" prefHeight="485.0" prefWidth="900.0" style="-fx-background-color: rgb(235, 243, 232);">
             <children>
@@ -70,17 +70,17 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="330.0" prefWidth="234.0">
                             <children>
-                                <TextField fx:id="tf_nomMonuments" style="-fx-background-color: rgb(240, 235, 227);">
+                                <TextField fx:id="tf_nomMonument" style="-fx-background-color: rgb(240, 235, 227);">
                                     <VBox.margin>
                                         <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                                     </VBox.margin>
                                 </TextField>
-                                <TextField fx:id="tf_imgMonuments" style="-fx-background-color: rgb(240, 235, 227);">
+                                <TextField fx:id="tf_imgMonument" style="-fx-background-color: rgb(240, 235, 227);">
                                     <VBox.margin>
                                         <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                                     </VBox.margin>
                                 </TextField>
-                                <TextField fx:id="tf_descMonuments" style="-fx-background-color: rgb(240, 235, 227);">
+                                <TextField fx:id="tf_descMonument" style="-fx-background-color: rgb(240, 235, 227);">
                                     <VBox.margin>
                                         <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                                     </VBox.margin>
@@ -116,7 +116,7 @@
             <children>
                 <HBox alignment="BOTTOM_RIGHT" prefHeight="62.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="ModifierMonuments_Button" mnemonicParsing="false" onAction="#ModifierMonuments" prefHeight="37.0" prefWidth="101.0" style="-fx-background-color: rgb(58, 77, 57);" text="Modifier" textFill="WHITE">
+                        <Button fx:id="ModifierMonument_Button" mnemonicParsing="false" onAction="#ModifierMonument" prefHeight="37.0" prefWidth="101.0" style="-fx-background-color: rgb(58, 77, 57);" text="Modifier" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>

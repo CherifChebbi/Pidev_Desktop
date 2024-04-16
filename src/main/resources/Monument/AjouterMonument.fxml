@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Monuments.AjouterMonuments">
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Monument.AjouterMonument">
     <children>
         <VBox alignment="BOTTOM_RIGHT" layoutY="-2.0" prefHeight="70.0" prefWidth="900.0" style="-fx-background-color: rgb(58, 77, 57);">
             <children>
                 <HBox alignment="BOTTOM_RIGHT" prefHeight="54.0" prefWidth="198.0">
                     <children>
-                        <Button fx:id="AjouterMonuments_Button1" mnemonicParsing="false" onAction="#AjouterMonuments" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: rgb(58, 77, 57);" text="Ajouter" textFill="WHITE">
+                        <Button fx:id="AjouterMonument_Button1" mnemonicParsing="false" onAction="#AjouterMonument" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: rgb(58, 77, 57);" text="Ajouter" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -94,7 +94,7 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="330.0" prefWidth="234.0">
                             <children>
-                                <TextField fx:id="tf_nomMonuments" style="-fx-background-color: rgb(240, 235, 227);">
+                                <TextField fx:id="tf_nomMonument" style="-fx-background-color: rgb(240, 235, 227);">
                                     <VBox.margin>
                                         <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                                     </VBox.margin>
@@ -109,7 +109,7 @@
                                     </font></Button>
                                 <!-- Afficher le chemin de l'image importée -->
 
-                                <TextField fx:id="tf_descMonuments" style="-fx-background-color: rgb(240, 235, 227);">
+                                <TextField fx:id="tf_descMonument" style="-fx-background-color: rgb(240, 235, 227);">
                                     <VBox.margin>
                                         <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                                     </VBox.margin>

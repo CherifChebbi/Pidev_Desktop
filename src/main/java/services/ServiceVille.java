@@ -35,7 +35,7 @@ public class ServiceVille implements CRUD<Ville> {
 
     @Override
     public void Update(Ville ville) throws SQLException {
-        String req = "UPDATE ville SET nom_ville=?, img_ville=?, desc_ville=?,  nb_monuments=?, latitude=?, longitude=? WHERE id_ville=?";
+        String req = "UPDATE ville SET nom_ville=?, img_ville=?, desc_ville=?,  nb_monuments=?, latitude=?, longitude=? ,id_pays=? WHERE id_ville=?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setString(1, ville.getNom_ville());
         ps.setString(2, ville.getImg_ville());
@@ -44,6 +44,7 @@ public class ServiceVille implements CRUD<Ville> {
         ps.setDouble(5, ville.getLatitude());
         ps.setDouble(6, ville.getLongitude());
         ps.setInt(7, ville.getId_ville());
+        ps.setInt(8, ville.getId_pays());
 
         ps.executeUpdate();
         ps.close();
@@ -70,6 +71,7 @@ public class ServiceVille implements CRUD<Ville> {
             Ville p = new Ville();
 
             p.setId_ville(rs.getInt("id_ville"));
+            p.setId_pays(rs.getInt("id_pays"));
             p.setNom_ville(rs.getString("nom_ville"));
             p.setImg_ville(rs.getString("img_ville"));
             p.setDesc_ville(rs.getString("desc_ville"));
@@ -97,6 +99,7 @@ public class ServiceVille implements CRUD<Ville> {
             Ville p = new Ville();
 
             p.setId_ville(rs.getInt("id_ville"));
+            p.setId_pays(rs.getInt("id_pays"));
             p.setNom_ville(rs.getString("nom_ville"));
             p.setImg_ville(rs.getString("img_ville"));
             p.setDesc_ville(rs.getString("desc_ville"));
@@ -125,6 +128,7 @@ public class ServiceVille implements CRUD<Ville> {
             Ville p = new Ville();
 
             p.setId_ville(rs.getInt("id_ville"));
+            p.setId_pays(rs.getInt("id_pays"));
             p.setNom_ville(rs.getString("nom_ville"));
             p.setImg_ville(rs.getString("img_ville"));
             p.setDesc_ville(rs.getString("desc_ville"));

@@ -1,6 +1,7 @@
 package models;
 
 public class Monument {
+
     private int id_ville;
     private int id_monument;
     private String nom_monument;
@@ -40,7 +41,6 @@ public class Monument {
         this.latitude = latitude;
         this.longitude = longitude;
     }
-
     public int getId_ville() {
         return id_ville;
     }

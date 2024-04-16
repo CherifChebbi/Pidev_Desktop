@@ -1,4 +1,6 @@
 package controllers.Ville;
+
+
 import controllers.*;
 
 import javafx.collections.FXCollections;
@@ -6,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -22,6 +25,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class AfficherVille {
+    @FXML
+    private TableColumn<Ville, Double>  id_Pays_Column;
 
     public TextField searchBar;
     @FXML
@@ -29,7 +34,6 @@ public class AfficherVille {
 
     @FXML
     private Button ModifierVille_Button;
-
 
     @FXML
     private TableView<Ville> VilleTable;
@@ -39,7 +43,9 @@ public class AfficherVille {
     private TableColumn<Ville, String> desc_Column;
 
     @FXML
-    private TableColumn<Ville, Integer> id_Column;
+    private TableColumn<Ville, Integer> id_Ville_Column;
+    @FXML
+    private TableColumn<Ville, Integer> id_Monument_Column;
 
     @FXML
     private TableColumn<Ville, String> img_Column;
@@ -58,11 +64,16 @@ public class AfficherVille {
     private ServiceVille serviceVille;
     private TextField tf_recherche;
 
-    @FXML
-    private TextField minVillesField;
 
+    private TextField tf_nomMonument;
     @FXML
-    private TextField maxVillesField;
+    private TextField maxMonumentsField;
+    @FXML
+    private TextField minMonumentsField;
+    @FXML
+    private TextField tf_nomPays;
+
+
     @FXML
     private void initialize() {
         serviceVille = new ServiceVille();
@@ -70,11 +81,10 @@ public class AfficherVille {
         loadVilleData();
     }
     private void initializeTable() {
-        id_Column.setCellValueFactory(new PropertyValueFactory<>("id_ville"));
+        id_Ville_Column.setCellValueFactory(new PropertyValueFactory<>("id_ville"));
+        id_Pays_Column.setCellValueFactory(new PropertyValueFactory<>("id_pays"));
         nom_Column.setCellValueFactory(new PropertyValueFactory<>("nom_ville"));
-        img_Column.setCellFactory(param -> new ImageTableCell());
-
-        // img_Column.setCellValueFactory(new PropertyValueFactory<>("img_ville"));
+        img_Column.setCellValueFactory(new PropertyValueFactory<>("img_ville"));
         desc_Column.setCellValueFactory(new PropertyValueFactory<>("desc_ville"));
         nbrMonuments_Column.setCellValueFactory(new PropertyValueFactory<>("nb_monuments"));
         latitude_Column.setCellValueFactory(new PropertyValueFactory<>("latitude"));
@@ -190,14 +200,14 @@ public class AfficherVille {
 
     }
     @FXML
-    private void filterByVilles(ActionEvent event) {
+    private void filterByMonuments(ActionEvent event) {
         try {
             // Récupérer les valeurs minimale et maximale
-            int minVilles = Integer.parseInt(minVillesField.getText());
-            int maxVilles = Integer.parseInt(maxVillesField.getText());
+            int minMonuments = Integer.parseInt(minMonumentsField.getText());
+            int maxMonuments = Integer.parseInt(maxMonumentsField.getText());
 
             // Filtrer les Ville par nombre de villes
-            List<Ville> filteredVille = serviceVille.filterByVilles(minVilles, maxVilles);
+            List<Ville> filteredVille = serviceVille.filterByVilles(minMonuments, maxMonuments);
 
             // Mettre à jour la table avec les résultats filtrés
             ObservableList<Ville> observableVille = FXCollections.observableArrayList(filteredVille);
@@ -211,5 +221,25 @@ public class AfficherVille {
             e.printStackTrace();
             // Gérer les erreurs
         }
+    }
+    @FXML
+    void listeMonuments(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Monument/AfficherMonument.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+    @FXML
+    void returnToListPays(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/AfficherPays.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 }

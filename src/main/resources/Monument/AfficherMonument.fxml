@@ -10,13 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Monuments.AfficherMonuments">
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Monument.AfficherMonument">
     <children>
         <VBox layoutX="-1.0" layoutY="72.0" prefHeight="474.0" prefWidth="900.0" style="-fx-background-color: rgb(235, 243, 232);">
             <children>
-                <TableView fx:id="MonumentsTable" cache="true" prefHeight="371.0" prefWidth="860.0">
+                <TableView fx:id="MonumentTable" cache="true" prefHeight="371.0" prefWidth="860.0">
                     <columns>
-                        <TableColumn fx:id="id_Column" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="id_Ville_Column" prefWidth="75.0" text="id_Ville" />
+                        <TableColumn fx:id="id_Monument_Column" prefWidth="75.0" text="id_Monument" />
                         <TableColumn fx:id="nom_Column" prefWidth="75.0" text="Nom" />
                         <TableColumn fx:id="img_Column" prefWidth="75.0" text="Image" />
                         <TableColumn fx:id="desc_Column" prefWidth="75.0" text="Desciption" />
@@ -42,7 +43,7 @@
                         <Insets right="200.0" />
                     </HBox.margin>
                 </HBox>
-                <Button fx:id="AjouterMonuments_Button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#AjouterMonuments" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(58, 77, 57);" text="Ajouter" textFill="WHITE">
+                <Button fx:id="AjouterMonument_Button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#AjouterMonument" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(58, 77, 57);" text="Ajouter" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="15.0" />
                     </font>
@@ -50,7 +51,7 @@
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="SupprimerMonuments_Button" mnemonicParsing="false" onAction="#SupprimerMonuments" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(58, 77, 57);" text="Supprimer" textFill="WHITE">
+                <Button fx:id="SupprimerMonument_Button" mnemonicParsing="false" onAction="#SupprimerMonument" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(58, 77, 57);" text="Supprimer" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="15.0" />
                     </font>
@@ -58,7 +59,7 @@
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="ModifierMonuments" mnemonicParsing="false" onAction="#ModifierMonuments" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(58, 77, 57);" text="Modifier" textFill="WHITE">
+                <Button fx:id="ModifierMonument" mnemonicParsing="false" onAction="#ModifierMonument" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(58, 77, 57);" text="Modifier" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="15.0" />
                     </font>
@@ -66,6 +67,14 @@
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                     </HBox.margin>
                 </Button>
+            <Button fx:id="returnToListVille" mnemonicParsing="false" onAction="#returnToListVille" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: rgb(58, 77, 57);" text="Return" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+               </HBox.margin>
+            </Button>
             </children>
         </HBox>
     </children>
