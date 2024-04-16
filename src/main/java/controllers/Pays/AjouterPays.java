@@ -64,9 +64,6 @@ public class AjouterPays {
                 "Océanie"
         );
     }
-
-
-
     @FXML
     void importerImage(ActionEvent event) {
             FileChooser fileChooser = new FileChooser();

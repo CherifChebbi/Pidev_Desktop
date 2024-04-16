@@ -1,14 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.Ville.ModifierVille"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Ville.ModifierVille">
+    <children>
+        <VBox layoutY="70.0" prefHeight="485.0" prefWidth="900.0" style="-fx-background-color: rgb(254, 242, 244);">
+            <children>
+                <HBox alignment="CENTER" prefHeight="442.0" prefWidth="880.0">
+                    <children>
+                        <VBox alignment="CENTER" prefHeight="406.0" prefWidth="137.0">
+                            <children>
+                                <Label prefHeight="26.0" prefWidth="242.0" text="Nom">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                    <font>
+                                        <Font name="System Bold Italic" size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label prefHeight="26.0" prefWidth="242.0" text="Image">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                    <font>
+                                        <Font name="System Bold Italic" size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label prefHeight="26.0" prefWidth="242.0" text="Description">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                    <font>
+                                        <Font name="System Bold Italic" size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label prefHeight="26.0" prefWidth="242.0" text="Nbr_monuments">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                    <font>
+                                        <Font name="System Bold Italic" size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label prefHeight="26.0" prefWidth="242.0" text="Latitude">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                    <font>
+                                        <Font name="System Bold Italic" size="15.0" />
+                                    </font>
+                                </Label>
+                                <Label prefHeight="26.0" prefWidth="242.0" text="Longitude">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                    <font>
+                                        <Font name="System Bold Italic" size="15.0" />
+                                    </font>
+                                </Label>
+                        <Label prefHeight="26.0" prefWidth="242.0" text="Pays">
+                           <font>
+                              <Font name="System Bold Italic" size="15.0" />
+                           </font>
+                        </Label>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="330.0" prefWidth="234.0">
+                            <children>
+                                <TextField fx:id="tf_nomVille" style="-fx-background-color: rgb(240, 235, 227);">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                </TextField>
+                                <TextField fx:id="tf_imgVille" style="-fx-background-color: rgb(240, 235, 227);">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                </TextField>
+                                <TextField fx:id="tf_descVille" style="-fx-background-color: rgb(240, 235, 227);">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                </TextField>
+                                <TextField fx:id="tf_nbrMonument" style="-fx-background-color: rgb(240, 235, 227);">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                </TextField>
+                                <TextField fx:id="tf_latitude" style="-fx-background-color: rgb(240, 235, 227);">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                </TextField>
+                                <TextField fx:id="tf_longitude" style="-fx-background-color: rgb(240, 235, 227);">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                </TextField>
+                                <ChoiceBox fx:id="choicePays" prefHeight="26.0" prefWidth="222.0" style="-fx-background-color: rgb(240, 235, 227);">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                                    </VBox.margin>
+                                </ChoiceBox>
+                            </children>
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                            </HBox.margin>
+                        </VBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </HBox>
+            </children>
+        </VBox>
+        <VBox alignment="BOTTOM_RIGHT" prefHeight="70.0" prefWidth="900.0" style="-fx-background-color: rgb(108, 3, 69);">
+            <children>
+                <HBox alignment="BOTTOM_RIGHT" prefHeight="62.0" prefWidth="200.0">
+                    <children>
+                        <Button fx:id="ModifierVille_Button" mnemonicParsing="false" onAction="#ModifierVille" prefHeight="37.0" prefWidth="101.0" style="-fx-background-color: rgb(108, 3, 69);" text="Modifier" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="returnToList" mnemonicParsing="false" onAction="#returnToList" prefHeight="32.0" prefWidth="101.0" style="-fx-background-color: rgb(108, 3, 69);" text="Return" textFill="WHITE">
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

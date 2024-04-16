@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import controllers.ImageCell?>
 <?import javafx.scene.image.ImageView?>
 <AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Pays.AfficherPays">
    <children>
@@ -43,11 +42,7 @@
                <columns>
                   <TableColumn fx:id="id_Column" prefWidth="75.0" text="ID" />
                   <TableColumn fx:id="nom_Column" prefWidth="75.0" text="Nom" />
-                  <TableColumn fx:id="img_Column" prefWidth="100" text="Image">
-                     <cellValueFactory>
-                        <PropertyValueFactory property="img_pays" />
-                     </cellValueFactory>
-                  </TableColumn>
+                  <TableColumn fx:id="img_Column" prefWidth="75.0" text="Image" />
                   <TableColumn fx:id="desc_Column" prefWidth="75.0" text="Desciption" />
                   <TableColumn fx:id="langue_Column" prefWidth="75.0" text="Langue" />
                   <TableColumn fx:id="continent_Column" prefWidth="75.0" text="Continent" />

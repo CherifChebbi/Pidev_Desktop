@@ -1,6 +1,6 @@
 package controllers.Pays;
+import controllers.*;
 
-import controllers.ImageCell;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,8 +16,6 @@ import javafx.stage.Stage;
 import models.Pays;
 import services.ServicePays;
 
-import javax.swing.text.html.ImageView;
-import java.awt.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -79,17 +77,16 @@ public class AfficherPays {
     private void initializeTable() {
         id_Column.setCellValueFactory(new PropertyValueFactory<>("id_pays"));
         nom_Column.setCellValueFactory(new PropertyValueFactory<>("nom_pays"));
-        // Configurez la cellule de la colonne d'image pour afficher l'image
-        TableColumn<Pays, String> imgPaysCol = new TableColumn<>("Image Pays");
-        imgPaysCol.setCellValueFactory(new PropertyValueFactory<>("img_pays"));
-        imgPaysCol.setCellFactory(col -> new ImageCell());
+        img_Column.setCellFactory(param -> new ImageTableCell());
 
+       // img_Column.setCellValueFactory(new PropertyValueFactory<>("img_pays"));
         desc_Column.setCellValueFactory(new PropertyValueFactory<>("desc_pays"));
         langue_Column.setCellValueFactory(new PropertyValueFactory<>("langue"));
         continent_Column.setCellValueFactory(new PropertyValueFactory<>("continent"));
         nbrVilles_Column.setCellValueFactory(new PropertyValueFactory<>("nb_villes"));
         latitude_Column.setCellValueFactory(new PropertyValueFactory<>("latitude"));
         longitude_Column.setCellValueFactory(new PropertyValueFactory<>("longitude"));
+
     }
 
     private void loadPaysData() {
