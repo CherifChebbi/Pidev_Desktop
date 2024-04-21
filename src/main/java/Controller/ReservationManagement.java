@@ -224,19 +224,15 @@ public class ReservationManagement {
 
     @FXML
     void initialize() {
-        try {
-            // Initialize the ComboBox with restaurant data
-            List<Restaurant> restaurants = serviceRestaurant.getAllRestaurants();
-            idres.setItems(FXCollections.observableArrayList(restaurants));
+        // Initialize the ComboBox with restaurant data
+        List<Restaurant> restaurants = serviceRestaurant.getAllRestaurants();
+        idres.setItems(FXCollections.observableArrayList(restaurants));
 
-            // Add a listener to ComboBox selection
-            idres.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-                selectedRestaurant = newValue; // Update selectedRestaurant when ComboBox selection changes
-                refreshGridView(); // Refresh the grid view when selection changes
-            });
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        // Add a listener to ComboBox selection
+        idres.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedRestaurant = newValue; // Update selectedRestaurant when ComboBox selection changes
+            refreshGridView(); // Refresh the grid view when selection changes
+        });
 
         // Initialize reservationGridPane
         reservationGridPane = new GridPane();

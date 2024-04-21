@@ -69,11 +69,7 @@ public class FrontManagement {
         String nameFilter = searchNameField.getText();
         String locationFilter = searchLocationField.getText();
 
-        try {
-            List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter);
-            populateGridPane(filteredRestaurants);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter);
+        populateGridPane(filteredRestaurants);
     }
 }

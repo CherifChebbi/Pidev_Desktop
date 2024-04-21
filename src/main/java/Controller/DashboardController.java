@@ -226,13 +226,8 @@ public class DashboardController {
     }
 
     private void populateRestaurantComboBox() {
-        try {
-            List<Restaurant> restaurants = serviceRestaurant.getAllRestaurants();
-            restaurantComboBox.setItems(FXCollections.observableArrayList(restaurants));
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Handle exception
-        }
+        List<Restaurant> restaurants = serviceRestaurant.getAllRestaurants();
+        restaurantComboBox.setItems(FXCollections.observableArrayList(restaurants));
     }
 
     @FXML

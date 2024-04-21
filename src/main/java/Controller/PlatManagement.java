@@ -93,12 +93,8 @@ public class PlatManagement {
 
 
     private void populateRestaurantComboBox() {
-        try {
-            List<Restaurant> restaurants = serviceRestaurant.getAllRestaurants();
-            restaurantComboBox.setItems(FXCollections.observableArrayList(restaurants));
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        List<Restaurant> restaurants = serviceRestaurant.getAllRestaurants();
+        restaurantComboBox.setItems(FXCollections.observableArrayList(restaurants));
     }
 
     private void refreshVBox() {

@@ -6,6 +6,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
@@ -190,19 +193,20 @@ public class RestaurantManagement {
             Stage stage = (Stage) switchToPlatButton.getScene().getWindow();
             stage.close();
 
-            // Load the PlatManagement view from FXML
-            javafx.fxml.FXMLLoader loader = new javafx.fxml.FXMLLoader(getClass().getResource("/Plat.fxml"));
-            javafx.scene.Parent root = loader.load();
+            // Load the dashboard view from FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
+            Parent root = loader.load();
 
-            // Show the PlatManagement view
-            Stage platStage = new Stage();
-            platStage.setTitle("Plat Management");
-            platStage.setScene(new javafx.scene.Scene(root));
-            platStage.show();
+            // Show the dashboard view
+            Stage dashboardStage = new Stage();
+            dashboardStage.setTitle("Dashboard");
+            dashboardStage.setScene(new Scene(root));
+            dashboardStage.show();
         } catch (IOException e) {
-            e.printStackTrace(); // Handle error loading the PlatManagement view
+            e.printStackTrace(); // Handle error loading the dashboard view
         }
     }
+
 
     private void showAlert(String title, String content) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
