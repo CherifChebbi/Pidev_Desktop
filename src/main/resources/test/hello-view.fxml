@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HebergementManagment">
+   <children>
+      <TextField fx:id="Nom" layoutX="346.0" layoutY="77.0" />
+      <TextField fx:id="Description" layoutX="375.0" layoutY="127.0" />
+      <Text layoutX="279.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom" />
+      <Text layoutX="291.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description" />
+      <ListView fx:id="afficher" layoutX="120.0" layoutY="284.0" prefHeight="200.0" prefWidth="256.0" />
+      <Button fx:id="ajouter" layoutX="376.0" layoutY="196.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+      <Button layoutX="464.0" layoutY="196.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
+      <Button layoutX="569.0" layoutY="196.0" mnemonicParsing="false" onAction="#supp" text="supp" />
+      <Button fx:id="category" layoutX="638.0" layoutY="494.0" mnemonicParsing="false" onAction="#moove" text="Button" />
+      <ComboBox fx:id="comboxid" layoutX="450.0" layoutY="160.0" onAction="#selectrestaurant" prefWidth="150.0" />
+   </children>
+</Pane>
