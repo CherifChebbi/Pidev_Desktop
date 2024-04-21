@@ -1,0 +1,12 @@
+/* HomeBack.css */
+
+/* Style du fond blanc */
+.root {
+    -fx-background-color: white;
+}
+
+/* Style de l'ombre */
+.center-pane {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
+}
