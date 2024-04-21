@@ -127,7 +127,7 @@ public class ModifierVille implements Initializable {
                 selectedVille.setImg_ville(file.getName());
                 selectedVille.setDesc_ville(tf_descVille.getText());
                 int id=servicePays.getPaysByName(comboPays2.getValue()).getId_pays();
-                selectedVille.setId_pays(id);
+                //selectedVille.setId_pays(id);
 
                 // Vérifiez si les champs de latitude et de longitude ne sont pas vides avant de les mettre à jour
                 if (!tf_latitude.getText().isEmpty()) {

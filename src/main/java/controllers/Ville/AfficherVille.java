@@ -171,7 +171,7 @@ public class AfficherVille {
 
                 // Affiche la vue de modification
                 Scene scene = new Scene(root);
-                Stage stage = new Stage(); // Crée une nouvelle fenêtre pour la page de modification
+                Stage stage = (Stage) AjouterVille_Button.getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException | SQLException e) {
@@ -180,7 +180,7 @@ public class AfficherVille {
         } else {
             // Affiche un message d'erreur si aucun Ville n'est sélectionné
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Veuillez sélectionner un Ville à modifier.");
+            alert.setContentText("Veuillez sélectionner une Ville à modifier.");
             alert.show();
         }
     }

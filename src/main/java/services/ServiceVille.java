@@ -36,17 +36,18 @@ public class ServiceVille implements CRUD<Ville> {
 
     @Override
     public void Update(Ville ville) throws SQLException {
-        String req = "UPDATE ville SET nom_ville=?, img_ville=?, desc_ville=?,  nb_monuments=?, latitude=?, longitude=? ,id_pays=? WHERE id_ville=?";
+        String req = "UPDATE ville SET id_pays=?, nom_ville=?, img_ville=?, desc_ville=?,  nb_monuments=?, latitude=?, longitude=?  WHERE id_ville=?";
         PreparedStatement ps = cnx.prepareStatement(req);
 
-        ps.setString(1, ville.getNom_ville());
-        ps.setString(2, ville.getImg_ville());
-        ps.setString(3, ville.getDesc_ville());
-        ps.setInt(4, ville.getNb_monuments());
-        ps.setDouble(5, ville.getLatitude());
-        ps.setDouble(6, ville.getLongitude());
-        ps.setInt(7, ville.getId_ville());
-        ps.setInt(8, ville.getId_pays());
+        ps.setInt(1, ville.getId_pays());
+        ps.setString(2, ville.getNom_ville());
+        ps.setString(3, ville.getImg_ville());
+        ps.setString(4, ville.getDesc_ville());
+        ps.setInt(5, ville.getNb_monuments());
+        ps.setDouble(6, ville.getLatitude());
+        ps.setDouble(7, ville.getLongitude());
+        ps.setInt(8, ville.getId_ville());
+
 
         ps.executeUpdate();
         ps.close();

@@ -165,8 +165,7 @@ public class AfficherPays {
 
                 // Affiche la vue de modification
                 Scene scene = new Scene(root);
-                Stage stage = new Stage(); // Crée une nouvelle fenêtre pour la page de modification
-                stage.setScene(scene);
+                Stage stage = (Stage) AjouterPays_Button.getScene().getWindow();                stage.setScene(scene);
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
