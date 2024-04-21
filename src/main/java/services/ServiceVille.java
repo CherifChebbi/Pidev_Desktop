@@ -12,6 +12,7 @@ public class ServiceVille implements CRUD<Ville> {
     private Connection cnx;
     @FXML
     private TableView<Ville> VilleTable;
+    private ServicePays servicePays;
 
     public ServiceVille() {
         cnx = DBConnexion.getInstance().getCnx();
@@ -19,24 +20,25 @@ public class ServiceVille implements CRUD<Ville> {
 
     @Override
     public void Add(Ville ville) throws SQLException {
-        String req = "INSERT INTO ville(nom_ville, img_ville, desc_ville, nb_monuments, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?)";
-        PreparedStatement ps = cnx.prepareStatement(req);
+        String req = "INSERT INTO ville(id_pays,nom_ville, img_ville, desc_ville, nb_monuments, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?,?)";
+        try (PreparedStatement ps = cnx.prepareStatement(req)) {
+            ps.setInt(1, ville.getId_pays());
+            ps.setString(2, ville.getNom_ville());
+            ps.setString(3, ville.getImg_ville());
+            ps.setString(4, ville.getDesc_ville());
+            ps.setInt(5, ville.getNb_monuments());
+            ps.setDouble(6, ville.getLatitude());
+            ps.setDouble(7, ville.getLongitude());
 
-        ps.setString(1, ville.getNom_ville());
-        ps.setString(2, ville.getImg_ville());
-        ps.setString(3, ville.getDesc_ville());
-        ps.setInt(4, ville.getNb_monuments());
-        ps.setDouble(5, ville.getLatitude());
-        ps.setDouble(6, ville.getLongitude());
-
-        ps.executeUpdate();
-        ps.close();
+            ps.executeUpdate();
+        }
     }
 
     @Override
     public void Update(Ville ville) throws SQLException {
         String req = "UPDATE ville SET nom_ville=?, img_ville=?, desc_ville=?,  nb_monuments=?, latitude=?, longitude=? ,id_pays=? WHERE id_ville=?";
         PreparedStatement ps = cnx.prepareStatement(req);
+
         ps.setString(1, ville.getNom_ville());
         ps.setString(2, ville.getImg_ville());
         ps.setString(3, ville.getDesc_ville());

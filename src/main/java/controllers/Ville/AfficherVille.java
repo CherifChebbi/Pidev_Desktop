@@ -1,8 +1,8 @@
 package controllers.Ville;
 
 
-import controllers.*;
 
+import controllers.Pays.AfficherPays;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,11 +15,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import models.Pays;
 import models.Ville;
+import services.ServicePays;
 import services.ServiceVille;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -65,17 +70,21 @@ public class AfficherVille {
     private TextField tf_recherche;
 
 
-    private TextField tf_nomMonument;
     @FXML
     private TextField maxMonumentsField;
     @FXML
     private TextField minMonumentsField;
     @FXML
     private TextField tf_nomPays;
+    private ServicePays servicePays;
+
+    @FXML
+    private ImageView imageView_ville;
 
 
     @FXML
     private void initialize() {
+        servicePays = new ServicePays();
         serviceVille = new ServiceVille();
         initializeTable();
         loadVilleData();
@@ -84,7 +93,7 @@ public class AfficherVille {
         id_Ville_Column.setCellValueFactory(new PropertyValueFactory<>("id_ville"));
         id_Pays_Column.setCellValueFactory(new PropertyValueFactory<>("id_pays"));
         nom_Column.setCellValueFactory(new PropertyValueFactory<>("nom_ville"));
-        img_Column.setCellValueFactory(new PropertyValueFactory<>("img_ville"));
+        //img_Column.setCellValueFactory(new PropertyValueFactory<>("img_ville"));
         desc_Column.setCellValueFactory(new PropertyValueFactory<>("desc_ville"));
         nbrMonuments_Column.setCellValueFactory(new PropertyValueFactory<>("nb_monuments"));
         latitude_Column.setCellValueFactory(new PropertyValueFactory<>("latitude"));
@@ -100,6 +109,29 @@ public class AfficherVille {
         } catch (SQLException e) {
             e.printStackTrace();
             // Gérer les erreurs
+        }
+    }
+
+    @FXML
+    public void onTableRowClickedVille(javafx.scene.input.MouseEvent mouseEvent) {
+        Ville selectedVille = VilleTable.getSelectionModel().getSelectedItem();
+        if (selectedVille != null) {
+            String imageName = selectedVille.getImg_ville();
+            if (imageName != null && !imageName.isEmpty()) {
+                try {
+                    // Construire l'URL de l'image en utilisant le chemin relatif
+                    URL imageUrl = getClass().getResource("/Upload/" + imageName);
+                    if (imageUrl != null) {
+                        // Charger l'image à partir de l'URL
+                        Image image = new Image(imageUrl.toExternalForm());
+                        imageView_ville.setImage(image);
+                    } else {
+                        System.out.println("L'image n'a pas été trouvée : " + imageName);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Erreur lors du chargement de l'image : " + e.getMessage());
+                }
+            }
         }
     }
     @FXML
@@ -142,7 +174,7 @@ public class AfficherVille {
                 Stage stage = new Stage(); // Crée une nouvelle fenêtre pour la page de modification
                 stage.setScene(scene);
                 stage.show();
-            } catch (IOException e) {
+            } catch (IOException | SQLException e) {
                 e.printStackTrace();
             }
         } else {
@@ -155,7 +187,7 @@ public class AfficherVille {
 
 
     @FXML
-    void SupprimerVille(ActionEvent event) {
+    void SupprimerVille(ActionEvent event) throws SQLException {
         // Get the selected Ville object from the table
         Ville selectedVille = VilleTable.getSelectionModel().getSelectedItem();
 
@@ -165,10 +197,25 @@ public class AfficherVille {
             alert.setContentText("Are you sure you want to delete this record?");
             Optional<ButtonType> result = alert.showAndWait();
 
+
+
             if (result.get() == ButtonType.OK) {
                 try {
+                    // Récupérer le pays correspondant à la ville
+                    Pays pays = servicePays.getPaysById(selectedVille.getId_pays());
+                    // Decrement the number of cities for this country
+                    if (pays.getNb_villes() > 1) {
+                        pays.setNb_villes(pays.getNb_villes() - 1);
+                    } else {
+                        // Set the number of cities to 0 directly
+                        pays.setNb_villes(0);
+                    }
+                        // Update the number of cities in the database
+                        servicePays.updateNbVilles(pays);
                     // Delete the selected Ville object
                     serviceVille.Delete(selectedVille);
+
+
                     loadVilleData();
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -236,10 +283,17 @@ public class AfficherVille {
     void returnToListPays(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/AfficherPays.fxml"));
         Parent root = loader.load();
+
+        // Après avoir chargé le contrôleur, récupérez une référence au contrôleur de la page des pays
+        AfficherPays controller = loader.getController();
+
+        // Appelez la méthode de rafraîchissement des données
+        controller.rafraichirDonnees();
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
-
     }
+
 }

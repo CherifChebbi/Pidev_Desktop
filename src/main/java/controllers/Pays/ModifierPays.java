@@ -9,11 +9,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import models.Pays;
 import services.ServicePays;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 
 public class ModifierPays {
@@ -48,6 +52,7 @@ public class ModifierPays {
     private Pays selectedPays;
     @FXML
     private ChoiceBox<String> choiceContinent;
+    private File file;
 
 
     @FXML
@@ -61,32 +66,61 @@ public class ModifierPays {
                 "Océanie"
         );
     }
-
+    @FXML
+    void importerImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
+        file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+            // Copier l'image dans le dossier d'upload de votre projet
+            String destinationPath = "C:/Users/cheri/Documents/-- ESPRIT --/3eme/--- SEMESTRE  2 ----/-- PI_Java --/Gest_Pays/src/main/resources/upload/" + file.getName();
+            try {
+                Files.copy(file.toPath(), new File(destinationPath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                //tf_imgPays.setText(destinationPath);
+            } catch (IOException e) {
+                e.printStackTrace(); // Gérer l'erreur d'écriture du fichier
+            }
+        }
+    }
     @FXML
     void ModifierPays(ActionEvent event) {
         // Vérifiez si le pays sélectionné n'est pas nul
         if (selectedPays != null) {
-            // Mettez à jour les propriétés du pays avec les valeurs des champs de texte
-            selectedPays.setNom_pays(tf_nomPays.getText());
-            selectedPays.setImg_pays(tf_imgPays.getText());
-            selectedPays.setDesc_pays(tf_descPays.getText());
-            selectedPays.setLangue(tf_languePays.getText());
-            selectedPays.setContinent(choiceContinent.getValue());
-
-            // Vérifiez si les champs de latitude et de longitude ne sont pas vides avant de les mettre à jour
-            if (!tf_latitude.getText().isEmpty()) {
-                selectedPays.setLatitude(Double.parseDouble(tf_latitude.getText()));
-            }
-            if (!tf_longitude.getText().isEmpty()) {
-                selectedPays.setLongitude(Double.parseDouble(tf_longitude.getText()));
-            }
-
-            // Mettez à jour le nombre de villes si le champ n'est pas vide
-            if (!tf_nbrVillesPays.getText().isEmpty()) {
-                selectedPays.setNb_villes(Integer.parseInt(tf_nbrVillesPays.getText()));
-            }
-
             try {
+                // Vérification du nom du pays commençant par une majuscule
+                String nomPays = tf_nomPays.getText().trim();
+                if (!Character.isUpperCase(nomPays.charAt(0))) {
+                    throw new IllegalArgumentException("Le nom du pays doit commencer par une majuscule.");
+                }
+
+                // Vérification de tous les champs remplis
+                if (nomPays.isEmpty() || tf_descPays.getText().isEmpty() || tf_languePays.getText().isEmpty()
+                        || choiceContinent.getValue() == null || tf_latitude.getText().isEmpty()
+                        || tf_longitude.getText().isEmpty()) {
+                    throw new IllegalArgumentException("Tous les champs doivent être remplis.");
+                }
+
+                // Vérification des caractères spéciaux
+                if (!nomPays.matches("[A-Za-z0-9_]+") || !tf_descPays.getText().matches("[A-Za-z0-9_]+")
+                        || !tf_languePays.getText().matches("[A-Za-z0-9_]+")) {
+                    throw new IllegalArgumentException("Les champs ne doivent contenir que des lettres, des chiffres et '_'.");
+                }
+
+                // Mettez à jour les propriétés du pays avec les valeurs des champs de texte
+                selectedPays.setNom_pays(nomPays);
+                selectedPays.setImg_pays(file.getName());
+                selectedPays.setDesc_pays(tf_descPays.getText());
+                selectedPays.setLangue(tf_languePays.getText());
+                selectedPays.setContinent(choiceContinent.getValue());
+
+                // Vérifiez si les champs de latitude et de longitude ne sont pas vides avant de les mettre à jour
+                if (!tf_latitude.getText().isEmpty()) {
+                    selectedPays.setLatitude(Double.parseDouble(tf_latitude.getText()));
+                }
+                if (!tf_longitude.getText().isEmpty()) {
+                    selectedPays.setLongitude(Double.parseDouble(tf_longitude.getText()));
+                }
+
                 // Appelez la méthode Update du servicePays pour mettre à jour le pays dans la base de données
                 ServicePays sp = new ServicePays();
                 sp.Update(selectedPays);
@@ -98,6 +132,16 @@ public class ModifierPays {
 
                 // Redirigez vers la page AfficherPays après la mise à jour
                 switchToAfficherPays();
+            } catch (NumberFormatException e) {
+                // Affichez un message d'erreur si les champs de latitude et de longitude ne sont pas des nombres
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Les champs de latitude et longitude doivent être des nombres.");
+                alert.show();
+            } catch (IllegalArgumentException e) {
+                // Affichez un message d'erreur si une validation de saisie échoue
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText(e.getMessage());
+                alert.show();
             } catch (SQLException | IOException e) {
                 e.printStackTrace();
                 // Affichez un message d'erreur en cas d'échec de la mise à jour
@@ -112,15 +156,15 @@ public class ModifierPays {
             alert.show();
         }
     }
+
     public void initData(Pays selectedPays) {
         this.selectedPays = selectedPays;
         // Initialisez les champs de texte avec les données du pays sélectionné
         tf_nomPays.setText(selectedPays.getNom_pays());
-        tf_imgPays.setText(selectedPays.getImg_pays());
+        //tf_imgPays.setText(selectedPays.getImg_pays());
         tf_descPays.setText(selectedPays.getDesc_pays());
         tf_languePays.setText(selectedPays.getLangue());
         choiceContinent.setValue(selectedPays.getContinent());
-        tf_nbrVillesPays.setText(String.valueOf(selectedPays.getNb_villes()));
         tf_latitude.setText(String.valueOf(selectedPays.getLatitude()));
         tf_longitude.setText(String.valueOf(selectedPays.getLongitude()));
     }

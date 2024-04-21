@@ -82,14 +82,6 @@
                               <Font name="System Bold Italic" size="15.0" />
                            </font>
                         </Label>
-                        <Label prefHeight="26.0" prefWidth="242.0" text="Nbr_villes">
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="System Bold Italic" size="15.0" />
-                           </font>
-                        </Label>
                         <Label prefHeight="26.0" prefWidth="242.0" text="Latitude">
                            <VBox.margin>
                               <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
@@ -143,11 +135,6 @@
                               <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </ChoiceBox>
-                        <TextField fx:id="tf_nbrVillesPays" style="-fx-background-color: rgb(240, 235, 227);">
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                           </VBox.margin>
-                        </TextField>
                         <TextField fx:id="tf_latitude" style="-fx-background-color: rgb(240, 235, 227);">
                            <VBox.margin>
                               <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />

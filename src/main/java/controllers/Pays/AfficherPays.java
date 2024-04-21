@@ -1,6 +1,6 @@
 package controllers.Pays;
-import controllers.*;
 
+import javafx.scene.image.ImageView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,8 +16,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.Pays;
 import services.ServicePays;
-
+import javafx.scene.image.Image;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -28,8 +30,7 @@ public class AfficherPays {
     @FXML
     private Button AjouterPays_Button;
 
-    @FXML
-    private Button ModifierPays_Button;
+
 
 
     @FXML
@@ -42,8 +43,6 @@ public class AfficherPays {
     @FXML
     private TableColumn<Pays, Integer> id_Pays_Column;
 
-    @FXML
-    private TableColumn<Pays, String> img_Column;
     @FXML
     private TableColumn<Pays, String> langue_Column;
 
@@ -62,14 +61,19 @@ public class AfficherPays {
     @FXML
     private TableColumn<Pays, String> nom_Column;
     private ServicePays servicePays;
-    private TextField tf_recherche;
+
 
     @FXML
     private TextField minVillesField;
 
     @FXML
     private TextField maxVillesField;
-    private TextField tf_nomVille;
+
+    @FXML
+    private ImageView imageView_pays;
+
+
+
 
     @FXML
     private void initialize() {
@@ -80,9 +84,7 @@ public class AfficherPays {
     private void initializeTable() {
         id_Pays_Column.setCellValueFactory(new PropertyValueFactory<>("id_pays"));
         nom_Column.setCellValueFactory(new PropertyValueFactory<>("nom_pays"));
-        img_Column.setCellFactory(param -> new ImageTableCell());
-
-       // img_Column.setCellValueFactory(new PropertyValueFactory<>("img_pays"));
+        //img_Column.setCellValueFactory(new PropertyValueFactory<>("img_pays"));
         desc_Column.setCellValueFactory(new PropertyValueFactory<>("desc_pays"));
         langue_Column.setCellValueFactory(new PropertyValueFactory<>("langue"));
         continent_Column.setCellValueFactory(new PropertyValueFactory<>("continent"));
@@ -97,9 +99,33 @@ public class AfficherPays {
             List<Pays> paysList = servicePays.Afficher();
             ObservableList<Pays> observablePays = FXCollections.observableArrayList(paysList);
             paysTable.setItems(observablePays);
+
         } catch (SQLException e) {
             e.printStackTrace();
             // Gérer les erreurs
+        }
+    }
+
+    @FXML
+    public void onTableRowPaysClicked(javafx.scene.input.MouseEvent mouseEvent) {
+        Pays selectedPays = paysTable.getSelectionModel().getSelectedItem();
+        if (selectedPays != null) {
+            String imageName = selectedPays.getImg_pays();
+            if (imageName != null && !imageName.isEmpty()) {
+                try {
+                    // Construire l'URL de l'image en utilisant le chemin relatif
+                    URL imageUrl = getClass().getResource("/Upload/" + imageName);
+                    if (imageUrl != null) {
+                        // Charger l'image à partir de l'URL
+                        Image image = new Image(imageUrl.toExternalForm());
+                        imageView_pays.setImage(image);
+                    } else {
+                        System.out.println("L'image n'a pas été trouvée : " + imageName);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Erreur lors du chargement de l'image : " + e.getMessage());
+                }
+            }
         }
     }
     @FXML
@@ -237,4 +263,22 @@ public class AfficherPays {
         }
     }
 
+    public void rafraichirDonnees() {
+        // Clear existing items in the TableView
+        paysTable.getItems().clear();
+
+        // Fetch updated data from the database
+        List<Pays> paysList = null;
+        try {
+            paysList = servicePays.getAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exception
+        }
+
+        // Add fetched data to the TableView
+        if (paysList != null) {
+            paysTable.getItems().addAll(paysList);
+        }
+    }
 }

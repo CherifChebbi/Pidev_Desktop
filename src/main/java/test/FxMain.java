@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class FxMain extends Application {
@@ -17,6 +18,8 @@ public class FxMain extends Application {
         FXMLLoader loader = new FXMLLoader(getClass()
                 .getResource("/Pays/AfficherPays.fxml"));
         Parent parent = loader.load();
+        AnchorPane root = new AnchorPane();
+        // Charger le fichier CSS
 
         Scene scene = new Scene(parent);
 

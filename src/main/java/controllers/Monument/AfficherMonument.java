@@ -1,8 +1,6 @@
 package controllers.Monument;
 
 
-import controllers.*;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,14 +13,17 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import models.Monument;
 import services.ServiceMonument;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 public class AfficherMonument {
     @FXML
@@ -68,9 +69,13 @@ public class AfficherMonument {
 
     private TextField tf_nomVille;
 
-
     @FXML
-    private void initialize() {
+    private AnchorPane anchorPane;
+    @FXML
+    private void initialize(URL location, ResourceBundle resources) {
+        // Charger le fichier CSS
+        anchorPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
         serviceMonument = new ServiceMonument();
         initializeTable();
         loadMonumentData();

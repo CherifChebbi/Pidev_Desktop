@@ -1,0 +1,28 @@
+/* Style du fond de la VBox */
+.vbox-background {
+    -fx-background-color: #EBF3E8; /* Couleur de fond */
+}
+
+/* Style des colonnes de la TableView */
+.table-column {
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-text-fill: #333; /* Couleur du texte */
+}
+
+/* Style de la zone de recherche */
+.search-bar {
+    -fx-background-color: #EEF5FF; /* Couleur de fond */
+    -fx-font-size: 14px; /* Taille de la police */
+}
+
+/* Style des boutons */
+.button {
+    -fx-background-color: #3A4D39; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 15px; /* Taille de la police */
+}
+
+/* Style des boutons au survol */
+.button:hover {
+    -fx-background-color: #2E3C2A; /* Couleur de fond au survol */
+}

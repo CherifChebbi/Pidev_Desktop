@@ -3,8 +3,18 @@ package models;
 import com.mysql.cj.conf.StringProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class Pays {
+import java.util.List;
 
+public class Pays {
+    private List<Ville> villes;
+
+    public List<Ville> getVilles() {
+        return villes;
+    }
+
+    public void setVilles(List<Ville> villes) {
+        this.villes = villes;
+    }
 
     private int id_pays;
     private String nom_pays;
@@ -34,24 +44,24 @@ public class Pays {
 
 
     public Pays() {}
-    public Pays(int id_pays, String nom_pays, String img_pays, String desc_pays, String langue, String continent, int nb_villes, double latitude, double longitude) {
+    public Pays(int id_pays, String nom_pays, String img_pays, String desc_pays, String langue, String continent,  double latitude, double longitude) {
         this.id_pays = id_pays;
         this.nom_pays = nom_pays;
         this.img_pays = img_pays;
         this.desc_pays = desc_pays;
         this.langue = langue;
         this.continent = continent;
-        this.nb_villes = nb_villes;
+        this.nb_villes = 0;
         this.latitude = latitude;
         this.longitude = longitude;
     }
-    public Pays( String nom_pays, String img_pays, String desc_pays, String langue, String continent, int nb_villes, double latitude, double longitude) {
+    public Pays( String nom_pays, String img_pays, String desc_pays, String langue, String continent, double latitude, double longitude) {
         this.nom_pays = nom_pays;
         this.img_pays = img_pays;
         this.desc_pays = desc_pays;
         this.langue = langue;
         this.continent = continent;
-        this.nb_villes = nb_villes;
+        this.nb_villes = 0;
         this.latitude = latitude;
         this.longitude = longitude;
     }
