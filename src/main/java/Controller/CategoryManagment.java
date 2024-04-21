@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -22,8 +23,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class CategoryManagment {
-    @FXML
-    private ListView<Category> afficher;
+
 
     @FXML
     private TextField description;
@@ -38,6 +38,17 @@ public class CategoryManagment {
     @FXML
     private TextField nom;
 
+    @FXML
+    private TableColumn<Category, String> imagecategory;
+
+    @FXML
+    private TableColumn<Category, String> nomcategory;
+
+    @FXML
+    private TableView<Category> afficher;
+    @FXML
+    private TableColumn<Category, String> desccategory;
+
 
 
     ServiceCategory sc = new ServiceCategory();
@@ -48,6 +59,17 @@ public class CategoryManagment {
         nom.setText(String.valueOf(c.getNom()));
         image.setText(String.valueOf(c.getImage()));
         description.setText(String.valueOf(c.getDescription()));
+    }
+
+    public void initialize() {
+        nomcategory.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        imagecategory.setCellValueFactory(new PropertyValueFactory<>("image"));
+        desccategory.setCellValueFactory(new PropertyValueFactory<>("description"));
+        try {
+            afficher();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @FXML
@@ -140,5 +162,35 @@ public class CategoryManagment {
         st.show();
     }
 
+    @FXML
+    void goheberg(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/hello-view.fxml"));
+        Parent root = loader.load();
+        Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        st.setScene(scene);
+        st.show();
+
+    }
+    @FXML
+    void goreserv(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/reservation.fxml"));
+        Parent root = loader.load();
+        Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        st.setScene(scene);
+        st.show();
+
+    }
+    @FXML
+    void backcateg(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/Category.fxml"));
+        Parent root = loader.load();
+        Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        st.setScene(scene);
+        st.show();
+
+    }
 
 }

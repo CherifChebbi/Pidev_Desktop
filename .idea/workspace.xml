@@ -5,35 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb79324d-adcb-4532-b373-8246f3fe7403" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/CategoryManagment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/HebergementManagment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/ReservationManagment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Category.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Hebergement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Entity/Reservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/ICategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/IHebergement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/IReservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/ServiceCategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/ServiceHebergement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Services/ServiceReservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Util/MyDB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/test/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/test/MainFX.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/test/Category.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/test/hello-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/test/pane.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/test/reservation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CategoryManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/CategoryManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/HebergementManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/HebergementManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ReservationManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ReservationManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ServiceCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/ServiceCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/test/Category.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/test/Category.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/test/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/test/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/test/reservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/test/reservation.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +52,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "Gestion__Hebergement",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/MSI/IdeaProjects/demo",
     "node.js.detected.package.eslint": "true",
@@ -105,7 +84,7 @@
       <workItem from="1713568803507" duration="600000" />
       <workItem from="1713570346983" duration="2892000" />
       <workItem from="1713613147787" duration="9721000" />
-      <workItem from="1713698982745" duration="773000" />
+      <workItem from="1713698982745" duration="14464000" />
     </task>
     <servers />
   </component>

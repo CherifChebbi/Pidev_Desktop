@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,51 +20,66 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class HebergementManagment {
+
     @FXML
     private TextField Description;
 
     @FXML
     private TextField Nom;
+
     @FXML
-    ComboBox<Category> comboxid;
+    private ComboBox<Category> comboxid;
+
     @FXML
-    private ListView<Hebergement> afficher;
+    private TableView<Hebergement> afficher;
+
+    @FXML
+    private TableColumn<Hebergement, String> afficherNom;
+
+    @FXML
+    private TableColumn<Hebergement, String> afficherdesc;
+
     @FXML
     private TextField image;
+
     @FXML
     private Button ajouter;
 
+    private ServiceHebergement SH = new ServiceHebergement();
 
-    ServiceHebergement SH = new ServiceHebergement();
+    private ServiceCategory SC = new ServiceCategory();
 
-
-    ServiceCategory SC = new ServiceCategory();
-
-    private void selection(){
-        Hebergement h=afficher.getItems().get(afficher.getSelectionModel().getSelectedIndex());
-
-        Nom.setText(String.valueOf(h.getNom()));
-        Description.setText(String.valueOf(h.getDescription()));
+    public void initialize() {
+        afficherNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        afficherdesc.setCellValueFactory(new PropertyValueFactory<>("description"));
+        try {
+            afficher();
+            populateComboBox();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
+    private void populateComboBox() throws SQLException {
+        List<Category> categories = SC.getAllCategories();
+        comboxid.setItems(FXCollections.observableArrayList(categories));
+    }
 
     @FXML
     void ajouter(ActionEvent event) throws SQLException {
         String i = String.valueOf(Nom.getText());
         String j = String.valueOf(Description.getText());
-        Category selectedRestaurant = comboxid.getValue();
+        Category selectedCategory = comboxid.getValue();
 
-        // Vérifier si les champs requis sont remplis
-        if (i.isEmpty() || j.isEmpty()) {
-            // Afficher un message d'alerte
+        if (i.isEmpty() || j.isEmpty() || selectedCategory == null) {
             showAlert("Veuillez remplir tous les champs.");
         } else {
             SH.ajouter(new Hebergement(i, j));
-            // Afficher un message de succès
             showAlert("Hébergement ajouté avec succès.");
             afficher();
         }
     }
+
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -71,7 +87,6 @@ public class HebergementManagment {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
 
     private void afficher() throws SQLException {
         afficher.setItems(SH.afficher());
@@ -83,31 +98,23 @@ public class HebergementManagment {
         String i = String.valueOf(Nom.getText());
         String mo = String.valueOf(Description.getText());
 
-        // Vérifier si les champs requis sont remplis
         if (i.isEmpty() || mo.isEmpty()) {
-            // Afficher un message d'alerte
             showAlert("Veuillez remplir tous les champs.");
         } else {
             Hebergement hb = new Hebergement(mo, i);
             SH.modifier(hb, h.getId());
-            // Afficher un message de succès
             showAlert("Hébergement modifié avec succès.");
             afficher();
-        }
+        }}
+
+    public void supp(ActionEvent actionEvent) {
     }
 
-
-    public void supp(ActionEvent actionEvent) throws SQLException {
-        Hebergement h = afficher.getSelectionModel().getSelectedItem();
-        System.out.println(h.getCategorie_id());
-        SH.supprimer(h.getCategorie_id());
-        afficher();
-afficher.refresh();
+    public void selectrestaurant(ActionEvent actionEvent) {
     }
-
 
     @FXML
-    void moove(ActionEvent event) throws IOException {
+     void gocategory(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/Category.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -116,7 +123,24 @@ afficher.refresh();
         st.show();
     }
 
-
-    public void selectrestaurant(ActionEvent actionEvent) {
+    @FXML
+     void backheberg(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/hello-view.fxml"));
+        Parent root = loader.load();
+        Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        st.setScene(scene);
+        st.show();
     }
+
+    @FXML
+    void goreserv(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/reservation.fxml"));
+        Parent root = loader.load();
+        Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        st.setScene(scene);
+        st.show();
+    }
+
 }

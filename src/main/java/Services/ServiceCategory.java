@@ -102,8 +102,8 @@ public class ServiceCategory implements ICategory<Category>{
                 Category plat = new Category();
                 plat.setId(resultSet.getInt("id"));
                 plat.setNom(resultSet.getString("nom"));
-                plat.setDescription(resultSet.getString("image"));
-                plat.setImage(resultSet.getString("prix"));
+                plat.setDescription(resultSet.getString("Description"));
+                plat.setImage(resultSet.getString("image"));
                 // Assuming the "idR" column is the foreign key referencing the Restaurant table
                 // You may need to set the corresponding Restaurant object here if needed
                 plats.add(plat);
