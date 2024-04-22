@@ -44,6 +44,14 @@
                         <Insets left="250.0" />
                      </HBox.margin>
                   </Button>
+                  <Button fx:id="returnToListPays" mnemonicParsing="false" onAction="#returnToListPays" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: rgb(108, 3, 69);" text="Return" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" right="20.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
                <VBox.margin>
                   <Insets left="50.0" top="20.0" />
@@ -111,14 +119,6 @@
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                     </HBox.margin>
                 </Button>
-            <Button fx:id="returnToListPays" mnemonicParsing="false" onAction="#returnToListPays" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: rgb(108, 3, 69);" text="Return" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="15.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
-               </HBox.margin>
-            </Button>
             </children>
         </HBox>
     </children>

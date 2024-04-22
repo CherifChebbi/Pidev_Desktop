@@ -14,11 +14,23 @@
 <AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Monument.AfficherMonument">
 
     <children>
-        <VBox layoutX="-1.0" layoutY="72.0" prefHeight="474.0" prefWidth="1000.0" style="-fx-background-color: rgb(227, 254, 247);">
+        <VBox layoutX="-1.0" layoutY="72.0" prefHeight="474.0" prefWidth="1000.0" style="-fx-background-color: rgb(175, 209, 152);">
             <children>
-            <HBox prefHeight="390.0" prefWidth="1000.0">
+            <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                      <TableView fx:id="MonumentTable" cache="true" onMouseClicked="#onTableRowClickedMonument" prefHeight="282.0" prefWidth="760.0">
+                  <Button fx:id="returnToListVille" mnemonicParsing="false" onAction="#returnToListVille" prefHeight="31.0" prefWidth="146.0" style="-fx-background-color: rgb(26, 77, 46);" text="Return" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="800.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="570.0" prefWidth="1000.0">
+               <children>
+                      <TableView fx:id="MonumentTable" cache="true" onMouseClicked="#onTableRowClickedMonument" prefHeight="362.0" prefWidth="577.0">
                           <columns>
                               <TableColumn fx:id="id_Monument_Column" prefWidth="75.0" text="Id_monument" />
                               <TableColumn fx:id="id_Ville_Column" prefWidth="75.0" text="Id_ville" />
@@ -31,10 +43,10 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                           </columnResizePolicy>
                      <HBox.margin>
-                        <Insets left="20.0" right="10.0" top="20.0" />
+                        <Insets bottom="50.0" left="200.0" right="10.0" top="20.0" />
                      </HBox.margin>
                       </TableView>
-                  <ImageView fx:id="imageView_monument" fitHeight="200" fitWidth="200">
+                  <ImageView fx:id="imageView_Monument" fitHeight="200" fitWidth="200">
                      <HBox.margin>
                         <Insets right="10.0" top="20.0" />
                      </HBox.margin>
@@ -43,7 +55,7 @@
             </HBox>
             </children>
         </VBox>
-        <HBox alignment="BOTTOM_RIGHT" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: rgb(19, 93, 102);">
+        <HBox alignment="BOTTOM_RIGHT" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: rgb(26, 77, 46);">
             <children>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
@@ -53,7 +65,7 @@
                         <Insets right="200.0" />
                     </HBox.margin>
                 </HBox>
-                <Button fx:id="AjouterMonument_Button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#AjouterMonument" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(19, 93, 102);" text="Ajouter" textFill="WHITE">
+                <Button fx:id="AjouterMonument_Button" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#AjouterMonument" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(26, 77, 46);" text="Ajouter" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="15.0" />
                     </font>
@@ -61,7 +73,7 @@
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="SupprimerMonument_Button" mnemonicParsing="false" onAction="#SupprimerMonument" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(19, 93, 102);" text="Supprimer" textFill="WHITE">
+                <Button fx:id="SupprimerMonument_Button" mnemonicParsing="false" onAction="#SupprimerMonument" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(26, 77, 46);" text="Supprimer" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="15.0" />
                     </font>
@@ -69,7 +81,7 @@
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                     </HBox.margin>
                 </Button>
-                <Button fx:id="ModifierMonument" mnemonicParsing="false" onAction="#ModifierMonument" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(19, 93, 102);" text="Modifier" textFill="WHITE">
+                <Button fx:id="ModifierMonument" mnemonicParsing="false" onAction="#ModifierMonument" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(26, 77, 46);" text="Modifier" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="15.0" />
                     </font>
@@ -77,15 +89,8 @@
                         <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                     </HBox.margin>
                 </Button>
-            <Button fx:id="returnToListVille" mnemonicParsing="false" onAction="#returnToListVille" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: rgb(19, 93, 102);" text="Return" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="15.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
-               </HBox.margin>
-            </Button>
             </children>
         </HBox>
+      <VBox prefHeight="546.0" prefWidth="134.0" style="-fx-background-color: rgb(18, 55, 42);" />
     </children>
 </AnchorPane>

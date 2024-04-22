@@ -9,10 +9,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Monument.ModifierMonument">
     <children>
-        <VBox layoutY="70.0" prefHeight="485.0" prefWidth="1000.0" style="-fx-background-color: rgb(227, 254, 247);">
+        <VBox layoutY="70.0" prefHeight="485.0" prefWidth="1000.0" style="-fx-background-color: rgb(175, 209, 152);">
             <children>
                 <HBox alignment="CENTER" prefHeight="442.0" prefWidth="880.0">
                     <children>
@@ -115,11 +116,19 @@
                 </HBox>
             </children>
         </VBox>
-        <VBox alignment="BOTTOM_RIGHT" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: rgb(19, 93, 102);">
+        <VBox alignment="BOTTOM_RIGHT" prefHeight="70.0" prefWidth="1000.0" style="-fx-background-color: rgb(26, 77, 46);">
             <children>
                 <HBox alignment="BOTTOM_RIGHT" prefHeight="62.0" prefWidth="200.0">
                     <children>
-                        <Button fx:id="ModifierMonument_Button" mnemonicParsing="false" onAction="#ModifierMonument" prefHeight="37.0" prefWidth="101.0" style="-fx-background-color: rgb(19, 93, 102);" text="Modifier" textFill="WHITE">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Monuments" wrappingWidth="220.53667902946472">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="5.0" right="400.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Text>
+                        <Button fx:id="ModifierMonument_Button" mnemonicParsing="false" onAction="#ModifierMonument" prefHeight="37.0" prefWidth="101.0" style="-fx-background-color: rgb(26, 77, 46);" text="Modifier" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -127,7 +136,7 @@
                                 <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button fx:id="returnToList" mnemonicParsing="false" onAction="#returnToList" prefHeight="32.0" prefWidth="101.0" style="-fx-background-color: rgb(19, 93, 102);" text="Return" textFill="WHITE">
+                        <Button fx:id="returnToList" mnemonicParsing="false" onAction="#returnToList" prefHeight="32.0" prefWidth="101.0" style="-fx-background-color: rgb(26, 77, 46);" text="Return" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -139,5 +148,6 @@
                 </HBox>
             </children>
         </VBox>
+      <VBox layoutX="-4.0" layoutY="-8.0" prefHeight="564.0" prefWidth="148.0" style="-fx-background-color: rgb(18, 55, 42);" />
     </children>
 </AnchorPane>

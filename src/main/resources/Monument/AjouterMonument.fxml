@@ -12,11 +12,11 @@
 
 <AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Monument.AjouterMonument">
     <children>
-        <VBox alignment="BOTTOM_RIGHT" layoutY="-2.0" prefHeight="70.0" prefWidth="900.0" style="-fx-background-color: rgb(19, 93, 102);">
+        <VBox alignment="BOTTOM_RIGHT" layoutY="-2.0" prefHeight="70.0" prefWidth="900.0" style="-fx-background-color: rgb(26, 77, 46);">
             <children>
                 <HBox alignment="BOTTOM_RIGHT" prefHeight="54.0" prefWidth="198.0">
                     <children>
-                        <Button fx:id="AjouterMonument_Button" mnemonicParsing="false" onAction="#AjouterMonument" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: rgb(19, 93, 102);" text="Ajouter" textFill="WHITE">
+                        <Button fx:id="AjouterMonument_Button" mnemonicParsing="false" onAction="#AjouterMonument" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: rgb(26, 77, 46);" text="Ajouter" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -24,7 +24,7 @@
                                 <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                             </HBox.margin>
                         </Button>
-                        <Button fx:id="returnToList" mnemonicParsing="false" onAction="#returnToList" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: rgb(19, 93, 102);" text="Return" textFill="WHITE">
+                        <Button fx:id="returnToList" mnemonicParsing="false" onAction="#returnToList" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: rgb(26, 77, 46);" text="Return" textFill="WHITE">
                             <font>
                                 <Font name="System Bold" size="15.0" />
                             </font>
@@ -36,9 +36,9 @@
                 </HBox>
             </children>
         </VBox>
-        <VBox layoutY="68.0" prefHeight="485.0" prefWidth="900.0" style="-fx-background-color: rgb(227, 254, 247);">
+        <VBox layoutY="68.0" prefHeight="485.0" prefWidth="900.0" style="-fx-background-color: rgb(175, 209, 152);">
             <children>
-                <HBox alignment="CENTER" prefHeight="527.0" prefWidth="928.0">
+                <HBox alignment="CENTER" prefHeight="502.0" prefWidth="924.0">
                     <children>
                         <VBox alignment="CENTER" prefHeight="465.0" prefWidth="154.0">
                             <children>
@@ -141,5 +141,6 @@
                 </HBox>
             </children>
         </VBox>
+      <VBox layoutX="-1.0" prefHeight="556.0" prefWidth="145.0" style="-fx-background-color: rgb(18, 55, 42);" />
     </children>
 </AnchorPane>
