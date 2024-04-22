@@ -76,6 +76,15 @@
                     </effect>
                 </Button>
 
+                <Button layoutX="528.0" layoutY="179.0" mnemonicParsing="false" onAction="#printReservationToPDF" prefHeight="26.0" prefWidth="158.0" text="Print Reservation to PDF" style="-fx-background-color: linear-gradient(to bottom, #4db8ff, #0099ff); -fx-text-fill: white; -fx-font-weight: bold;">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </Button>
+
                 <ScrollPane fx:id="reservationScrollPane" layoutX="47.0" layoutY="287.0" prefHeight="305.0" prefWidth="727.0">
                     <!-- Content inside the ScrollPane will be populated dynamically -->
                 </ScrollPane>

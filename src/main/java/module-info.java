@@ -5,6 +5,8 @@ module test {
     requires com.dlsc.formsfx;
     requires java.sql;
     requires java.desktop;
+    requires kernel;
+    requires layout;
 
     opens test to javafx.fxml;
     opens Entity to javafx.base;

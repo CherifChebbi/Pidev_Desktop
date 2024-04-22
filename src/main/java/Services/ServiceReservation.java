@@ -21,6 +21,9 @@ public class ServiceReservation {
 
 
 
+
+
+
     public void ajouter(Reservation reservation) throws SQLException {
         String query = "INSERT INTO reservation (idR, nom, email, date, nbr_personne) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -77,4 +80,6 @@ public class ServiceReservation {
     }
 
 
+    public void deleteRestaurant(int selectedRestaurantId) {
+    }
 }

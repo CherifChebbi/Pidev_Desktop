@@ -77,6 +77,19 @@ public class FrontManagement {
         }
     }
 
+
+
+
+
+    @FXML
+    public void search(ActionEvent actionEvent) {
+        String nameFilter = searchNameField.getText();
+        String locationFilter = searchLocationField.getText();
+
+        List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter);
+        populateGridPane(filteredRestaurants);
+    }
+
     @FXML
     public void reserveForRestaurant(ActionEvent event, Restaurant restaurant) {
         try {
@@ -95,14 +108,4 @@ public class FrontManagement {
         }
     }
 
-
-
-    @FXML
-    public void search(ActionEvent actionEvent) {
-        String nameFilter = searchNameField.getText();
-        String locationFilter = searchLocationField.getText();
-
-        List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter);
-        populateGridPane(filteredRestaurants);
-    }
 }

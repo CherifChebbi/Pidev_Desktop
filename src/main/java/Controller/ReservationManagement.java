@@ -1,21 +1,23 @@
-package Controller;
 
+package Controller;
 import Entity.Reservation;
-import Entity.Restaurant;
 import Services.ServiceReservation;
-import Util.MyDB;
+import com.itextpdf.kernel.pdf.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import javax.swing.text.Document;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.itextpdf.layout.element.Paragraph;
+
 
 public class ReservationManagement {
     @FXML
@@ -40,6 +42,32 @@ public class ReservationManagement {
     private int selectedRestaurantId; // Store the selected restaurant ID
     private String selectedRestaurantName; // Store the selected restaurant name
 
+    private Reservation selectedReservation; // Store the selected reservation
+
+    private void handleReservationSelection(Reservation reservation) {
+        selectedReservation = reservation;
+    }
+
+    // Method to add reservations to the reservationScrollPane
+    private void addReservationToScrollPane(Reservation reservation) {
+        Text reservationText = new Text("Nom: " + reservation.getNom() + ", Email: " + reservation.getEmail() +
+                ", Date: " + reservation.getDate() + ", Nombre Personne: " + reservation.getNbrPersonne() +
+                ", Restaurant: " + selectedRestaurantName);
+
+        // Add event handler to the reservation text
+        reservationText.setOnMouseClicked(event -> handleReservationSelection(reservation));
+
+        // Add reservation text to the scroll pane
+        GridPane gridPane = (GridPane) reservationScrollPane.getContent();
+        if (gridPane == null) {
+            gridPane = new GridPane();
+            reservationScrollPane.setContent(gridPane);
+        }
+        int row = gridPane.getRowCount();
+        gridPane.add(reservationText, 0, row);
+    }
+
+    // Modify ajouter() method to use addReservationToScrollPane
     @FXML
     void ajouter() {
         try {
@@ -55,21 +83,8 @@ public class ReservationManagement {
             // Add reservation to the database
             serviceReservation.ajouter(newReservation);
 
-            // Fetch all reservations for the selected restaurant
-            List<Reservation> reservations = serviceReservation.getAllReservationsForRestaurant(selectedRestaurantId);
-
-            // Clear existing content in the reservationScrollPane
-            GridPane gridPane = new GridPane();
-            reservationScrollPane.setContent(gridPane);
-
-            // Add reservations to the reservationScrollPane
-            int row = 0;
-            for (Reservation reservation : reservations) {
-                Text reservationText = new Text("Nom: " + reservation.getNom() + ", Email: " + reservation.getEmail() +
-                        ", Date: " + reservation.getDate() + ", Nombre Personne: " + reservation.getNbrPersonne() +
-                        ", Restaurant: " + selectedRestaurantName); // Use the selected restaurant name here
-                gridPane.add(reservationText, 0, row++);
-            }
+            // Add reservation to the scroll pane
+            addReservationToScrollPane(newReservation);
 
         } catch (SQLException | NumberFormatException e) {
             e.printStackTrace();
@@ -77,28 +92,80 @@ public class ReservationManagement {
         }
     }
 
+    // Modify printReservationToPDF method to use selectedReservation
     @FXML
-    private void closeForm() {
-        // Get the stage (window) associated with the current scene
-        Stage stage = (Stage) nom.getScene().getWindow();
+    void printReservationToPDF(ActionEvent event) {
+        try {
+            if (selectedReservation == null) {
+                showAlert("No Reservation Selected", "Please select a reservation to print.");
+                return;
+            }
 
-        // Close the stage
-        stage.close();
+            // Create a new PDF document
+            PdfDocument pdfDocument = new PdfDocument(new PdfWriter("reservation.pdf"));
+
+            // Create a Document instance
+            com.itextpdf.layout.Document document = new com.itextpdf.layout.Document(pdfDocument);
+
+            // Add reservation details to the PDF
+            document.add(new com.itextpdf.layout.element.Paragraph("Reservation Details"));
+            document.add(new com.itextpdf.layout.element.Paragraph("Nom: " + selectedReservation.getNom()));
+            document.add(new com.itextpdf.layout.element.Paragraph("Email: " + selectedReservation.getEmail()));
+            document.add(new com.itextpdf.layout.element.Paragraph("Date: " + selectedReservation.getDate()));
+            document.add(new com.itextpdf.layout.element.Paragraph("Nombre Personne: " + selectedReservation.getNbrPersonne()));
+
+            // Close the document
+            document.close();
+
+            showAlert("PDF Created", "Reservation details printed to PDF successfully.");
+
+        } catch (Exception e) {
+            showAlert("Error", "An error occurred while printing the reservation to PDF.");
+            e.printStackTrace();
+        }
     }
 
-    public void modifier(ActionEvent actionEvent) {
+
+
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     public void supprimer(ActionEvent actionEvent) {
     }
 
-    public void ajouterEtActualiser(ActionEvent actionEvent) {
-        ajouter(); // Call the existing ajouter() method to add the reservation
-    }
-
     public void initData(int restaurantId, String restaurantName) {
         this.selectedRestaurantId = restaurantId;
         this.selectedRestaurantName = restaurantName;
-        restaurantLabel.setText(selectedRestaurantName); // Set the label text to the selected restaurant name
+        restaurantLabel.setText(selectedRestaurantName);
+        try {
+            displayReservations(); // Assuming you have a method to display reservations
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void displayReservations() throws SQLException {
+        // Get reservations for the selected restaurant from the service
+        List<Reservation> reservations = serviceReservation.getAllReservationsForRestaurant(selectedRestaurantId);
+
+        // Clear existing content in the reservationScrollPane
+        GridPane gridPane = new GridPane();
+        reservationScrollPane.setContent(gridPane);
+
+        // Add reservations to the reservationScrollPane
+        for (Reservation reservation : reservations) {
+            addReservationToScrollPane(reservation);
+        }
+    }
+
+    public void modifier(ActionEvent actionEvent) {
+    }
+
+    public void ajouterEtActualiser(ActionEvent actionEvent) {
     }
 }
