@@ -83,9 +83,9 @@ public class FrontManagement {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/reservation.fxml"));
             Parent root = loader.load();
 
-            // Pass the selected restaurant's ID to the ReservationManagement controller
+            // Pass the selected restaurant's ID and name to the ReservationManagement controller
             ReservationManagement controller = loader.getController();
-            controller.initData(restaurant.getIdR()); // Pass the restaurant ID only
+            controller.initData(restaurant.getIdR(), restaurant.getNom()); // Pass the restaurant ID and name
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -94,6 +94,7 @@ public class FrontManagement {
             e.printStackTrace();
         }
     }
+
 
 
     @FXML

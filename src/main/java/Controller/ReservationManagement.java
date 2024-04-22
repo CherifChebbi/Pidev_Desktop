@@ -1,13 +1,13 @@
 package Controller;
 
 import Entity.Reservation;
-
-
-
+import Entity.Restaurant;
 import Services.ServiceReservation;
+import Util.MyDB;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -33,12 +33,12 @@ public class ReservationManagement {
     @FXML
     private ScrollPane reservationScrollPane;
 
+    @FXML
+    private Label restaurantLabel; // Label to display the restaurant name
+
     private final ServiceReservation serviceReservation = new ServiceReservation();
     private int selectedRestaurantId; // Store the selected restaurant ID
-
-    public void initData(int restaurantId) {
-        this.selectedRestaurantId = restaurantId; // Initialize selectedRestaurantId with the passed ID
-    }
+    private String selectedRestaurantName; // Store the selected restaurant name
 
     @FXML
     void ajouter() {
@@ -50,7 +50,7 @@ public class ReservationManagement {
             int reservationNbrPersonne = Integer.parseInt(nbrpersonne.getText());
 
             // Create a new reservation object with the selected restaurant ID
-                Reservation newReservation = new Reservation(0, selectedRestaurantId, reservationNom, reservationEmail, reservationDate, reservationNbrPersonne, reservationNom);
+            Reservation newReservation = new Reservation(selectedRestaurantId, reservationNom, reservationEmail, reservationDate, reservationNbrPersonne);
 
             // Add reservation to the database
             serviceReservation.ajouter(newReservation);
@@ -67,7 +67,7 @@ public class ReservationManagement {
             for (Reservation reservation : reservations) {
                 Text reservationText = new Text("Nom: " + reservation.getNom() + ", Email: " + reservation.getEmail() +
                         ", Date: " + reservation.getDate() + ", Nombre Personne: " + reservation.getNbrPersonne() +
-                        ", Restaurant: " + reservation.getRestaurantName());
+                        ", Restaurant: " + selectedRestaurantName); // Use the selected restaurant name here
                 gridPane.add(reservationText, 0, row++);
             }
 
@@ -94,5 +94,11 @@ public class ReservationManagement {
 
     public void ajouterEtActualiser(ActionEvent actionEvent) {
         ajouter(); // Call the existing ajouter() method to add the reservation
+    }
+
+    public void initData(int restaurantId, String restaurantName) {
+        this.selectedRestaurantId = restaurantId;
+        this.selectedRestaurantName = restaurantName;
+        restaurantLabel.setText(selectedRestaurantName); // Set the label text to the selected restaurant name
     }
 }

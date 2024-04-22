@@ -10,10 +10,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.Label?>
 <AnchorPane prefHeight="634.0" prefWidth="825.0" styleClass="styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReservationManagement">
     <children>
         <AnchorPane prefHeight="634.0" prefWidth="825.0" style="-fx-background-color: #f0f0f0;">
             <children>
+                <Label fx:id="restaurantLabel" layoutX="36.0" layoutY="287.0" text="" />
                 <Text layoutX="36.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Restaurant:" fill="#4e4e4e">
                     <font>
                         <Font size="14.0" />
