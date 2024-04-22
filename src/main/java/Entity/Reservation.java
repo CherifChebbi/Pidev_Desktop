@@ -7,58 +7,35 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Reservation {
     private int id;
-    private IntegerProperty restaurantId;
+    private IntegerProperty idR;
     private StringProperty nom;
     private StringProperty email;
     private StringProperty date;
     private int nbrPersonne;
     private final IntegerProperty reservationId;
-    private Restaurant selectedRestaurant;
-
-    public Restaurant getSelectedRestaurant() {
-        return selectedRestaurant;
-    }
-
-    public void setSelectedRestaurant(Restaurant selectedRestaurant) {
-        this.selectedRestaurant = selectedRestaurant;
-    }
-    private Restaurant restaurant;
-
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
+    private StringProperty restaurantName;
 
     // Constructors
-    public Reservation(int reservationId, int restaurantId) {
+    public Reservation(int reservationId, int idR) {
         this.reservationId = new SimpleIntegerProperty(reservationId);
-        this.restaurantId = new SimpleIntegerProperty(restaurantId);
+        this.idR = new SimpleIntegerProperty(idR);
         this.nom = new SimpleStringProperty("");
         this.email = new SimpleStringProperty("");
-        this.date = new SimpleStringProperty(""); // Initialize date property
+        this.date = new SimpleStringProperty("");
+        this.restaurantName = new SimpleStringProperty(""); // Initialize restaurant name property
     }
 
-
-    public Reservation(int reservationId, int restaurantId, String nom, String email, String date, int nbrPersonne) {
+    public Reservation(int reservationId, int idR, String nom, String email, String date, int nbrPersonne, String restaurantName) {
         this.reservationId = new SimpleIntegerProperty(reservationId);
-        this.restaurantId = new SimpleIntegerProperty(restaurantId);
-
-
+        this.idR = new SimpleIntegerProperty(idR);
         this.nom = new SimpleStringProperty(nom);
         this.email = new SimpleStringProperty(email);
         this.date = new SimpleStringProperty(date);
         this.nbrPersonne = nbrPersonne;
+        this.restaurantName = new SimpleStringProperty(restaurantName);
     }
 
-    public Reservation(int selectedRestaurantId, String nom, String email, String date, int nbrPersonne, IntegerProperty reservationId) {
-        this.reservationId = reservationId;
-        this.date = new SimpleStringProperty(date); // Initialize date property
-    }
-
-    // Getters and setters for properties
+    // Getters and setters
     public int getId() {
         return id;
     }
@@ -67,16 +44,16 @@ public class Reservation {
         this.id = id;
     }
 
-    public int getRestaurantId() {
-        return restaurantId.get();
+    public int getIdR() {
+        return idR.get();
     }
 
-    public void setRestaurantId(int restaurantId) {
-        this.restaurantId.set(restaurantId);
+    public void setIdR(int idR) {
+        this.idR.set(idR);
     }
 
-    public IntegerProperty restaurantIdProperty() {
-        return restaurantId;
+    public IntegerProperty idRProperty() {
+        return idR;
     }
 
     public String getNom() {
@@ -137,5 +114,21 @@ public class Reservation {
 
     public IntegerProperty reservationIdProperty() {
         return reservationId;
+    }
+
+    public String getRestaurantName() {
+        return restaurantName.get();
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName.set(restaurantName);
+    }
+
+    public StringProperty restaurantNameProperty() {
+        return restaurantName;
+    }
+
+    public int getRestaurantId() {
+        return idR.get();
     }
 }

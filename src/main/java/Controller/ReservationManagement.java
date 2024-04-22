@@ -1,6 +1,9 @@
 package Controller;
 
 import Entity.Reservation;
+
+
+
 import Services.ServiceReservation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,7 +15,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.List;
 
 public class ReservationManagement {
@@ -48,29 +50,26 @@ public class ReservationManagement {
             int reservationNbrPersonne = Integer.parseInt(nbrpersonne.getText());
 
             // Create a new reservation object with the selected restaurant ID
-            Reservation newReservation = new Reservation(0, selectedRestaurantId, reservationNom, reservationEmail, reservationDate, reservationNbrPersonne);
+                Reservation newReservation = new Reservation(0, selectedRestaurantId, reservationNom, reservationEmail, reservationDate, reservationNbrPersonne, reservationNom);
 
             // Add reservation to the database
             serviceReservation.ajouter(newReservation);
 
-            // Fetch the list of reservations for the selected restaurant
+            // Fetch all reservations for the selected restaurant
             List<Reservation> reservations = serviceReservation.getAllReservationsForRestaurant(selectedRestaurantId);
 
             // Clear existing content in the reservationScrollPane
-            reservationScrollPane.setContent(new GridPane());
+            GridPane gridPane = new GridPane();
+            reservationScrollPane.setContent(gridPane);
 
             // Add reservations to the reservationScrollPane
-            GridPane gridPane = (GridPane) reservationScrollPane.getContent();
-            gridPane.getChildren().clear(); // Clear existing content if needed
-
             int row = 0;
             for (Reservation reservation : reservations) {
-                Text reservationText = new Text(reservation.toString());
+                Text reservationText = new Text("Nom: " + reservation.getNom() + ", Email: " + reservation.getEmail() +
+                        ", Date: " + reservation.getDate() + ", Nombre Personne: " + reservation.getNbrPersonne() +
+                        ", Restaurant: " + reservation.getRestaurantName());
                 gridPane.add(reservationText, 0, row++);
             }
-
-            // Close the reservation form after adding the reservation
-            closeForm();
 
         } catch (SQLException | NumberFormatException e) {
             e.printStackTrace();
@@ -78,7 +77,7 @@ public class ReservationManagement {
         }
     }
 
-
+    @FXML
     private void closeForm() {
         // Get the stage (window) associated with the current scene
         Stage stage = (Stage) nom.getScene().getWindow();
@@ -93,5 +92,7 @@ public class ReservationManagement {
     public void supprimer(ActionEvent actionEvent) {
     }
 
-    // Add other methods...
+    public void ajouterEtActualiser(ActionEvent actionEvent) {
+        ajouter(); // Call the existing ajouter() method to add the reservation
+    }
 }

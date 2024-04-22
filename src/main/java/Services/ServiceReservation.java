@@ -2,6 +2,8 @@ package Services;
 
 import Entity.Reservation;
 import Util.MyDB;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,8 +20,9 @@ public class ServiceReservation {
     }
 
     public void ajouter(Reservation reservation) throws SQLException {
-        try (PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO reservation (idR, nom, email, date, nbr_personne) VALUES (?, ?, ?, ?, ?)")) {
-            preparedStatement.setInt(1, reservation.getRestaurantId());
+        String query = "INSERT INTO reservation (idR, nom, email, date, nbr_personne) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, reservation.getIdR());
             preparedStatement.setString(2, reservation.getNom());
             preparedStatement.setString(3, reservation.getEmail());
             preparedStatement.setString(4, reservation.getDate());
@@ -27,6 +30,7 @@ public class ServiceReservation {
             preparedStatement.executeUpdate();
         }
     }
+
 
     public List<Reservation> getAllReservationsForRestaurant(int restaurantId) throws SQLException {
         List<Reservation> reservations = new ArrayList<>();
@@ -40,11 +44,21 @@ public class ServiceReservation {
                     String email = resultSet.getString("email");
                     String date = resultSet.getString("date");
                     int nbrPersonne = resultSet.getInt("nbr_personne");
-                    Reservation reservation = new Reservation(id, restaurantId, nom, email, date, nbrPersonne);
+                    // Remove this line as there's no restaurantName column in your table
+                    // String restaurantName = resultSet.getString("restaurantName");
+                    Reservation reservation = new Reservation(id, restaurantId, nom, email, date, nbrPersonne, "");
                     reservations.add(reservation);
                 }
             }
         }
         return reservations;
+    }
+
+
+
+
+    public ObservableList<Reservation> afficher(int restaurantId) throws SQLException {
+        List<Reservation> reservations = getAllReservationsForRestaurant(restaurantId);
+        return FXCollections.observableArrayList(reservations);
     }
 }
