@@ -6,11 +6,15 @@ import com.itextpdf.kernel.pdf.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javax.swing.text.Document;
+import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.SQLException;
@@ -101,8 +105,11 @@ public class ReservationManagement {
                 return;
             }
 
+            // File name for the PDF
+            String fileName = "reservation.pdf";
+
             // Create a new PDF document
-            PdfDocument pdfDocument = new PdfDocument(new PdfWriter("reservation.pdf"));
+            PdfDocument pdfDocument = new PdfDocument(new PdfWriter(fileName));
 
             // Create a Document instance
             com.itextpdf.layout.Document document = new com.itextpdf.layout.Document(pdfDocument);
@@ -118,6 +125,15 @@ public class ReservationManagement {
             document.close();
 
             showAlert("PDF Created", "Reservation details printed to PDF successfully.");
+
+            // Open the PDF file using the default PDF viewer
+            File file = new File(fileName);
+            Desktop desktop = Desktop.getDesktop();
+            if (file.exists()) {
+                desktop.open(file);
+            } else {
+                showAlert("Error", "The generated PDF file does not exist.");
+            }
 
         } catch (Exception e) {
             showAlert("Error", "An error occurred while printing the reservation to PDF.");
