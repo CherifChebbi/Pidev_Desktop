@@ -2,6 +2,7 @@ package services;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import models.Monument;
+import models.Ville;
 import utils.DBConnexion;
 
 import java.sql.*;
@@ -19,14 +20,15 @@ import java.util.List;
 
         @Override
         public void Add(Monument Monument) throws SQLException {
-            String req = "INSERT INTO monument(nom_monument, img_monument, desc_monument,latitude, longitude) VALUES (?, ?, ?, ?, ?)";
+            String req = "INSERT INTO monument(id_ville,nom_monument, img_monument, desc_monument,latitude, longitude) VALUES ( ?,?, ?, ?, ?, ?)";
             PreparedStatement ps = cnx.prepareStatement(req);
 
-            ps.setString(1, Monument.getNom_monument());
-            ps.setString(2, Monument.getImg_monument());
-            ps.setString(3, Monument.getDesc_monument());
-            ps.setDouble(4, Monument.getLatitude());
-            ps.setDouble(5, Monument.getLongitude());
+            ps.setInt(1, Monument.getId_ville());
+            ps.setString(2, Monument.getNom_monument());
+            ps.setString(3, Monument.getImg_monument());
+            ps.setString(4, Monument.getDesc_monument());
+            ps.setDouble(5, Monument.getLatitude());
+            ps.setDouble(6, Monument.getLongitude());
 
             ps.executeUpdate();
             ps.close();
@@ -34,14 +36,16 @@ import java.util.List;
 
         @Override
         public void Update(Monument Monument) throws SQLException {
-            String req = "UPDATE monument SET nom_monument=?, img_monument=?, desc_monument=?, latitude=?, longitude=? WHERE id_monument=?";
+            String req = "UPDATE monument SET id_ville=?,nom_monument=?, img_monument=?, desc_monument=?, latitude=?, longitude=? WHERE id_monument=?";
             PreparedStatement ps = cnx.prepareStatement(req);
-            ps.setString(1, Monument.getNom_monument());
-            ps.setString(2, Monument.getImg_monument());
-            ps.setString(3, Monument.getDesc_monument());
-            ps.setDouble(4, Monument.getLatitude());
-            ps.setDouble(5, Monument.getLongitude());
-            ps.setInt(6, Monument.getId_monument());
+
+            ps.setInt(1, Monument.getId_ville());
+            ps.setString(2, Monument.getNom_monument());
+            ps.setString(3, Monument.getImg_monument());
+            ps.setString(4, Monument.getDesc_monument());
+            ps.setDouble(5, Monument.getLatitude());
+            ps.setDouble(6, Monument.getLongitude());
+            ps.setInt(7, Monument.getId_monument());
 
             ps.executeUpdate();
             ps.close();
@@ -110,4 +114,31 @@ import java.util.List;
 
             return monumentList;
         }
-}
+        public List<Monument> getAll() throws SQLException {
+            List<Monument> MonumentList = new ArrayList<>();
+
+            cnx = DBConnexion.getInstance().getCnx();
+            String query = "SELECT * FROM monument";
+            try (PreparedStatement statement = cnx.prepareStatement(query);
+                 ResultSet resultSet = statement.executeQuery()) {
+                // Parcourir le résultat de la requête
+                while (resultSet.next()) {
+                    // Créer un objet Pays à partir des données du résultat
+                    Monument monument = new Monument(
+                            resultSet.getInt("id_ville"),
+                            resultSet.getInt("id_monument"),
+                            resultSet.getString("nom_monument"),
+                            resultSet.getString("img_monument"),
+                            resultSet.getString("desc_monument"),
+                            resultSet.getDouble("latitude"),
+                            resultSet.getDouble("longitude"));
+                    // Ajouter le pays à la liste
+                    MonumentList.add(monument);
+                }
+                return MonumentList;
+            }
+        }
+
+
+
+    }

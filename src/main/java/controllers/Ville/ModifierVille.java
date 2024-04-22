@@ -107,7 +107,7 @@ public class ModifierVille implements Initializable {
                 // Vérification du nom du pays commençant par une majuscule
                 String nomVille= tf_nomVille.getText().trim();
                 if (!Character.isUpperCase(nomVille.charAt(0))) {
-                    throw new IllegalArgumentException("Le nom du pays doit commencer par une majuscule.");
+                    throw new IllegalArgumentException("Le nom de la ville doit commencer par une majuscule.");
                 }
 
                 // Vérification de tous les champs remplis
@@ -122,12 +122,13 @@ public class ModifierVille implements Initializable {
                     throw new IllegalArgumentException("Les champs ne doivent contenir que des lettres, des chiffres et '_'.");
                 }
 
-                // Mettez à jour les propriétés du pays avec les valeurs des champs de texte
+                // Mettez à jour les propriétés de la ville avec les valeurs des champs de texte
                 selectedVille.setNom_ville(nomVille);
                 selectedVille.setImg_ville(file.getName());
                 selectedVille.setDesc_ville(tf_descVille.getText());
+
                 int id=servicePays.getPaysByName(comboPays2.getValue()).getId_pays();
-                //selectedVille.setId_pays(id);
+                selectedVille.setId_pays(id);
 
                 // Vérifiez si les champs de latitude et de longitude ne sont pas vides avant de les mettre à jour
                 if (!tf_latitude.getText().isEmpty()) {
@@ -137,7 +138,7 @@ public class ModifierVille implements Initializable {
                     selectedVille.setLongitude(Double.parseDouble(tf_longitude.getText()));
                 }
 
-                // Appelez la méthode Update du servicePays pour mettre à jour le pays dans la base de données
+                // Appelez la méthode Update du serviceVille pour mettre à jour le pays dans la base de données
                 ServiceVille sp = new ServiceVille();
                 sp.Update(selectedVille);
 
@@ -168,7 +169,7 @@ public class ModifierVille implements Initializable {
         } else {
             // Affichez un message d'erreur si aucun pays n'est sélectionné
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Veuillez sélectionner un pays à mettre à jour.");
+            alert.setContentText("Veuillez sélectionner  la ville à mettre à jour.");
             alert.show();
         }
 

@@ -190,7 +190,9 @@ public class ServicePays implements CRUD<Pays> {
             // Parcourir le résultat de la requête
             while (resultSet.next()) {
                 // Créer un objet Pays à partir des données du résultat
-                Pays pays = new Pays(resultSet.getString("nom_pays"),
+                Pays pays = new Pays(
+                        resultSet.getInt("id_pays"),
+                        resultSet.getString("nom_pays"),
                         resultSet.getString("img_pays"),
                         resultSet.getString("desc_pays"),
                         resultSet.getString("langue"),

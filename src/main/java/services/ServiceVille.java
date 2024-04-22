@@ -1,6 +1,7 @@
 package services;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
+import models.Pays;
 import models.Ville;
 import utils.DBConnexion;
 
@@ -101,8 +102,9 @@ public class ServiceVille implements CRUD<Ville> {
         while (rs.next()) {
             Ville p = new Ville();
 
-            p.setId_ville(rs.getInt("id_ville"));
+
             p.setId_pays(rs.getInt("id_pays"));
+            p.setId_ville(rs.getInt("id_ville"));
             p.setNom_ville(rs.getString("nom_ville"));
             p.setImg_ville(rs.getString("img_ville"));
             p.setDesc_ville(rs.getString("desc_ville"));
@@ -118,7 +120,7 @@ public class ServiceVille implements CRUD<Ville> {
 
         return VilleList;
     }
-    public List<Ville> filterByVilles(int minMonuments, int maxMonuments) throws SQLException {
+    public List<Ville> filterByMonument(int minMonuments, int maxMonuments) throws SQLException {
         List<Ville> filteredville = new ArrayList<>();
 
         String req = "SELECT * FROM ville WHERE nb_monuments >= ? AND nb_monuments <= ?";
@@ -130,8 +132,8 @@ public class ServiceVille implements CRUD<Ville> {
         while (rs.next()) {
             Ville p = new Ville();
 
-            p.setId_ville(rs.getInt("id_ville"));
             p.setId_pays(rs.getInt("id_pays"));
+            p.setId_ville(rs.getInt("id_ville"));
             p.setNom_ville(rs.getString("nom_ville"));
             p.setImg_ville(rs.getString("img_ville"));
             p.setDesc_ville(rs.getString("desc_ville"));
@@ -147,8 +149,110 @@ public class ServiceVille implements CRUD<Ville> {
 
         return filteredville;
     }
+    public Ville getVilleById(int id) throws SQLException {
+        // Initialisez la variable de pays à null
+        Ville ville = null;
+
+        // Préparez votre requête SQL
+        String query = "SELECT * FROM ville WHERE id_ville = ?";
+
+        // Obtenez une connexion à la base de données
+        Connection cnx = DBConnexion.getInstance().getCnx();
+
+        try (PreparedStatement ps = cnx.prepareStatement(query)) {
+            // Définissez le paramètre de la requête
+            ps.setInt(1, id);
+
+            // Exécutez la requête
+            try (ResultSet rs = ps.executeQuery()) {
+                // Si un pays avec l'ID donné est trouvé, créez un objet Pays correspondant
+                if (rs.next()) {
+                    ville = new Ville(
+                            rs.getInt("id_ville"),
+                            rs.getString("nom_ville"),
+                            rs.getString("img_ville"),
+                            rs.getString("desc_ville"),
+                            rs.getDouble("latitude"),
+                            rs.getDouble("longitude")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            // Gérez les exceptions ou renvoyez-les à l'appelant
+            throw new SQLException("Erreur lors de la récupération ville avec l'ID : " + id, e);
+        }
+
+        return ville;
+    }
+    public void updateNbMonuments(Ville ville) throws SQLException {
+        // Préparez votre requête SQL
+        String query = "UPDATE ville SET nb_monuments = ? WHERE id_ville = ?";
+
+        // Obtenez une connexion à la base de données
+        Connection cnx = DBConnexion.getInstance().getCnx();
+
+        try (PreparedStatement ps = cnx.prepareStatement(query)) {
+            // Définissez les paramètres de la requête
+            ps.setInt(1, ville.getNb_monuments());
+            ps.setInt(2, ville.getId_ville());
+
+            // Exécutez la requête
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            // Gérez les exceptions ou renvoyez-les à l'appelant
+            throw new SQLException("Erreur lors de la mise à jour du nombre de monuments pour le pays avec l'ID : " + ville.getId_ville(), e);
+        }
+    }
+    public List<Ville> getAll() throws SQLException {
+        List<Ville> VilleList = new ArrayList<>();
+
+        cnx = DBConnexion.getInstance().getCnx();
+        String query = "SELECT * FROM ville";
+        try (PreparedStatement statement = cnx.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+            // Parcourir le résultat de la requête
+            while (resultSet.next()) {
+                // Créer un objet Pays à partir des données du résultat
+                Ville ville = new Ville(
+                        resultSet.getInt("id_ville"),
+                        resultSet.getInt("id_pays"),
+                        resultSet.getString("nom_ville"),
+                        resultSet.getString("img_ville"),
+                        resultSet.getString("desc_ville"),
+                        resultSet.getDouble("latitude"),
+                        resultSet.getDouble("longitude"));
+                // Ajouter le pays à la liste
+                VilleList.add(ville);
+            }
+            return VilleList;
+        }
+    }
+    public Ville getVilleByName(String nomVille) throws SQLException {
+        cnx = DBConnexion.getInstance().getCnx();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Ville ville = null;
 
 
+        String query = "SELECT * FROM ville WHERE nom_ville = ?";
+        ps = cnx.prepareStatement(query);
+        ps.setString(1, nomVille);
+        rs = ps.executeQuery();
+
+        if (rs.next()) {
+            // Si un pays avec le nom donné est trouvé, créer un objet Pays correspondant
+            ville = new Ville(
+                    rs.getInt("id_ville"),
+                    rs.getInt("id_pays"),
+                    rs.getString("nom_ville"),
+                    rs.getString("img_ville"),
+                    rs.getString("desc_ville"),
+                    rs.getDouble("latitude"),
+                    rs.getDouble("longitude"));
+        }
+
+        return ville;
+    }
 
 
 

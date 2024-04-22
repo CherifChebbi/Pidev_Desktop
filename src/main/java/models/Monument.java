@@ -10,10 +10,13 @@ public class Monument {
     private double latitude;
     private double longitude;
 
+
     @Override
     public String toString() {
         return "Monument{" +
-                "nom_monument='" + nom_monument + '\'' +
+                "id_ville=" + id_ville +
+                ", id_monument=" + id_monument +
+                ", nom_monument='" + nom_monument + '\'' +
                 ", img_monument='" + img_monument + '\'' +
                 ", desc_monument='" + desc_monument + '\'' +
                 ", latitude=" + latitude +
@@ -34,7 +37,8 @@ public class Monument {
         this.longitude = longitude;
     }
 
-    public Monument(String nom_monument, String img_monument, String desc_monument, double latitude, double longitude) {
+    public Monument(int id_ville,String nom_monument, String img_monument, String desc_monument, double latitude, double longitude) {
+        this.id_ville = id_ville;
         this.nom_monument = nom_monument;
         this.img_monument = img_monument;
         this.desc_monument = desc_monument;

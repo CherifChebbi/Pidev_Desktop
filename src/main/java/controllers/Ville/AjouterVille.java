@@ -81,11 +81,24 @@ public class AjouterVille implements Initializable {
             String nomPaysSelectionne = comboPays.getValue();
             Pays paysSelectionne = servicePays.getPaysByName(nomPaysSelectionne);
 
+            String nomVille = tf_nomVille.getText().trim();
 
+            if (!Character.isUpperCase(nomVille.charAt(0))) {
+                throw new IllegalArgumentException("Le nom de la ville doit commencer par une majuscule.");
+            }
+
+            if (nomVille.isEmpty() || tf_descVille.getText().isEmpty()
+                    || tf_latitude.getText().isEmpty() || tf_longitude.getText().isEmpty()) {
+                throw new IllegalArgumentException("Tous les champs doivent être remplis.");
+            }
+
+            if (!tf_latitude.getText().matches("^-?\\d*\\.?\\d+$") || !tf_longitude.getText().matches("^-?\\d*\\.?\\d+$")) {
+                throw new IllegalArgumentException("Les champs de latitude et longitude doivent être des nombres valides.");
+            }
 
             Ville p = new Ville(
                     paysSelectionne.getId_pays(),
-                    tf_nomVille.getText(),
+                    nomVille,
                     file.getName(),
                     tf_descVille.getText(),
                     Double.parseDouble(tf_latitude.getText()),
@@ -100,8 +113,7 @@ public class AjouterVille implements Initializable {
             servicePays.updateNbVilles(paysSelectionne);
 
             switchToAfficherVille();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             // Imprimer la trace complète de l'exception SQL
             e.printStackTrace();
             String errorMessage = "Erreur lors de l'ajout de la ville dans la base de données : " + e.getMessage();
@@ -111,17 +123,24 @@ public class AjouterVille implements Initializable {
             alert.setContentText(errorMessage);
             alert.show();
 
-            } catch (NumberFormatException e) {
-                // Affichage d'un message d'erreur pour les erreurs de format de nombre
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur de format");
-                alert.setContentText("Les champs de latitude et longitude doivent être des nombres valides.");
-                alert.show();
-            } catch (IOException e) {
-                // Affichage d'un message d'erreur pour les erreurs d'entrée/sortie
-                throw new RuntimeException(e);
-            }
+        } catch (NumberFormatException e) {
+            // Affichage d'un message d'erreur pour les erreurs de format de nombre
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de format");
+            alert.setContentText("Les champs de latitude et longitude doivent être des nombres valides.");
+            alert.show();
+        } catch (IllegalArgumentException e) {
+            // Affichez un message d'erreur si une validation de saisie échoue
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur de saisie");
+            alert.setContentText(e.getMessage());
+            alert.show();
+        } catch (IOException e) {
+            // Affichage d'un message d'erreur pour les erreurs d'entrée/sortie
+            throw new RuntimeException(e);
+        }
     }
+
 
 
     @FXML

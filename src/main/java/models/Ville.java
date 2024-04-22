@@ -48,6 +48,7 @@ public class Ville {
         this.longitude = longitude;
     }
 
+
     public int getId_pays() {
         return id_pays;
     }

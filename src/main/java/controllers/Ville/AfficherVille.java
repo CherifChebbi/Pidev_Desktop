@@ -254,7 +254,7 @@ public class AfficherVille {
             int maxMonuments = Integer.parseInt(maxMonumentsField.getText());
 
             // Filtrer les Ville par nombre de villes
-            List<Ville> filteredVille = serviceVille.filterByVilles(minMonuments, maxMonuments);
+            List<Ville> filteredVille = serviceVille.filterByMonument(minMonuments, maxMonuments);
 
             // Mettre à jour la table avec les résultats filtrés
             ObservableList<Ville> observableVille = FXCollections.observableArrayList(filteredVille);
@@ -294,6 +294,25 @@ public class AfficherVille {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void rafraichirDonnees() {
+        // Clear existing items in the TableView
+        VilleTable.getItems().clear();
+
+        // Fetch updated data from the database
+        List<Ville> VilleList = null;
+        try {
+            VilleList = serviceVille.getAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exception
+        }
+
+        // Add fetched data to the TableView
+        if (VilleList != null) {
+            VilleTable.getItems().addAll(VilleList);
+        }
     }
 
 }

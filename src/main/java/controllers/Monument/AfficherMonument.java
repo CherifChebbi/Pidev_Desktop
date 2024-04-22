@@ -1,6 +1,7 @@
 package controllers.Monument;
 
-
+import controllers.Ville.AfficherVille;
+import controllers.Monument.ModifierMonument;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,12 +11,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import models.Ville;
 import models.Monument;
+import services.ServiceVille;
 import services.ServiceMonument;
 
 import java.io.IOException;
@@ -23,11 +25,10 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 public class AfficherMonument {
     @FXML
-    private TableColumn<Monument, Double>  id_Pays_Column;
+    private TableColumn<Monument, Double> id_Ville_Column;
 
     public TextField searchBar;
     @FXML
@@ -44,9 +45,8 @@ public class AfficherMonument {
     private TableColumn<Monument, String> desc_Column;
 
     @FXML
-    private TableColumn<Monument, Integer> id_Ville_Column;
-    @FXML
     private TableColumn<Monument, Integer> id_Monument_Column;
+
 
     @FXML
     private TableColumn<Monument, String> img_Column;
@@ -58,24 +58,29 @@ public class AfficherMonument {
     private TableColumn<Monument, Double> longitude_Column;
 
     @FXML
+    private TableColumn<Monument, Integer> nbrMonuments_Column;
+
+    @FXML
     private TableColumn<Monument, String> nom_Column;
     private ServiceMonument serviceMonument;
     private TextField tf_recherche;
 
 
-    private TextField tf_nomMonument;
-
     @FXML
-
+    private TextField maxMonumentsField;
+    @FXML
+    private TextField minMonumentsField;
+    @FXML
     private TextField tf_nomVille;
+    private ServiceVille serviceVille;
 
     @FXML
-    private AnchorPane anchorPane;
-    @FXML
-    private void initialize(URL location, ResourceBundle resources) {
-        // Charger le fichier CSS
-        anchorPane.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+    private ImageView imageView_Monument;
 
+
+    @FXML
+    private void initialize() {
+        serviceVille = new ServiceVille();
         serviceMonument = new ServiceMonument();
         initializeTable();
         loadMonumentData();
@@ -84,7 +89,7 @@ public class AfficherMonument {
         id_Monument_Column.setCellValueFactory(new PropertyValueFactory<>("id_monument"));
         id_Ville_Column.setCellValueFactory(new PropertyValueFactory<>("id_ville"));
         nom_Column.setCellValueFactory(new PropertyValueFactory<>("nom_monument"));
-        img_Column.setCellValueFactory(new PropertyValueFactory<>("img_monument"));
+        //img_Column.setCellValueFactory(new PropertyValueFactory<>("img_Monument"));
         desc_Column.setCellValueFactory(new PropertyValueFactory<>("desc_monument"));
         latitude_Column.setCellValueFactory(new PropertyValueFactory<>("latitude"));
         longitude_Column.setCellValueFactory(new PropertyValueFactory<>("longitude"));
@@ -99,6 +104,29 @@ public class AfficherMonument {
         } catch (SQLException e) {
             e.printStackTrace();
             // Gérer les erreurs
+        }
+    }
+
+    @FXML
+    public void onTableRowClickedMonument(javafx.scene.input.MouseEvent mouseEvent) {
+        Monument selectedMonument = MonumentTable.getSelectionModel().getSelectedItem();
+        if (selectedMonument != null) {
+            String imageName = selectedMonument.getImg_monument();
+            if (imageName != null && !imageName.isEmpty()) {
+                try {
+                    // Construire l'URL de l'image en utilisant le chemin relatif
+                    URL imageUrl = getClass().getResource("/Upload/" + imageName);
+                    if (imageUrl != null) {
+                        // Charger l'image à partir de l'URL
+                        Image image = new Image(imageUrl.toExternalForm());
+                        imageView_Monument.setImage(image);
+                    } else {
+                        System.out.println("L'image n'a pas été trouvée : " + imageName);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Erreur lors du chargement de l'image : " + e.getMessage());
+                }
+            }
         }
     }
     @FXML
@@ -138,23 +166,23 @@ public class AfficherMonument {
 
                 // Affiche la vue de modification
                 Scene scene = new Scene(root);
-                Stage stage = new Stage(); // Crée une nouvelle fenêtre pour la page de modification
+                Stage stage = (Stage) AjouterMonument_Button.getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
-            } catch (IOException e) {
+            } catch (IOException | SQLException e) {
                 e.printStackTrace();
             }
         } else {
             // Affiche un message d'erreur si aucun Monument n'est sélectionné
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Veuillez sélectionner un Monument à modifier.");
+            alert.setContentText("Veuillez sélectionner une Monument à modifier.");
             alert.show();
         }
     }
 
 
     @FXML
-    void SupprimerMonument(ActionEvent event) {
+    void SupprimerMonument(ActionEvent event) throws SQLException {
         // Get the selected Monument object from the table
         Monument selectedMonument = MonumentTable.getSelectionModel().getSelectedItem();
 
@@ -164,10 +192,25 @@ public class AfficherMonument {
             alert.setContentText("Are you sure you want to delete this record?");
             Optional<ButtonType> result = alert.showAndWait();
 
+
+
             if (result.get() == ButtonType.OK) {
                 try {
+                    // Récupérer le Ville correspondant à la Monument
+                    Ville Ville = serviceVille.getVilleById(selectedMonument.getId_ville());
+                    // Decrement the number of cities for this country
+                    if (Ville.getNb_monuments() > 1) {
+                        Ville.setNb_monuments(Ville.getNb_monuments() - 1);
+                    } else {
+                        // Set the number of cities to 0 directly
+                        Ville.setNb_monuments(0);
+                    }
+                    // Update the number of cities in the database
+                    serviceVille.updateNbMonuments(Ville);
                     // Delete the selected Monument object
                     serviceMonument.Delete(selectedMonument);
+
+
                     loadMonumentData();
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -213,10 +256,35 @@ public class AfficherMonument {
     void returnToListVille(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ville/AfficherVille.fxml"));
         Parent root = loader.load();
+
+        // Après avoir chargé le contrôleur, récupérez une référence au contrôleur de la page des Ville
+        AfficherVille controller = loader.getController();
+
+        // Appelez la méthode de rafraîchissement des données
+        controller.rafraichirDonnees();
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
 
+    public void rafraichirDonnees() {
+        // Clear existing items in the TableView
+        MonumentTable.getItems().clear();
+
+        // Fetch updated data from the database
+        List<Monument> MonumentList = null;
+        try {
+            MonumentList = serviceMonument.getAll();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exception
+        }
+
+        // Add fetched data to the TableView
+        if (MonumentList != null) {
+            MonumentTable.getItems().addAll(MonumentList);
+        }
     }
 }
