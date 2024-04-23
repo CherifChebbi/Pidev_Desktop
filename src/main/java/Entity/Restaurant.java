@@ -3,13 +3,16 @@ package Entity;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import java.util.List;
+
 public class Restaurant {
 
     int idR;
-    String nom,localisataion,image,description;
+    String nom, localisataion, image, description;
     ImageView imageView;
+    List<Plat> plats; // Add this attribute to store the list of plats
 
-    public Restaurant(int idR, String nom, String localisataion, String image, String description) {
+    public Restaurant(int idR, String nom, String localisataion, String image, String description, List<Plat> plats) {
         this.idR = idR;
         this.nom = nom;
         this.localisataion = localisataion;
@@ -18,6 +21,7 @@ public class Restaurant {
         this.imageView = new ImageView(new Image("file:" + image)); // Initialize the ImageView with the image file
         this.imageView.setFitWidth(100); // Set the width of the image (adjust as needed)
         this.imageView.setFitHeight(100);
+        this.plats = plats; // Assign the list of plats
     }
 
     public Restaurant(String nom, String localisataion, String image, String description) {
@@ -74,6 +78,14 @@ public class Restaurant {
         this.description = description;
     }
 
+    public List<Plat> getPlats() {
+        return plats;
+    }
+
+    public void setPlats(List<Plat> plats) {
+        this.plats = plats;
+    }
+
     @Override
     public String toString() {
         return "Restaurant{" +
@@ -84,6 +96,4 @@ public class Restaurant {
                 ", description='" + description + '\'' +
                 '}';
     }
-
-
 }

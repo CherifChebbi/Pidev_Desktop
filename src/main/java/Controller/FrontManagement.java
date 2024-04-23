@@ -63,19 +63,44 @@ public class FrontManagement {
             Button reserveButton = new Button("Réserver");
             reserveButton.setOnAction(event -> reserveForRestaurant(event, restaurant)); // Set action handler
 
+            Button viewPlatsButton = new Button("View Plats");
+            viewPlatsButton.setOnAction(event -> viewPlatsForRestaurant(event, restaurant)); // Set action handler
+
             gridPane.add(imageView, column, row);
             gridPane.add(nameLabel, column, row + 1); // Add the name below the image
             gridPane.add(descriptionLabel, column, row + 2); // Add the description below the name
             gridPane.add(reserveButton, column, row + 3); // Add the reserve button below the description
+            gridPane.add(viewPlatsButton, column, row + 4); // Add the view plats button below the reserve button
 
             // Increment row and reset column if necessary
             column++;
             if (column == 3) {
                 column = 0;
-                row += 4; // Increment by 4 to leave space for image, name, description, and button
+                row += 5; // Increment by 5 to leave space for image, name, description, reserve button, and view plats button
             }
         }
     }
+
+
+    @FXML
+    public void viewPlatsForRestaurant(ActionEvent event, Restaurant restaurant) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/RestaurantDetails.fxml"));
+            Parent root = loader.load();
+
+            // Pass the selected restaurant's details to the RestaurantDetailsController
+            RestaurantDetailsController controller = loader.getController();
+            controller.initData(restaurant.getNom(), restaurant.getDescription(), restaurant.getPlats(), restaurant.getImage());
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 
