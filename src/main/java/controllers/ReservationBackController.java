@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import services.ServiceReservationEvent;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class ReservationBackController {
@@ -47,7 +48,15 @@ public class ReservationBackController {
     @FXML
     private TableView<ReservationEvent> reservationTableView;
 
-    private final ServiceReservationEvent serviceReservationEvent = new ServiceReservationEvent();
+    private final ServiceReservationEvent serviceReservationEvent;
+
+    {
+        try {
+            serviceReservationEvent = new ServiceReservationEvent();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @FXML
     private void initialize() {

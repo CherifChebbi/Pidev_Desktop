@@ -32,7 +32,15 @@ import java.util.ResourceBundle;
 
 public class AjoutCategoryController implements Initializable {
 
-    private final ServiceCategory sc = new ServiceCategory();
+    private final ServiceCategory sc;
+
+    {
+        try {
+            sc = new ServiceCategory();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @FXML
     private Button btnClearCat;
@@ -65,6 +73,7 @@ public class AjoutCategoryController implements Initializable {
         String nom = nomCategory.getText();
         sc.ajouter(new Category(0, nom));
         showCategories(); // Mettre à jour l'affichage du tableau avec la nouvelle catégorie
+
     }
 
     @FXML

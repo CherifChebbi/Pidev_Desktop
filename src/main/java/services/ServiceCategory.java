@@ -13,7 +13,7 @@ import java.util.List;
 public class ServiceCategory implements IService<Category> {
     private Connection con;
 
-    public ServiceCategory() {
+    public ServiceCategory() throws SQLException {
         // Créer une instance de la classe DB et obtenir la connexion
         con = DB.getInstance().getConnection();
     }
@@ -94,6 +94,22 @@ public class ServiceCategory implements IService<Category> {
             e.printStackTrace();
         }
         return null; // Retourne null si aucune catégorie trouvée pour l'ID donné
+    }
+
+    public static int countCategories() throws SQLException {
+        int count = 0;
+        String query = "SELECT COUNT(*) FROM category"; // Remplacez 'category' par le nom de votre table de catégories
+
+        try (Connection conn = DB.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        }
+
+        return count;
     }
 
 }

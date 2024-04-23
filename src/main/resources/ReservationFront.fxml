@@ -9,16 +9,16 @@
 
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReservationFrontController">
    <children>
-      <TextField fx:id="nomField" layoutX="359.0" layoutY="118.0" />
-      <TextField fx:id="emailField" layoutX="360.0" layoutY="191.0" />
-      <TextField fx:id="telephoneField" layoutX="360.0" layoutY="251.0" />
-      <Label layoutX="295.0" layoutY="122.0" text="nom" />
-      <Label layoutX="295.0" layoutY="195.0" text="email" />
-      <Label layoutX="295.0" layoutY="255.0" text="Téléphone" />
-      <Label layoutX="243.0" layoutY="331.0" text="Date_reservation" />
-      <Label layoutX="295.0" layoutY="53.0" text="event" />
-      <ChoiceBox fx:id="eventChoiceBox" layoutX="360.0" layoutY="49.0" prefWidth="150.0" />
-      <DatePicker fx:id="datePicker" layoutX="347.0" layoutY="327.0" />
-      <Button layoutX="400.0" layoutY="410.0" mnemonicParsing="false" onAction="#validerReservEvent" text="Valider" />
+      <TextField fx:id="nomField" layoutX="578.0" layoutY="160.0" />
+      <TextField fx:id="emailField" layoutX="579.0" layoutY="233.0" />
+      <TextField fx:id="telephoneField" layoutX="579.0" layoutY="293.0" />
+      <Label layoutX="514.0" layoutY="164.0" text="nom" />
+      <Label layoutX="514.0" layoutY="237.0" text="email" />
+      <Label layoutX="514.0" layoutY="297.0" text="Téléphone" />
+      <Label layoutX="462.0" layoutY="373.0" text="Date_reservation" />
+      <Label layoutX="514.0" layoutY="95.0" text="event" />
+      <ChoiceBox fx:id="eventChoiceBox" layoutX="579.0" layoutY="91.0" prefWidth="150.0" />
+      <DatePicker fx:id="datePicker" layoutX="566.0" layoutY="369.0" />
+      <Button layoutX="619.0" layoutY="452.0" mnemonicParsing="false" onAction="#validerReservEvent" text="Valider" />
    </children>
 </AnchorPane>

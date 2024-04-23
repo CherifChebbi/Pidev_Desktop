@@ -5,11 +5,28 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import java.io.IOException;
 import javafx.scene.Node;
+import java.sql.SQLException;
 
-public class HomeBackController {
+import services.ServiceCategory;
+import services.ServiceEvent;
+import services.ServiceReservationEvent;
+import utils.DB;
+
+
+public class HomeBackController  {
+
+    @FXML
+    private Label totalCategoriesLabel;
+
+    @FXML
+    private Label totalEventsLabel;
+
+    @FXML
+    private Label totalReservationLabel;
 
     @FXML
     public void dashboardCategories(ActionEvent event) {
@@ -62,5 +79,27 @@ public class HomeBackController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void initialize() {
+        updateLabels();
+    }
+
+    private void updateLabels() {
+        try {
+            int totalCategories = ServiceCategory.countCategories();
+            int totalEvents = ServiceEvent.countEvents();
+            int totalReservations = ServiceReservationEvent.countReservations();
+
+            totalCategoriesLabel.setText(String.valueOf(totalCategories));
+            totalEventsLabel.setText(String.valueOf(totalEvents));
+            totalReservationLabel.setText(String.valueOf(totalReservations));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Gérer l'exception : afficher un message d'erreur convivial à l'utilisateur
+        }
+    }
+
+
 
 }

@@ -15,6 +15,7 @@ import services.ServiceEvent;
 import services.ServiceReservationEvent;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -36,7 +37,15 @@ public class ReservationFrontController implements Initializable {
     @FXML
     private TextField telephoneField;
 
-    private final ServiceEvent serviceEvent = new ServiceEvent();
+    private final ServiceEvent serviceEvent;
+
+    {
+        try {
+            serviceEvent = new ServiceEvent();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -79,7 +88,12 @@ public class ReservationFrontController implements Initializable {
             ReservationEvent reservationEvent = new ReservationEvent(eventId, nom, email, telephone, java.sql.Date.valueOf(date));
 
             // Enregistrer la réservation dans la base de données en utilisant le service approprié
-            ServiceReservationEvent serviceReservationEvent = new ServiceReservationEvent();
+            ServiceReservationEvent serviceReservationEvent = null;
+            try {
+                serviceReservationEvent = new ServiceReservationEvent();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
             serviceReservationEvent.ajouter(reservationEvent);
 
             // Afficher un message de succès

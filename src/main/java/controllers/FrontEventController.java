@@ -13,6 +13,7 @@ import services.ServiceEvent;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -25,7 +26,11 @@ public class FrontEventController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        serviceEvent = new ServiceEvent();
+        try {
+            serviceEvent = new ServiceEvent();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         afficherEvenements();
     }
 

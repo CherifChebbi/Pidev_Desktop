@@ -13,7 +13,7 @@ import java.util.List;
 public class ServiceReservationEvent implements IService<ReservationEvent> {
     private Connection con;
 
-    public ServiceReservationEvent() {
+    public ServiceReservationEvent() throws SQLException {
         // Créer une instance de la classe DB et obtenir la connexion
         con = DB.getInstance().getConnection();
     }
@@ -148,5 +148,22 @@ public class ServiceReservationEvent implements IService<ReservationEvent> {
             e.printStackTrace();
         }
         return reservationEvents;
+    }
+
+
+    public static int countReservations() throws SQLException {
+        int count = 0;
+        String query = "SELECT COUNT(*) FROM reservation_event"; // Remplacez 'reservation_event' par le nom de votre table de réservations
+
+        try (Connection conn = DB.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        }
+
+        return count;
     }
 }

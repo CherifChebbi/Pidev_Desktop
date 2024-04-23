@@ -16,7 +16,7 @@ import java.util.Date;
 public class ServiceEvent implements IService<Event> {
     private Connection con;
 
-    public ServiceEvent() {
+    public ServiceEvent() throws SQLException {
         // Créer une instance de la classe DB et obtenir la connexion
         con = DB.getInstance().getConnection();
     }
@@ -174,7 +174,20 @@ public class ServiceEvent implements IService<Event> {
     }
 
 
+    public static int countEvents() throws SQLException {
+        int count = 0;
+        String query = "SELECT COUNT(*) FROM event"; // Remplacez 'event' par le nom de votre table d'événements
 
+        try (Connection conn = DB.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
 
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+        }
+
+        return count;
+    }
 
 }

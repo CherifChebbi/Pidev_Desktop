@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.File;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -92,6 +93,7 @@ public class AjoutEventController implements Initializable {
     @FXML
     private ImageView ImgEventAffiche;
 
+
     @FXML
     private Button parcourirButton;
 
@@ -100,8 +102,16 @@ public class AjoutEventController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        serviceEvent = new ServiceEvent();
-        serviceCategory = new ServiceCategory();
+        try {
+            serviceEvent = new ServiceEvent();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            serviceCategory = new ServiceCategory();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
         List<Category> categories = serviceCategory.afficher();
         ObservableList<Category> observableCategories = FXCollections.observableArrayList(categories);
@@ -212,19 +222,20 @@ public class AjoutEventController implements Initializable {
 
     @FXML
     private void selectImageAction() {
+        // Code pour sélectionner une image et obtenir son chemin
+        // Par exemple :
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choisir une image");
-        // Filtrer les fichiers pour afficher uniquement les images
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Images", "*.jpg", "*.jpeg", "*.png", "*.gif");
-        fileChooser.getExtensionFilters().add(extFilter);
-        // Afficher la boîte de dialogue de sélection de fichier
-        File file = fileChooser.showOpenDialog(null);
-        if (file != null) {
-            // Charger l'image sélectionnée dans l'ImageView
-            Image image = new Image(file.toURI().toString());
-            ImgEventAffiche.setImage(image);
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif"));
+        File selectedFile = fileChooser.showOpenDialog(null);
+        if (selectedFile != null) {
+            String imagePath = selectedFile.toURI().toString();
+            ImgEventAffiche.setImage(new Image(imagePath));
         }
     }
+
+
+
+
 
     @FXML
     void rechercherParTitre(ActionEvent event) {

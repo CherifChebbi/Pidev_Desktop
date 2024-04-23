@@ -110,7 +110,7 @@
                               <Image url="@reservation.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="284.0" layoutY="14.0" prefHeight="35.0" prefWidth="33.0" text="0" textFill="WHITE">
+                        <Label fx:id="totalCategoriesLabel" layoutX="284.0" layoutY="14.0" prefHeight="35.0" prefWidth="33.0" text="0" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -128,7 +128,7 @@
                               <Image url="@reservation.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="291.0" layoutY="20.0" prefHeight="35.0" prefWidth="25.0" text="0" textFill="WHITE">
+                        <Label fx:id="totalEventsLabel" layoutX="291.0" layoutY="20.0" prefHeight="35.0" prefWidth="25.0" text="0" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -146,7 +146,7 @@
                               <Image url="@reservation.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="277.0" layoutY="16.0" prefHeight="35.0" prefWidth="25.0" text="0" textFill="WHITE">
+                        <Label fx:id="totalReservationLabel" layoutX="277.0" layoutY="16.0" prefHeight="35.0" prefWidth="25.0" text="0" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>

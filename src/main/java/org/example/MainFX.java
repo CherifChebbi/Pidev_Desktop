@@ -14,11 +14,12 @@ public class MainFX extends Application {
     public void start(Stage primaryStage) throws IOException {
         try {
             // Charger la vue de la page d'accueil "HomeBack"
-            FXMLLoader homeBackLoader = new FXMLLoader(getClass().getResource("/HomeBack.fxml"));
+            FXMLLoader homeBackLoader = new FXMLLoader(getClass().getResource("/ReservationFront3.fxml"));
             Parent homeBackRoot = homeBackLoader.load();
             Scene homeBackScene = new Scene(homeBackRoot);
             primaryStage.setScene(homeBackScene);
             primaryStage.setTitle("HomeBack");
+
 
             // Afficher la fenêtre principale
             primaryStage.show();
