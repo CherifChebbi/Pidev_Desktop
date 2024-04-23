@@ -165,7 +165,8 @@ public class AfficherPays {
 
                 // Affiche la vue de modification
                 Scene scene = new Scene(root);
-                Stage stage = (Stage) AjouterPays_Button.getScene().getWindow();                stage.setScene(scene);
+                Stage stage = (Stage) AjouterPays_Button.getScene().getWindow();
+                stage.setScene(scene);
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -278,6 +279,26 @@ public class AfficherPays {
         // Add fetched data to the TableView
         if (paysList != null) {
             paysTable.getItems().addAll(paysList);
+        }
+    }
+    @FXML
+    private void accederFront() {
+        try {
+            // Charger le fichier FXML de la page d'ajout de pays
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/PaysFront.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène avec le contenu de la page d'ajout de pays
+            Scene scene = new Scene(root);
+
+            // Obtenir la fenêtre principale à partir de l'événement du bouton ou d'une autre manière
+            Stage stage = (Stage) AjouterPays_Button.getScene().getWindow();
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

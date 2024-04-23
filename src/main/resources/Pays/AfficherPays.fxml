@@ -110,6 +110,14 @@
                   <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
                </HBox.margin>
             </Button>
+            <Button fx:id="accederFront" mnemonicParsing="false" onAction="#accederFront" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: rgb(23, 107, 135);" text="Acceder Front" textFill="#ea1010">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </HBox>
    </children>

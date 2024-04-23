@@ -138,6 +138,33 @@ import java.util.List;
                 return MonumentList;
             }
         }
+        public List<Monument> VilleMonument(int id_ville) throws SQLException {
+            List<Monument> monumentList = new ArrayList<>();
+
+            String req = "SELECT * FROM monument WHERE id_ville LIKE ?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, id_ville);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Monument p = new Monument();
+
+                p.setId_monument(rs.getInt("id_monument"));
+                p.setId_ville(rs.getInt("id_ville"));
+                p.setNom_monument(rs.getString("nom_monument"));
+                p.setImg_monument(rs.getString("img_monument"));
+                p.setDesc_monument(rs.getString("desc_monument"));
+                p.setLatitude(rs.getDouble("latitude"));
+                p.setLongitude(rs.getDouble("longitude"));
+
+                monumentList.add(p);
+            }
+
+            rs.close();
+            ps.close();
+
+            return monumentList;
+        }
 
 
 

@@ -91,6 +91,35 @@ public class ServiceVille implements CRUD<Ville> {
 
         return villeList;
     }
+
+    public List<Ville> PaysVille(int id_pays) throws SQLException {
+        List<Ville> filteredville = new ArrayList<>();
+
+        String req = "SELECT * FROM ville WHERE id_pays LIKE ?";
+        PreparedStatement ps = cnx.prepareStatement(req);
+        ps.setInt(1, id_pays);
+
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            Ville p = new Ville();
+
+            p.setId_pays(rs.getInt("id_pays"));
+            p.setId_ville(rs.getInt("id_ville"));
+            p.setNom_ville(rs.getString("nom_ville"));
+            p.setImg_ville(rs.getString("img_ville"));
+            p.setDesc_ville(rs.getString("desc_ville"));
+            p.setNb_monuments(rs.getInt("nb_monuments"));
+            p.setLatitude(rs.getDouble("latitude"));
+            p.setLongitude(rs.getDouble("longitude"));
+
+            filteredville.add(p);
+        }
+
+        rs.close();
+        ps.close();
+
+        return filteredville;
+    }
     public List<Ville> rechercherParNom(String nom) throws SQLException {
         List<Ville> VilleList = new ArrayList<>();
 
