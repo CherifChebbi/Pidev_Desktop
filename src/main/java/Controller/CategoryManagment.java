@@ -13,99 +13,73 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class CategoryManagment {
-
+public class HebergementManagment {
 
     @FXML
-    private TextField description;
+    private TextField Description;
+
+    @FXML
+    private TextField Nom;
+
+    @FXML
+    private ComboBox<Category> comboxid;
+
+    @FXML
+    private TableView<Hebergement> afficher;
+
+    @FXML
+    private TableColumn<Hebergement, String> afficherNom;
+
+    @FXML
+    private TableColumn<Hebergement, String> afficherdesc;
 
     @FXML
     private TextField image;
 
     @FXML
-    private Button selectimage;
+    private Button ajouter;
 
+    private ServiceHebergement SH = new ServiceHebergement();
 
-    @FXML
-    private TextField nom;
-
-    @FXML
-    private TableColumn<Category, String> imagecategory;
-
-    @FXML
-    private TableColumn<Category, String> nomcategory;
-
-    @FXML
-    private TableView<Category> afficher;
-    @FXML
-    private TableColumn<Category, String> desccategory;
-
-
-
-    ServiceCategory sc = new ServiceCategory();
-
-    private void selection(){
-        Category c=afficher.getItems().get(afficher.getSelectionModel().getSelectedIndex());
-
-        nom.setText(String.valueOf(c.getNom()));
-        image.setText(String.valueOf(c.getImage()));
-        description.setText(String.valueOf(c.getDescription()));
-    }
+    private ServiceCategory SC = new ServiceCategory();
 
     public void initialize() {
-        nomcategory.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        imagecategory.setCellValueFactory(new PropertyValueFactory<>("image"));
-        desccategory.setCellValueFactory(new PropertyValueFactory<>("description"));
+        afficherNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        afficherdesc.setCellValueFactory(new PropertyValueFactory<>("description"));
         try {
             afficher();
+            populateComboBox();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
 
-    @FXML
-    void Ajouter(ActionEvent event) throws SQLException {
-        String i = String.valueOf(nom.getText());
-        String j = String.valueOf(image.getText());
-        String y = String.valueOf(description.getText());
+    private void populateComboBox() throws SQLException {
+        List<Category> categories = SC.getAllCategories();
+        comboxid.setItems(FXCollections.observableArrayList(categories));
+    }
 
-        // Vérifier si les champs requis sont remplis
-        if (i.isEmpty() || j.isEmpty() || y.isEmpty()) {
-            // Afficher un message d'alerte
+    @FXML
+    void ajouter(ActionEvent event) throws SQLException {
+        String i = String.valueOf(Nom.getText());
+        String j = String.valueOf(Description.getText());
+        Category selectedCategory = comboxid.getValue();
+
+        if (i.isEmpty() || j.isEmpty() || selectedCategory == null) {
             showAlert("Veuillez remplir tous les champs.");
         } else {
-            // Ajouter la catégorie
-            sc.ajouter(new Category(i, j, y));
-            // Afficher un message de succès
-            showAlert("Catégorie ajoutée avec succès.");
-            // Rafraîchir la liste des catégories
+            SH.ajouter(new Hebergement(i, j));
+            showAlert("Hébergement ajouté avec succès.");
             afficher();
         }
     }
 
-    @FXML
-    void selectImage(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choisir une image");
-        // Set extension filters if needed
-        File selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile != null) {
-            image.setText(selectedFile.getAbsolutePath());
-        }
-    }
-
-
-
-    // Méthode pour afficher un message d'alerte
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -114,47 +88,34 @@ public class CategoryManagment {
         alert.showAndWait();
     }
 
-
-
-
     private void afficher() throws SQLException {
-        afficher.setItems(sc.afficher());
+        afficher.setItems(SH.afficher());
     }
 
     @FXML
     void modifier(ActionEvent event) throws SQLException {
-        Category c = afficher.getSelectionModel().getSelectedItem();
-        String i = String.valueOf(nom.getText());
-        String mo = String.valueOf(image.getText());
-        String z = String.valueOf(description.getText());
+        Hebergement h = afficher.getSelectionModel().getSelectedItem();
+        String i = String.valueOf(Nom.getText());
+        String mo = String.valueOf(Description.getText());
 
-        // Vérifier si les champs requis sont remplis
-        if (i.isEmpty() || mo.isEmpty() || z.isEmpty()) {
-            // Afficher un message d'alerte
+        if (i.isEmpty() || mo.isEmpty()) {
             showAlert("Veuillez remplir tous les champs.");
         } else {
-            Category ct = new Category(i, mo, z);
-            sc.modifier(ct, c.getId());
+            Hebergement hb = new Hebergement(mo, i);
+            SH.modifier(hb, h.getId());
+            showAlert("Hébergement modifié avec succès.");
+            afficher();
+        }}
 
-            // Clear the ListView and then re-populate it with updated data
-            afficher.getItems().clear();
-            afficher.getItems().addAll(sc.afficher());
-        }
+    public void supp(ActionEvent actionEvent) {
     }
 
-
-    @FXML
-    void supprimer(ActionEvent event) throws SQLException {
-        Category c = afficher.getSelectionModel().getSelectedItem();
-        System.out.println(c.getId());
-        sc.supprimer(c.getId());
-        afficher();
-        afficher.refresh();
+    public void selectrestaurant(ActionEvent actionEvent) {
     }
 
     @FXML
-    void take(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/hello-view.fxml"));
+     void gocategory(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/Category.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -163,15 +124,15 @@ public class CategoryManagment {
     }
 
     @FXML
-    void goheberg(ActionEvent event) throws IOException {
+     void backheberg(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/hello-view.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         st.setScene(scene);
         st.show();
-
     }
+
     @FXML
     void goreserv(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/reservation.fxml"));
@@ -180,17 +141,6 @@ public class CategoryManagment {
         Scene scene = new Scene(root);
         st.setScene(scene);
         st.show();
-
-    }
-    @FXML
-    void backcateg(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/Category.fxml"));
-        Parent root = loader.load();
-        Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        st.setScene(scene);
-        st.show();
-
     }
 
 }

@@ -1,34 +1,37 @@
 package Entity;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-public class Category {
+public class Hebergement {
     int id;
+    int categorie_id;
     String nom;
-    String image;
     String description;
-    ImageView imageView;
 
+    private Category restaurant;
 
-    public Category(int id, String nom, String image, String description) {
-        this.id = id;
-        this.nom = nom;
-        this.image = image;
-        this.description = description;
-        this.imageView = new ImageView(new Image("file:" + image)); // Initialize the ImageView with the image file
-        this.imageView.setFitWidth(100); // Set the width of the image (adjust as needed)
-        this.imageView.setFitHeight(100);
+    public Category getRestaurant() {
+        return restaurant;
     }
 
-    public Category(String nom, String image, String description) {
-        this.nom = nom;
-        this.image = image;
-        this.description = description;
+    public void setRestaurant(Category restaurant) {
+        this.restaurant = restaurant;
     }
 
-    public Category() {
 
+
+
+
+    public Hebergement() {}
+
+    public Hebergement(int categorie_id, String nom, String description, Category category) {
+        this.categorie_id = categorie_id;
+        this.nom = nom;
+        this.description = description;
+        this.restaurant = category;
+    }
+
+    public Hebergement(String nom, String description) {
+        this.nom = nom;
+        this.description = description;
     }
 
     public int getId() {
@@ -39,20 +42,20 @@ public class Category {
         this.id = id;
     }
 
+    public int getCategorie_id() {
+        return categorie_id;
+    }
+
+    public void setCategorie_id(int categorie_id) {
+        this.categorie_id = categorie_id;
+    }
+
     public String getNom() {
         return nom;
     }
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String getDescription() {
@@ -65,12 +68,12 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Category{" +
+        return "Hebergement{" +
                 "id=" + id +
+                ", categorie_id=" + categorie_id +
                 ", nom='" + nom + '\'' +
-                ", image='" + image + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }
-
 }
+
