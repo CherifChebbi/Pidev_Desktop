@@ -1,0 +1,57 @@
+.root {
+    -fx-background-color: #808080; /* Grey */
+}
+
+.text {
+    -fx-font-size: 14px;
+    -fx-fill: #333333;
+}
+
+#nom, #email, #nbrpersonne {
+    -fx-pref-width: 200px;
+}
+
+.button {
+    -fx-background-color: linear-gradient(to bottom, #ff77b3, #ff1a75); /* Pink gradient */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-pref-width: 150px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 8;
+    -fx-border-color: transparent;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #ff3385, #ff0066); /* Darker Pink gradient */
+}
+
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cccccc;
+}
+
+.table-view .column-header, .table-view .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #ff77b3, #ff1a75); /* Pink gradient */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #f2f2f2;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #82b1ff; /* Light Blue */
+}
+
+.table-view .table-cell {
+    -fx-alignment: CENTER;
+}
+
+.label {
+    -fx-font-size: 14px;
+    -fx-fill: #333333;
+}

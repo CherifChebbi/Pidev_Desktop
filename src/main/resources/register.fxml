@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="725.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="Controller.RegisterController">
+   <Accordion layoutX="68.0" layoutY="86.0"/>
+   <GridPane layoutX="126.0" layoutY="34.0" prefHeight="104.0" prefWidth="461.0">
+      <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints maxHeight="44.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES"/>
+         <RowConstraints maxHeight="66.66665649414062" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES"/>
+      </rowConstraints>
+      <TextField fx:id="nom" promptText="ajouter le nom"/>
+      <TextField fx:id="prenom" prefHeight="25.0" prefWidth="375.0" promptText="ajouter le prénom"
+                 GridPane.rowIndex="1"/>
+   </GridPane>
+   <GridPane layoutX="125.0" layoutY="201.0" prefHeight="17.0" prefWidth="461.0">
+      <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints/>
+         <RowConstraints/>
+         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      </rowConstraints>
+   </GridPane>
+   <Button layoutX="81.0" layoutY="311.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="26.0"
+           prefWidth="129.0" text="Ajouter utilisateur"/>
+   <Text layoutX="47.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom"/>
+   <Text layoutX="41.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Téléphone"/>
+   <TextField fx:id="Phone" layoutX="126.0" layoutY="132.0" prefHeight="26.0" prefWidth="461.0"
+              promptText="ajouter votre numéro de téléphone" GridPane.rowIndex="2"/>
+
+   <Text layoutX="37.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nationnalité"/>
+   <Button layoutX="256.0" layoutY="312.0" mnemonicParsing="false" onAction="#modifier" prefHeight="26.0"
+           prefWidth="129.0" text="Modifier utilisateur"/>
+   <Button layoutX="438.0" layoutY="311.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0"
+           prefWidth="137.0" text="Supprimer utilisateur"/>
+
+
+   <TableView fx:id="afficher" layoutX="60.0" layoutY="369.0" prefHeight="314.0" prefWidth="947.0">
+      <columns>
+         <TableColumn fx:id="idcol" prefWidth="54.00003433227539" text="ID"/>
+         <TableColumn fx:id="nomcol" prefWidth="92.66670989990234" text="Nom"/>
+         <TableColumn fx:id="locationcol" prefWidth="116.66664123535156" text="Prénom"/>
+         <TableColumn fx:id="imagecol" prefWidth="151.33331298828125" text="Nationnalité"/>
+         <TableColumn fx:id="descriptioncol" prefWidth="180.66665649414062" text="Numéro de téléphone"/>
+         <TableColumn fx:id="emailcol" prefWidth="179.3333740234375" text="Email"/>
+         <TableColumn fx:id="passcol" prefWidth="179.3333740234375" text="Mot de passe"/>
+      </columns>
+   </TableView>
+   <Text layoutX="55.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom"/>
+   <Text layoutX="55.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email"/>
+   <TextField fx:id="email" layoutX="126.0" layoutY="214.0" prefHeight="26.0" prefWidth="461.0"
+              promptText="ajouter l'adresse email"/>
+   <Text layoutX="33.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe"/>
+   <TextField fx:id="nationnalite" layoutX="126.0" layoutY="175.0" prefHeight="26.0" prefWidth="461.0"
+              promptText="ajouter la nationalité"/>
+   <TextField fx:id="password" layoutX="125.0" layoutY="257.0" prefHeight="26.0" prefWidth="461.0"
+              promptText="ajouter mot de passe"/>
+</AnchorPane>
