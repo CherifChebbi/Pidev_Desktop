@@ -11,7 +11,11 @@ import java.time.LocalDate;
 public class ServiceReservation {
 
     private Connection connection;
-    public ServiceReservation(){connection= MyDB.getCon();}
+
+    public ServiceReservation() {
+        connection = MyDB.getCon();
+    }
+
     public void ajouter(Reservation reservation) throws SQLException {
         String req = "INSERT INTO reservation (hebergement, nom, email, date, nbr_personne) VALUES (5, ?, ?, ?, ?)";
 
@@ -19,12 +23,10 @@ public class ServiceReservation {
             pre.setString(1, reservation.getNom());
             pre.setString(2, reservation.getEmail());
 
-            // Check if the reservation date is not null before converting it
             if (reservation.getDate() != null) {
                 java.sql.Date sqlDate = java.sql.Date.valueOf(reservation.getDate());
                 pre.setDate(3, sqlDate);
             } else {
-                // Handle the case where the reservation date is null
                 throw new IllegalArgumentException("Reservation date cannot be null");
             }
 
@@ -34,35 +36,35 @@ public class ServiceReservation {
         }
     }
 
-
-    public ObservableList<Reservation> afficher() throws SQLException{
-        String req ="SELECT * FROM hebergement WHERE hebergement=5";
+    public ObservableList<Reservation> afficher() throws SQLException {
+        String req = "SELECT * FROM reservation WHERE hebergement=5";
         ObservableList<Reservation> list = FXCollections.observableArrayList();
-        PreparedStatement pre= connection.prepareStatement(req);
-        ResultSet res = pre.executeQuery();
-        while (res.next()) {
-            Reservation r= new Reservation();
-            r.setId(res.getInt("id"));
-            r.setNom(res.getString("nom"));
-            r.setEmail(res.getString("email"));
-            r.setDate(res.getDate("date").toLocalDate());
-            list.add(r);
+        try (PreparedStatement pre = connection.prepareStatement(req)) {
+            ResultSet res = pre.executeQuery();
+            while (res.next()) {
+                Reservation r = new Reservation();
+                r.setId(res.getInt("id"));
+                r.setNom(res.getString("nom"));
+                r.setEmail(res.getString("email"));
+                r.setDate(res.getDate("date").toLocalDate());
+                list.add(r);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return list;
     }
 
-
-
-    public static void ajouterReservation(String nom, String email, LocalDate date, int nbrPersonne) throws SQLException {
-        Connection con = MyDB.getCon();
-        String query = "INSERT INTO reservation (nhebergement,om, email, date, nbr_personne) VALUES (5,?, ?, ?, ?)";
-        PreparedStatement pst = con.prepareStatement(query);
-        pst.setString(1, nom);
-        pst.setString(2, email);
-        pst.setObject(3, date);
-        pst.setInt(4, nbrPersonne);
-        pst.executeUpdate();
+    public void modifier(Reservation reservation) throws SQLException {
+        // Implementation for updating a reservation
     }
 
+    public void supprimer(int reservationId) throws SQLException {
+        // Implementation for deleting a reservation
+    }
+
+    public static void ajouterReservation(String nom, String email, LocalDate date, int nbrPersonne) throws SQLException {
+        // Implementation for adding a reservation
+    }
 
 }

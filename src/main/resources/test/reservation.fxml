@@ -2,8 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -23,14 +21,7 @@
             </Pane>
             <Button layoutX="50.0" layoutY="47.0" mnemonicParsing="false" onAction="#categoryback" text="Categorie" />
             <Button layoutX="50.0" layoutY="121.0" mnemonicParsing="false" onAction="#heberback" text="Hebergement" />
-            <Button layoutX="50.0" layoutY="204.0" mnemonicParsing="false" onAction="#reserback" text="Reservation" />
          </children>
       </Pane>
-      <TableView layoutX="179.0" layoutY="112.0" prefHeight="267.0" prefWidth="480.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
    </children>
 </AnchorPane>

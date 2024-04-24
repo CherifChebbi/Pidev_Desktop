@@ -2,122 +2,116 @@ package Controller;
 
 import Entity.Reservation;
 import Services.ServiceReservation;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Optional;
 
 public class ReservationManagment {
 
     @FXML
-    private Button reserver;
+    private TableView<Reservation> afficher;
 
     @FXML
-    private ListView<Reservation> afficher;
-
-    @FXML
-    private DatePicker date;
+    private TextField nom;
 
     @FXML
     private TextField email;
 
     @FXML
+    private DatePicker date;
+
+    @FXML
     private TextField nbr;
 
-    @FXML
-    private TextField nom;
+    private ObservableList<Reservation> reservations = FXCollections.observableArrayList();
 
 
 
     @FXML
-    void moove(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/reservation.fxml"));
-        Parent root = loader.load();
-        Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        st.setScene(scene);
-        st.show();
+    public void initialize() {
+        // Initialize the TableView with the list of reservations
+        ServiceReservation SR = new ServiceReservation();
+        try {
+            reservations.addAll(SR.afficher());
+            afficher.setItems(reservations);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-
-    ServiceReservation SR = new ServiceReservation();
-
 
     @FXML
     void ajouter(ActionEvent event) throws SQLException {
         String i = nom.getText();
         String y = email.getText();
-        LocalDate x = date.getValue(); // Retrieve selected date from DatePicker
+        LocalDate x = date.getValue(); // Use getValue() to get the selected date from the DatePicker
         Integer z = Integer.parseInt(nbr.getText());
 
-        if (x != null) {
-            // Pass LocalDate object to Reservation constructor
-            System.out.println("Selected date: " + x); // Add this line for debugging
-            SR.ajouter(new Reservation(i, y, x, z));
-            // Update the ListView
-            try {
-                afficher();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+        try {
+            if (i != null && !i.isEmpty() && y != null && !y.isEmpty() && x != null && z != null) {
+                Reservation reservation = new Reservation(5, i, y, x, z); // Use the correct constructor
+                ServiceReservation SR = new ServiceReservation();
+                SR.ajouter(reservation);
+                reservations.add(reservation);
+                afficher.setItems(reservations);
+                afficher.refresh();
+            } else {
+                System.out.println("Veuillez remplir tous les champs.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Veuillez entrer un nombre valide pour le nombre de personnes.");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+
+
+
+    @FXML
+    void modifier(ActionEvent event) throws SQLException {
+        Reservation selectedReservation = afficher.getSelectionModel().getSelectedItem();
+        if (selectedReservation != null) {
+            // Show a dialog or form to edit the reservation details
+            // After editing, update the reservation in the database
+            ServiceReservation SR = new ServiceReservation();
+            SR.modifier(selectedReservation); // You need to implement the modifier method in ServiceReservation
+            // Refresh the TableView
+            afficher.refresh();
+        } else {
+            System.out.println("Veuillez sélectionner une réservation à modifier.");
+        }
+    }
+
+    @FXML
+    void supprimer(ActionEvent event) throws SQLException {
+        Reservation selectedReservation = afficher.getSelectionModel().getSelectedItem();
+        if (selectedReservation != null) {
+            // Show a confirmation dialog
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Supprimer la réservation?");
+            alert.setContentText("Êtes-vous sûr de vouloir supprimer cette réservation?");
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                // User confirmed, delete the reservation
+                ServiceReservation SR = new ServiceReservation();
+                SR.supprimer(selectedReservation.getId()); // You need to implement the supprimer method in ServiceReservation
+                reservations.remove(selectedReservation);
             }
         } else {
-            // Show an alert message if the date is null
-            System.out.println("Veuillez sélectionner une date.");
+            System.out.println("Veuillez sélectionner une réservation à supprimer.");
         }
-
-    }
-    private void afficher() throws SQLException {
-        afficher.setItems(SR.afficher());
-    }
-
-    @FXML
-    void modifier(ActionEvent event) {
-
-    }
-
-    @FXML
-    void supprimer(ActionEvent event) {
-
-    }
-    @FXML
-    void categoryback(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/Category.fxml"));
-        Parent root = loader.load();
-        Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        st.setScene(scene);
-        st.show();
-
-    }
-    @FXML
-    void heberback(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/hello-view.fxml"));
-        Parent root = loader.load();
-        Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        st.setScene(scene);
-        st.show();
-
-    }
-    @FXML
-    void reserback(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/reservation.fxml"));
-        Parent root = loader.load();
-        Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        st.setScene(scene);
-        st.show();
-
     }
 
 }
