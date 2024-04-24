@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
 
 <Pane prefHeight="700.0" prefWidth="884.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontManagement">
 
@@ -17,9 +18,9 @@
 
     <!-- Search Fields -->
     <Label layoutX="20.0" layoutY="39.0" text="Rechercher les restaurants :" />
-    <TextField fx:id="searchNameField" layoutX="20.0" layoutY="60.0" prefHeight="25.0" prefWidth="90.0" promptText="Nom" />
-    <TextField fx:id="searchLocationField" layoutX="133.0" layoutY="60.0" prefHeight="25.0" prefWidth="90.0" promptText="Localisation" />
-    <Button layoutX="248.0" layoutY="58.0" mnemonicParsing="false" onAction="#search" text="Search" />
+    <TextField fx:id="searchNameField" layoutX="70.0" layoutY="60.0" prefHeight="25.0" prefWidth="90.0" promptText="Nom" />
+    <TextField fx:id="searchLocationField" layoutX="260.0" layoutY="60.0" prefHeight="25.0" prefWidth="90.0" promptText="Localisation" />
+    <Button layoutX="788.0" layoutY="52.0" mnemonicParsing="false" onAction="#search" text="Search" />
 
     <!-- Result Display ScrollPane -->
     <ScrollPane layoutX="12.0" layoutY="100.0" prefHeight="580.0" prefWidth="859.0">
@@ -31,6 +32,12 @@
             </padding></GridPane>
         </content>
     </ScrollPane>
+   <TextField fx:id="minimum" layoutX="453.0" layoutY="60.0" prefHeight="25.0" prefWidth="90.0" promptText="min prix" />
+   <TextField fx:id="maximum" layoutX="652.0" layoutY="60.0" prefHeight="25.0" prefWidth="90.0" promptText="max prix" />
+   <Text layoutX="20.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
+   <Text layoutX="177.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localisation" />
+   <Text layoutX="368.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="minimum prix " />
+   <Text layoutX="563.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="maximum prix " />
 
     <stylesheets>
         <URL value="@FrontManagement.css" />

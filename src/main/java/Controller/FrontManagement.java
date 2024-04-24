@@ -30,6 +30,12 @@ public class FrontManagement {
     @FXML
     private TextField searchLocationField;
 
+    @FXML
+    private TextField maximum;
+
+    @FXML
+    private TextField minimum;
+
     private ServiceRestaurant serviceRestaurant = new ServiceRestaurant();
 
     @FXML
@@ -106,25 +112,14 @@ public class FrontManagement {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     @FXML
     public void search(ActionEvent actionEvent) {
         String nameFilter = searchNameField.getText();
         String locationFilter = searchLocationField.getText();
+        float minimumPrice = Float.parseFloat(minimum.getText());
+        float maximumPrice = Float.parseFloat(maximum.getText());
 
-        List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter);
+        List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter, minimumPrice, maximumPrice);
         populateGridPane(filteredRestaurants);
     }
 

@@ -177,6 +177,43 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
         return restaurantId;
     }
 
+
+    public List<Restaurant> afficher(String nameFilter, String locationFilter, float minPrice, float maxPrice) {
+        String query = "SELECT DISTINCT r.* FROM restaurant r JOIN plat p ON r.idR = p.idR WHERE p.prix BETWEEN ? AND ?";
+        List<Restaurant> restaurants = new ArrayList<>();
+
+        if (nameFilter != null && !nameFilter.isEmpty()) {
+            query += " AND r.nom LIKE '%" + nameFilter + "%'";
+        }
+        if (locationFilter != null && !locationFilter.isEmpty()) {
+            query += " AND r.localisation LIKE '%" + locationFilter + "%'";
+        }
+
+        try (Connection connection = MyDB.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setFloat(1, minPrice);
+            preparedStatement.setFloat(2, maxPrice);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Restaurant restaurant = new Restaurant();
+                restaurant.setIdR(resultSet.getInt("idR"));
+                restaurant.setNom(resultSet.getString("nom"));
+                restaurant.setLocalisataion(resultSet.getString("localisation"));
+                restaurant.setImage(resultSet.getString("image"));
+                restaurant.setDescription(resultSet.getString("description"));
+                restaurants.add(restaurant);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle SQL exception
+        }
+
+        return restaurants;
+    }
+
+
+
+
     public void insertPlat(Plat plat) {
         try (Connection connection = MyDB.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO plat (id, nom, image, prix) VALUES (?, ?, ?, ?)")) {

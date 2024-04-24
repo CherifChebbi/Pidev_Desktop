@@ -52,6 +52,10 @@ public class ReservationManagement {
         selectedReservation = reservation;
     }
 
+
+    private static final String EMAIL_USERNAME = "your_email@example.com"; // Your email address
+    private static final String EMAIL_PASSWORD = "your_email_password";
+
     // Method to add reservations to the reservationScrollPane
     private void addReservationToScrollPane(Reservation reservation) {
         Text reservationText = new Text("Nom: " + reservation.getNom() + ", Email: " + reservation.getEmail() +
@@ -257,5 +261,8 @@ public class ReservationManagement {
             e.printStackTrace();
         }
     }
+
+
+
 
 }
