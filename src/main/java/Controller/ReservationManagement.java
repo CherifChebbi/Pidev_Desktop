@@ -154,16 +154,7 @@ public class ReservationManagement {
     public void supprimer(ActionEvent actionEvent) {
     }
 
-    public void initData(int restaurantId, String restaurantName) {
-        this.selectedRestaurantId = restaurantId;
-        this.selectedRestaurantName = restaurantName;
-        restaurantLabel.setText(selectedRestaurantName);
-        try {
-            displayReservations(); // Assuming you have a method to display reservations
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     private void displayReservations() throws SQLException {
         // Get reservations for the selected restaurant from the service
@@ -182,6 +173,40 @@ public class ReservationManagement {
     public void modifier(ActionEvent actionEvent) {
     }
 
-    public void ajouterEtActualiser(ActionEvent actionEvent) {
+    @FXML
+    void ajouterEtActualiser(ActionEvent actionEvent) {
+        try {
+            // Get data from fields
+            String reservationNom = nom.getText();
+            String reservationEmail = email.getText();
+            String reservationDate = datePicker.getValue().toString();
+            int reservationNbrPersonne = Integer.parseInt(nbrpersonne.getText());
+
+            // Create a new reservation object with the selected restaurant ID
+            Reservation newReservation = new Reservation(selectedRestaurantId, reservationNom, reservationEmail, reservationDate, reservationNbrPersonne);
+
+            // Add reservation to the database
+            serviceReservation.ajouter(newReservation);
+
+            // Refresh display by fetching and displaying all reservations again
+            displayReservations();
+
+        } catch (SQLException | NumberFormatException e) {
+            e.printStackTrace();
+            // Handle SQLException or NumberFormatException
+        }
     }
+
+    public void initData(int restaurantId, String restaurantName) {
+        this.selectedRestaurantId = restaurantId;
+        this.selectedRestaurantName = restaurantName;
+        restaurantLabel.setText(selectedRestaurantName);
+        try {
+            // Display existing reservations when initializing the controller
+            displayReservations();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
