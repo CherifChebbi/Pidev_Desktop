@@ -23,5 +23,7 @@ public class MainFX extends Application {
         primaryStage.setTitle("Hebergement");
         primaryStage.setScene(scene);
         primaryStage.show();
+
     }
+
 }

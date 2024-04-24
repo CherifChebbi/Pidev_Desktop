@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -15,7 +14,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HebergementManagment">
    <children>
       <TextField fx:id="Nom" layoutX="300.0" layoutY="115.0" />
-      <TextField fx:id="Description" layoutX="300.0" layoutY="172.0" />
+      <TextField fx:id="Description" layoutX="307.0" layoutY="172.0" />
       <Text layoutX="253.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom" />
       <Text layoutX="236.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description" />
       <Button fx:id="ajouter" layoutX="267.0" layoutY="284.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
@@ -24,27 +23,32 @@
       <ComboBox fx:id="comboxid" layoutX="314.0" layoutY="218.0" onAction="#selectrestaurant" prefWidth="150.0" />
       <Pane layoutX="-2.0" layoutY="51.0" prefHeight="518.0" prefWidth="208.0" style="-fx-background-color: skyblue;">
          <children>
-            <Button layoutX="64.0" layoutY="189.0" mnemonicParsing="false" onAction="#gocategory" text="Categorie" />
-            <Button layoutX="55.0" layoutY="247.0" mnemonicParsing="false" onAction="#backheberg" text="Hebergement" />
+            <Button layoutX="64.0" layoutY="189.0" mnemonicParsing="false" onAction="#gocategory" text="Category" />
+            <Button layoutX="72.0" layoutY="247.0" mnemonicParsing="false" onAction="#backheberg" text="Hebergement" />
             <Button layoutX="64.0" layoutY="305.0" mnemonicParsing="false" onAction="#goreserv" text="Reservation " />
          </children>
       </Pane>
       <Pane prefHeight="60.0" prefWidth="750.0" style="-fx-background-color: skyblue;">
          <children>
-            <Label layoutX="39.0" layoutY="13.0" prefHeight="35.0" prefWidth="234.0" text="Category">
+            <Label layoutX="73.0" layoutY="13.0" prefHeight="35.0" prefWidth="234.0" text="Hebergement">
                <font>
                   <Font name="Lucida Calligraphy Italic" size="20.0" />
                </font>
             </Label>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
-               <image>
+               <!--<image>
                   <Image url="@../../../../../../Desktop/pi%20java/style%20sheet.png" />
-               </image>
+               </image>-->
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+               <!--<image>
+                  <Image url="@../image/style%20sheet.png" />
+               </image>-->
             </ImageView>
          </children>
       </Pane>
-      <TableView fx:id="afficher" layoutX="213.0" layoutY="340.0" prefHeight="214.0" prefWidth="413.0">
+      <TableView fx:id="afficher" layoutX="242.0" layoutY="330.0" prefHeight="214.0" prefWidth="413.0">
         <columns>
           <TableColumn fx:id="afficherNom" prefWidth="75.0" text="nom" />
           <TableColumn fx:id="afficherdesc" prefWidth="75.0" text="description" />

@@ -1,7 +1,6 @@
 package Services;
 
 import Entity.Category;
-import Entity.Hebergement;
 import Util.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

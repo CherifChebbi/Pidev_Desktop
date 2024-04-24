@@ -5,11 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bb79324d-adcb-4532-b373-8246f3fe7403" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/FrontManagment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/HebergementManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CategoryManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/CategoryManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/HebergementHManagment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ReservationManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ReservationManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/HebergementH.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Entity/Hebergement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ServiceCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/ServiceCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ServiceReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/ServiceReservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/test/Category.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/test/Category.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/test/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/test/hello-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/test/pane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/test/pane.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/test/reservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/test/reservation.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,9 +29,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -34,6 +44,9 @@
         <option name="mavenHome" value="Use Maven wrapper" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -60,6 +73,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\MSI\IdeaProjects\Hebergement\src\main\resources\image" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -85,7 +103,8 @@
       <workItem from="1713770636339" duration="105000" />
       <workItem from="1713810175851" duration="656000" />
       <workItem from="1713820184379" duration="1755000" />
-      <workItem from="1713951163946" duration="7345000" />
+      <workItem from="1713951163946" duration="8008000" />
+      <workItem from="1713983181424" duration="13421000" />
     </task>
     <servers />
   </component>
