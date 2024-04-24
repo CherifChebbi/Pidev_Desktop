@@ -24,8 +24,8 @@
                </children>
             </AnchorPane>
          </top>
-         <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <left>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@reservationFront.css" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane layoutX="124.0" layoutY="225.0" prefHeight="250.0" prefWidth="800.0" styleClass="center-pane" stylesheets="@AjoutEvent.css" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -43,9 +43,9 @@
                         <Text layoutX="50.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix : " />
                         <Label fx:id="titreevent" layoutX="183.0" layoutY="51.0" text="TITRE" />
                         <Label fx:id="descripevent" layoutX="135.0" layoutY="90.0" text="DESCRIPTION" />
-                        <Label fx:id="ddebutevent" layoutX="117.0" layoutY="128.0" text="DATE DEBUT " />
-                        <Label layoutX="195.0" layoutY="128.0" text="-" />
-                        <Label fx:id="dfinevent" layoutX="213.0" layoutY="128.0" text="DATE FIN" />
+                        <Label fx:id="ddebutevent" layoutX="105.0" layoutY="129.0" text="DATE DEBUT " />
+                        <Label layoutX="200.0" layoutY="128.0" text="-" />
+                        <Label fx:id="dfinevent" layoutX="214.0" layoutY="130.0" text="DATE FIN" />
                         <Label fx:id="lieuevent" layoutX="92.0" layoutY="163.0" text="LIEU" />
                         <Label fx:id="prixevent" layoutX="87.0" layoutY="202.0" text="PRIX" />
                      </children>
@@ -55,19 +55,19 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Text>
-                  <Label layoutX="54.0" layoutY="315.0" text="Nom et Prénom : " />
-                  <Label layoutX="55.0" layoutY="357.0" text="Email : " />
+                  <Label layoutX="31.0" layoutY="317.0" text="Nom et Prénom : " />
+                  <Label layoutX="31.0" layoutY="358.0" text="Email : " />
                   <TextField fx:id="nomField" layoutX="161.0" layoutY="312.0" />
-                  <TextField fx:id="emailField" layoutX="160.0" layoutY="353.0" />
-                  <Label layoutX="396.0" layoutY="310.0" text="Téléphone :" />
+                  <TextField fx:id="emailField" layoutX="104.0" layoutY="353.0" />
+                  <Label layoutX="369.0" layoutY="313.0" text="Téléphone :" />
                   <TextField fx:id="telephoneField" layoutX="472.0" layoutY="308.0" />
-                  <Label layoutX="396.0" layoutY="357.0" text="Date de la réservation : " />
+                  <Label layoutX="369.0" layoutY="357.0" text="Date de la réservation : " />
                   <DatePicker fx:id="datePicker" layoutX="531.0" layoutY="353.0" />
                   <Button layoutX="688.0" layoutY="410.0" mnemonicParsing="false" onAction="#validerReservEvent" text="Confirmer" />
                   <Button layoutX="39.0" layoutY="410.0" mnemonicParsing="false" onAction="#validerReservEvent" text="Retour" />
                </children>
             </AnchorPane>
-         </center>
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>
