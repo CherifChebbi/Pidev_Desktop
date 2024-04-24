@@ -1,0 +1,57 @@
+/* AjoutEvent.css */
+.center-pane {
+    -fx-background-color: #f2f2f2; /* Gris clair pour l'arrière-plan */
+    -fx-background-radius: 10px; /* Coins arrondis */
+    -fx-padding: 20px; /* Espacement intérieur */
+    -fx-border-radius: 10px; /* Coins arrondis pour la bordure */
+    -fx-border-color: #ddd; /* Couleur de la bordure */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+}
+
+.label {
+    -fx-text-fill: #333; /* Couleur du texte */
+    -fx-font-size: 14px; /* Taille de la police */
+}
+
+.button {
+    -fx-background-color: #4CAF50; /* Vert pour les boutons */
+    -fx-text-fill: white; /* Texte blanc */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-padding: 8px 16px; /* Espacement intérieur */
+    -fx-background-radius: 5px; /* Coins arrondis */
+    -fx-border-radius: 5px; /* Coins arrondis pour la bordure */
+    -fx-border-color: transparent; /* Bordure transparente */
+}
+
+.button:hover {
+    -fx-background-color: #45a049; /* Vert plus foncé au survol */
+}
+
+.tableView {
+    -fx-background-color: #fff; /* Fond blanc pour le tableau */
+    -fx-border-color: #ddd; /* Bordure grise pour le tableau */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+}
+
+.tableView .column-header-background {
+    -fx-background-color: #f2f2f2; /* Fond gris clair pour les en-têtes de colonne */
+}
+
+.tableView .table-row-cell {
+    -fx-background-color: #fff; /* Fond blanc pour les lignes du tableau */
+}
+
+.tableView .table-row-cell:odd {
+    -fx-background-color: #f9f9f9; /* Fond gris très clair pour les lignes impaires */
+}
+
+.text-input {
+    -fx-background-color: #fff; /* Fond blanc pour les champs de texte */
+    -fx-border-color: #ddd; /* Bordure grise pour les champs de texte */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 5px; /* Coins arrondis pour la bordure */
+}
+
+.text-input:focus {
+    -fx-border-color: #4CAF50; /* Bordure verte lorsque le champ de texte est sélectionné */
+}

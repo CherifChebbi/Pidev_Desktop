@@ -40,7 +40,7 @@
             <left>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                     <children>
-                        <AnchorPane layoutY="46.0" prefHeight="454.4" prefWidth="200.0" styleClass="center-pane" stylesheets="@HomeBack.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutY="46.0" prefHeight="454.4" prefWidth="200.0" styleClass="anchor-pane" stylesheets="@HomeBack.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
                                 <ImageView fitHeight="149.0" fitWidth="150.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -109,7 +109,7 @@
                         <Button fx:id="btnUpdCat" layoutX="143.0" layoutY="96.0" mnemonicParsing="false" onAction="#UpdateCat" prefHeight="35.0" prefWidth="75.0" text="Update" />
                         <Button fx:id="btnDelCat" layoutX="243.0" layoutY="96.0" mnemonicParsing="false" onAction="#DelCateg" prefHeight="35.0" prefWidth="75.0" text="Delete" />
                         <Button fx:id="btnClearCat" layoutX="343.0" layoutY="96.0" mnemonicParsing="false" onAction="#ClearCat" prefHeight="35.0" prefWidth="75.0" text="Clear" />
-                        <TableView fx:id="categoryTable" layoutX="111.0" layoutY="169.0" prefHeight="172.0" prefWidth="275.0">
+                        <TableView fx:id="categoryTable" layoutX="111.0" layoutY="169.0" prefHeight="172.0" prefWidth="275.0" styleClass="column-header-background" stylesheets="@category.css">
                            <columns>
                               <TableColumn fx:id="colid" prefWidth="67.20001220703125" text="ID" />
                               <TableColumn fx:id="colnomcateg" prefWidth="207.199951171875" text="Nom de la catégorie" />
@@ -117,7 +117,7 @@
                         </TableView>
                      </children>
                   </AnchorPane>
-                  <Text fill="#3a3d9c" layoutX="222.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CRUD Catégories">
+                  <Text fill="#3a3d9c" layoutX="178.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Catégories des événements">
                      <font>
                         <Font name="Tahoma" size="24.0" />
                      </font>

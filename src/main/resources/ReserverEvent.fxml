@@ -31,7 +31,7 @@
                      <children>
                         <Text layoutX="17.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations sur l'évènement">
                            <font>
-                              <Font size="14.0" />
+                              <Font name="System Bold" size="14.0" />
                            </font>
                         </Text>
                         <ImageView fx:id="imgRes" fitHeight="150.0" fitWidth="200.0" layoutX="532.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
@@ -50,9 +50,9 @@
                         <Label fx:id="prixevent" layoutX="87.0" layoutY="202.0" text="PRIX" />
                      </children>
                   </AnchorPane>
-                  <Text layoutX="24.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coordonées ">
+                  <Text layoutX="24.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coordonnées ">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="System Bold" size="14.0" />
                      </font>
                   </Text>
                   <Label layoutX="54.0" layoutY="315.0" text="Nom et Prénom : " />

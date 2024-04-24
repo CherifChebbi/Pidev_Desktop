@@ -43,7 +43,7 @@
             <left>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                     <children>
-                        <AnchorPane layoutY="46.0" prefHeight="454.4" prefWidth="200.0" styleClass="center-pane" stylesheets="@HomeBack.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutY="46.0" prefHeight="454.4" prefWidth="200.0" styleClass="anchor-pane" stylesheets="@HomeBack.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
                                 <ImageView fitHeight="149.0" fitWidth="150.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -109,14 +109,14 @@
                         <AnchorPane layoutX="8.0" layoutY="1.0" prefHeight="544.0" prefWidth="882.0" styleClass="center-pane" stylesheets="@AjoutEvent.css">
                            <children>
                               <TextField fx:id="titreEvent" layoutX="62.0" layoutY="305.0" prefHeight="26.0" prefWidth="177.0" />
-                              <TextField fx:id="lieuEvent" layoutX="89.0" layoutY="391.0" />
-                              <TextField fx:id="prixEvent" layoutX="89.0" layoutY="428.0" />
+                              <TextField fx:id="lieuEvent" layoutX="89.0" layoutY="422.0" />
+                              <TextField fx:id="prixEvent" layoutX="481.0" layoutY="412.0" />
                               <Label layoutX="28.0" layoutY="310.0" text="Titre" />
-                              <ChoiceBox fx:id="categorieEvent" layoutX="89.0" layoutY="348.0" prefWidth="150.0" />
-                              <Label layoutX="27.0" layoutY="393.0" text="Lieu" />
-                              <Label layoutX="28.0" layoutY="432.0" text="Prix" />
-                              <Label layoutX="26.0" layoutY="352.0" text="Catégorie" />
-                              <TextArea fx:id="descEvent" layoutX="98.0" layoutY="480.0" prefHeight="54.0" prefWidth="231.0" />
+                              <ChoiceBox fx:id="categorieEvent" layoutX="99.0" layoutY="363.0" prefWidth="150.0" />
+                              <Label layoutX="29.0" layoutY="428.0" text="Lieu" />
+                              <Label layoutX="396.0" layoutY="418.0" text="Prix" />
+                              <Label layoutX="25.0" layoutY="371.0" text="Catégorie" />
+                              <TextArea fx:id="descEvent" layoutX="107.0" layoutY="480.0" prefHeight="54.0" prefWidth="231.0" />
                               <DatePicker fx:id="debEvent" layoutX="478.0" layoutY="306.0" />
                               <DatePicker fx:id="finEvent" layoutX="478.0" layoutY="357.0" />
                               <Label layoutX="25.0" layoutY="480.0" text="Description" />

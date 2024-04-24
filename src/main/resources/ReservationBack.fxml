@@ -38,7 +38,7 @@
          <left>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane layoutY="46.0" prefHeight="454.4" prefWidth="200.0" styleClass="center-pane" stylesheets="@HomeBack.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane layoutY="46.0" prefHeight="454.4" prefWidth="200.0" styleClass="anchor-pane" stylesheets="@HomeBack.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
                         <ImageView fitHeight="149.0" fitWidth="150.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -111,8 +111,8 @@
                               <TableColumn fx:id="emailColumn" prefWidth="116.79998779296875" text="Email" />
                            </columns>
                         </TableView>
-                        <TextField fx:id="nomRechercheTextField" layoutX="22.0" layoutY="101.0" prefHeight="26.0" prefWidth="220.0" promptText="Rechercher par nom" />
-                        <DatePicker fx:id="datePicker" layoutX="326.0" layoutY="101.0" promptText="Rechercher par date" />
+                        <TextField fx:id="nomRechercheTextField" layoutX="22.0" layoutY="101.0" prefHeight="26.0" prefWidth="220.0" promptText="Rechercher par nom" styleClass="text-field" stylesheets="@ReservationBack.css" />
+                        <DatePicker fx:id="datePicker" layoutX="326.0" layoutY="101.0" promptText="Rechercher par date" stylesheets="@ReservationBack.css" />
                         <Text layoutX="264.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                         <Text fill="#4e47b9" layoutX="163.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tableau des Réservations">
                            <font>

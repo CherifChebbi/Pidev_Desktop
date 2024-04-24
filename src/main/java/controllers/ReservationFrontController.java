@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ReservationFront3Controller {
+public class ReservationFrontController {
 
     @FXML
     private GridPane eventGrid;
@@ -27,7 +27,7 @@ public class ReservationFront3Controller {
 
     private ServiceEvent serviceEvent;
 
-    public ReservationFront3Controller() {
+    public ReservationFrontController() {
         try {
             serviceEvent = new ServiceEvent();
         } catch (SQLException e) {

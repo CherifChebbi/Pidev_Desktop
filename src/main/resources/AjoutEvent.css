@@ -10,3 +10,86 @@
     -fx-background-color: white;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
 }
+
+.anchor-pane {
+    -fx-background-color: #f2f2f2; /* Couleur de fond */
+    -fx-padding: 20px; /* Espacement intérieur */
+}
+
+/* Style pour les libellés */
+.label {
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-text-fill: #333333; /* Couleur du texte */
+}
+
+/* Style pour les champs de texte */
+.text-field {
+    -fx-pref-height: 26px; /* Hauteur préférée */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-background-color: white; /* Couleur de fond */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 3px; /* Rayon de la bordure */
+    -fx-padding: 5px; /* Espacement intérieur */
+}
+
+/* Style pour les choix de boîte */
+.choice-box {
+    -fx-pref-height: 26px; /* Hauteur préférée */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-background-color: white; /* Couleur de fond */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 3px; /* Rayon de la bordure */
+    -fx-padding: 5px; /* Espacement intérieur */
+}
+
+/* Style pour les zones de texte */
+.text-area {
+    -fx-pref-height: 54px; /* Hauteur préférée */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-background-color: white; /* Couleur de fond */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 3px; /* Rayon de la bordure */
+    -fx-padding: 5px; /* Espacement intérieur */
+}
+
+/* Style pour les boutons */
+.button {
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-padding: 8px 16px; /* Espacement intérieur (haut, droite, bas, gauche) */
+    -fx-background-color: #28a745; /* Nouvelle couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-border-radius: 3px; /* Rayon de la bordure */
+    -fx-border-color: #007bff; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-cursor: hand; /* Curseur de la souris */
+}
+
+/* Style pour les boutons survolés */
+.button:hover {
+    -fx-background-color: #0056b3; /* Couleur de fond au survol */
+}
+
+/* Style pour les boutons désactivés */
+.button:disabled {
+    -fx-opacity: 0.5; /* Opacité réduite */
+    -fx-cursor: default; /* Curseur par défaut */
+}
+
+/* Style pour les tables */
+.table-view {
+    -fx-pref-height: 200px; /* Hauteur préférée */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-background-color: white; /* Couleur de fond */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 3px; /* Rayon de la bordure */
+}
+
+/* Style pour les colonnes de table */
+.table-column {
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-text-fill: #333333; /* Couleur du texte */
+}
