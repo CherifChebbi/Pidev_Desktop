@@ -1,4 +1,5 @@
 package tn.esprit.application.controllers;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,10 +15,10 @@ import tn.esprit.application.models.User;
 import tn.esprit.application.services.UserService;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.util.Optional;
 
 public class Profile {
+
     private User currentUser;
 
     @FXML
@@ -27,50 +28,54 @@ public class Profile {
     @FXML
     private TextField email;
     @FXML
-    private TextField phone;
+    private TextField numtel;
     @FXML
-    private TextField adresse;
+    private TextField nationnalite;
     @FXML
-    private TextField sexe;
+    private CheckBox isBanned;
     @FXML
-    private TextField taille;
-    @FXML
-    private TextField poids;
-    @FXML
-    private TextArea maladies;
-    @FXML
-    private Button editButton;
-    @FXML
-    private Button updateButton;
+    private CheckBox isVerified;
     @FXML
     private ImageView profileImageView;
     @FXML
     private Button logoutButton;
-
     @FXML
     private Button uploadButton;
 
-    public void initData(User usere) {
-        if(usere.getRole().equals(Role.ADMIN)){
+    public void initData(User user) {
+        if(user.getRole().equals(Role.ADMIN)){
             logoutButton.setVisible(false);
         }
-      //  textFiedTest.setText("testtt");
-        UserService us = new UserService();
 
-        User user =us.getUserById(usere.getId());
-        this.currentUser = user;
-        nom.setText(user.getNom());
-        prenom.setText(user.getPrenom());
-        email.setText(user.getEmail());
-        System.out.println(user.getImage());
+        UserService userService = new UserService();
+        this.currentUser = userService.getUserById(user.getId());
 
-        String imageUrl = "/static/images/" + user.getImage(); // Assuming user.getImage() returns the image filename
-        Image image = new Image(getClass().getResource(imageUrl).toExternalForm());
-        profileImageView.setImage(image);
-        System.out.println(user);
-        populateProfileInformation(user);
+        nom.setText(currentUser.getNom());
+        prenom.setText(currentUser.getPrenom());
+        email.setText(currentUser.getEmail());
+        numtel.setText(String.valueOf(currentUser.getNumtel()));
+        nationnalite.setText(currentUser.getNationnalite());
+        isBanned.setSelected(currentUser.isBanned());
+        isVerified.setSelected(currentUser.isVerified());
 
+        // Assuming you have a method to load the image from a file path or URL
+        loadImage(currentUser.getProfilePicture());
     }
+
+    private void loadImage(String imagePath) {
+        if (imagePath != null && !imagePath.isEmpty()) {
+            File file = new File(imagePath);
+            if (file.exists()) {
+                Image image = new Image(file.toURI().toString());
+                profileImageView.setImage(image);
+            } else {
+                // Handle case where image file doesn't exist
+            }
+        } else {
+            // Handle case where image path is empty or null
+        }
+    }
+
     @FXML
     private void uploadImage(ActionEvent event) throws IOException {
         UserService us = new UserService();
@@ -90,51 +95,14 @@ public class Profile {
             Image image = new Image(selectedFile.toURI().toString());
             profileImageView.setImage(image);
             saveImageAndGetUrl(selectedFile.toPath().toUri().toURL().openStream(), selectedFile.getName());
-            us.updateImage(currentUser,selectedFile.getName());
-            currentUser.setImage(selectedFile.getName());
+            us.updateImage(currentUser, selectedFile.getName());
+            currentUser.setProfilePicture(selectedFile.getName());
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Image updated successfully");
-
         }
     }
-    private void populateProfileInformation(User user) {
 
-    }
-
-    private void handleEditButtonAction() {
-        // Implement edit profile action
-    }
-
-    public void enabelEditing(){
-        nom.setDisable(false);
-        prenom.setDisable(false);
-        email.setDisable(false);
-        phone.setDisable(false);
-        adresse.setDisable(false);
-        sexe.setDisable(false);
-        taille.setDisable(false);
-        poids.setDisable(false);
-        maladies.setDisable(false);
-        updateButton.setVisible(true);
-    }
-    public void UpdateData(){
-        UserService us = new UserService();
-        User u = new User();
-        u.setImage(currentUser.getImage());
-        u.setEmail(email.getText());
-        u.setRole(currentUser.getRole());
-
-        u.setNom(nom.getText());
-        u.setPrenom(prenom.getText());
-        us.updateProfile(u);
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Informations Updated");
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-
-        }
-    }
-    private String saveImageAndGetUrl(InputStream inputStream, String filename) throws IOException {
+    private void saveImageAndGetUrl(InputStream inputStream, String filename) throws IOException {
         // Define the directory where images will be stored
         String uploadDirectory = "src/main/resources/static/images"; // Change this to your desired directory path
         File directory = new File(uploadDirectory);
@@ -151,21 +119,53 @@ public class Profile {
                 outputStream.write(bytes, 0, read);
             }
         }
+    }
 
-        // Return the URL of the saved image
-        return  filename; // Adjust the URL format as needed
+    @FXML
+    private void enabelEditing() {
+        nom.setDisable(false);
+        prenom.setDisable(false);
+        email.setDisable(false);
+        numtel.setDisable(false);
+        nationnalite.setDisable(false);
+        isBanned.setDisable(false);
+        isVerified.setDisable(false);
     }
-public void logout(){
-    Stage stage = (Stage) updateButton.getScene().getWindow();
-    stage.close();
-    Stage newStage = new Stage();
-    try {
-        Parent root = FXMLLoader.load(getClass().getResource("/gui/login.fxml"));
-        Scene scene = new Scene(root);
-        newStage.setScene(scene);
-        newStage.show();
-    } catch (IOException e) {
-        throw new RuntimeException(e);
+
+    @FXML
+    private void updateData() {
+        UserService us = new UserService();
+        User updatedUser = new User();
+        updatedUser.setId(currentUser.getId());
+        updatedUser.setNom(nom.getText());
+        updatedUser.setPrenom(prenom.getText());
+        updatedUser.setEmail(email.getText());
+        updatedUser.setNumtel(Integer.parseInt(numtel.getText()));
+        updatedUser.setNationnalite(nationnalite.getText());
+        updatedUser.setBanned(isBanned.isSelected());
+        updatedUser.setVerified(isVerified.isSelected());
+        updatedUser.setProfilePicture(currentUser.getProfilePicture());
+        us.updateProfile(updatedUser);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Information Updated");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            // Handle OK button click
+        }
     }
-}
+
+    @FXML
+    private void logout() {
+        Stage stage = (Stage) logoutButton.getScene().getWindow();
+        stage.close();
+        Stage newStage = new Stage();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/gui/login.fxml"));
+            Scene scene = new Scene(root);
+            newStage.setScene(scene);
+            newStage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

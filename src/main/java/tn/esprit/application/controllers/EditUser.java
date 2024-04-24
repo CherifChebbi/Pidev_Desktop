@@ -25,7 +25,7 @@ public class EditUser {
     public void initData(User user) {
         this.user = user;
         userEmailLabel.setText(user.getEmail());
-        userActiveCheckBox.setSelected(user.getBanned().booleanValue());
+        userActiveCheckBox.setSelected(user.isBanned());
     }
 
     @FXML

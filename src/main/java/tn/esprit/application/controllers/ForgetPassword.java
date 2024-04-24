@@ -39,31 +39,33 @@ public class ForgetPassword {
     private Label confirmL;
     @FXML
     private Button changeButton;
-    public void getVerificationCode(ActionEvent event){
-        emailTextfield.setDisable(true);
-        UserService us = new UserService();
-        if(us.UserExistsByEmail(emailTextfield.getText()) == false){
 
+    private UserService userService;
+
+    public ForgetPassword() {
+        userService = new UserService();
+    }
+
+    public void getVerificationCode(ActionEvent event) {
+        emailTextfield.setDisable(true);
+        if (!userService.UserExistsByEmail(emailTextfield.getText())) {
             invalidText.setText("User does not exist");
             invalidText.setVisible(true);
             emailTextfield.setDisable(false);
-
             return;
         }
-        if( MailUtil.sendPasswordResetMail(emailTextfield.getText(), us.getVerificationCodeByEmail(emailTextfield.getText()))) {
+        String verificationCode = userService.getVerificationCodeByEmail(emailTextfield.getText());
+        if (MailUtil.sendPasswordResetMail(emailTextfield.getText(), verificationCode)) {
             codeField.setVisible(true);
             codeLabel.setVisible(true);
             loginButton.setVisible(false);
             verifierButton.setVisible(true);
-
-
         }
     }
-    public void changePassword(ActionEvent event){
-        UserService us = new UserService();
-        String code = us.getVerificationCodeByEmail(emailTextfield.getText());
-        if(codeField.getText().equals(code)){
-            System.out.println("ok");
+
+    public void changePassword(ActionEvent event) {
+        String code = userService.getVerificationCodeByEmail(emailTextfield.getText());
+        if (codeField.getText().equals(code)) {
             codeField.setDisable(true);
             loginButton.setVisible(false);
             verifierButton.setVisible(false);
@@ -72,26 +74,25 @@ public class ForgetPassword {
             passwordL.setVisible(true);
             confirmL.setVisible(true);
             changeButton.setVisible(true);
-        }else{
+        } else {
             invalidText.setText("Invalid code");
             invalidText.setVisible(true);
         }
     }
-    public void updatePassword(ActionEvent event){
-        UserService us = new UserService();
-        String code = us.getVerificationCodeByEmail(emailTextfield.getText());
-        if(codeField.getText().equals(code)){
 
-            if(!password.getText().equals(confirmpassword.getText())){
+    public void updatePassword(ActionEvent event) {
+        String code = userService.getVerificationCodeByEmail(emailTextfield.getText());
+        if (codeField.getText().equals(code)) {
+            if (!password.getText().equals(confirmpassword.getText())) {
                 invalidText.setText("Passwords do not match");
                 invalidText.setVisible(true);
                 return;
             }
-
             String hashedPassword = BCrypt.hashpw(password.getText(), BCrypt.gensalt());
-            us.changePasswordByEmail(emailTextfield.getText(), hashedPassword);
+            userService.changePasswordByEmail(emailTextfield.getText(), hashedPassword);
         }
     }
+
     public void goBack() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/login.fxml"));
         Parent profileInterface = loader.load();
@@ -99,7 +100,7 @@ public class ForgetPassword {
         Stage profileStage = new Stage();
         profileStage.setScene(profileScene);
 
-        // Close the current stage (assuming loginButton is accessible from here)
+        // Close the current stage (assuming verifierButton is accessible from here)
         Stage currentStage = (Stage) verifierButton.getScene().getWindow();
         currentStage.close();
 
