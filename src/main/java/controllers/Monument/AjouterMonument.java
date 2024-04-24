@@ -80,7 +80,7 @@ public class AjouterMonument implements Initializable {
         file = fileChooser.showOpenDialog(null);
         if (file != null) {
             // Copier l'image dans le dossier d'upload de votre projet
-            String destinationPath = "C:/Users/cheri/Documents/-- ESPRIT --/3eme/--- SEMESTRE  2 ----/-- PI_Java --/Gest_Ville/src/main/resources/upload/" + file.getName();
+            String destinationPath = "C:/Users/cheri/Documents/-- ESPRIT --/3eme/--- SEMESTRE  2 ----/-- PI_Java --/Gest_Pays/src/main/resources/upload/" + file.getName();
             try {
                 Files.copy(file.toPath(), new File(destinationPath).toPath(), StandardCopyOption.REPLACE_EXISTING);
                 //tf_imgVille.setText(destinationPath);

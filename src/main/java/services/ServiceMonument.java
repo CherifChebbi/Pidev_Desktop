@@ -165,6 +165,13 @@ import java.util.List;
 
             return monumentList;
         }
+        public void DeleteByVilleId(int villeId) throws SQLException {
+            String req = "DELETE FROM monument WHERE id_ville=?";
+            PreparedStatement ps = cnx.prepareStatement(req);
+            ps.setInt(1, villeId);
+            ps.executeUpdate();
+            ps.close();
+        }
 
 
 

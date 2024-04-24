@@ -26,24 +26,32 @@ public class Ville {
     public Ville() {
     }
 
-    public Ville(int id_ville,int id_pays,  String nom_ville, String img_ville, String desc_ville, double latitude, double longitude) {
+    public Ville(int id_ville,int id_pays,  String nom_ville, String img_ville, String desc_ville,int nb_monuments, double latitude, double longitude) {
 
         this.id_ville = id_ville;
         this.id_pays = id_pays;
         this.nom_ville = nom_ville;
         this.img_ville = img_ville;
         this.desc_ville = desc_ville;
-        this.nb_monuments = 0;
+        this.nb_monuments = nb_monuments;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    public Ville(int id_pays,String nom_ville, String img_ville, String desc_ville,  double latitude, double longitude) {
+    public Ville(int id_ville,String nom_ville, String img_ville, String desc_ville,int nb_monuments,  double latitude, double longitude) {
+        this.id_ville = id_ville;
+        this.nom_ville = nom_ville;
+        this.img_ville = img_ville;
+        this.desc_ville = desc_ville;
+        this.nb_monuments = nb_monuments;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+    public Ville(int id_pays,String nom_ville, String img_ville, String desc_ville, double latitude, double longitude) {
         this.id_pays = id_pays;
         this.nom_ville = nom_ville;
         this.img_ville = img_ville;
         this.desc_ville = desc_ville;
-        this.nb_monuments = 0;
         this.latitude = latitude;
         this.longitude = longitude;
     }

@@ -19,10 +19,17 @@ public class ServicePays implements CRUD<Pays> {
     private Connection cnx;
     @FXML
     private TableView<Pays> paysTable;
+    private ServiceVille serviceVille;
+    private ServiceMonument serviceMonument;
 
     public ServicePays() {
         cnx = DBConnexion.getInstance().getCnx();
     }
+    // Méthode d'initialisation où vous instanciez serviceVille
+    public void initServiceVille(ServiceVille serviceVille) {
+        this.serviceVille = serviceVille;
+    }
+
 
     @Override
     public void Add(Pays pays) throws SQLException {
@@ -63,6 +70,14 @@ public class ServicePays implements CRUD<Pays> {
 
     @Override
     public void Delete(Pays pays) throws SQLException {
+
+        ServicePays servicePays = new ServicePays();
+        ServiceVille serviceVille = new ServiceVille();
+
+        servicePays.initServiceVille(serviceVille); // Initialise serviceVille
+        // Supprimer toutes les villes associées à ce pays
+        serviceVille.DeleteByPaysId(pays.getId_pays());
+        
         String req = "DELETE FROM pays WHERE id_pays=?";
 
         PreparedStatement ps = cnx.prepareStatement(req);
@@ -148,6 +163,7 @@ public class ServicePays implements CRUD<Pays> {
 
         return PaysList;
     }
+
     public List<Pays> filterByVilles(int minVilles, int maxVilles) throws SQLException {
         List<Pays> filteredPays = new ArrayList<>();
 
@@ -197,6 +213,7 @@ public class ServicePays implements CRUD<Pays> {
                         resultSet.getString("desc_pays"),
                         resultSet.getString("langue"),
                         resultSet.getString("continent"),
+                        resultSet.getInt("nb_villes"),
                         resultSet.getDouble("latitude"),
                         resultSet.getDouble("longitude"));
                 // Ajouter le pays à la liste
@@ -226,6 +243,7 @@ public class ServicePays implements CRUD<Pays> {
                         rs.getString("desc_pays"),
                         rs.getString("langue"),
                         rs.getString("continent"),
+                        rs.getInt("nb_villes"),
                         rs.getDouble("latitude"),
                         rs.getDouble("longitude"));
             }
@@ -276,6 +294,7 @@ public class ServicePays implements CRUD<Pays> {
                             rs.getString("desc_pays"),
                             rs.getString("langue"),
                             rs.getString("continent"),
+                            rs.getInt("nb_villes"),
                             rs.getDouble("latitude"),
                             rs.getDouble("longitude")
                     );

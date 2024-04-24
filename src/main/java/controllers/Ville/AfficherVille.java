@@ -288,7 +288,7 @@ public class AfficherVille {
         AfficherPays controller = loader.getController();
 
         // Appelez la méthode de rafraîchissement des données
-        controller.rafraichirDonnees();
+        //controller.rafraichirDonnees();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

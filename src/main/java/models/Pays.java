@@ -44,14 +44,14 @@ public class Pays {
 
 
     public Pays() {}
-    public Pays(int id_pays, String nom_pays, String img_pays, String desc_pays, String langue, String continent,  double latitude, double longitude) {
+    public Pays(int id_pays, String nom_pays, String img_pays, String desc_pays, String langue, String continent,int nb_villes,  double latitude, double longitude) {
         this.id_pays = id_pays;
         this.nom_pays = nom_pays;
         this.img_pays = img_pays;
         this.desc_pays = desc_pays;
         this.langue = langue;
         this.continent = continent;
-        this.nb_villes = 0;
+        this.nb_villes = nb_villes;
         this.latitude = latitude;
         this.longitude = longitude;
     }
@@ -61,7 +61,7 @@ public class Pays {
         this.desc_pays = desc_pays;
         this.langue = langue;
         this.continent = continent;
-        this.nb_villes = 0;
+        //this.nb_villes = 0;
         this.latitude = latitude;
         this.longitude = longitude;
     }

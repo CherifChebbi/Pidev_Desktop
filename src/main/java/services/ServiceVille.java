@@ -14,10 +14,16 @@ public class ServiceVille implements CRUD<Ville> {
     @FXML
     private TableView<Ville> VilleTable;
     private ServicePays servicePays;
+    private ServiceMonument serviceMonument;
+
 
     public ServiceVille() {
         cnx = DBConnexion.getInstance().getCnx();
     }
+    public void initServiceMonument(ServiceMonument serviceMonument) {
+        this.serviceMonument= serviceMonument;
+    }
+
 
     @Override
     public void Add(Ville ville) throws SQLException {
@@ -56,6 +62,13 @@ public class ServiceVille implements CRUD<Ville> {
 
     @Override
     public void Delete(Ville ville) throws SQLException {
+
+        ServiceVille serviceVille = new ServiceVille();
+        ServiceMonument serviceMonument = new ServiceMonument();
+        serviceVille.initServiceMonument(serviceMonument); // Initialise serviceVille
+        // Supprimer toutes les villes associées à ce pays
+        serviceMonument.DeleteByVilleId(ville.getId_ville());
+
         String req = "DELETE FROM ville WHERE id_ville=?";
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, ville.getId_ville());
@@ -201,6 +214,7 @@ public class ServiceVille implements CRUD<Ville> {
                             rs.getString("nom_ville"),
                             rs.getString("img_ville"),
                             rs.getString("desc_ville"),
+                            rs.getInt("nb_monuments"),
                             rs.getDouble("latitude"),
                             rs.getDouble("longitude")
                     );
@@ -248,6 +262,7 @@ public class ServiceVille implements CRUD<Ville> {
                         resultSet.getString("nom_ville"),
                         resultSet.getString("img_ville"),
                         resultSet.getString("desc_ville"),
+                        resultSet.getInt("nb_monuments"),
                         resultSet.getDouble("latitude"),
                         resultSet.getDouble("longitude"));
                 // Ajouter le pays à la liste
@@ -276,11 +291,27 @@ public class ServiceVille implements CRUD<Ville> {
                     rs.getString("nom_ville"),
                     rs.getString("img_ville"),
                     rs.getString("desc_ville"),
+                    rs.getInt("nb_monuments"),
                     rs.getDouble("latitude"),
                     rs.getDouble("longitude"));
         }
 
         return ville;
+    }
+    public void DeleteByPaysId(int paysId) throws SQLException {
+        // Supprimer les monuments liés aux villes associées à ce pays
+        String reqDeleteMonuments = "DELETE FROM monument WHERE id_ville IN (SELECT id_ville FROM ville WHERE id_pays=?)";
+        PreparedStatement psDeleteMonuments = cnx.prepareStatement(reqDeleteMonuments);
+        psDeleteMonuments.setInt(1, paysId);
+        psDeleteMonuments.executeUpdate();
+        psDeleteMonuments.close();
+
+        // Supprimer les villes associées à ce pays
+        String reqDeleteVilles = "DELETE FROM ville WHERE id_pays=?";
+        PreparedStatement psDeleteVilles = cnx.prepareStatement(reqDeleteVilles);
+        psDeleteVilles.setInt(1, paysId);
+        psDeleteVilles.executeUpdate();
+        psDeleteVilles.close();
     }
 
 

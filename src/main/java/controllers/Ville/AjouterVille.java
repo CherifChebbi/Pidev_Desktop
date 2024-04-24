@@ -107,8 +107,10 @@ public class AjouterVille implements Initializable {
 
             ServiceVille sp = new ServiceVille();
             sp.Add(p);
+            System.out.println(paysSelectionne.getNb_villes());
             // Incrémenter le nombre de villes pour ce pays
             paysSelectionne.setNb_villes(paysSelectionne.getNb_villes() + 1);
+            System.out.println(paysSelectionne.getNb_villes());
             // Mettre à jour le nombre de villes dans la base de données
             servicePays.updateNbVilles(paysSelectionne);
 
