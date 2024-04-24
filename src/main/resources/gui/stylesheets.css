@@ -1,0 +1,5 @@
+.button {
+    -fx-background-color: #176B87; /* Change button background color */
+    -fx-text-fill: white; /* Change button text color */
+    -fx-background-radius: 20; /* Apply rounded edges */
+}

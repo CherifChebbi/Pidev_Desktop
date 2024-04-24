@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #E8F9FD;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.application.controllers.Profile">
+   <children>
+      <ListView layoutX="-1.0" prefHeight="400.0" prefWidth="600.0" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="28.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="27.0" layoutY="172.0" text="Nom" />
+      <Label layoutX="27.0" layoutY="209.0" text="Prenom" />
+      <Label layoutX="27.0" layoutY="244.0" text="Email" />
+      <Label layoutX="27.0" layoutY="281.0" text="Phone" />
+      <Label layoutX="29.0" layoutY="344.0" text="Sexe" />
+      <Label layoutX="271.0" layoutY="125.0" text="Poids" />
+      <Label layoutX="271.0" layoutY="75.0" text="Taille" />
+      <Label layoutX="275.0" layoutY="194.0" text="Maladies" />
+      <Label layoutX="27.0" layoutY="315.0" text="Adresse" />
+      <TextField fx:id="nom" disable="true" layoutX="81.0" layoutY="168.0" />
+      <TextField fx:id="prenom" disable="true" layoutX="81.0" layoutY="205.0" />
+      <TextField fx:id="email" disable="true" layoutX="81.0" layoutY="240.0" />
+      <TextField fx:id="phone" disable="true" layoutX="81.0" layoutY="277.0" />
+      <TextField fx:id="adresse" disable="true" layoutX="81.0" layoutY="311.0" />
+      <TextField fx:id="sexe" disable="true" layoutX="81.0" layoutY="340.0" />
+      <TextField fx:id="taille" disable="true" layoutX="338.0" layoutY="71.0" />
+      <TextField fx:id="poids" disable="true" layoutX="338.0" layoutY="121.0" />
+      <TextArea fx:id="maladies" disable="true" layoutX="338.0" layoutY="158.0" prefHeight="96.0" prefWidth="149.0" />
+      <Button fx:id="editButton" layoutX="511.0" layoutY="14.0" mnemonicParsing="false" onAction="#enabelEditing" text="Edit"   style="-fx-background-color: #2d3047;" textFill="WHITE"  />
+      <Button fx:id="updateButton" layoutX="428.0" layoutY="14.0" mnemonicParsing="false" onAction="#UpdateData" text="Update" visible="false" style="-fx-background-color: #2d3047;" textFill="WHITE" />
+   </children>
+   <!-- Add a Button for uploading an image -->
+   <Button fx:id="uploadButton" layoutX="262.0" layoutY="9.0" mnemonicParsing="false" onAction="#uploadImage" style="-fx-background-color: #2d3047;" text="Upload Image" textFill="WHITE" />
+
+   <!-- ImageView to display the uploaded image -->
+   <ImageView fx:id="profileImageView" fitHeight="150.0" fitWidth="200.0" layoutX="28.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" />
+   <Button fx:id="logoutButton" layoutX="518.0" layoutY="361.0" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: #2d3047;" text="Logout" textFill="WHITE" />
+</AnchorPane>

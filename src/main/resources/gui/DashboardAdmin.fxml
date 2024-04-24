@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.application.controllers.DashboardAdmin">
+   <children>
+      <SplitPane dividerPositions="0.29797979797979796" layoutX="-1.0" prefHeight="400.0" prefWidth="600.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #B4D4FF;">
+               <children>
+                  <Button layoutX="23.0" layoutY="218.0" mnemonicParsing="false" onAction="#openUsersList" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #176B87;" text="User List" textFill="#fffdfd" />
+                  <Button layoutX="23.0" layoutY="266.0" mnemonicParsing="false" onAction="#addTep" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: #176B87;" text="Add User" textFill="WHITE" />
+
+                   <ImageView fitHeight="150.0" fitWidth="175.0" layoutX="13.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../Tour Travel Business Logo (3).png" />
+                     </image>
+                  </ImageView>
+                   <Button fx:id="logoutButton" layoutX="30.0" layoutY="328.0" mnemonicParsing="false" onAction="#logout" prefHeight="26.0" prefWidth="115.0" style="-fx-background-color: #176B87;" text="Logout" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #E8F9FD;">
+               <children>
+
+                  <PieChart fx:id="pieChart" layoutX="33.0" layoutY="124.0" prefHeight="150.0" prefWidth="352.0" title="Active  / Inactive Users" />
+               </children></AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
