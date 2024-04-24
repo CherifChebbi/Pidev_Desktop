@@ -56,24 +56,27 @@ public class RestaurantDetailsController {
             imageView.setFitHeight(150);
 
             // Create a Label for the plat name
-            Label nameLabel = new Label(plat.getNom());
+            Label nameLabel = new Label(plat.getNom()); // Display plat name
 
-            // Create a Label for the plat price
-            Label priceLabel = new Label("Price: $" + plat.getPrix());
-
-            // Add the ImageView, nameLabel, and priceLabel to the platsGridPane
+            // Add the image and name to the GridPane
             platsGridPane.add(imageView, column, row);
             platsGridPane.add(nameLabel, column, row + 1); // Add the name below the image
-            platsGridPane.add(priceLabel, column, row + 2); // Add the price below the name
 
             // Increment row and reset column if necessary
             column++;
             if (column == 3) {
                 column = 0;
-                row += 3; // Increment by 3 to leave space for image, name, and price
+                row += 2; // Increment by 2 to leave space for image and name
             }
         }
+
+
     }
+
+
+
+
+
 
     @FXML
     private void goBack() {

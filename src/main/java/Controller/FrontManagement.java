@@ -1,5 +1,6 @@
 package Controller;
 
+import Entity.Plat;
 import Entity.Restaurant;
 import Services.ServiceRestaurant;
 import javafx.event.ActionEvent;
@@ -81,7 +82,6 @@ public class FrontManagement {
         }
     }
 
-
     @FXML
     public void viewPlatsForRestaurant(ActionEvent event, Restaurant restaurant) {
         try {
@@ -90,7 +90,12 @@ public class FrontManagement {
 
             // Pass the selected restaurant's details to the RestaurantDetailsController
             RestaurantDetailsController controller = loader.getController();
-            controller.initData(restaurant.getNom(), restaurant.getDescription(), restaurant.getPlats(), restaurant.getImage());
+
+            // Get the list of plats for the selected restaurant
+            List<Plat> plats = serviceRestaurant.getPlatsForRestaurant(restaurant.getIdR());
+
+            // Initialize data with restaurant details and plats
+            controller.initData(restaurant.getNom(), restaurant.getDescription(), plats, restaurant.getImage());
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -99,6 +104,14 @@ public class FrontManagement {
             e.printStackTrace();
         }
     }
+
+
+
+
+
+
+
+
 
 
 

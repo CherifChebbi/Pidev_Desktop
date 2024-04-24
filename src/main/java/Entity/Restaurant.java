@@ -24,6 +24,7 @@ public class Restaurant {
         this.plats = plats; // Assign the list of plats
     }
 
+
     public Restaurant(String nom, String localisataion, String image, String description) {
         this.nom = nom;
         this.localisataion = localisataion;

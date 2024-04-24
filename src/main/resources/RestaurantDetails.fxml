@@ -24,7 +24,7 @@
     <Label fx:id="restaurantDescriptionLabel" layoutX="20.0" layoutY="270.0" />
 
     <!-- Plat Display ScrollPane -->
-    <ScrollPane layoutX="12.0" layoutY="320.0" prefHeight="350.0" prefWidth="859.0">
+    <ScrollPane  layoutX="12.0" layoutY="320.0" prefHeight="350.0" prefWidth="859.0">
         <content>
             <!-- GridPane to display restaurant plats -->
             <GridPane fx:id="platsGridPane" hgap="20" style="-fx-padding: 0;" vgap="20">

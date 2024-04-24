@@ -5,6 +5,7 @@ import Entity.Restaurant;
 import Util.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -189,4 +190,31 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
             // Handle SQL exception
         }
     }
+    public List<Plat> getPlatsForRestaurant(int restaurantId) {
+        String query = "SELECT * FROM plat WHERE idR = ?";
+        List<Plat> plats = new ArrayList<>();
+
+        try (Connection connection = MyDB.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, restaurantId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Plat plat = new Plat();
+                plat.setId(resultSet.getInt("id"));
+                plat.setNom(resultSet.getString("nom"));
+                plat.setImage(resultSet.getString("image"));
+                plat.setPrix(resultSet.getFloat("prix"));
+                plats.add(plat);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle SQL exception
+        }
+
+        return plats;
+    }
+
+
+
+
 }
