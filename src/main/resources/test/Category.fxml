@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -26,14 +27,19 @@
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
       <Pane layoutY="67.0" prefHeight="458.0" prefWidth="200.0" style="-fx-background-color: skyblue;">
          <children>
-            <Button layoutX="74.0" layoutY="78.0" mnemonicParsing="false" onAction="#backcateg" text="categorie" />
-            <Button layoutX="74.0" layoutY="150.0" mnemonicParsing="false" onAction="#goheberg" text="Hebergement" />
-            <Button layoutX="74.0" layoutY="217.0" mnemonicParsing="false" onAction="#goreserv" text="Reservation " />
+            <Button layoutX="61.0" layoutY="204.0" mnemonicParsing="false" onAction="#backcateg" text="categorie" />
+            <Button layoutX="61.0" layoutY="260.0" mnemonicParsing="false" onAction="#goheberg" text="Hebergement" />
+            <Button layoutX="66.0" layoutY="313.0" mnemonicParsing="false" onAction="#goreserv" text="Reservation " />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Desktop/pi%20java/style%20sheet.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane prefHeight="79.0" prefWidth="792.0" style="-fx-background-color: skyblue;">
          <children>
-            <Label layoutX="48.0" layoutY="24.0" prefHeight="32.0" prefWidth="200.0" text="Categorie ">
+            <Label layoutX="48.0" layoutY="24.0" prefHeight="32.0" prefWidth="200.0" text="Hebergement">
                <font>
                   <Font name="Lucida Calligraphy Italic" size="20.0" />
                </font>
