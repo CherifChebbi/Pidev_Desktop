@@ -2,15 +2,18 @@ package controllers;
 
 import entities.Event;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import services.ServiceEvent;
-
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
+import javafx.scene.Scene;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -41,21 +44,12 @@ public class ReservationFront3Controller {
 
         for (Event event : events) {
             ImageView imageView = createEventView(event);
-            GridPane.setMargin(imageView, new Insets(10)); // Ajout de marge autour de l'image
-            Label titleLabel = new Label("Titre: " + event.getTitre());
-            Label descriptionLabel = new Label("Description: " + event.getDescription());
-            Label priceLabel = new Label("Prix: " + event.getPrix());
             Button reserveButton = new Button("Réserver");
-
-            GridPane eventInfoGrid = new GridPane();
-            eventInfoGrid.addRow(0, titleLabel);
-            eventInfoGrid.addRow(1, descriptionLabel);
-            eventInfoGrid.addRow(2, priceLabel);
-            eventInfoGrid.addRow(3, reserveButton);
-            GridPane.setMargin(eventInfoGrid, new Insets(10, 0, 0, 0)); // Ajout de marge en haut des détails des événements
+            reserveButton.setOnAction(this::reserveButtonClicked);
+            reserveButton.setUserData(event); // Attribuer l'événement au bouton pour le récupérer plus tard lors du clic
 
             eventGrid.add(imageView, column, row);
-            eventGrid.add(eventInfoGrid, column, row + 1);
+            eventGrid.add(reserveButton, column, row + 1);
 
             column++;
             if (column == 3) {
@@ -78,4 +72,23 @@ public class ReservationFront3Controller {
 
         return imageView;
     }
+
+    @FXML
+    public void reserveButtonClicked(ActionEvent event) {
+        Button buttonClicked = (Button) event.getSource();
+        Event selectedEvent = (Event) buttonClicked.getUserData(); // Récupérer l'événement correspondant au bouton cliqué
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReserverEvent.fxml"));
+        Parent root;
+        try {
+            root = loader.load();
+            ReserverEventController controller = loader.getController();
+            controller.initData(selectedEvent); // Passer les données de l'événement au contrôleur de la page de réservation
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }
