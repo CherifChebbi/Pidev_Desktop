@@ -151,8 +151,58 @@ public class ReservationManagement {
         alert.showAndWait();
     }
 
-    public void supprimer(ActionEvent actionEvent) {
+    @FXML
+    void supprimer(ActionEvent actionEvent) {
+        try {
+            if (selectedReservation != null) {
+                // Delete the selected reservation from the database
+                serviceReservation.deleteReservation(selectedReservation.getId());
+
+                // Refresh display by fetching and displaying all reservations again
+                displayReservations();
+
+                showAlert("Reservation Deleted", "Reservation has been deleted successfully.");
+            } else {
+                showAlert("No Reservation Selected", "Please select a reservation to delete.");
+            }
+        } catch (SQLException e) {
+            showAlert("Error", "An error occurred while deleting the reservation.");
+            e.printStackTrace();
+        }
     }
+
+    @FXML
+    void modifier(ActionEvent actionEvent) {
+        try {
+            if (selectedReservation != null) {
+                // Get data from fields
+                String reservationNom = nom.getText();
+                String reservationEmail = email.getText();
+                String reservationDate = datePicker.getValue().toString();
+                int reservationNbrPersonne = Integer.parseInt(nbrpersonne.getText());
+
+                // Update the selected reservation object
+                selectedReservation.setNom(reservationNom);
+                selectedReservation.setEmail(reservationEmail);
+                selectedReservation.setDate(reservationDate);
+                selectedReservation.setNbrPersonne(reservationNbrPersonne);
+
+                // Update the reservation in the database
+                serviceReservation.modifier(selectedReservation);
+
+                // Refresh display by fetching and displaying all reservations again
+                displayReservations();
+
+                showAlert("Reservation Updated", "Reservation has been updated successfully.");
+            } else {
+                showAlert("No Reservation Selected", "Please select a reservation to modify.");
+            }
+        } catch (SQLException | NumberFormatException e) {
+            showAlert("Error", "An error occurred while modifying the reservation.");
+            e.printStackTrace();
+        }
+    }
+
 
 
 
@@ -170,8 +220,7 @@ public class ReservationManagement {
         }
     }
 
-    public void modifier(ActionEvent actionEvent) {
-    }
+
 
     @FXML
     void ajouterEtActualiser(ActionEvent actionEvent) {

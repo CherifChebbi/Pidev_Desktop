@@ -80,6 +80,24 @@ public class ServiceReservation {
     }
 
 
-    public void deleteRestaurant(int selectedRestaurantId) {
+    public void deleteReservation(int reservationId) throws SQLException {
+        String query = "DELETE FROM reservation WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, reservationId);
+            preparedStatement.executeUpdate();
+        }
     }
+
+    public void modifier(Reservation reservation) throws SQLException {
+        String query = "UPDATE reservation SET nom = ?, email = ?, date = ?, nbr_personne = ? WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, reservation.getNom());
+            preparedStatement.setString(2, reservation.getEmail());
+            preparedStatement.setString(3, reservation.getDate());
+            preparedStatement.setInt(4, reservation.getNbrPersonne());
+            preparedStatement.setInt(5, reservation.getId());
+            preparedStatement.executeUpdate();
+        }
+    }
+
 }
