@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import services.ServiceCategory;
@@ -20,14 +17,11 @@ import javafx.collections.FXCollections;
 import utils.DB;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-
-import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class AjoutCategoryController implements Initializable {
@@ -71,18 +65,13 @@ public class AjoutCategoryController implements Initializable {
     @FXML
     void AjoutCateg(ActionEvent event) {
         String nom = nomCategory.getText();
-        sc.ajouter(new Category(0, nom));
-        showCategories(); // Mettre à jour l'affichage du tableau avec la nouvelle catégorie
-
-    }
-
-    @FXML
-    void ClearCat(ActionEvent event) {
-        // Supprimer toutes les catégories de la base de données
-        sc.viderCategories();
-
-        // Rafraîchir l'affichage de la table pour refléter les modifications
-        showCategories();
+        if (nom.matches("[a-zA-Z]+")) {
+            sc.ajouter(new Category(0, nom));
+            showCategories(); // Mettre à jour l'affichage du tableau avec la nouvelle catégorie
+        } else {
+            // Afficher une alerte si le champ de saisie du nom de la catégorie contient des caractères non autorisés
+            showAlert("Caractères non autorisés", "Le nom de la catégorie ne peut contenir que des lettres.");
+        }
     }
 
     @FXML
@@ -91,18 +80,33 @@ public class AjoutCategoryController implements Initializable {
         if (selectedCategory != null) {
             sc.supprimer(selectedCategory);
             showCategories(); // Mettre à jour l'affichage du tableau après la suppression
+        } else {
+            // Afficher une alerte si aucune catégorie n'est sélectionnée
+            showAlert("Aucune sélection", "Veuillez sélectionner une catégorie à supprimer.");
         }
     }
 
     @FXML
     void UpdateCat(ActionEvent event) {
         Category selectedCategory = categoryTable.getSelectionModel().getSelectedItem();
-        if (selectedCategory != null) {
-            String newName = nomCategory.getText();
+        String newName = nomCategory.getText();
+        if (selectedCategory != null && newName.matches("[a-zA-Z]+")) {
             selectedCategory.setNom(newName);
             sc.modifier(selectedCategory);
             showCategories(); // Mettre à jour l'affichage du tableau après la modification
+        } else {
+            // Afficher une alerte si aucune catégorie n'est sélectionnée ou si le champ de saisie du nom de la catégorie contient des caractères non autorisés
+            showAlert("Champ vide ou caractères non autorisés", "Veuillez sélectionner une catégorie et saisir un nouveau nom contenant uniquement des lettres.");
         }
+    }
+
+    // Méthode utilitaire pour afficher une alerte
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     public ObservableList<Category> getCategories() {
@@ -125,14 +129,12 @@ public class AjoutCategoryController implements Initializable {
         return categories;
     }
 
-
     public void showCategories() {
-       ObservableList<Category> list = getCategories();
-       categoryTable.setItems(list);
+        ObservableList<Category> list = getCategories();
+        categoryTable.setItems(list);
         colid.setCellValueFactory(new PropertyValueFactory<>("id"));
         colnomcateg.setCellValueFactory(new PropertyValueFactory<>("nom"));
     }
-
 
     @FXML
     public void dashboardCategories(ActionEvent event) {
@@ -186,4 +188,7 @@ public class AjoutCategoryController implements Initializable {
         }
     }
 
+    public void ClearCat(ActionEvent actionEvent) {
+        categoryTable.getItems().clear();
+    }
 }

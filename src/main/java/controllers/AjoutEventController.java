@@ -6,24 +6,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import services.ServiceCategory;
 import services.ServiceEvent;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import java.io.IOException;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -93,10 +91,6 @@ public class AjoutEventController implements Initializable {
     @FXML
     private ImageView ImgEventAffiche;
 
-
-    @FXML
-    private Button parcourirButton;
-
     private ServiceEvent serviceEvent;
     private ServiceCategory serviceCategory;
 
@@ -104,13 +98,10 @@ public class AjoutEventController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             serviceEvent = new ServiceEvent();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        try {
             serviceCategory = new ServiceCategory();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            // Gérer l'exception
         }
 
         List<Category> categories = serviceCategory.afficher();
@@ -139,24 +130,57 @@ public class AjoutEventController implements Initializable {
         LocalDate localDateDebut = debEvent.getValue();
         LocalDate localDateFin = finEvent.getValue();
         String lieu = lieuEvent.getText();
-        double prix = Double.parseDouble(prixEvent.getText());
-        Image image = ImgEventAffiche.getImage();
-        String imageEvent = image.getUrl();
+        String prixStr = prixEvent.getText();
+
+        if (champsNonRemplis(titre, description, localDateDebut, localDateFin, lieu, prixStr)) return;
+
+        if (!champsValides(titre, lieu, description, prixStr)) return;
+
+        double prix = Double.parseDouble(prixStr);
+        String imageEvent = ImgEventAffiche.getImage().getUrl();
         Category selectedCategory = categorieEvent.getValue();
 
-        if (localDateDebut != null && localDateFin != null) {
-            Date dateDebut = Date.valueOf(localDateDebut);
-            Date dateFin = Date.valueOf(localDateFin);
+        Date dateDebut = Date.valueOf(localDateDebut);
+        Date dateFin = Date.valueOf(localDateFin);
 
-            Event newEvent = new Event(0, titre, description, dateDebut, dateFin, lieu, prix, imageEvent, selectedCategory.getId());
-            serviceEvent.ajouter(newEvent);
+        Event newEvent = new Event(0, titre, description, dateDebut, dateFin, lieu, prix, imageEvent, selectedCategory.getId());
+        serviceEvent.ajouter(newEvent);
 
-            afficherEvents();
+        afficherEvents();
 
-            showAlert(Alert.AlertType.INFORMATION, "Événement ajouté", "L'événement a été ajouté avec succès.");
-        } else {
-            System.err.println("Les champs de date ne peuvent pas être vides.");
+        showAlert(Alert.AlertType.INFORMATION, "Événement ajouté", "L'événement a été ajouté avec succès.");
+    }
+
+    private boolean champsNonRemplis(String titre, String description, LocalDate localDateDebut, LocalDate localDateFin, String lieu, String prixStr) {
+        if (titre.isEmpty() || description.isEmpty() || localDateDebut == null || localDateFin == null || lieu.isEmpty() || prixStr.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Champs vides", "Veuillez remplir tous les champs.");
+            return true;
         }
+        return false;
+    }
+
+    private boolean champsValides(String titre, String lieu, String description, String prixStr) {
+        if (!titre.matches("[a-zA-Z]+")) {
+            showAlert(Alert.AlertType.ERROR, "Titre invalide", "Le titre ne peut contenir que des lettres.");
+            return false;
+        }
+
+        if (!lieu.matches("[a-zA-Z]+")) {
+            showAlert(Alert.AlertType.ERROR, "Lieu invalide", "Le lieu ne peut contenir que des lettres.");
+            return false;
+        }
+
+        if (description.length() > 255) {
+            showAlert(Alert.AlertType.ERROR, "Description trop longue", "La description ne peut pas dépasser 255 caractères.");
+            return false;
+        }
+
+        if (!prixStr.matches("\\d*\\.?\\d+")) {
+            showAlert(Alert.AlertType.ERROR, "Prix invalide", "Le prix doit contenir uniquement des chiffres.");
+            return false;
+        }
+
+        return true;
     }
 
     @FXML
@@ -172,58 +196,7 @@ public class AjoutEventController implements Initializable {
     }
 
     @FXML
-    void DelEvent(ActionEvent event) {
-        Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
-        serviceEvent.supprimer(selectedEvent);
-        afficherEvents();
-        showAlert(Alert.AlertType.INFORMATION, "Événement supprimé", "L'événement a été supprimé avec succès.");
-    }
-
-    @FXML
-    void UpdEvent(ActionEvent event) {
-        Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
-
-        if (selectedEvent == null) {
-            System.err.println("Veuillez sélectionner un événement à mettre à jour.");
-            return;
-        }
-
-        String newTitre = titreEvent.getText();
-        String newDescription = descEvent.getText();
-        LocalDate newLocalDateDebut = debEvent.getValue();
-        LocalDate newLocalDateFin = finEvent.getValue();
-        String newLieu = lieuEvent.getText();
-        double newPrix = Double.parseDouble(prixEvent.getText());
-        Image image = ImgEventAffiche.getImage();
-        String imageEvent = image.getUrl();        Category newSelectedCategory = categorieEvent.getValue();
-
-        if (newLocalDateDebut != null && newLocalDateFin != null) {
-            Date newDateDebut = Date.valueOf(newLocalDateDebut);
-            Date newDateFin = Date.valueOf(newLocalDateFin);
-
-            selectedEvent.setTitre(newTitre);
-            selectedEvent.setDescription(newDescription);
-            selectedEvent.setDateDebut(newDateDebut);
-            selectedEvent.setDateFin(newDateFin);
-            selectedEvent.setLieu(newLieu);
-            selectedEvent.setPrix(newPrix);
-            selectedEvent.setImageEvent(imageEvent);
-            selectedEvent.setIdCategory(newSelectedCategory.getId());
-
-            serviceEvent.modifier(selectedEvent);
-
-            afficherEvents();
-
-            showAlert(Alert.AlertType.INFORMATION, "Événement mis à jour", "L'événement a été mis à jour avec succès.");
-        } else {
-            System.err.println("Les champs de date ne peuvent pas être vides.");
-        }
-    }
-
-    @FXML
     private void selectImageAction() {
-        // Code pour sélectionner une image et obtenir son chemin
-        // Par exemple :
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif"));
         File selectedFile = fileChooser.showOpenDialog(null);
@@ -233,10 +206,6 @@ public class AjoutEventController implements Initializable {
         }
     }
 
-
-
-
-
     @FXML
     void rechercherParTitre(ActionEvent event) {
         String titre = rechercheTitreEvent.getText();
@@ -245,12 +214,9 @@ public class AjoutEventController implements Initializable {
             eventTable.getItems().clear();
             eventTable.getItems().addAll(events);
         } else {
-            // Si le champ de recherche est vide, afficher tous les événements
             afficherEvents();
         }
     }
-
-
 
     private void afficherEvents() {
         eventTable.getItems().clear();
@@ -341,5 +307,50 @@ public class AjoutEventController implements Initializable {
         }
 
     }
+
+    @FXML
+    public void DelEvent(ActionEvent actionEvent) {
+        // Récupérer l'événement sélectionné dans le TableView
+        Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
+
+        if (selectedEvent != null) {
+            // Appeler le service pour supprimer l'événement
+            serviceEvent.supprimer(selectedEvent);
+
+            // Mettre à jour l'affichage des événements dans le TableView
+            afficherEvents();
+
+            // Afficher une notification de succès
+            showAlert(Alert.AlertType.INFORMATION, "Événement supprimé", "L'événement a été supprimé avec succès.");
+        } else {
+            // Si aucun événement n'est sélectionné, afficher une alerte d'erreur
+            showAlert(Alert.AlertType.ERROR, "Aucun événement sélectionné", "Veuillez sélectionner un événement à supprimer.");
+        }
+    }
+
+
+    @FXML
+    public void UpdEvent(ActionEvent actionEvent) {
+        // Récupérer l'événement sélectionné dans le TableView
+        Event selectedEvent = eventTable.getSelectionModel().getSelectedItem();
+
+        if (selectedEvent != null) {
+            // Vous pouvez ouvrir une nouvelle fenêtre de dialogue pour permettre à l'utilisateur de mettre à jour les détails de l'événement
+            // Vous pouvez utiliser les mêmes champs et contrôles que ceux utilisés pour l'ajout d'un événement, pré-remplis avec les détails de l'événement sélectionné
+
+            // Une fois que l'utilisateur a effectué ses modifications et a confirmé, vous pouvez appeler le service pour mettre à jour l'événement
+            // serviceEvent.mettreAJour(selectedEvent);
+
+            // Mettre à jour l'affichage des événements dans le TableView
+            afficherEvents();
+
+            // Afficher une notification de succès
+            showAlert(Alert.AlertType.INFORMATION, "Événement mis à jour", "L'événement a été mis à jour avec succès.");
+        } else {
+            // Si aucun événement n'est sélectionné, afficher une alerte d'erreur
+            showAlert(Alert.AlertType.ERROR, "Aucun événement sélectionné", "Veuillez sélectionner un événement à mettre à jour.");
+        }
+    }
+
 }
 

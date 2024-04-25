@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FrontController">
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FrontController">
     <children>
         <BorderPane layoutX="135.0" layoutY="56.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
                 <AnchorPane prefHeight="50.0" prefWidth="600.0" styleClass="center-pane" BorderPane.alignment="CENTER">
                     <children>
-                        <Text fill="#266eff" layoutX="41.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TERRANOVA" wrappingWidth="133.78265380859375">
+                        <Text fill="#0055ff" layoutX="41.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TERRANOVA" wrappingWidth="133.78265380859375">
                             <font>
                                 <Font name="Book Antiqua" size="19.0" />
                             </font>
@@ -29,26 +29,30 @@
             <center>
                 <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0">
-                            <children>
-                                <GridPane fx:id="eventGrid" hgap="20.0" layoutX="42.0" layoutY="106.0" prefHeight="302.0" prefWidth="502.0" vgap="20.0"> <!-- Augmentation de l'espace horizontal et vertical -->
-                                    <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                        <RowConstraints maxHeight="174.60003662109375" minHeight="10.0" prefHeight="141.00001525878906" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="157.8000030517578" minHeight="10.0" prefHeight="140.99998474121094" vgrow="SOMETIMES" />
-                                    </rowConstraints>
-                                </GridPane>
-                                <Text layoutX="16.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Découvrez une multitude d'événements captivants à travers le monde et réservez dès maintenant votre prochaine expérience inoubliable avec Terranova !" wrappingWidth="559.1285400390625">
-                                    <font>
-                                        <Font size="11.0" />
-                                    </font>
-                                </Text>
-                            </children>
-                        </AnchorPane>
+                        <FlowPane fx:id="eventFlowPane" hgap="20.0" layoutX="42.0" layoutY="106.0" prefHeight="549.0" prefWidth="674.0" vgap="20.0">
+                     <children>
+                        <ImageView fitHeight="119.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                           <FlowPane.margin>
+                              <Insets />
+                           </FlowPane.margin>
+                        </ImageView>
+                        <ImageView fitHeight="119.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="119.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="119.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                           <FlowPane.margin>
+                              <Insets />
+                           </FlowPane.margin>
+                        </ImageView>
+                        <ImageView fitHeight="119.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="119.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="119.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                           <FlowPane.margin>
+                              <Insets left="35.0" top="70.0" />
+                           </FlowPane.margin>
+                        </ImageView>
+                        <ImageView fitHeight="119.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fitHeight="119.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                     </children></FlowPane>
                     </content>
                 </ScrollPane>
             </center>

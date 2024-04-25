@@ -36,11 +36,26 @@
                         </Text>
                         <ImageView fx:id="imgRes" fitHeight="150.0" fitWidth="200.0" layoutX="532.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
                         <Label layoutX="51.0" layoutY="59.0" />
-                        <Text layoutX="51.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous allez réserver :" />
-                        <Text layoutX="51.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :" />
-                        <Text layoutX="51.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Durée :" />
-                        <Text layoutX="51.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu :" />
-                        <Text layoutX="50.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix : " />
+                        <Text layoutX="51.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous allez réserver :">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Text>
+                        <Text layoutX="51.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Text>
+                        <Text layoutX="51.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Durée :">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Text>
+                        <Text layoutX="51.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu :">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Text>
+                        <Text layoutX="50.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix : ">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Text>
                         <Label fx:id="titreevent" layoutX="183.0" layoutY="51.0" text="TITRE" />
                         <Label fx:id="descripevent" layoutX="135.0" layoutY="90.0" text="DESCRIPTION" />
                         <Label fx:id="ddebutevent" layoutX="105.0" layoutY="129.0" text="DATE DEBUT " />
@@ -64,7 +79,7 @@
                   <Label layoutX="369.0" layoutY="357.0" text="Date de la réservation : " />
                   <DatePicker fx:id="datePicker" layoutX="531.0" layoutY="353.0" />
                   <Button layoutX="688.0" layoutY="410.0" mnemonicParsing="false" onAction="#validerReservEvent" text="Confirmer" />
-                  <Button layoutX="39.0" layoutY="410.0" mnemonicParsing="false" onAction="#validerReservEvent" text="Retour" />
+                  <Button layoutX="39.0" layoutY="410.0" mnemonicParsing="false" onAction="#retourFront" stylesheets="@HomeBack.css" text="Retour" />
                </children>
             </AnchorPane>
          </left>
