@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.crud.controllers.AjouterCode">
+   <children>
+      <Label layoutX="247.0" layoutY="33.0" text="Ajouter Code">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="codeTF" layoutX="43.0" layoutY="103.0" promptText="code" />
+      <TextField fx:id="utiliseTF" layoutX="43.0" layoutY="150.0" promptText="utilise" />
+      <TextField fx:id="user_idTF" layoutX="43.0" layoutY="200.0" promptText="user_id" />
+      <DatePicker fx:id="date_expTF" layoutX="30.0" layoutY="248.0" promptText="Date_expiration" />
+      <Button layoutX="300.0" layoutY="116.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="83.0" text="Ajouter" />
+   </children>
+</AnchorPane>
