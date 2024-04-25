@@ -36,35 +36,52 @@ public class ReservationManagment {
 
     private ObservableList<Reservation> reservations = FXCollections.observableArrayList();
 
-
+    private ServiceReservation SR = new ServiceReservation();
 
     @FXML
     public void initialize() {
         // Initialize the TableView with the list of reservations
-        ServiceReservation SR = new ServiceReservation();
         try {
-            reservations.addAll(SR.afficher());
-            afficher.setItems(reservations);
+            afficher();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     @FXML
+    public void afficher() throws SQLException {
+        reservations.clear();
+        reservations.addAll(SR.afficher());
+        afficher.setItems(reservations);
+    }
+    private void refreshTableView() {
+        try {
+            afficher.getItems().clear(); // Clear existing items
+            afficher(); // Re-populate TableView
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
     void ajouter(ActionEvent event) throws SQLException {
         String i = nom.getText();
         String y = email.getText();
-        LocalDate x = date.getValue(); // Use getValue() to get the selected date from the DatePicker
+        LocalDate x = date.getValue();
         Integer z = Integer.parseInt(nbr.getText());
 
         try {
             if (i != null && !i.isEmpty() && y != null && !y.isEmpty() && x != null && z != null) {
-                Reservation reservation = new Reservation(5, i, y, x, z); // Use the correct constructor
-                ServiceReservation SR = new ServiceReservation();
+                Reservation reservation = new Reservation(5, i, y, x, z);
                 SR.ajouter(reservation);
-                reservations.add(reservation);
-                afficher.setItems(reservations);
-                afficher.refresh();
+
+                // Add the new reservation to the TableView
+                afficher.getItems().add(reservation);
+
+                // Clear the input fields after adding the reservation
+                nom.clear();
+                email.clear();
+                date.setValue(null);
+                nbr.clear();
             } else {
                 System.out.println("Veuillez remplir tous les champs.");
             }
@@ -75,19 +92,15 @@ public class ReservationManagment {
         }
     }
 
-
-
-
     @FXML
     void modifier(ActionEvent event) throws SQLException {
         Reservation selectedReservation = afficher.getSelectionModel().getSelectedItem();
         if (selectedReservation != null) {
             // Show a dialog or form to edit the reservation details
             // After editing, update the reservation in the database
-            ServiceReservation SR = new ServiceReservation();
             SR.modifier(selectedReservation); // You need to implement the modifier method in ServiceReservation
             // Refresh the TableView
-            afficher.refresh();
+            afficher();
         } else {
             System.out.println("Veuillez sélectionner une réservation à modifier.");
         }
@@ -105,9 +118,10 @@ public class ReservationManagment {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 // User confirmed, delete the reservation
-                ServiceReservation SR = new ServiceReservation();
                 SR.supprimer(selectedReservation.getId()); // You need to implement the supprimer method in ServiceReservation
                 reservations.remove(selectedReservation);
+                // Refresh the TableView
+                afficher();
             }
         } else {
             System.out.println("Veuillez sélectionner une réservation à supprimer.");

@@ -65,10 +65,11 @@ public class HebergementManagment {
         comboxid.setItems(FXCollections.observableArrayList(categories));
     }
 
+
     @FXML
     void ajouter(ActionEvent event) throws SQLException {
-        String i = String.valueOf(Nom.getText());
-        String j = String.valueOf(Description.getText());
+        String i = Nom.getText();
+        String j = Description.getText();
         Category selectedCategory = comboxid.getValue();
 
         if (i.isEmpty() || j.isEmpty() || selectedCategory == null) {
@@ -107,8 +108,18 @@ public class HebergementManagment {
             afficher();
         }}
 
-    public void supp(ActionEvent actionEvent) {
+    @FXML
+    void supp(ActionEvent event) throws SQLException {
+        Hebergement h = afficher.getSelectionModel().getSelectedItem();
+        if (h == null) {
+            showAlert("Veuillez sélectionner un hébergement à supprimer.");
+        } else {
+            SH.supprimer(h.getId());
+            showAlert("Hébergement supprimé avec succès.");
+            afficher();
+        }
     }
+
 
     public void selectrestaurant(ActionEvent actionEvent) {
     }
