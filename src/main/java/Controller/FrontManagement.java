@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -116,12 +117,46 @@ public class FrontManagement {
     public void search(ActionEvent actionEvent) {
         String nameFilter = searchNameField.getText();
         String locationFilter = searchLocationField.getText();
-        float minimumPrice = Float.parseFloat(minimum.getText());
-        float maximumPrice = Float.parseFloat(maximum.getText());
 
-        List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter, minimumPrice, maximumPrice);
-        populateGridPane(filteredRestaurants);
+        // Perform input validation for minimum and maximum prices
+        try {
+            float minimumPrice = 0; // Initialize minimum price
+            float maximumPrice = Float.MAX_VALUE; // Initialize maximum price
+
+            // Check if minimum and maximum price fields are not empty
+            if (!minimum.getText().isEmpty()) {
+                minimumPrice = Float.parseFloat(minimum.getText());
+            }
+            if (!maximum.getText().isEmpty()) {
+                maximumPrice = Float.parseFloat(maximum.getText());
+            }
+
+            // Check if minimum price is greater than maximum price
+            if (minimumPrice > maximumPrice) {
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Prix invalide", "Le prix minimum ne peut pas être supérieur au prix maximum.");
+                return; // Exit the method if validation fails
+            }
+
+
+            List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter, minimumPrice, maximumPrice);
+            populateGridPane(filteredRestaurants);
+        } catch (NumberFormatException e) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Saisie invalide", "Veuillez saisir des valeurs numériques valides pour les prix.");
+        }
     }
+
+
+
+    @FXML
+    public void showAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.showAndWait();
+    }
+
+
 
 
     @FXML

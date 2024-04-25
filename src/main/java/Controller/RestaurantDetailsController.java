@@ -58,20 +58,23 @@ public class RestaurantDetailsController {
             // Create a Label for the plat name
             Label nameLabel = new Label(plat.getNom()); // Display plat name
 
-            // Add the image and name to the GridPane
+            // Create a Label for the plat price
+            Label priceLabel = new Label("Prix: " + plat.getPrix()); // Display plat price
+
+            // Add the image, name, and price to the GridPane
             platsGridPane.add(imageView, column, row);
             platsGridPane.add(nameLabel, column, row + 1); // Add the name below the image
+            platsGridPane.add(priceLabel, column, row + 2); // Add the price below the name
 
             // Increment row and reset column if necessary
             column++;
             if (column == 3) {
                 column = 0;
-                row += 2; // Increment by 2 to leave space for image and name
+                row += 3; // Increment by 3 to leave space for image, name, and price
             }
         }
-
-
     }
+
 
 
 
