@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class DashboardController {
 
@@ -59,25 +60,55 @@ public class DashboardController {
             String imagePlat = imagePath;
             float prixPlat = Float.parseFloat(prix.getText());
 
-            // Check if a restaurant is selected
-            if (restaurantComboBox.getSelectionModel().getSelectedItem() != null) {
-                Restaurant selectedRestaurant = restaurantComboBox.getSelectionModel().getSelectedItem();
-                Plat plat = new Plat(nomPlat, imagePlat, prixPlat, selectedRestaurant);
-                servicePlat.ajouter(plat);
+            // Check if the input fields are valid
+            if (validateInput(nomPlat, imagePlat, prix.getText())) {
+                // Check if a restaurant is selected
+                if (restaurantComboBox.getSelectionModel().getSelectedItem() != null) {
+                    Restaurant selectedRestaurant = restaurantComboBox.getSelectionModel().getSelectedItem();
+                    Plat plat = new Plat(nomPlat, imagePlat, prixPlat, selectedRestaurant);
+                    servicePlat.ajouter(plat);
 
-                // Refresh VBox
-                refreshVBox();
-            } else {
-                // Display an error message or handle the case where no restaurant is selected
-                System.err.println("Error: No restaurant selected.");
+                    // Refresh VBox
+                    refreshVBox();
+                } else {
+                    showAlert(Alert.AlertType.ERROR, "Erreur", "Sélection du restaurant", "Veuillez sélectionner un restaurant.");
+                }
             }
         } catch (SQLException | NumberFormatException e) {
             e.printStackTrace();
-            // Handle exception
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Saisie invalide", "Veuillez saisir un prix valide.");
         }
     }
 
-
+    // Method to validate input fields
+    private boolean validateInput(String nomPlat, String imagePlat, String prixPlat) {
+        // Validate nomPlat (alphabetic characters only)
+        if (!Pattern.matches("[a-zA-Z]+", nomPlat)) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Nom invalide", "Le nom du plat ne peut contenir que des lettres.");
+            return false;
+        }
+        // Validate prixPlat (numeric value only)
+        try {
+            float prix = Float.parseFloat(prixPlat);
+            if (prix <= 0) {
+                showAlert(Alert.AlertType.ERROR, "Erreur", "Prix invalide", "Le prix doit être supérieur à zéro.");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Prix invalide", "Veuillez saisir un prix valide.");
+            return false;
+        }
+        // Other validations...
+        return true;
+    }
+    // Method to display alert dialogs
+    private void showAlert(Alert.AlertType alertType, String title, String header, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
 
     // Method to add a Plat item to the VBox
     // Method to add a Plat item to the VBox

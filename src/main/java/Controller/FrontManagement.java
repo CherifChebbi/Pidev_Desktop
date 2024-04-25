@@ -123,6 +123,7 @@ public class FrontManagement {
         populateGridPane(filteredRestaurants);
     }
 
+
     @FXML
     public void reserveForRestaurant(ActionEvent event, Restaurant restaurant) {
         try {

@@ -40,10 +40,17 @@ public class Plat {
     }
 
     public void setNom(String nom) {
+        if (nom == null || nom.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nom cannot be empty");
+        }
+
         this.nom = nom;
     }
 
     public String getImage() {
+
+
+
         return image;
     }
 
