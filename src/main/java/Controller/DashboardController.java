@@ -52,23 +52,26 @@ public class DashboardController {
     @FXML
     private Button switchtorestaurant;
 
+
+    @FXML
+    private ImageView exit;
+
     private void setSelectedPlat(Plat plat) {
         this.selectedPlat = plat;
     }
 
 
-    @FXML
-    void switchToRestaurant(ActionEvent event) {
+    public void navigate(MouseEvent mouseEvent) {
         try {
             // Load the FXML file for the restaurant view
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminHome.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Front.fxml"));
             Parent root = loader.load();
 
             // Create a new scene with the restaurant view
             Scene scene = new Scene(root);
 
             // Get the stage from the ImageView
-            Stage stage = (Stage) switchtorestaurant.getScene().getWindow();
+            Stage stage = (Stage) exit.getScene().getWindow();
 
             // Set the new scene on the stage
             stage.setScene(scene);
@@ -76,7 +79,6 @@ public class DashboardController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML
@@ -354,7 +356,9 @@ public class DashboardController {
     public void goToRestaurant(ActionEvent actionEvent) {
     }
 
-    public void navigateBack(MouseEvent mouseEvent) {
+
+
+    public void switchToRestaurant(ActionEvent actionEvent) {
         try {
             // Load the FXML file for the restaurant view
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/restaurant.fxml"));
@@ -363,8 +367,9 @@ public class DashboardController {
             // Create a new scene with the restaurant view
             Scene scene = new Scene(root);
 
-            // Get the stage from the ImageView
-            Stage stage = (Stage) ((ImageView) mouseEvent.getSource()).getScene().getWindow();
+            // Get the stage from the actionEvent source
+            Node source = (Node) actionEvent.getSource();
+            Stage stage = (Stage) source.getScene().getWindow();
 
             // Set the new scene on the stage
             stage.setScene(scene);

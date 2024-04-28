@@ -75,12 +75,14 @@
                   <Font name="Calibri" size="25.0" />
                </font>
             </Text>
-            <Button fx:id="switchtorestaurant" layoutX="715.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToRestaurant" prefHeight="39.0" prefWidth="176.0" style="-fx-background-color: Whithe; -fx-border-color: black; -fx-border-radius: 20;" text="Configurer Plat" textFill="WHITE">
-               <font>
+             <Button fx:id="switchtorestaurant" layoutX="715.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToRestaurant" prefHeight="39.0" prefWidth="176.0" style="-fx-background-color: White; -fx-border-color: black; -fx-border-radius: 20;" text="Configurer Restaurant">
+
+
+             <font>
                   <Font name="Century Schoolbook" size="12.0" />
                </font>
             </Button>
-            <ImageView fitHeight="39.0" fitWidth="33.0" layoutX="609.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="exit" fitHeight="39.0" fitWidth="33.0" layoutX="609.0" layoutY="17.0" onMouseClicked="#navigate" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/home.png" />
                </image>
