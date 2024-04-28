@@ -9,22 +9,18 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="679.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.crud.controllers.ModifierUser">
    <children>
-      <TextField fx:id="idMod" layoutX="36.0" layoutY="141.0" prefHeight="26.0" prefWidth="110.0" promptText="Id du User" />
-      <TextField fx:id="nomNouv" layoutX="36.0" layoutY="200.0" prefHeight="26.0" prefWidth="110.0" promptText="Nouveau Nom" />
-      <TextField fx:id="prenomNouv" layoutX="157.0" layoutY="200.0" prefHeight="26.0" prefWidth="110.0" promptText="Nouveau Prenom" />
-      <TextField fx:id="adresseNouv" layoutX="284.0" layoutY="200.0" prefHeight="26.0" prefWidth="110.0" promptText="Nouvelle Adresse" />
-      <TextField fx:id="emailNouv" layoutX="410.0" layoutY="200.0" prefHeight="26.0" prefWidth="110.0" promptText="Nouveau Mail" />
-      <TextField fx:id="mdpNouv" layoutX="534.0" layoutY="200.0" prefHeight="26.0" prefWidth="110.0" promptText="Nouveau Mdp" />
-      <Button fx:id="modifier" layoutX="212.0" layoutY="141.0" mnemonicParsing="false" onAction="#Modification" prefHeight="40.0" prefWidth="91.0" text="Modifier" />
+      <TextField fx:id="nomNouv" layoutX="374.0" layoutY="83.0" prefHeight="26.0" prefWidth="110.0" promptText="Nouveau Nom" />
+      <TextField fx:id="prenomNouv" layoutX="374.0" layoutY="125.0" prefHeight="26.0" prefWidth="110.0" promptText="Nouveau Prenom" />
+      <TextField fx:id="adresseNouv" layoutX="375.0" layoutY="167.0" prefHeight="26.0" prefWidth="110.0" promptText="Nouvelle Adresse" />
+      <TextField fx:id="emailNouv" layoutX="376.0" layoutY="210.0" prefHeight="26.0" prefWidth="110.0" promptText="Nouveau Mail" />
+      <Button fx:id="modifier" layoutX="461.0" layoutY="311.0" mnemonicParsing="false" onAction="#Modification" prefHeight="25.0" prefWidth="72.0" text="Modifier" />
       <Label layoutX="250.0" layoutY="32.0" text="Modification De User">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Button layoutX="167.0" layoutY="283.0" mnemonicParsing="false" onAction="#ReturnToAjouter" text="Ajouter" />
-      <Button layoutX="314.0" layoutY="283.0" mnemonicParsing="false" onAction="#VersSupprimer" text="Supprimer" />
-      <Button layoutX="238.0" layoutY="283.0" mnemonicParsing="false" onAction="#VersAfficher" text="Afficher" />
-      <RadioButton fx:id="et" layoutX="526.0" layoutY="50.0" mnemonicParsing="false" text="ADMIN" />
-      <RadioButton fx:id="fo" layoutX="526.0" layoutY="96.0" mnemonicParsing="false" text="USER" />
+      <Button layoutX="363.0" layoutY="312.0" mnemonicParsing="false" onAction="#VersAfficher" text="Afficher" />
+      <RadioButton fx:id="et" layoutX="355.0" layoutY="267.0" mnemonicParsing="false" text="ADMIN" />
+      <RadioButton fx:id="fo" layoutX="454.0" layoutY="265.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="61.0" text="USER" />
    </children>
 </AnchorPane>

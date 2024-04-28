@@ -2,30 +2,36 @@ package tn.esprit.crud.models;
 
 public class User {
     private int id;
-    private String nom,prenom,adresse,email,mdp,role;
+    private String nom;
+    private String prenom;
+    private String nationnalite;
+    private String email;
+    private String password; // Corrected attribute name
+    private String roles; // Corrected attribute name
+    private int numtel; // Corrected attribute name
 
-
-    public User(int id , String nom , String prenom , String adresse , String email , String mdp,String role){
+    public User(int id, String nom, String prenom, String nationnalite, String email, String password, String roles, int numtel) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
-        this.adresse = adresse;
+        this.nationnalite = nationnalite;
         this.email = email;
-        this.mdp = mdp;
-        this.role = role;
+        this.password = password;
+        this.roles = roles;
+        this.numtel = numtel;
     }
 
     public User() {
-
     }
 
-    public User(String nom, String prenom, String adresse, String email, String mdp, String role) {
+    public User(String nom, String prenom, String nationnalite, String email, String password, String roles, int numtel) {
         this.nom = nom;
         this.prenom = prenom;
-        this.adresse = adresse;
+        this.nationnalite = nationnalite;
         this.email = email;
-        this.mdp = mdp;
-        this.role = role;
+        this.password = password;
+        this.roles = roles;
+        this.numtel = numtel;
     }
 
     public int getId() {
@@ -52,12 +58,12 @@ public class User {
         this.prenom = prenom;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getNationnalite() {
+        return nationnalite;
     }
 
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
+    public void setNationnalite(String nationnalite) {
+        this.nationnalite = nationnalite;
     }
 
     public String getEmail() {
@@ -68,20 +74,28 @@ public class User {
         this.email = email;
     }
 
-    public String getMdp() {
-        return mdp;
+    public String getPassword() {
+        return password;
     }
 
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getrole() {
-        return role;
+    public String getRoles() {
+        return roles;
     }
 
-    public void setrole(String role) {
-        this.role = role;
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public int getNumtel() {
+        return numtel;
+    }
+
+    public void setNumtel(int numtel) {
+        this.numtel = numtel;
     }
 
     @Override
@@ -90,14 +104,11 @@ public class User {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
-                ", adresse='" + adresse + '\'' +
+                ", nationnalite='" + nationnalite + '\'' +
                 ", email='" + email + '\'' +
-                ", mdp='" + mdp + '\'' +
-                ", role='" + role + '\'' +
+                ", password='" + password + '\'' +
+                ", roles='" + roles + '\'' +
+                ", numtel=" + numtel +
                 '}';
     }
-
 }
-
-
-

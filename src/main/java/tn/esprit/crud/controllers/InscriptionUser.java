@@ -30,13 +30,16 @@ public class InscriptionUser implements Initializable {
     private TextField emailTF;
 
     @FXML
-    private TextField mdpTF;
+    private TextField mdpTF; // Retained the same FX ID
 
     @FXML
     private TextField nomTF;
 
     @FXML
     private TextField prenomTF;
+
+    @FXML
+    private TextField numtelTF; // Retained the same FX ID
 
     @FXML
     private RadioButton et;
@@ -53,10 +56,11 @@ public class InscriptionUser implements Initializable {
         String prenom = prenomTF.getText().trim();
         String adresse = adresseTF.getText().trim();
         String email = emailTF.getText().trim();
-        String mdp = mdpTF.getText().trim();
+        String password = mdpTF.getText().trim(); // Retained the same TextField name
+        int numtel = Integer.parseInt(numtelTF.getText().trim());
 
         // Validate input fields
-        if (nom.isEmpty() || prenom.isEmpty() || adresse.isEmpty() || email.isEmpty() || mdp.isEmpty()) {
+        if (nom.isEmpty() || prenom.isEmpty() || adresse.isEmpty() || email.isEmpty() || password.isEmpty()) {
             showAlert("Please fill in all fields");
             return;
         }
@@ -68,7 +72,7 @@ public class InscriptionUser implements Initializable {
         }
 
         // Validate password length
-        if (mdp.length() < 8) {
+        if (password.length() < 8) {
             showAlert("Password must be at least 8 characters long");
             return;
         }
@@ -77,9 +81,11 @@ public class InscriptionUser implements Initializable {
         User user = new User();
         user.setNom(nom);
         user.setPrenom(prenom);
-        user.setAdresse(adresse);
+        user.setNationnalite(adresse);
         user.setEmail(email);
-        user.setMdp(mdp);
+        user.setPassword(password); // Retained the same attribute name
+        user.setRoles(selectedRadioButton.getText());
+        user.setNumtel(numtel);
 
         try {
             userService.inscription(user);
@@ -99,6 +105,8 @@ public class InscriptionUser implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         toggleGroup = new ToggleGroup();
+        et.setToggleGroup(toggleGroup);
+        fo.setToggleGroup(toggleGroup);
 
         toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             selectedRadioButton = (RadioButton) newValue;

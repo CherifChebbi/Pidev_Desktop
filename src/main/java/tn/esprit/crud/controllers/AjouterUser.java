@@ -4,13 +4,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import tn.esprit.crud.models.User;
 import tn.esprit.crud.services.UserService;
 import tn.esprit.crud.test.HelloApplication;
-
-
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,8 +21,8 @@ public class AjouterUser implements Initializable {
     private ToggleGroup toggleGroup;
     private RadioButton selectedRadioButton;
 
+    private UserService userService = new UserService();
 
-    private UserService userService=new UserService();
     @FXML
     private TextField adresseTF;
 
@@ -37,8 +37,12 @@ public class AjouterUser implements Initializable {
 
     @FXML
     private TextField prenomTF;
+
     @FXML
     private TextField roleTF;
+
+    @FXML
+    private TextField numtelTF; // Added TextField for numtel
 
     @FXML
     private RadioButton et;
@@ -48,8 +52,6 @@ public class AjouterUser implements Initializable {
 
     @FXML
     private RadioButton ad;
-
-
 
     @FXML
     void afficherUsers(ActionEvent event) {
@@ -64,14 +66,14 @@ public class AjouterUser implements Initializable {
 
     @FXML
     void ajouterUser(ActionEvent event) throws SQLException, IOException {
-        UserService userService = new UserService();
         User user = new User();
         user.setNom(nomTF.getText());
         user.setPrenom(prenomTF.getText());
-        user.setAdresse(adresseTF.getText());
+        user.setNationnalite(adresseTF.getText());
         user.setEmail(emailTF.getText());
-        user.setMdp(mdpTF.getText());
-        user.setrole(selectedRadioButton.getText());
+        user.setPassword(mdpTF.getText());
+        user.setRoles(selectedRadioButton.getText());
+        user.setNumtel(Integer.parseInt(numtelTF.getText())); // Set numtel from TextField
 
         try {
             userService.ajouter(user);
@@ -86,13 +88,6 @@ public class AjouterUser implements Initializable {
             alert.showAndWait();
             throw new RuntimeException(e);
         }
-        if(et.isSelected()){
-            userService.ajouter(new User(nomTF.getText(),prenomTF.getText(),adresseTF.getText(),emailTF.getText(),mdpTF.getText(),roleTF.getText()));}
-
-        if(fo.isSelected()){
-            userService.ajouter(new User(nomTF.getText(),prenomTF.getText(),emailTF.getText(),mdpTF.getText(),mdpTF.getText(),roleTF.getText()));}
-
-
     }
 
     @Override
@@ -100,32 +95,13 @@ public class AjouterUser implements Initializable {
         toggleGroup = new ToggleGroup();
         et.setToggleGroup(toggleGroup);
         fo.setToggleGroup(toggleGroup);
-        //ad.setToggleGroup(toggleGroup);
+
         toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             selectedRadioButton = (RadioButton) newValue;
-
         });
     }
 
-    @FXML
-    void VersModifier(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn/esprit/crud/ModifierUser.fxml"));
-        try {
-            nomTF.getScene().setRoot(fxmlLoader.load());
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-            throw new RuntimeException(e);
-        }
-    }
 
-    @FXML
-    void VersSupprimer(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn/esprit/crud/SupprimerUser.fxml"));
-        try {
-            nomTF.getScene().setRoot(fxmlLoader.load());
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-            throw new RuntimeException(e);
-        }
-    }
+
+
 }

@@ -10,12 +10,12 @@ public interface IServices<T> {
 
     void modifier (T t) throws SQLException;
 
-    void supprimer (T t);
+    void supprimer (T t) throws SQLException;
 
     void supprimer(int id) throws SQLException;
 
 
-    List<T> recupperer() throws SQLException;
+    List<T> recuperer() throws SQLException;
 
     void inscription(User user) throws SQLException;
 }

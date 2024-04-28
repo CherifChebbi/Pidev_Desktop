@@ -2,63 +2,44 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="441.0" prefWidth="675.0" style="-fx-background-color: #B4D4FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.crud.controllers.AfficherUsers">
-   <children>
-      <ListView fx:id="nomCol" layoutX="157.0" layoutY="100.0" prefHeight="250.0" prefWidth="94.0" />
-      <Label layoutX="229.0" layoutY="14.0" prefHeight="26.0" prefWidth="419.0" text="User LIST :" textAlignment="CENTER" textFill="#176b87" textOverrun="WORD_ELLIPSIS">
-         <font>
-            <Font name="Algerian" size="43.0" />
-         </font>
-      </Label>
-      <ListView fx:id="prenomCol" layoutX="255.0" layoutY="100.0" prefHeight="250.0" prefWidth="94.0" />
-      <ListView fx:id="adresseCol" layoutX="352.0" layoutY="100.0" prefHeight="250.0" prefWidth="94.0" />
-      <ListView fx:id="emailCol" layoutX="450.0" layoutY="100.0" prefHeight="250.0" prefWidth="94.0" />
-      <ListView fx:id="mdpCol" layoutX="548.0" layoutY="100.0" prefHeight="250.0" prefWidth="94.0" />
-      <Label layoutX="172.0" layoutY="73.0" text="Nom" textFill="#176b87">
-         <font>
-            <Font name="Algerian" size="17.0" />
-         </font></Label>
-      <Label layoutX="266.0" layoutY="74.0" text="Prenom" textFill="#176b87">
-         <font>
-            <Font name="Algerian" size="18.0" />
-         </font></Label>
-      <Label layoutX="356.0" layoutY="72.0" text="Adresse" textFill="#176b87">
-         <font>
-            <Font name="Algerian" size="19.0" />
-         </font></Label>
-      <Label layoutX="465.0" layoutY="71.0" text="Email" textFill="#176b87">
-         <font>
-            <Font name="Algerian" size="20.0" />
-         </font></Label>
-      <Label layoutX="551.0" layoutY="75.0" text="Mot De Passe" textFill="#176b87">
-         <font>
-            <Font name="Algerian" size="17.0" />
-         </font></Label>
-      <Button layoutX="13.0" layoutY="372.0" mnemonicParsing="false" onAction="#ReturnToAjouter" prefHeight="34.0" prefWidth="146.0" text="Ajouter" textFill="#1a4321">
-         <font>
-            <Font name="Algerian" size="19.0" />
-         </font></Button>
-      <Button layoutX="335.0" layoutY="372.0" mnemonicParsing="false" onAction="#PageSupprimer" prefHeight="34.0" prefWidth="146.0" text="Supprimer " textFill="#1a4321">
-         <font>
-            <Font name="Algerian" size="19.0" />
-         </font></Button>
-      <ListView fx:id="idCol" layoutX="59.0" layoutY="100.0" prefHeight="250.0" prefWidth="94.0" />
-      <Label layoutX="76.0" layoutY="72.0" text="ID" textFill="#176b87">
-         <font>
-            <Font name="Algerian" size="20.0" />
-         </font></Label>
-      <Button layoutX="178.0" layoutY="372.0" mnemonicParsing="false" onAction="#PageModifier" prefHeight="34.0" prefWidth="146.0" text="Modifier" textFill="#1a4321">
-         <font>
-            <Font name="Algerian" size="19.0" />
-         </font></Button>
-      <Button fx:id="auth" layoutX="490.0" layoutY="372.0" mnemonicParsing="false" onAction="#auth" prefHeight="35.0" prefWidth="171.0" text="authentification" textFill="#1a400f">
-         <font>
-            <Font name="Algerian" size="19.0" />
-         </font>
-      </Button>
-   </children>
+<AnchorPane prefHeight="441.0" prefWidth="675.0" style="-fx-background-color: #EEF5FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.crud.controllers.AfficherUsers">
+    <children>
+        <Label layoutX="229.0" layoutY="14.0" prefHeight="26.0" prefWidth="419.0" text="User LIST :" textAlignment="CENTER" textFill="#176b87" textOverrun="WORD_ELLIPSIS">
+            <font>
+                <Font name="Algerian" size="43.0" />
+            </font>
+        </Label>
+        <Button layoutX="13.0" layoutY="372.0" mnemonicParsing="false" onAction="#ReturnToAjouter" prefHeight="34.0" prefWidth="146.0" text="Ajouter" textFill="#1a4321">
+            <font>
+                <Font name="Algerian" size="19.0" />
+            </font></Button>
+        <Button layoutX="335.0" layoutY="372.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="34.0" prefWidth="146.0" text="Supprimer " textFill="#1a4321">
+            <font>
+                <Font name="Algerian" size="19.0" />
+            </font></Button>
+        <Button layoutX="178.0" layoutY="372.0" mnemonicParsing="false" onAction="#PageModifier" prefHeight="34.0" prefWidth="146.0" text="Modifier" textFill="#1a4321">
+            <font>
+                <Font name="Algerian" size="19.0" />
+            </font></Button>
+        <Button fx:id="auth" layoutX="490.0" layoutY="372.0" mnemonicParsing="false" onAction="#auth" prefHeight="35.0" prefWidth="171.0" text="authentification" textFill="#1a400f">
+            <font>
+                <Font name="Algerian" size="19.0" />
+            </font>
+        </Button>
+        <TableView fx:id="tableView" layoutX="97.0" layoutY="121.0" prefHeight="200.0" prefWidth="453.0">
+            <columns>
+                <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="emailCol" prefWidth="75.0" text="Email" />
+                <TableColumn fx:id="nomCol" prefWidth="75.0" text="Nom" />
+                <TableColumn fx:id="prenomCol" prefWidth="75.0" text="Prénom" />
+                <TableColumn fx:id="nationnalieCol" prefWidth="75.0" text="Nationalité" />
+                <TableColumn fx:id="numtelCol" prefWidth="75.0" text="Téléphone" />
+            </columns>
+        </TableView>
+    </children>
 </AnchorPane>

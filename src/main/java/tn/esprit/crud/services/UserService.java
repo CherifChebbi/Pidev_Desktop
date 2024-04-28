@@ -21,7 +21,7 @@ public class UserService implements IServices<User> {
 
     @Override
     public void ajouter(User user) throws SQLException {
-        String req = "INSERT INTO user(nom , prenom , adresse , email , mdp,role) VALUES( '" + user.getNom() + "' , '" + user.getPrenom() + "' , '" + user.getAdresse() + "' , '" + user.getEmail() + "' , '" + user.getMdp() + "','" + user.getrole() + "')";
+        String req = "INSERT INTO user(nom , prenom , adresse , email , mdp,role) VALUES( '" + user.getNom() + "' , '" + user.getPrenom() + "' , '" + user.getNationnalite() + "' , '" + user.getEmail() + "' , '" + user.getPassword() + "','" + user.getRoles() + "')";
         Statement st = connection.createStatement();
         st.executeUpdate(req);
     }
@@ -32,53 +32,53 @@ public class UserService implements IServices<User> {
         PreparedStatement us = connection.prepareStatement(req);
         us.setString(1, user.getNom());
         us.setString(2, user.getPrenom());
-        us.setString(3, user.getAdresse());
+        us.setString(3, user.getNationnalite());
         us.setString(4, user.getEmail());
-        us.setString(5, user.getMdp());
-        us.setString(6, user.getrole());
+        us.setString(5, user.getPassword());
+        us.setString(6, user.getRoles());
         us.setInt(7, user.getId());
         us.executeUpdate();
     }
 
-    @Override
-    public void supprimer(User user) {
 
+
+    @Override
+    public void supprimer(User user) throws SQLException {
+        String req = "DELETE FROM user WHERE id = ?";
+        PreparedStatement pre = connection.prepareStatement(req);
+        pre.setInt(1, user.getId());
+        pre.executeUpdate();
+        System.out.println("User deleted successfully!");
     }
 
     @Override
     public void supprimer(int id) throws SQLException {
-
-        String req = "DELETE FROM user WHERE id = ? ";
-        PreparedStatement us = connection.prepareStatement(req);
-        us.setInt(1, id);
-        us.executeUpdate();
+        String req = "DELETE FROM user WHERE id = ?";
+        PreparedStatement pre = connection.prepareStatement(req);
+        pre.setInt(1, id);
+        pre.executeUpdate();
+        System.out.println("User deleted successfully!");
     }
-
-
     @Override
-    public List<User> recupperer() throws SQLException {
+    public List<User> recuperer() throws SQLException {
         List<User> users = new ArrayList<>();
         String req = "SELECT * FROM user";
         Statement us = connection.createStatement();
         ResultSet rs = us.executeQuery(req);
-
 
         while (rs.next()) {
             User user = new User();
             user.setId(rs.getInt("id"));
             user.setNom(rs.getString("nom"));
             user.setPrenom(rs.getString("prenom"));
-            user.setAdresse(rs.getString("adresse"));
+            user.setNationnalite(rs.getString("nationnalite")); // Use the "nationnalite" column instead of "adresse"
             user.setEmail(rs.getString("email"));
-            user.setMdp(rs.getString("mdp"));
-            user.setrole(rs.getString("role"));
+            user.setPassword(rs.getString("mdp")); // Use the "mdp" column instead of "nationnalite"
+            user.setRoles(rs.getString("role"));
 
             users.add(user);
-
         }
         return users;
-
-
     }
 
     public boolean authenticateUser(String name, String pass) {
@@ -97,7 +97,7 @@ public class UserService implements IServices<User> {
 
     }
 
-    public String role(int id) {
+    public String roles (int id) {
         try {
 
             PreparedStatement stmt1 = connection.prepareStatement("SELECT role FROM user where id=?");
@@ -116,14 +116,25 @@ public class UserService implements IServices<User> {
     }
 
     public List<User> displayAll() {
-        String requete="select * from user";
-        List<User> list=new ArrayList<>();
+        String requete = "SELECT * FROM user";
+        List<User> list = new ArrayList<>();
 
         try {
-            ste=connection.createStatement();
-            ResultSet et=ste.executeQuery(requete);
-            while (et.next()){
-                list.add(new User(et.getInt("id"),et.getString("nom"),et.getString("prenom"),et.getString("adresse"),et.getString("email"),et.getString("mdp"),et.getString("role")));
+            ste = connection.createStatement();
+            ResultSet resultSet = ste.executeQuery(requete);
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String nom = resultSet.getString("nom");
+                String prenom = resultSet.getString("prenom");
+                String adresse = resultSet.getString("adresse");
+                String email = resultSet.getString("email");
+                String password = resultSet.getString("password"); // Update attribute name
+                String roles = resultSet.getString("roles"); // Update attribute name
+                int numtel = resultSet.getInt("numtel"); // Added for the "numtel" attribute
+
+                // Create a new User object with retrieved data
+                User user = new User(id, nom, prenom, adresse, email, password, roles, numtel);
+                list.add(user);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -133,7 +144,7 @@ public class UserService implements IServices<User> {
 
     @Override
     public void inscription(User user) throws SQLException {
-        String req = "INSERT INTO user(nom , prenom , adresse , email , mdp) VALUES( '" + user.getNom() + "' , '" + user.getPrenom() + "' , '" + user.getAdresse() + "' , '" + user.getEmail() + "' , '" + user.getMdp() + "')";
+        String req = "INSERT INTO user(nom , prenom , adresse , email , mdp) VALUES( '" + user.getNom() + "' , '" + user.getPrenom() + "' , '" + user.getNationnalite() + "' , '" + user.getEmail() + "' , '" + user.getPassword() + "')";
         Statement st = connection.createStatement();
         st.executeUpdate(req);
     }
