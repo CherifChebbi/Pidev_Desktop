@@ -31,7 +31,7 @@ public class HomeBackController  {
     @FXML
     public void dashboardCategories(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjoutCategory.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackCategory.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -57,7 +57,7 @@ public class HomeBackController  {
     @FXML
     public void dashboardEvents(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjoutEvent.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackEvent.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));

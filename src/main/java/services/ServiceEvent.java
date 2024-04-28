@@ -183,7 +183,7 @@ public class ServiceEvent implements IService<Event> {
              ResultSet rs = stmt.executeQuery()) {
 
             if (rs.next()) {
-                count = rs.getInt(1);
+                count = rs.getInt(1); 
             }
         }
 

@@ -24,7 +24,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-public class AjoutCategoryController implements Initializable {
+public class CategoryEventController implements Initializable {
 
     private final ServiceCategory sc;
 
@@ -139,7 +139,7 @@ public class AjoutCategoryController implements Initializable {
     @FXML
     public void dashboardCategories(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjoutCategory.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackCategory.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -165,7 +165,7 @@ public class AjoutCategoryController implements Initializable {
     @FXML
     public void dashboardEvents(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjoutEvent.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackEvent.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));

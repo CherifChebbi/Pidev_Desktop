@@ -29,7 +29,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AjoutEventController implements Initializable {
+public class EventController implements Initializable {
 
     @FXML
     private ChoiceBox<Category> categorieEvent;
@@ -236,7 +236,7 @@ public class AjoutEventController implements Initializable {
     void dashboardCategories(ActionEvent event) {
         try {
             // Charger le fichier FXML de la page AjoutCategory.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjoutCategory.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackCategory.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène avec le contenu de la page AjoutCategory.fxml
@@ -277,7 +277,7 @@ public class AjoutEventController implements Initializable {
     void dashboardEvents(ActionEvent event) {
         try {
             // Charger le fichier FXML de la page du tableau de bord des événements
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjoutEvent.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackEvent.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène avec le contenu de la page du tableau de bord des événements
