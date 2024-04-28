@@ -12,40 +12,43 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="706.0" prefWidth="1166.0" style="-fx-background-color: ffffff;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: ffffff;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <ImageView fx:id="Background" fitHeight="570.0" fitWidth="658.0" layoutX="378.0" layoutY="133.0" opacity="0.08" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/logo1.png" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="56.0" prefWidth="1174.0" style="-fx-background-color: rgb(240, 243, 255);">
+      <AnchorPane prefHeight="56.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);">
          <children>
-            <Label alignment="CENTER" layoutX="1004.0" layoutY="5.0" prefHeight="40.0" prefWidth="164.0" text="Acceder Front" textFill="RED">
+            <Button layoutX="1142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: rgb(240, 243, 255);" text="Acceder Front" textFill="#ea1010">
                <font>
-                  <Font name="System Bold Italic" size="18.0" />
+                  <Font name="System Bold Italic" size="15.0" />
                </font>
-            </Label>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </HBox.margin>
+            </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="47.0" prefHeight="151.0" prefWidth="1174.0" style="-fx-background-color: rgb(127, 199, 217);">
+      <AnchorPane layoutY="47.0" prefHeight="151.0" prefWidth="1300.0" style="-fx-background-color: rgb(127, 199, 217);">
          <children>
             <Label alignment="CENTER" layoutX="275.0" layoutY="1.0" prefHeight="144.0" prefWidth="571.0" text="TeraNova Dashboard" textFill="#1b0000">
                <font>
                   <Font name="Onyx" size="84.0" />
                </font>
             </Label>
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1122.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1256.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/icons8_settings_26px.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1074.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1208.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/icons8_bell_24px.png" />
                </image>
             </ImageView>
-            <TextField layoutX="831.0" layoutY="33.0" opacity="0.16" prefHeight="40.0" prefWidth="229.0" promptText="Search Drive" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: rgb(30, 3, 66);" text="Search ....">
+            <TextField layoutX="965.0" layoutY="14.0" opacity="0.16" prefHeight="40.0" prefWidth="229.0" promptText="Search Drive" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: rgb(30, 3, 66);" text="Search ....">
                <font>
                   <Font name="Berlin Sans FB" size="13.0" />
                </font>
@@ -60,7 +63,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="22.0" layoutY="185.0" prefHeight="490.0" prefWidth="280.0" style="-fx-background-color: rgb(220, 242, 241); -fx-background-radius: 30px 30px 30px 30px;">
+      <AnchorPane layoutX="25.0" layoutY="180.0" prefHeight="490.0" prefWidth="280.0" style="-fx-background-color: rgb(220, 242, 241); -fx-background-radius: 30px 30px 30px 30px;">
          <children>
             <VBox layoutX="9.0" layoutY="68.0" prefHeight="425.0" prefWidth="262.0">
                <children>
@@ -74,14 +77,14 @@
                               <Image url="@images/icons8_james_bond_32px.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="gestion_User" style="-fx-background-radius: 50px 50px 50px 50px;" text="Gestion_Users" textFill="#050000">
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="204.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Users" textFill="#030000">
                            <font>
-                              <Font name="Cambria Bold" size="20.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
                            <HBox.margin>
-                              <Insets left="10.0" />
+                              <Insets left="5.0" />
                            </HBox.margin>
-                        </Label>
+                        </Button>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="202.0" style="-fx-background-color: rgb(254, 250, 246); -fx-background-radius: 50px 50px 50px 50px;" styleClass="sidebar-btn-text">
@@ -91,14 +94,11 @@
                               <Image url="@images/icons8_james_bond_32px.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="gestion_Pays" text="Gestion_Pays" textFill="#180000">
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Pays" textFill="#030000">
                            <font>
-                              <Font name="Cambria Bold" size="20.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Label>
+                        </Button>
                      </children>
                      <padding>
                         <Insets left="5.0" />
@@ -114,14 +114,11 @@
                               <Image url="@images/icons8_james_bond_32px.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="gestion_Restaurant" text="Gestion_Restaurants">
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Restaurants" textFill="#030000">
                            <font>
-                              <Font name="Cambria Bold" size="20.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Label>
+                        </Button>
                      </children>
                      <padding>
                         <Insets left="5.0" />
@@ -137,14 +134,11 @@
                               <Image url="@images/icons8_james_bond_32px.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="gestion_Hebergement" prefHeight="30.0" prefWidth="214.0" text="Gestion_Hebegements">
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="213.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Hebegements" textFill="#030000">
                            <font>
-                              <Font name="Cambria Bold" size="20.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Label>
+                        </Button>
                      </children>
                      <padding>
                         <Insets left="5.0" />
@@ -160,14 +154,11 @@
                               <Image url="@images/icons8_james_bond_32px.png" />
                            </image>
                         </ImageView>
-                        <Label text="Gestion_Evenements">
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Evenements" textFill="#030000">
                            <font>
-                              <Font name="Cambria Bold Italic" size="20.0" />
+                              <Font name="System Bold" size="18.0" />
                            </font>
-                           <HBox.margin>
-                              <Insets left="10.0" />
-                           </HBox.margin>
-                        </Label>
+                        </Button>
                      </children>
                      <padding>
                         <Insets left="5.0" />
@@ -182,7 +173,7 @@
       </AnchorPane>
       <HBox alignment="CENTER_RIGHT" layoutX="365.0" layoutY="185.0" prefHeight="56.0" prefWidth="787.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(220, 242, 241);">
          <children>
-            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="159.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Ajouter Pays" textFill="#030000">
+            <Button mnemonicParsing="false" prefHeight="31.0" prefWidth="159.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Ajouter" textFill="#030000">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -190,7 +181,7 @@
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Modifier Pays" textFill="#030000">
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Modifier " textFill="#030000">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -198,7 +189,15 @@
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Liste des Villes">
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Supprimer">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Liste des Villes" textFill="#030000">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -208,5 +207,6 @@
             </Button>
          </children>
       </HBox>
+      <ImageView fx:id="imageView_pays" fitHeight="200" fitWidth="200" layoutX="1069.0" layoutY="332.0" />
    </children>
 </AnchorPane>

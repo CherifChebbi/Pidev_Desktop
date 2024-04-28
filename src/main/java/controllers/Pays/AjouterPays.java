@@ -1,7 +1,5 @@
 package controllers.Pays;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +17,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
-import java.util.List;
 
 public class AjouterPays {
     @FXML
@@ -50,7 +47,7 @@ public class AjouterPays {
     private TextField tf_nomPays;
 
     @FXML
-    private Button AjouterPays_Button;
+    private Button AjouterPays_Button1;
     private String imagePath;
     private File file;
     @FXML
@@ -160,6 +157,17 @@ public class AjouterPays {
 
     @FXML
     void returnToList(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/AfficherPays.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    @FXML
+    void returnToListPays(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/AfficherPays.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

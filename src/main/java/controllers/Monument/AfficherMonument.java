@@ -1,5 +1,6 @@
 package controllers.Monument;
 
+import controllers.Pays.AfficherPays;
 import controllers.Ville.AfficherVille;
 import controllers.Monument.ModifierMonument;
 import javafx.collections.FXCollections;
@@ -276,5 +277,21 @@ public class AfficherMonument {
         if (MonumentList != null) {
             MonumentTable.getItems().addAll(MonumentList);
         }
+    }
+    @FXML
+    void returnToListPays(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/AfficherPays.fxml"));
+        Parent root = loader.load();
+
+        // Après avoir chargé le contrôleur, récupérez une référence au contrôleur de la page des pays
+        AfficherPays controller = loader.getController();
+
+        // Appelez la méthode de rafraîchissement des données
+        //controller.rafraichirDonnees();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

@@ -5,155 +5,255 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Pays.ModifierPays">
+<AnchorPane id="AnchorPane" prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: ffffff;" stylesheets="@../stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Pays.ModifierPays">
     <children>
-      <VBox layoutY="70.0" prefHeight="485.0" prefWidth="900.0" style="-fx-background-color: rgb(238, 245, 255);">
-         <children>
-              <HBox alignment="CENTER" prefHeight="442.0" prefWidth="880.0">
-                  <children>
-                      <VBox alignment="CENTER" prefHeight="406.0" prefWidth="137.0">
-                          <children>
-                              <Label prefHeight="26.0" prefWidth="242.0" text="Nom">
-                                  <VBox.margin>
-                                      <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                                  </VBox.margin>
-                                  <font>
-                                      <Font name="System Bold Italic" size="15.0" />
-                                  </font>
-                              </Label>
-                              <Label prefHeight="26.0" prefWidth="242.0" text="Image">
-                                  <VBox.margin>
-                                      <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                                  </VBox.margin>
-                                  <font>
-                                      <Font name="System Bold Italic" size="15.0" />
-                                  </font>
-                              </Label>
-                              <Label prefHeight="26.0" prefWidth="242.0" text="Description">
-                                  <VBox.margin>
-                                      <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                                  </VBox.margin>
-                                  <font>
-                                      <Font name="System Bold Italic" size="15.0" />
-                                  </font>
-                              </Label>
-                              <Label prefHeight="26.0" prefWidth="242.0" text="Langue">
-                                  <VBox.margin>
-                                      <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                                  </VBox.margin>
-                                  <font>
-                                      <Font name="System Bold Italic" size="15.0" />
-                                  </font>
-                              </Label>
-                              <Label prefHeight="26.0" prefWidth="242.0" text="Continent">
-                                  <VBox.margin>
-                                      <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                                  </VBox.margin>
-                                  <font>
-                                      <Font name="System Bold Italic" size="15.0" />
-                                  </font>
-                              </Label>
-                              <Label prefHeight="26.0" prefWidth="242.0" text="Latitude">
-                                  <VBox.margin>
-                                      <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                                  </VBox.margin>
-                                  <font>
-                                      <Font name="System Bold Italic" size="15.0" />
-                                  </font>
-                              </Label>
-                              <Label prefHeight="26.0" prefWidth="242.0" text="Longitude">
-                                  <VBox.margin>
-                                      <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                                  </VBox.margin>
-                                  <font>
-                                      <Font name="System Bold Italic" size="15.0" />
-                                  </font>
-                              </Label>
-                          </children>
-                          <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                          </HBox.margin>
-                      </VBox>
-                      <VBox alignment="CENTER" prefHeight="330.0" prefWidth="234.0">
-                          <children>
-                              <TextField fx:id="tf_nomPays" style="-fx-background-color: rgb(240, 235, 227);">
-                                  <VBox.margin>
-                                      <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                                  </VBox.margin>
-                              </TextField>
-                        <Button fx:id="btnImporterImage" onAction="#importerImage" prefHeight="26.0" prefWidth="222.0" style="-fx-background-color: rgb(240, 235, 227);" text="Importer Image">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                           </VBox.margin>
-                        </Button>
-                              <TextField fx:id="tf_descPays" style="-fx-background-color: rgb(240, 235, 227);">
-                                  <VBox.margin>
-                                      <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                                  </VBox.margin>
-                              </TextField>
-                              <TextField fx:id="tf_languePays" style="-fx-background-color: rgb(240, 235, 227);">
-                                  <VBox.margin>
-                                      <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                                  </VBox.margin>
-                              </TextField>
-                            <ChoiceBox fx:id="choiceContinent" prefHeight="26.0" prefWidth="222.0" style="-fx-background-color: rgb(240, 235, 227);">
-                               <VBox.margin>
-                                  <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                               </VBox.margin>
-                            </ChoiceBox>
-                              <TextField fx:id="tf_latitude" style="-fx-background-color: rgb(240, 235, 227);">
-                                  <VBox.margin>
-                                      <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                                  </VBox.margin>
-                              </TextField>
-                              <TextField fx:id="tf_longitude" style="-fx-background-color: rgb(240, 235, 227);">
-                                  <VBox.margin>
-                                      <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
-                                  </VBox.margin>
-                              </TextField>
-                          </children>
-                          <HBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                          </HBox.margin>
-                      </VBox>
-                  </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-              </HBox>
-         </children>
-      </VBox>
-        <VBox alignment="BOTTOM_RIGHT" prefHeight="70.0" prefWidth="900.0" style="-fx-background-color: rgb(23, 107, 135);">
-         <children>
-            <HBox alignment="BOTTOM_RIGHT" prefHeight="62.0" prefWidth="200.0">
-               <children>
-                      <Button fx:id="ModifierPays_Button" mnemonicParsing="false" onAction="#ModifierPays" prefHeight="37.0" prefWidth="101.0" style="-fx-background-color: rgb(23, 107, 135);" text="Modifier" textFill="WHITE">
-                          <font>
-                              <Font name="System Bold" size="15.0" />
-                          </font>
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
-                     </HBox.margin>
-                      </Button>
-                  <Button fx:id="returnToList" mnemonicParsing="false" onAction="#returnToList" prefHeight="32.0" prefWidth="92.0" style="-fx-background-color: rgb(23, 107, 135);" text="Return" textFill="WHITE">
-                     <font>
+        <ImageView fx:id="Background" fitHeight="570.0" fitWidth="658.0" layoutX="378.0" layoutY="133.0" opacity="0.08" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../images/logo1.png" />
+            </image>
+        </ImageView>
+        <AnchorPane layoutY="47.0" prefHeight="151.0" prefWidth="1300.0" style="-fx-background-color: rgb(127, 199, 217);">
+            <children>
+                <Label alignment="CENTER" layoutX="275.0" layoutY="1.0" prefHeight="144.0" prefWidth="571.0" text="TeraNova Dashboard" textFill="#1b0000">
+                    <font>
+                        <Font name="Onyx" size="84.0" />
+                    </font>
+                </Label>
+                <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1256.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/icons8_settings_26px.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1208.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/icons8_bell_24px.png" />
+                    </image>
+                </ImageView>
+                <TextField layoutX="965.0" layoutY="14.0" opacity="0.16" prefHeight="40.0" prefWidth="229.0" promptText="Search Drive" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: rgb(30, 3, 66);" text="Search ....">
+                    <font>
+                        <Font name="Berlin Sans FB" size="13.0" />
+                    </font>
+                    <effect>
+                        <DropShadow color="#b9b6b6" />
+                    </effect>
+                </TextField>
+                <ImageView fitHeight="154.0" fitWidth="164.0" layoutX="34.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/logo1.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+        <HBox alignment="CENTER_RIGHT" layoutX="365.0" layoutY="185.0" prefHeight="56.0" prefWidth="787.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(220, 242, 241);">
+            <children>
+                <Button fx:id="ModifierPays_Button" mnemonicParsing="false" onAction="#ModifierPays" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Modifier">
+                    <font>
                         <Font name="System Bold" size="15.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
-                     </HBox.margin>
-                  </Button>
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="returnToList" mnemonicParsing="false" onAction="#returnToList" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Return" textFill="#030000">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="582.0" layoutY="269.0" prefHeight="334.0" prefWidth="207.0">
+            <children>
+                <VBox alignment="CENTER" prefHeight="315.0" prefWidth="171.0">
+                    <children>
+                        <Label prefHeight="26.0" prefWidth="242.0" text="Nom">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="26.0" prefWidth="242.0" text="Image">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="26.0" prefWidth="242.0" text="Description">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="26.0" prefWidth="242.0" text="Langue">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="26.0" prefWidth="242.0" text="Continent">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="26.0" prefWidth="242.0" text="Latitude">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                        <Label prefHeight="26.0" prefWidth="242.0" text="Longitude">
+                            <VBox.margin>
+                                <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+                            </VBox.margin>
+                            <font>
+                                <Font name="System Bold Italic" size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+        <TextField fx:id="tf_nomPays" layoutX="775.0" layoutY="281.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: rgb(240, 235, 227);" />
+        <Button fx:id="btnImporterImage" layoutX="775.0" layoutY="324.0" onAction="#importerImage" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: rgb(240, 235, 227);" text="Importer Image">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Button>
+        <TextField fx:id="tf_descPays" layoutX="775.0" layoutY="368.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: rgb(240, 235, 227);" />
+        <TextField fx:id="tf_languePays" layoutX="775.0" layoutY="414.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: rgb(240, 235, 227);" />
+        <ChoiceBox fx:id="choiceContinent" layoutX="775.0" layoutY="461.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: rgb(240, 235, 227);" />
+        <TextField fx:id="tf_latitude" layoutX="775.0" layoutY="508.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: rgb(240, 235, 227);" />
+        <TextField fx:id="tf_longitude" layoutX="775.0" layoutY="557.0" prefHeight="35.0" prefWidth="180.0" style="-fx-background-color: rgb(240, 235, 227);" />
+      <AnchorPane layoutX="25.0" layoutY="180.0" prefHeight="490.0" prefWidth="280.0" style="-fx-background-color: rgb(220, 242, 241); -fx-background-radius: 30px 30px 30px 30px;">
+         <children>
+            <VBox layoutX="9.0" layoutY="68.0" prefHeight="425.0" prefWidth="262.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(254, 250, 246);" styleClass="sidebar-btn-text">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/icons8_james_bond_32px.png" />
+                           </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="204.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Users" textFill="#030000">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="202.0" style="-fx-background-color: rgb(254, 250, 246); -fx-background-radius: 50px 50px 50px 50px;" styleClass="sidebar-btn-text">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8_james_bond_32px.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="returnToListPays1" mnemonicParsing="false" onAction="#returnToListPays" prefHeight="40.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Pays" textFill="#030000">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="202.0" style="-fx-background-color: rgb(254, 250, 246); -fx-background-radius: 50px 50px 50px 50px;" styleClass="sidebar-btn-text">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8_james_bond_32px.png" />
+                           </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Restaurants" textFill="#030000">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="260.0" style="-fx-background-color: rgb(254, 250, 246); -fx-background-radius: 50px 50px 50px 50px;" styleClass="sidebar-btn-text">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8_james_bond_32px.png" />
+                           </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="213.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Hebegements" textFill="#030000">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="gestion_Evenement" alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="202.0" style="-fx-background-color: rgb(254, 250, 246); -fx-background-radius: 50px 50px 50px 50px;" styleClass="sidebar-btn-text">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8_james_bond_32px.png" />
+                           </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Evenements" textFill="#030000">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
                </children>
-            </HBox>
+            </VBox>
          </children>
-        </VBox>
+      </AnchorPane>
     </children>
 </AnchorPane>
