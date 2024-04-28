@@ -45,8 +45,10 @@ public class FrontManagement {
             displayRestaurants();
         } catch (SQLException e) {
             e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'affichage des restaurants", "Une erreur s'est produite lors de l'affichage des restaurants. Veuillez réessayer.");
         }
     }
+
 
     private void displayRestaurants() throws SQLException {
         List<Restaurant> restaurantList = serviceRestaurant.afficher();

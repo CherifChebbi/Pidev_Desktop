@@ -49,8 +49,34 @@ public class DashboardController {
 
     private Plat selectedPlat;
 
+    @FXML
+    private Button switchtorestaurant;
+
     private void setSelectedPlat(Plat plat) {
         this.selectedPlat = plat;
+    }
+
+
+    @FXML
+    void switchToRestaurant(ActionEvent event) {
+        try {
+            // Load the FXML file for the restaurant view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AdminHome.fxml"));
+            Parent root = loader.load();
+
+            // Create a new scene with the restaurant view
+            Scene scene = new Scene(root);
+
+            // Get the stage from the ImageView
+            Stage stage = (Stage) switchtorestaurant.getScene().getWindow();
+
+            // Set the new scene on the stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
