@@ -23,7 +23,7 @@
       </ImageView>
       <AnchorPane prefHeight="56.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);">
          <children>
-            <Button fx:id="accederFront" layoutX="1142.0" mnemonicParsing="false" onAction="#accederFront" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: rgb(240, 243, 255);" text="Acceder Front" textFill="#ea1010">
+            <Button fx:id="accederFront" layoutX="1142.0" layoutY="8.0" mnemonicParsing="false" onAction="#accederFront" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: rgb(254, 250, 246);" text="Acceder Front" textFill="#ea1010">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
