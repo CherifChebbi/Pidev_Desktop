@@ -44,7 +44,7 @@
                         <Image url="@../images/carte-de-voyage.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="listVille" layoutX="843.0" layoutY="23.0" mnemonicParsing="false" onAction="#listVille" prefHeight="36.0" prefWidth="326.0" style="-fx-background-color: rgb(23, 107, 135);" text="Liste des Villes" textFill="WHITE">
+                <Button fx:id="listVille" layoutX="900.0" layoutY="30.0" mnemonicParsing="false" onAction="#listVille" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: rgb(23, 107, 135);" text="Liste des Villes" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="14.0" />
                     </font>
