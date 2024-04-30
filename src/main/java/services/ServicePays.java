@@ -307,4 +307,79 @@ public class ServicePays implements CRUD<Pays> {
 
         return pays;
     }
+    public Pays getPaysWithMostVilles() throws SQLException {
+        String query = "SELECT * FROM pays ORDER BY nb_villes DESC LIMIT 1";
+        try (PreparedStatement ps = cnx.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                // Créer un objet Pays à partir des données du résultat
+                Pays pays = new Pays(
+                        rs.getInt("id_pays"),
+                        rs.getString("nom_pays"),
+                        rs.getString("img_pays"),
+                        rs.getString("desc_pays"),
+                        rs.getString("langue"),
+                        rs.getString("continent"),
+                        rs.getInt("nb_villes"),
+                        rs.getDouble("latitude"),
+                        rs.getDouble("longitude")
+                );
+                return pays;
+            }
+        }
+        return null;
+    }
+
+
+    public Pays getPaysWithLeastVilles() throws SQLException {
+        String query = "SELECT * FROM pays ORDER BY nb_villes ASC LIMIT 1";
+        try (PreparedStatement ps = cnx.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                // Créer un objet Pays à partir des données du résultat
+                Pays pays = new Pays(
+                        rs.getInt("id_pays"),
+                        rs.getString("nom_pays"),
+                        rs.getString("img_pays"),
+                        rs.getString("desc_pays"),
+                        rs.getString("langue"),
+                        rs.getString("continent"),
+                        rs.getInt("nb_villes"),
+                        rs.getDouble("latitude"),
+                        rs.getDouble("longitude")
+                );
+                return pays;
+            }
+        }
+        return null;
+    }
+
+
+    public String getContinentWithMostPays() throws SQLException {
+        String query = "SELECT continent, COUNT(*) AS count FROM pays GROUP BY continent ORDER BY count DESC LIMIT 1";
+        try (PreparedStatement ps = cnx.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                // Récupérer le nom du continent avec le plus grand nombre de pays
+                String continent = rs.getString("continent");
+                return continent;
+            }
+        }
+        return null;
+    }
+
+
+    public String getContinentWithLeastPays() throws SQLException {
+        String query = "SELECT continent, COUNT(*) AS count FROM pays GROUP BY continent ORDER BY count ASC LIMIT 1";
+        try (PreparedStatement ps = cnx.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                // Récupérer le nom du continent avec le moins de pays
+                String continent = rs.getString("continent");
+                return continent;
+            }
+        }
+        return null;
+    }
+
 }

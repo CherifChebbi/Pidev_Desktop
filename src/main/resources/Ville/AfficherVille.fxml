@@ -233,6 +233,16 @@
                 <Font name="System Bold Italic" size="15.0" />
             </font>
         </Button>
-        <TextField fx:id="searchBar" alignment="TOP_CENTER" layoutX="365.0" layoutY="266.0" onKeyReleased="#handleSearch" prefHeight="30.0" prefWidth="270.0" promptText="Ville à rechercher" style="-fx-background-color: rgb(238, 245, 255);" />
+        <TextField fx:id="searchBar" alignment="TOP_CENTER" layoutX="451.0" layoutY="284.0" onKeyReleased="#handleSearch" prefHeight="30.0" prefWidth="270.0" promptText="Ville à rechercher" style="-fx-background-color: rgb(238, 245, 255);" />
+      <Label alignment="CENTER" layoutX="355.0" layoutY="291.0" text="Rechercher:" textFill="#545352">
+         <font>
+            <Font name="Berlin Sans FB" size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="322.0" layoutY="235.0" prefHeight="30.0" prefWidth="204.0" text="Liste des Villes:" textFill="#2262c6">
+         <font>
+            <Font name="Berlin Sans FB" size="24.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

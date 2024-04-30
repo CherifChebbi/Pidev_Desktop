@@ -173,7 +173,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <HBox alignment="CENTER_RIGHT" layoutX="460.0" layoutY="180.0" prefHeight="55.0" prefWidth="636.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(220, 242, 241);">
+      <HBox alignment="CENTER_RIGHT" layoutX="460.0" layoutY="180.0" prefHeight="55.0" prefWidth="811.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(220, 242, 241);">
          <children>
             <Button fx:id="AjouterPays_Button" mnemonicParsing="false" onAction="#AjouterPays" prefHeight="31.0" prefWidth="159.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Ajouter" textFill="#030000">
                <font>
@@ -200,7 +200,7 @@
                </HBox.margin>
             </Button>
             <!-- Ajout des boutons pour exporter vers PDF et Excel -->
-            <Button onAction="#exportToPDF" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: rgb(220, 107, 25); -fx-background-radius: 50px 50px 50px 50px;" text="PDF" textFill="WHITE">
+            <Button onAction="#exportToPDF" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: ea1010; -fx-background-radius: 50px 50px 50px 50px;" text="PDF" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
@@ -208,12 +208,20 @@
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Button>
-            <Button onAction="#exportToExcel" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: rgb(220, 107, 25); -fx-background-radius: 50px 50px 50px 50px;" text="Excel" textFill="WHITE">
+            <Button onAction="#exportToExcel" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: rgb(85, 124, 85); -fx-background-radius: 50px 50px 50px 50px;" text="Excel" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="StatPays" onAction="#StatPays" prefHeight="31.0" prefWidth="142.0" style="-fx-background-color: rgb(255, 193, 0); -fx-background-radius: 50px 50px 50px 50px;" text="Statistique" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
                </HBox.margin>
             </Button>
          </children>
@@ -240,8 +248,8 @@
             </TextField>
          </children>
       </HBox>
-      <TextField fx:id="searchBar" alignment="TOP_CENTER" layoutX="365.0" layoutY="264.0" onKeyReleased="#handleSearch" prefHeight="30.0" prefWidth="270.0" promptText="Pays à rechercher" style="-fx-background-color: rgb(238, 245, 255);" />
-      <TableView fx:id="paysTable" cache="true" layoutX="345.0" layoutY="324.0" onMouseClicked="#onTableRowPaysClicked" prefHeight="330.0" prefWidth="706.0">
+      <TextField fx:id="searchBar" alignment="TOP_CENTER" layoutX="345.0" layoutY="306.0" onKeyReleased="#handleSearch" prefHeight="30.0" prefWidth="270.0" promptText="Pays à rechercher" style="-fx-background-color: rgb(238, 245, 255);" />
+      <TableView fx:id="paysTable" cache="true" layoutX="345.0" layoutY="352.0" onMouseClicked="#onTableRowPaysClicked" prefHeight="330.0" prefWidth="706.0">
          <columns>
             <TableColumn fx:id="id_Pays_Column" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="nom_Column" prefWidth="75.0" text="Nom" />
@@ -256,16 +264,26 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <ImageView fx:id="imageView_pays" fitHeight="200" fitWidth="200" layoutX="1075.0" layoutY="369.0" />
-      <Button fx:id="listeVille" layoutX="1098.0" layoutY="220.0" mnemonicParsing="false" onAction="#listeVille" prefHeight="31.0" prefWidth="186.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(225, 172, 172);" text="Liste des Villes" textFill="#030000">
+      <ImageView fx:id="imageView_pays" fitHeight="220.0" fitWidth="230.0" layoutX="1056.0" layoutY="418.0" />
+      <Button fx:id="listeVille" layoutX="1098.0" layoutY="321.0" mnemonicParsing="false" onAction="#listeVille" prefHeight="31.0" prefWidth="186.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(225, 172, 172);" text="Liste des Villes" textFill="#030000">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="listeMonuments" layoutX="1097.0" layoutY="263.0" mnemonicParsing="false" onAction="#listeMonuments" prefHeight="31.0" prefWidth="186.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(186, 205, 146);" text="Liste des Monuments" textFill="#030000">
+      <Button fx:id="listeMonuments" layoutX="1098.0" layoutY="362.0" mnemonicParsing="false" onAction="#listeMonuments" prefHeight="31.0" prefWidth="186.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(186, 205, 146);" text="Liste des Monuments" textFill="#030000">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <Label alignment="CENTER" layoutX="339.0" layoutY="235.0" prefHeight="30.0" prefWidth="204.0" text="Liste des Pays:" textFill="#2262c6">
+         <font>
+            <Font name="Berlin Sans FB" size="24.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="345.0" layoutY="281.0" text="Rechercher :" textFill="#545352">
+         <font>
+            <Font name="Berlin Sans FB" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
