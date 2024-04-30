@@ -2,6 +2,7 @@ package services;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import models.Pays;
+import models.Ville;
 import utils.DBConnexion;
 
 import javax.swing.text.html.ImageView;
@@ -381,5 +382,7 @@ public class ServicePays implements CRUD<Pays> {
         }
         return null;
     }
+
+
 
 }

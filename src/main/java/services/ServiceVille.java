@@ -313,7 +313,46 @@ public class ServiceVille implements CRUD<Ville> {
         psDeleteVilles.executeUpdate();
         psDeleteVilles.close();
     }
+    public Ville getVilleWithMostMonuments() throws SQLException {
+        String query = "SELECT * FROM ville ORDER BY nb_monuments DESC LIMIT 1";
+        try (PreparedStatement ps = cnx.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                Ville ville = new Ville(
+                        rs.getInt("id_ville"),
+                        rs.getString("nom_ville"),
+                        rs.getString("img_ville"),
+                        rs.getString("desc_ville"),
+                        rs.getInt("nb_monuments"),
+                        rs.getDouble("latitude"),
+                        rs.getDouble("longitude")
+                );
+                return ville;
+            }
+        }
+        return null;
+    }
 
+    public Ville getVilleWithLeastMonuments() throws SQLException {
+        String query = "SELECT * FROM ville ORDER BY nb_monuments ASC LIMIT 1";
+        try (PreparedStatement ps = cnx.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                // Créer un objet Pays à partir des données du résultat
+                Ville ville = new Ville(
+                        rs.getInt("id_ville"),
+                        rs.getString("nom_ville"),
+                        rs.getString("img_ville"),
+                        rs.getString("desc_ville"),
+                        rs.getInt("nb_monuments"),
+                        rs.getDouble("latitude"),
+                        rs.getDouble("longitude")
+                );
+                return ville;
+            }
+        }
+        return null;
+    }
 
 
 

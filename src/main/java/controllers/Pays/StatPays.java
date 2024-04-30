@@ -13,7 +13,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import models.Pays;
+import models.Ville;
 import services.ServicePays;
+import services.ServiceVille;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,6 +38,12 @@ public class StatPays {
 
     @FXML
     private Label paysMoinsVillesLabel;
+    @FXML
+    private Label villePlusMonumentsLabel;
+
+    @FXML
+    private Label villeMoinsMonumentsLabel;
+
 
     @FXML
     private Label continentPlusPaysLabel;
@@ -50,11 +58,17 @@ public class StatPays {
     private BarChart<String, Number> barChartContinentNbPays;
 
     private ServicePays servicePays;
+    private ServiceVille serviceVille;
     private Pays paysWithMostVilles;
     private Pays paysWithLeastVilles;
 
+    private Ville villeWithMostMonuments;
+    private Ville villeWithLeastMonuments;
+
+
     public void initialize() throws SQLException {
         servicePays = new ServicePays();
+        serviceVille = new ServiceVille();
         loadStats();
         afficherStatistiques();
     }
@@ -63,6 +77,9 @@ public class StatPays {
         // Récupérer les données pour les statistiques depuis le service des pays
         paysWithMostVilles = servicePays.getPaysWithMostVilles();
         paysWithLeastVilles = servicePays.getPaysWithLeastVilles();
+        villeWithMostMonuments= serviceVille.getVilleWithMostMonuments();
+        villeWithLeastMonuments= serviceVille.getVilleWithLeastMonuments();
+
     }
 
     private void afficherStatistiques() {
@@ -70,14 +87,14 @@ public class StatPays {
 
     // Nom du pays avec le plus de villes
         if (paysWithMostVilles != null) {
-            paysPlusVillesLabel.setText("Nom du pays avec le plus de villes : " + paysWithMostVilles.getNom_pays());
+            paysPlusVillesLabel.setText("Nom du pays avec le plus de villes : " + "\n" + paysWithMostVilles.getNom_pays());
         } else {
             paysPlusVillesLabel.setText("Aucun pays trouvé avec le plus de villes.");
         }
 
     // Nom du pays avec le moins de villes
         if (paysWithLeastVilles != null) {
-            paysMoinsVillesLabel.setText("Nom du pays avec le moins de villes : " + paysWithLeastVilles.getNom_pays());
+            paysMoinsVillesLabel.setText("Nom du pays avec le moins de villes : " + "\n" + paysWithLeastVilles.getNom_pays());
         } else {
             paysMoinsVillesLabel.setText("Aucun pays trouvé avec le moins de villes.");
         }
@@ -90,7 +107,7 @@ public class StatPays {
             e.printStackTrace();
         }
         if (continentWithMostPays != null) {
-            continentPlusPaysLabel.setText("Continent avec le plus de pays : " + continentWithMostPays);
+            continentPlusPaysLabel.setText("Continent avec le plus de pays : " + "\n" + continentWithMostPays);
         } else {
             continentPlusPaysLabel.setText("Aucun continent trouvé avec le plus de pays.");
         }
@@ -103,9 +120,22 @@ public class StatPays {
             e.printStackTrace();
         }
         if (continentWithLeastPays != null) {
-            continentMoinsPaysLabel.setText("Continent avec le moins de pays : " + continentWithLeastPays);
+            continentMoinsPaysLabel.setText("Continent avec le moins de pays : " + "\n" + continentWithLeastPays);
         } else {
             continentMoinsPaysLabel.setText("Aucun continent trouvé avec le moins de pays.");
+        }
+    // Nom du ville avec le plus de monuments
+        if (villeWithMostMonuments != null) {
+            villePlusMonumentsLabel.setText("Nom de la ville avec le plus de monuments : " + "\n" + villeWithMostMonuments.getNom_ville());
+        } else {
+            villePlusMonumentsLabel.setText("Aucun ville trouvé avec le plus de monuments.");
+        }
+
+    // Nom du ville avec le moins de monuments
+        if (villeWithLeastMonuments != null) {
+            villeMoinsMonumentsLabel.setText("Nom de la ville avec le moins de monuments : " + "\n" + villeWithLeastMonuments.getNom_ville());
+        } else {
+            villeMoinsMonumentsLabel.setText("Aucun ville trouvé avec le moins de monuments.");
         }
     }
 
