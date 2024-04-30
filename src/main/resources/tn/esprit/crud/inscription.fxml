@@ -25,10 +25,10 @@
          </children></AnchorPane>
         <TextField fx:id="nomTF" layoutX="453.0" layoutY="37.0" promptText="Nom" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;" />
         <TextField fx:id="prenomTF" layoutX="452.0" layoutY="91.0" promptText="Prenom" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;" />
-        <TextField fx:id="adresseTF" layoutX="453.0" layoutY="142.0" promptText="Adresse" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;" />
+        <TextField fx:id="adresseTF" layoutX="453.0" layoutY="142.0" promptText="Nationalité" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;" />
         <TextField fx:id="emailTF" layoutX="453.0" layoutY="194.0" promptText="Email" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;" />
         <TextField fx:id="mdpTF" layoutX="455.0" layoutY="242.0" promptText="Mot De Passe" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;" />
-        <Button layoutX="362.0" layoutY="350.0" mnemonicParsing="false" onAction="#inscription" prefHeight="39.0" prefWidth="90.0" style="-fx-background-color: #B4D4FF;" text="Ajouter" />
+        <Button layoutX="487.0" layoutY="344.0" mnemonicParsing="false" onAction="#inscription" prefHeight="34.0" prefWidth="80.0" style="-fx-background-color: #B4D4FF;" text="Ajouter" />
       <TextField fx:id="numtelTF" layoutX="455.0" layoutY="294.0" promptText="Numéro de téléphone" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;" />
 
     </children>

@@ -84,7 +84,13 @@ public class InscriptionUser implements Initializable {
         user.setNationnalite(adresse);
         user.setEmail(email);
         user.setPassword(password); // Retained the same attribute name
-        user.setRoles(selectedRadioButton.getText());
+        String role;
+        if (selectedRadioButton != null) {
+            role = selectedRadioButton.getText();
+        } else {
+            role = "USER"; // Default role
+        }
+        user.setRoles(role);
         user.setNumtel(numtel);
 
         try {
@@ -104,13 +110,7 @@ public class InscriptionUser implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        toggleGroup = new ToggleGroup();
-        et.setToggleGroup(toggleGroup);
-        fo.setToggleGroup(toggleGroup);
 
-        toggleGroup.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
-            selectedRadioButton = (RadioButton) newValue;
-        });
     }
 
     private void showAlert(String message) {

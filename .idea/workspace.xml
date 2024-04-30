@@ -6,18 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="338d2e8d-0088-4336-b230-09326ebb8158" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/AfficherUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/AfficherUsers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/AjouterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/AjouterUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/GestionUser.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/InscriptionUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/InscriptionUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/ModifierUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/ModifierUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/IServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/IServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/login.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/AfficherUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/AfficherUsers.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/AjouterUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/AjouterUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/GestionUser.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/ModifierUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/ModifierUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/111.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/AfficherUsers.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/AjouterCode.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/AjouterUser.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/EYA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/ModifierUser.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/airplane.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/airplane.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/inscription.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/inscription.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,6 +86,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\tn\esprit\crud" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\tn\esprit\crud\images" />
+    </key>
   </component>
   <component name="RunManager" selected="Application.HelloApplication">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -140,7 +146,8 @@
       <workItem from="1709096507395" duration="1389000" />
       <workItem from="1713982738007" duration="7267000" />
       <workItem from="1713999931715" duration="14240000" />
-      <workItem from="1714232256877" duration="12253000" />
+      <workItem from="1714232256877" duration="28409000" />
+      <workItem from="1714385253063" duration="23863000" />
     </task>
     <servers />
   </component>

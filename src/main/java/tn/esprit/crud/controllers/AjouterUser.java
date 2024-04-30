@@ -65,7 +65,7 @@ public class AjouterUser implements Initializable {
     }
 
     @FXML
-    void ajouterUser(ActionEvent event) throws SQLException, IOException {
+    void ajouterUser(ActionEvent event) {
         User user = new User();
         user.setNom(nomTF.getText());
         user.setPrenom(prenomTF.getText());
@@ -73,6 +73,7 @@ public class AjouterUser implements Initializable {
         user.setEmail(emailTF.getText());
         user.setPassword(mdpTF.getText());
         user.setRoles(selectedRadioButton.getText());
+
         user.setNumtel(Integer.parseInt(numtelTF.getText())); // Set numtel from TextField
 
         try {
@@ -86,9 +87,10 @@ public class AjouterUser implements Initializable {
             alert.setTitle("Erreur");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
-            throw new RuntimeException(e);
+            e.printStackTrace(); // Print the stack trace to identify the exact cause of the error
         }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

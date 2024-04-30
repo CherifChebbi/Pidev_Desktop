@@ -9,7 +9,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import tn.esprit.crud.models.User;
 import tn.esprit.crud.services.UserService;
@@ -22,27 +24,30 @@ import java.util.List;
 public class AfficherUsers {
 
     @FXML
-    private ListView<String> idCol;
+    private TableView<User> tableView;
 
     @FXML
-    private ListView<String> emailCol;
+    private TableColumn<User, Integer> idCol;
 
     @FXML
-    private ListView<String> nomCol;
+    private TableColumn<User, String> emailCol;
 
     @FXML
-    private ListView<String> prenomCol;
+    private TableColumn<User, String> nomCol;
 
     @FXML
-    private ListView<String> nationnalieCol; // Adjusted ListView name
+    private TableColumn<User, String> prenomCol;
 
     @FXML
-    private ListView<String> numtelCol; // Added ListView for numtel
+    private TableColumn<User, String> nationnalieCol;
+
+    @FXML
+    private TableColumn<User, Integer> numtelCol;
 
     @FXML
     private Button auth;
 
-    private UserService userService; // Add this line
+    private UserService userService;
 
     @FXML
     void auth(ActionEvent event) {
@@ -61,11 +66,10 @@ public class AfficherUsers {
 
     @FXML
     private void supprimer() {
-        String selectedUserId = idCol.getSelectionModel().getSelectedItem();
-        if (selectedUserId != null) {
+        User selectedUser = tableView.getSelectionModel().getSelectedItem();
+        if (selectedUser != null) {
             try {
-                userService.supprimer(Integer.parseInt(selectedUserId));
-
+                userService.supprimer(selectedUser.getId());
                 loadUsers(); // refresh the table view
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -75,49 +79,55 @@ public class AfficherUsers {
         }
     }
 
-    private void loadUsers() throws SQLException {
-        List<User> users = userService.recuperer();
+    private void loadUsers() {
+        try {
+            List<User> users = userService.recuperer();
+            ObservableList<User> usersList = FXCollections.observableArrayList(users);
 
-        ObservableList<String> idList = FXCollections.observableArrayList();
-        ObservableList<String> emailList = FXCollections.observableArrayList();
-        ObservableList<String> nomList = FXCollections.observableArrayList();
-        ObservableList<String> prenomList = FXCollections.observableArrayList();
-        ObservableList<String> nationnaliteList = FXCollections.observableArrayList();
-        ObservableList<String> numtelList = FXCollections.observableArrayList();
+            idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+            emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+            nomCol.setCellValueFactory(new PropertyValueFactory<>("nom"));
+            prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+            nationnalieCol.setCellValueFactory(new PropertyValueFactory<>("nationnalite"));
+            numtelCol.setCellValueFactory(new PropertyValueFactory<>("numtel"));
 
-        for (User user : users) {
-            idList.add(String.valueOf(user.getId()));
-            emailList.add(user.getEmail());
-            nomList.add(user.getNom());
-            prenomList.add(user.getPrenom());
-            nationnaliteList.add(user.getNationnalite());
-            numtelList.add(String.valueOf(user.getNumtel()));
+            tableView.setItems(usersList);
+        } catch (SQLException e) {
+            System.err.println("Error loading users: " + e.getMessage());
         }
-
-        idCol.setItems(idList);
-        emailCol.setItems(emailList);
-        nomCol.setItems(nomList);
-        prenomCol.setItems(prenomList);
-        nationnalieCol.setItems(nationnaliteList);
-        numtelCol.setItems(numtelList);
     }
 
     @FXML
     void PageModifier(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn/esprit/crud/ModifierUser.fxml"));
-        try {
-            prenomCol.getScene().setRoot(fxmlLoader.load());
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-            throw new RuntimeException(e);
+        // Get the selected user
+        User selectedUser = tableView.getSelectionModel().getSelectedItem();
+        if (selectedUser != null) {
+            // Load the ModifierUser.fxml file
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn/esprit/crud/ModifierUser.fxml"));
+            try {
+                // Load the root node
+                Parent root = fxmlLoader.load();
+                // Get the controller instance
+                ModifierUser modifierUserController = fxmlLoader.getController();
+                // Pass the selected user to the controller
+                modifierUserController.setSelectedUser(selectedUser);
+                // Set the scene with the modified root
+                tableView.getScene().setRoot(root);
+            } catch (IOException e) {
+                System.err.println(e.getMessage());
+                throw new RuntimeException(e);
+            }
+        } else {
+            System.err.println("Error: No user selected.");
         }
     }
+
 
     @FXML
     void ReturnToAjouter(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/tn/esprit/crud/AjouterUser.fxml"));
         try {
-            prenomCol.getScene().setRoot(fxmlLoader.load());
+            tableView.getScene().setRoot(fxmlLoader.load());
         } catch (IOException e) {
             System.err.println(e.getMessage());
             throw new RuntimeException(e);
@@ -126,36 +136,7 @@ public class AfficherUsers {
 
     @FXML
     void initialize() {
-        userService = new UserService(); // Initialize the userService variable here
-
-
-        try {
-            List<User> users = userService.recuperer();
-            ObservableList<String> idList = FXCollections.observableArrayList();
-            ObservableList<String> emailList = FXCollections.observableArrayList();
-            ObservableList<String> nomList = FXCollections.observableArrayList();
-            ObservableList<String> prenomList = FXCollections.observableArrayList();
-            ObservableList<String> nationnaliteList = FXCollections.observableArrayList(); // Adjusted ObservableList name
-            ObservableList<String> numtelList = FXCollections.observableArrayList(); // Added ObservableList for numtel
-
-            for (User user : users) {
-                idList.add(String.valueOf(user.getId()));
-                emailList.add(user.getEmail());
-                nomList.add(user.getNom());
-                prenomList.add(user.getPrenom());
-                nationnaliteList.add(user.getNationnalite()); // Adjusted attribute name
-                numtelList.add(String.valueOf(user.getNumtel())); // Added attribute for numtel
-            }
-
-            idCol.setItems(idList);
-            emailCol.setItems(emailList);
-            nomCol.setItems(nomList);
-            prenomCol.setItems(prenomList);
-            nationnalieCol.setItems(nationnaliteList); // Adjusted ListView reference
-            numtelCol.setItems(numtelList); // Added ListView reference
-
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
+        userService = new UserService();
+        loadUsers();
     }
 }

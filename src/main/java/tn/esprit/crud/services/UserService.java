@@ -2,7 +2,7 @@ package tn.esprit.crud.services;
 
 import tn.esprit.crud.models.User;
 import tn.esprit.crud.utils.MyDatabase;
-
+import org.mindrot.jbcrypt.BCrypt;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,24 +21,46 @@ public class UserService implements IServices<User> {
 
     @Override
     public void ajouter(User user) throws SQLException {
-        String req = "INSERT INTO user(nom , prenom , adresse , email , mdp,role) VALUES( '" + user.getNom() + "' , '" + user.getPrenom() + "' , '" + user.getNationnalite() + "' , '" + user.getEmail() + "' , '" + user.getPassword() + "','" + user.getRoles() + "')";
-        Statement st = connection.createStatement();
-        st.executeUpdate(req);
+        String req = "INSERT INTO user(nom , prenom , nationnalite , email , password,roles,numtel) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        PreparedStatement st = connection.prepareStatement(req);
+        st.setString(1, user.getNom());
+        st.setString(2, user.getPrenom());
+        st.setString(3, user.getNationnalite());
+        st.setString(4, user.getEmail());
+        st.setString(5, user.getPassword());
+        st.setString(6, user.getRoles());
+        st.setInt(7, user.getNumtel());
+        st.executeUpdate();
     }
+
 
     @Override
     public void modifier(User user) throws SQLException {
-        String req = "UPDATE user SET nom = ?, prenom = ?, adresse = ?, email = ? , mdp = ? , role= ? WHERE id = ?";
-        PreparedStatement us = connection.prepareStatement(req);
-        us.setString(1, user.getNom());
-        us.setString(2, user.getPrenom());
-        us.setString(3, user.getNationnalite());
-        us.setString(4, user.getEmail());
-        us.setString(5, user.getPassword());
-        us.setString(6, user.getRoles());
-        us.setInt(7, user.getId());
-        us.executeUpdate();
+        String req = "UPDATE user SET nom = ?, prenom = ?, nationnalite = ?, email = ?, numtel = ?, roles = ? WHERE id = ?";
+        try (PreparedStatement us = connection.prepareStatement(req)) {
+            us.setString(1, user.getNom());
+            us.setString(2, user.getPrenom());
+            us.setString(3, user.getNationnalite());
+            us.setString(4, user.getEmail());
+            us.setInt(5, user.getNumtel());
+            us.setString(6, user.getRoles());
+            us.setInt(7, user.getId());
+
+            int rowsAffected = us.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("User updated successfully");
+            } else {
+                System.out.println("Failed to update user");
+            }
+            System.out.println("Rows affected: " + rowsAffected);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e; // Rethrow the exception to handle it in the caller method
+        }
     }
+
+
+
 
 
 
@@ -73,8 +95,9 @@ public class UserService implements IServices<User> {
             user.setPrenom(rs.getString("prenom"));
             user.setNationnalite(rs.getString("nationnalite")); // Use the "nationnalite" column instead of "adresse"
             user.setEmail(rs.getString("email"));
-            user.setPassword(rs.getString("mdp")); // Use the "mdp" column instead of "nationnalite"
-            user.setRoles(rs.getString("role"));
+            user.setPassword(rs.getString("password")); // Use the "mdp" column instead of "nationnalite"
+            user.setRoles(rs.getString("roles"));
+            user.setNumtel(rs.getInt("numtel"));
 
             users.add(user);
         }
@@ -82,7 +105,7 @@ public class UserService implements IServices<User> {
     }
 
     public boolean authenticateUser(String name, String pass) {
-        String query = "SELECT * FROM user WHERE nom = ? AND mdp = ?";
+        String query = "SELECT * FROM user WHERE nom = ? AND password = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, name);
             statement.setString(2, pass);
@@ -100,13 +123,13 @@ public class UserService implements IServices<User> {
     public String roles (int id) {
         try {
 
-            PreparedStatement stmt1 = connection.prepareStatement("SELECT role FROM user where id=?");
+            PreparedStatement stmt1 = connection.prepareStatement("SELECT roles FROM user where id=?");
             stmt1.setInt(1, id);
 
             ResultSet rs = stmt1.executeQuery();
 
             while (rs.next()) {
-                return rs.getString("role");
+                return rs.getString("roles");
             }
 
         } catch (SQLException e) {
@@ -126,14 +149,14 @@ public class UserService implements IServices<User> {
                 int id = resultSet.getInt("id");
                 String nom = resultSet.getString("nom");
                 String prenom = resultSet.getString("prenom");
-                String adresse = resultSet.getString("adresse");
+                String nationnalite = resultSet.getString("nationnalite"); // Update to use "nationnalite" column
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password"); // Update attribute name
                 String roles = resultSet.getString("roles"); // Update attribute name
                 int numtel = resultSet.getInt("numtel"); // Added for the "numtel" attribute
 
                 // Create a new User object with retrieved data
-                User user = new User(id, nom, prenom, adresse, email, password, roles, numtel);
+                User user = new User(id, nom, prenom, nationnalite, email, password, roles, numtel);
                 list.add(user);
             }
         } catch (SQLException e) {
@@ -142,11 +165,22 @@ public class UserService implements IServices<User> {
         return list;
     }
 
-    @Override
+
     public void inscription(User user) throws SQLException {
-        String req = "INSERT INTO user(nom , prenom , adresse , email , mdp) VALUES( '" + user.getNom() + "' , '" + user.getPrenom() + "' , '" + user.getNationnalite() + "' , '" + user.getEmail() + "' , '" + user.getPassword() + "')";
-        Statement st = connection.createStatement();
-        st.executeUpdate(req);
+        // Hash the password using bcrypt
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashedPassword);
+
+        // Proceed with user insertion
+        String req = "INSERT INTO user(nom, prenom, nationnalite, email, password,numtel) VALUES (?, ?, ?, ?, ?,?)";
+        PreparedStatement st = connection.prepareStatement(req);
+        st.setString(1, user.getNom());
+        st.setString(2, user.getPrenom());
+        st.setString(3, user.getNationnalite());
+        st.setString(4, user.getEmail());
+        st.setString(5, user.getPassword());
+        st.setInt(6,user.getNumtel());
+        st.executeUpdate();
     }
 
 
