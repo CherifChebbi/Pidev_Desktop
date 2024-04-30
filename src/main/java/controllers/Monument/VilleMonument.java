@@ -50,9 +50,9 @@ public class VilleMonument {
         // Initialement vide car pas de traitement spécifique au démarrage
     }
 
-    public void initData(int idPays) {
+    public void initData(int idVille) {
         try {
-            List<Monument> MonumentList = serviceMonument.VilleMonument(idPays);
+            List<Monument> MonumentList = serviceMonument.VilleMonument(idVille);
             afficherCartesMonument(MonumentList);
         } catch (SQLException e) {
             e.printStackTrace();

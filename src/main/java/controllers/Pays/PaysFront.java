@@ -13,6 +13,8 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.itextpdf.text.pdf.qrcode.ErrorCorrectionLevel;
 
 import controllers.Ville.PaysVille;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,19 +22,23 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import models.Pays;
 import services.ServicePays;
 
+import java.awt.*;
+import java.awt.ScrollPane;
+import java.awt.event.KeyEvent;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -43,11 +49,25 @@ import java.util.List;
 import java.util.Map;
 
 public class PaysFront {
+
+    @FXML
+    private ScrollPane scrollPane;
+
     @FXML
     private GridPane cartesPaysGrid;
+
+
     private ServicePays servicePays;
+
+
     @FXML
-    private Hyperlink qrLink;
+    private TextField maxVillesField;
+
+    @FXML
+    private TextField minVillesField;
+
+    @FXML
+    private TextField searchBar;
 
     public PaysFront() {
         this.servicePays = new ServicePays();
@@ -99,8 +119,8 @@ public class PaysFront {
             System.out.println("L'image n'a pas été trouvée : " + imageName);
         }
 
-    // Création des labels pour les informations du pays
-    //nom
+        // Création des labels pour les informations du pays
+        //nom
         Label nomPaysLabel = new Label("Nom: ");
         nomPaysLabel.setStyle("-fx-text-fill: black;");
 
@@ -108,7 +128,7 @@ public class PaysFront {
         nomPaysValueLabel.setStyle("-fx-text-fill: blue; -fx-font-weight: bold;");
 
         HBox nomPaysBox = new HBox(nomPaysLabel, nomPaysValueLabel);
-    // Langue
+        // Langue
         Label langueLabel = new Label("Langue: ");
         langueLabel.setStyle("-fx-text-fill: black;");
 
@@ -117,7 +137,7 @@ public class PaysFront {
 
         HBox langueBox = new HBox(langueLabel, langueValueLabel);
 
-    // Continent
+        // Continent
         Label continentLabel = new Label("Continent: ");
         continentLabel.setStyle("-fx-text-fill: black;");
 
@@ -126,7 +146,7 @@ public class PaysFront {
 
         HBox continentBox = new HBox(continentLabel, continentValueLabel);
 
-    // Nombre de villes
+        // Nombre de villes
         Label nbVilleLabel = new Label("Nombre de villes: ");
         nbVilleLabel.setStyle("-fx-text-fill: black;");
 
@@ -135,7 +155,7 @@ public class PaysFront {
 
         HBox nbVilleBox = new HBox(nbVilleLabel, nbVilleValueLabel);
 
-    //desc
+        //desc
         Label desPaysLabel = new Label("Description: ");
         desPaysLabel.setStyle("-fx-font-weight: bold;");
 
@@ -201,6 +221,7 @@ public class PaysFront {
 
         return carteContentVBox;
     }
+
     @FXML
     void listVille(ActionEvent event) {
         try {
@@ -215,6 +236,7 @@ public class PaysFront {
             System.err.println("Error loading FXML file: " + e.getMessage());
         }
     }
+
     @FXML
     void Front_Pays(ActionEvent event) {
         try {
@@ -236,6 +258,7 @@ public class PaysFront {
         }
 
     }
+
     @FXML
     void listMonument(ActionEvent event) {
         try {
@@ -275,7 +298,54 @@ public class PaysFront {
         qrStage.setScene(new Scene(qrPane, size, size));
         qrStage.show();
     }
+    @FXML
+    void filterByVilles(ActionEvent event) {
+        try {
+            // Récupérer les valeurs minimale et maximale
+            int minVilles = Integer.parseInt(minVillesField.getText());
+            int maxVilles = Integer.parseInt(maxVillesField.getText());
 
+            // Filtrer les pays par nombre de villes
+            List<Pays> filteredPays = servicePays.filterByVilles(minVilles, maxVilles);
 
+            // Effacer les cartes existantes
+            cartesPaysGrid.getChildren().clear();
 
+            // Afficher les nouvelles cartes filtrées
+            afficherCartesPays(filteredPays);
+        } catch (NumberFormatException e) {
+            // Gérer les erreurs de conversion
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please enter valid numbers for min and max cities.");
+            alert.show();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Gérer les erreurs
+        }
+    }
+
+    @FXML
+    public void handleSearch(javafx.scene.input.KeyEvent keyEvent) {
+        try {
+            // Récupérer le texte de recherche
+            String searchTerm = searchBar.getText();
+
+            // Rechercher les pays par nom
+            List<Pays> searchResult = servicePays.rechercherParNom(searchTerm);
+
+            // Effacer les cartes existantes
+            cartesPaysGrid.getChildren().clear();
+
+            // Afficher les nouveaux résultats de recherche
+            afficherCartesPays(searchResult);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Gérer les erreurs
+        }
+    }
 }
+
+
+
+
+

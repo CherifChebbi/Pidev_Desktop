@@ -15,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -24,6 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import models.Monument;
+import models.Ville;
 import services.ServiceMonument;
 
 import java.io.ByteArrayInputStream;
@@ -36,6 +38,8 @@ import java.util.List;
 import java.util.Map;
 
 public class MonumentFront {
+    @FXML
+    private TextField searchBar;
     @FXML
     private GridPane cartesMonumentGrid;
     private ServiceMonument serviceMonument;
@@ -218,5 +222,24 @@ public class MonumentFront {
         Stage qrStage = new Stage();
         qrStage.setScene(new Scene(qrPane, size, size));
         qrStage.show();
+    }
+    @FXML
+    public void handleSearch(javafx.scene.input.KeyEvent keyEvent) {
+        try {
+            // Récupérer le texte de recherche
+            String searchTerm = searchBar.getText();
+
+            // Rechercher les pays par nom
+            List<Monument> searchResult = serviceMonument.rechercherParNom(searchTerm);
+
+            // Effacer les cartes existantes
+            cartesMonumentGrid.getChildren().clear();
+
+            // Afficher les nouveaux résultats de recherche
+            afficherCartesMonument(searchResult);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Gérer les erreurs
+        }
     }
 }

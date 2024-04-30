@@ -14,7 +14,9 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -23,6 +25,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import models.Pays;
 import models.Ville;
 import services.ServiceVille;
 
@@ -36,6 +39,14 @@ import java.util.List;
 import java.util.Map;
 
 public class VilleFront {
+    @FXML
+    private TextField maxMonumentsField;
+
+    @FXML
+    private TextField minMonumentsField;
+
+    @FXML
+    private TextField searchBar;
     @FXML
     private GridPane cartesVilleGrid;
     private ServiceVille serviceVille;
@@ -216,5 +227,50 @@ public class VilleFront {
         Stage qrStage = new Stage();
         qrStage.setScene(new Scene(qrPane, size, size));
         qrStage.show();
+    }
+    @FXML
+    void filterByMonuments(ActionEvent event) {
+        try {
+            // Récupérer les valeurs minimale et maximale
+            int minMonuments = Integer.parseInt(minMonumentsField.getText());
+            int maxMonuments = Integer.parseInt(maxMonumentsField.getText());
+
+            // Filtrer les pays par nombre de villes
+            List<Ville> filteredVille = serviceVille.filterByMonument(minMonuments, maxMonuments);
+
+            // Effacer les cartes existantes
+            cartesVilleGrid.getChildren().clear();
+
+            // Afficher les nouvelles cartes filtrées
+            afficherCartesVille(filteredVille);
+        } catch (NumberFormatException e) {
+            // Gérer les erreurs de conversion
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Please enter valid numbers for min and max cities.");
+            alert.show();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Gérer les erreurs
+        }
+    }
+
+    @FXML
+    public void handleSearch(javafx.scene.input.KeyEvent keyEvent) {
+        try {
+            // Récupérer le texte de recherche
+            String searchTerm = searchBar.getText();
+
+            // Rechercher les pays par nom
+            List<Ville> searchResult = serviceVille.rechercherParNom(searchTerm);
+
+            // Effacer les cartes existantes
+            cartesVilleGrid.getChildren().clear();
+
+            // Afficher les nouveaux résultats de recherche
+            afficherCartesVille(searchResult);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Gérer les erreurs
+        }
     }
 }
