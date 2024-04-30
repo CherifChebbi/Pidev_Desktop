@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.Hyperlink?>
 <AnchorPane prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Pays.PaysFront">
     <children>
         <AnchorPane layoutY="67.0" prefHeight="640.0" prefWidth="1300.0" style="-fx-background-color: rgb(233, 246, 255);">
@@ -44,7 +45,7 @@
                         <Image url="@../images/carte-de-voyage.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="listVille" layoutX="900.0" layoutY="30.0" mnemonicParsing="false" onAction="#listVille" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: rgb(23, 107, 135);" text="Liste des Villes" textFill="WHITE">
+                <Button fx:id="listVille" layoutX="542.0" layoutY="22.0" mnemonicParsing="false" onAction="#listVille" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: rgb(23, 107, 135);" text="Liste des Villes" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="14.0" />
                     </font>
@@ -54,6 +55,11 @@
                       <GridPane fx:id="cartesPaysGrid" prefWidth="1000.0" />
                </children>
             </AnchorPane>
+            <Button fx:id="listMonument" layoutX="908.0" layoutY="22.0" mnemonicParsing="false" onAction="#listMonument" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: rgb(23, 107, 135);" text="Liste des Monuments" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
         <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">

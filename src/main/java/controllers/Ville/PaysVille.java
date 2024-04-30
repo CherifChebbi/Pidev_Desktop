@@ -1,5 +1,12 @@
 package controllers.Ville;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.itextpdf.text.pdf.qrcode.ErrorCorrectionLevel;
 import controllers.Monument.VilleMonument;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,10 +27,14 @@ import javafx.stage.Stage;
 import models.Ville;
 import services.ServiceVille;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PaysVille {
     @FXML
@@ -80,14 +91,40 @@ public class PaysVille {
             System.out.println("L'image n'a pas été trouvée : " + imageName);
         }
 
-        // Création des labels pour les informations du Ville
-        Label nomVilleLabel = new Label("Nom: " + Ville.getNom_ville());
-        Label desVilleLabel = new Label("Description: " + Ville.getDesc_ville());
-        //Label langueLabel = new Label("Langue: " + Ville.getLangue());
-        //Label continentLabel = new Label("Continent: " + Ville.getContinent());
-        //Label latitudeLabel = new Label("Latitude: " + Ville.getLatitude());
-        //Label longitudeLabel = new Label("Longitude: " + Ville.getLongitude());
-        //Label nbVilleLabel = new Label("Nombre de villes: " + Ville.getNb_villes());
+    // Création des labels pour les informations du Ville
+    //nom
+        Label nomVilleLabel = new Label("Nom: ");
+        nomVilleLabel.setStyle("-fx-text-fill: black;");
+
+        Label nomVilleValueLabel = new Label(Ville.getNom_ville());
+        nomVilleValueLabel.setStyle("-fx-text-fill: blue; -fx-font-weight: bold;");
+
+        HBox nomVilleBox = new HBox(nomVilleLabel, nomVilleValueLabel);
+    // Nombre de monuments
+        Label nbMonumentLabel = new Label("Nombre de villes: ");
+        nbMonumentLabel.setStyle("-fx-text-fill: black;");
+
+        Label nbMonumentValueLabel = new Label(String.valueOf(Ville.getNb_monuments()));
+        nbMonumentValueLabel.setStyle("-fx-text-fill: blue; -fx-font-weight: bold;");
+
+        HBox nbMonumentBox = new HBox(nbMonumentLabel, nbMonumentValueLabel);
+    // Description de la ville
+        Label desVilleLabel = new Label("Description: ");
+        desVilleLabel.setStyle("-fx-text-fill: black;");
+
+        Label desVilleValueLabel = new Label("(Cliquer poor scanner le Qr code)");
+        desVilleValueLabel.setStyle("-fx-text-fill: blue;");
+
+        HBox desVilleBox = new HBox(desVilleLabel, desVilleValueLabel);
+        // Ajouter le lien au label de description
+        desVilleLabel.setOnMouseClicked(event -> {
+            try {
+                displayQRCode(Ville.getDesc_ville());
+            } catch (WriterException | IOException e) {
+                e.printStackTrace();
+                System.err.println("Error displaying QR code: " + e.getMessage());
+            }
+        });
 
 
         // Création d'un bouton pour accéder à la page des villes
@@ -112,10 +149,11 @@ public class PaysVille {
         // Création d'une VBox pour organiser les informations verticalement
         VBox infosVilleVBox = new VBox(5); // Espace vertical entre les informations
         infosVilleVBox.getChildren().addAll(
-                nomVilleLabel, desVilleLabel,voirMonumentButton
-                /* ,langueLabel,
-                continentLabel, latitudeLabel, longitudeLabel,
-                nbVilleLabel*/
+                nomVilleBox,
+                nbMonumentBox,
+                desVilleBox,
+                voirMonumentButton
+
         );
 
         // Ajout de marges entre les cartes
@@ -165,6 +203,30 @@ public class PaysVille {
             e.printStackTrace();
         }
 
+    }
+    // Fonction pour afficher le QR code
+    public void displayQRCode(String content) throws WriterException, IOException {
+        // Configuration du QR code
+        int size = 200;
+        String fileType = "png";
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        Map<EncodeHintType, Object> hintMap = new HashMap<>();
+        hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+
+        // Génération du QR code
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        BitMatrix bitMatrix = qrCodeWriter.encode(content, BarcodeFormat.QR_CODE, size, size, hintMap);
+        MatrixToImageWriter.writeToStream(bitMatrix, fileType, outputStream);
+
+        // Affichage du QR code
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
+        Image qrImage = new Image(inputStream);
+        ImageView imageView = new ImageView(qrImage);
+        StackPane qrPane = new StackPane();
+        qrPane.getChildren().add(imageView);
+        Stage qrStage = new Stage();
+        qrStage.setScene(new Scene(qrPane, size, size));
+        qrStage.show();
     }
 
 

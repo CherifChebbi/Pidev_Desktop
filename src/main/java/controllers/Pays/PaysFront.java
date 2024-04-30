@@ -1,5 +1,17 @@
 package controllers.Pays;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.google.zxing.qrcode.QRCodeWriter;
+import com.google.zxing.common.BitMatrix;
+
+
+import com.google.zxing.EncodeHintType;
+
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+
+import com.itextpdf.text.pdf.qrcode.ErrorCorrectionLevel;
+
 import controllers.Ville.PaysVille;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +21,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -20,15 +33,21 @@ import javafx.stage.Stage;
 import models.Pays;
 import services.ServicePays;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class PaysFront {
     @FXML
     private GridPane cartesPaysGrid;
     private ServicePays servicePays;
+    @FXML
+    private Hyperlink qrLink;
 
     public PaysFront() {
         this.servicePays = new ServicePays();
@@ -80,9 +99,60 @@ public class PaysFront {
             System.out.println("L'image n'a pas été trouvée : " + imageName);
         }
 
-        // Création des labels pour les informations du pays
-        Label nomPaysLabel = new Label("Nom: " + pays.getNom_pays());
-        Label desPaysLabel = new Label("Description: " + pays.getDesc_pays());
+    // Création des labels pour les informations du pays
+    //nom
+        Label nomPaysLabel = new Label("Nom: ");
+        nomPaysLabel.setStyle("-fx-text-fill: black;");
+
+        Label nomPaysValueLabel = new Label(pays.getNom_pays());
+        nomPaysValueLabel.setStyle("-fx-text-fill: blue; -fx-font-weight: bold;");
+
+        HBox nomPaysBox = new HBox(nomPaysLabel, nomPaysValueLabel);
+    // Langue
+        Label langueLabel = new Label("Langue: ");
+        langueLabel.setStyle("-fx-text-fill: black;");
+
+        Label langueValueLabel = new Label(pays.getLangue());
+        langueValueLabel.setStyle("-fx-text-fill: blue; -fx-font-weight: bold;");
+
+        HBox langueBox = new HBox(langueLabel, langueValueLabel);
+
+    // Continent
+        Label continentLabel = new Label("Continent: ");
+        continentLabel.setStyle("-fx-text-fill: black;");
+
+        Label continentValueLabel = new Label(pays.getContinent());
+        continentValueLabel.setStyle("-fx-text-fill: blue; -fx-font-weight: bold;");
+
+        HBox continentBox = new HBox(continentLabel, continentValueLabel);
+
+    // Nombre de villes
+        Label nbVilleLabel = new Label("Nombre de villes: ");
+        nbVilleLabel.setStyle("-fx-text-fill: black;");
+
+        Label nbVilleValueLabel = new Label(String.valueOf(pays.getNb_villes()));
+        nbVilleValueLabel.setStyle("-fx-text-fill: blue; -fx-font-weight: bold;");
+
+        HBox nbVilleBox = new HBox(nbVilleLabel, nbVilleValueLabel);
+
+    //desc
+        Label desPaysLabel = new Label("Description: ");
+        desPaysLabel.setStyle("-fx-font-weight: bold;");
+
+        Label desPaysValueLabel = new Label("(Cliquer poor scanner le Qr code)");
+        desPaysValueLabel.setStyle("-fx-text-fill: blue;");
+
+        HBox descBox = new HBox(desPaysLabel, desPaysValueLabel);
+
+        // Ajouter le lien au label de description
+        desPaysLabel.setOnMouseClicked(event -> {
+            try {
+                displayQRCode(pays.getDesc_pays());
+            } catch (WriterException | IOException e) {
+                e.printStackTrace();
+                System.err.println("Error displaying QR code: " + e.getMessage());
+            }
+        });
         //Label langueLabel = new Label("Langue: " + pays.getLangue());
         //Label continentLabel = new Label("Continent: " + pays.getContinent());
         //Label latitudeLabel = new Label("Latitude: " + pays.getLatitude());
@@ -111,10 +181,12 @@ public class PaysFront {
         // Création d'une VBox pour organiser les informations verticalement
         VBox infosPaysVBox = new VBox(5); // Espace vertical entre les informations
         infosPaysVBox.getChildren().addAll(
-                nomPaysLabel, desPaysLabel,voirVillesButton
-                /* ,langueLabel,
-                continentLabel, latitudeLabel, longitudeLabel,
-                nbVilleLabel*/
+                nomPaysBox,
+                langueBox,
+                continentBox,
+                nbVilleBox,
+                descBox,
+                voirVillesButton
         );
 
         // Ajout de marges entre les cartes
@@ -164,5 +236,46 @@ public class PaysFront {
         }
 
     }
+    @FXML
+    void listMonument(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Monument/MonumentFront.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error loading FXML file: " + e.getMessage());
+        }
+    }
+
+    // Fonction pour afficher le QR code
+    public void displayQRCode(String content) throws WriterException, IOException {
+        // Configuration du QR code
+        int size = 200;
+        String fileType = "png";
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        Map<EncodeHintType, Object> hintMap = new HashMap<>();
+        hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
+
+        // Génération du QR code
+        QRCodeWriter qrCodeWriter = new QRCodeWriter();
+        BitMatrix bitMatrix = qrCodeWriter.encode(content, BarcodeFormat.QR_CODE, size, size, hintMap);
+        MatrixToImageWriter.writeToStream(bitMatrix, fileType, outputStream);
+
+        // Affichage du QR code
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
+        Image qrImage = new Image(inputStream);
+        ImageView imageView = new ImageView(qrImage);
+        StackPane qrPane = new StackPane();
+        qrPane.getChildren().add(imageView);
+        Stage qrStage = new Stage();
+        qrStage.setScene(new Scene(qrPane, size, size));
+        qrStage.show();
+    }
+
+
 
 }

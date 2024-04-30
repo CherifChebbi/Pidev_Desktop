@@ -1,5 +1,7 @@
 package controllers.Pays;
 
+import controllers.Exporter.ExcelExporter;
+import controllers.Exporter.PdfExporter;
 import javafx.scene.image.ImageView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -71,6 +73,10 @@ public class AfficherPays {
 
     @FXML
     private ImageView imageView_pays;
+
+
+    @FXML
+    private ChoiceBox<String> formatChoiceBox;
 
 
 
@@ -262,6 +268,16 @@ public class AfficherPays {
             System.err.println("Error loading FXML file: " + e.getMessage());
         }
     }
+    @FXML
+    void listeMonuments(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Monument/AfficherMonument.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
 
     public void rafraichirDonnees() {
         // Clear existing items in the TableView
@@ -311,4 +327,15 @@ public class AfficherPays {
         stage.show();
 
     }
+    @FXML
+    void exportToPDF(ActionEvent event) {
+        PdfExporter.export(paysTable.getItems());
+    }
+
+    // Méthode pour exporter vers Excel
+    @FXML
+    void exportToExcel(ActionEvent event) {
+        ExcelExporter.export(paysTable.getItems());
+    }
+
 }

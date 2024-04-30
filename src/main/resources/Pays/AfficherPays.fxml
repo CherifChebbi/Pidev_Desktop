@@ -173,7 +173,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <HBox alignment="CENTER_RIGHT" layoutX="365.0" layoutY="185.0" prefHeight="56.0" prefWidth="787.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(220, 242, 241);">
+      <HBox alignment="CENTER_RIGHT" layoutX="460.0" layoutY="180.0" prefHeight="55.0" prefWidth="636.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(220, 242, 241);">
          <children>
             <Button fx:id="AjouterPays_Button" mnemonicParsing="false" onAction="#AjouterPays" prefHeight="31.0" prefWidth="159.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Ajouter" textFill="#030000">
                <font>
@@ -199,9 +199,18 @@
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="listeVille" mnemonicParsing="false" onAction="#listeVille" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Liste des Villes" textFill="#030000">
+            <!-- Ajout des boutons pour exporter vers PDF et Excel -->
+            <Button onAction="#exportToPDF" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: rgb(220, 107, 25); -fx-background-radius: 50px 50px 50px 50px;" text="PDF" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button onAction="#exportToExcel" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: rgb(220, 107, 25); -fx-background-radius: 50px 50px 50px 50px;" text="Excel" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
                </font>
                <HBox.margin>
                   <Insets left="10.0" right="10.0" />
@@ -209,9 +218,9 @@
             </Button>
          </children>
       </HBox>
-      <HBox layoutX="865.0" layoutY="261.0">
+      <HBox layoutX="650.0" layoutY="264.0">
          <children>
-            <Button onAction="#filterByVilles" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: rgb(220, 107, 25);" text="Filter" textFill="WHITE">
+            <Button onAction="#filterByVilles" prefHeight="26.0" prefWidth="74.0" style="-fx-background-color: rgb(220, 107, 25); -fx-background-radius: 50px 50px 50px 50px;" text="Filter" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font>
@@ -247,6 +256,16 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <ImageView fx:id="imageView_pays" fitHeight="200" fitWidth="200" layoutX="1069.0" layoutY="332.0" />
+      <ImageView fx:id="imageView_pays" fitHeight="200" fitWidth="200" layoutX="1075.0" layoutY="369.0" />
+      <Button fx:id="listeVille" layoutX="1098.0" layoutY="220.0" mnemonicParsing="false" onAction="#listeVille" prefHeight="31.0" prefWidth="186.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(225, 172, 172);" text="Liste des Villes" textFill="#030000">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="listeMonuments" layoutX="1097.0" layoutY="263.0" mnemonicParsing="false" onAction="#listeMonuments" prefHeight="31.0" prefWidth="186.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(186, 205, 146);" text="Liste des Monuments" textFill="#030000">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

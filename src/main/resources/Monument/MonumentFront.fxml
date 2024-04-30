@@ -48,7 +48,7 @@
                         <GridPane fx:id="cartesMonumentGrid" prefWidth="1000.0" />
                     </children>
                 </AnchorPane>
-                <Button fx:id="returnVilles" layoutX="937.0" layoutY="25.0" mnemonicParsing="false" onAction="#returnVilles" prefHeight="34.0" prefWidth="348.0" style="-fx-background-color: rgb(23, 107, 135);" text="Return" textFill="WHITE">
+                <Button fx:id="returnPays" layoutX="930.0" layoutY="30.0" mnemonicParsing="false" onAction="#returnPays" prefHeight="40.0" prefWidth="350.0" style="-fx-background-color: rgb(23, 107, 135);" text="Return" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="14.0" />
                     </font>
