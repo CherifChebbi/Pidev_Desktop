@@ -25,7 +25,7 @@
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@reservationFront.css" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="450.0" prefWidth="794.0" stylesheets="@reservationFront.css" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane layoutX="124.0" layoutY="225.0" prefHeight="250.0" prefWidth="800.0" styleClass="center-pane" stylesheets="@AjoutEvent.css" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
@@ -78,7 +78,7 @@
                   <TextField fx:id="telephoneField" layoutX="472.0" layoutY="308.0" />
                   <Label layoutX="369.0" layoutY="357.0" text="Date de la réservation : " />
                   <DatePicker fx:id="datePicker" layoutX="531.0" layoutY="353.0" />
-                  <Button layoutX="688.0" layoutY="410.0" mnemonicParsing="false" onAction="#validerReservEvent" text="Confirmer" />
+                  <Button layoutX="614.0" layoutY="409.0" mnemonicParsing="false" onAction="#validerReservEvent" prefHeight="34.0" prefWidth="163.0" text="Passer au Paiement" />
                   <Button layoutX="39.0" layoutY="410.0" mnemonicParsing="false" onAction="#retourFront" stylesheets="@HomeBack.css" text="Retour" />
                </children>
             </AnchorPane>

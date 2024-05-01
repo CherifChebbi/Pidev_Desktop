@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -176,7 +177,7 @@
             </children>
         </AnchorPane>
         <ImageView fx:id="imageView_pays" fitHeight="200" fitWidth="200" layoutX="1069.0" layoutY="332.0" />
-      <TableView fx:id="reservationTableView" layoutX="429.0" layoutY="432.0" prefHeight="214.0" prefWidth="615.0">
+      <TableView fx:id="reservationTableView" layoutX="429.0" layoutY="432.0" prefHeight="214.0" prefWidth="760.0">
          <columns>
             <TableColumn fx:id="idColumn" prefWidth="42.4000244140625" text="ID " />
             <TableColumn fx:id="eventIdColumn" prefWidth="70.39996337890625" text="Event ID" />
@@ -184,6 +185,11 @@
             <TableColumn fx:id="dateReservationColumn" prefWidth="135.99993896484375" text="Date de réservation" />
             <TableColumn fx:id="numTelColumn" minWidth="0.0" prefWidth="87.199951171875" text="Téléphone" />
             <TableColumn fx:id="emailColumn" prefWidth="139.20000000000005" text="Email" />
+             <TableColumn fx:id="pdfReservation" prefWidth="139.20000000000005" text="Reçu">
+                 <cellValueFactory>
+                     <PropertyValueFactory property="pdfText" />
+                 </cellValueFactory>
+             </TableColumn>
          </columns>
       </TableView>
       <TextField fx:id="nomRechercheTextField" layoutX="429.0" layoutY="359.0" prefHeight="26.0" prefWidth="220.0" promptText="Rechercher par nom" styleClass="text-field" stylesheets="@ReservationBack.css" />

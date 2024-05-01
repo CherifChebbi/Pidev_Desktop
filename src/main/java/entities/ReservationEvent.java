@@ -1,5 +1,11 @@
 package entities;
 
+import utils.DB;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class ReservationEvent {
@@ -9,6 +15,7 @@ public class ReservationEvent {
     private String email;
     private String numTel;
     private Date dateReservation;
+
 
     // Constructeur avec et sans ID
     public ReservationEvent(int idEvent, String nom, String email, String numTel, Date dateReservation) {
@@ -89,4 +96,7 @@ public class ReservationEvent {
                 ", dateReservation=" + dateReservation +
                 '}';
     }
+
+
+
 }
