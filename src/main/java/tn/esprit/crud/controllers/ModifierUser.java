@@ -83,25 +83,27 @@ public class ModifierUser implements Initializable {
     @FXML
     void modifierUser() {
         try {
-            String nouveauNom = nomNouv.getText();
-            String nouveauPrenom = prenomNouv.getText();
-            String nouvelleNationnalite = nationnaliteNouv.getText();
-            String nouveauEmail = emailNouv.getText();
-            int nouveauNumtel = Integer.parseInt(numtelNouv.getText());
+            if (isValidInput()) {
+                String nouveauNom = nomNouv.getText();
+                String nouveauPrenom = prenomNouv.getText();
+                String nouvelleNationnalite = nationnaliteNouv.getText();
+                String nouveauEmail = emailNouv.getText();
+                int nouveauNumtel = Integer.parseInt(numtelNouv.getText());
 
-            if (selectedUser != null) {
-                selectedUser.setNom(nouveauNom);
-                selectedUser.setPrenom(nouveauPrenom);
-                selectedUser.setNationnalite(nouvelleNationnalite);
-                selectedUser.setEmail(nouveauEmail);
-                selectedUser.setNumtel(nouveauNumtel);
-                selectedUser.setRoles(selectedRadioButton.getText());
+                if (selectedUser != null) {
+                    selectedUser.setNom(nouveauNom);
+                    selectedUser.setPrenom(nouveauPrenom);
+                    selectedUser.setNationnalite(nouvelleNationnalite);
+                    selectedUser.setEmail(nouveauEmail);
+                    selectedUser.setNumtel(nouveauNumtel);
+                    selectedUser.setRoles(selectedRadioButton.getText());
 
-                userService.modifier(selectedUser);
+                    userService.modifier(selectedUser);
 
-                afficherMessage("Succès", "L'utilisateur a été modifié avec succès.");
-            } else {
-                System.err.println("Error: No user selected.");
+                    afficherMessage("Succès", "L'utilisateur a été modifié avec succès.");
+                } else {
+                    System.err.println("Error: No user selected.");
+                }
             }
         } catch (SQLException e) {
             afficherErreur("Erreur", "Erreur lors de la modification de l'utilisateur : " + e.getMessage());
@@ -142,5 +144,30 @@ public class ModifierUser implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(contenu);
         alert.showAndWait();
+    }
+
+    private boolean isValidInput() {
+        String nouveauNom = nomNouv.getText();
+        String nouveauPrenom = prenomNouv.getText();
+        String nouvelleNationnalite = nationnaliteNouv.getText();
+        String nouveauEmail = emailNouv.getText();
+        String nouveauNumtel = numtelNouv.getText();
+
+        if (nouveauNom.isEmpty() || nouveauPrenom.isEmpty() || nouvelleNationnalite.isEmpty() || nouveauEmail.isEmpty() || nouveauNumtel.isEmpty()) {
+            afficherErreur("Champs obligatoires", "Veuillez remplir tous les champs.");
+            return false;
+        }
+
+        if (!nouveauEmail.matches("\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b")) {
+            afficherErreur("Format d'email incorrect", "Veuillez entrer une adresse email valide.");
+            return false;
+        }
+
+        if (!nouveauNumtel.matches("\\d{8}")) {
+            afficherErreur("Format de numéro de téléphone incorrect", "Le numéro de téléphone doit contenir exactement 8 chiffres.");
+            return false;
+        }
+
+        return true;
     }
 }

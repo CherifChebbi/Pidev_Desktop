@@ -66,31 +66,67 @@ public class AjouterUser implements Initializable {
 
     @FXML
     void ajouterUser(ActionEvent event) {
-        User user = new User();
-        user.setNom(nomTF.getText());
-        user.setPrenom(prenomTF.getText());
-        user.setNationnalite(adresseTF.getText());
-        user.setEmail(emailTF.getText());
-        user.setPassword(mdpTF.getText());
-        user.setRoles(selectedRadioButton.getText());
+        if (isValidInput()) {
+            User user = new User();
+            user.setNom(nomTF.getText());
+            user.setPrenom(prenomTF.getText());
+            user.setNationnalite(adresseTF.getText());
+            user.setEmail(emailTF.getText());
+            user.setPassword(mdpTF.getText());
+            user.setRoles(selectedRadioButton.getText());
 
-        user.setNumtel(Integer.parseInt(numtelTF.getText())); // Set numtel from TextField
+            user.setNumtel(Integer.parseInt(numtelTF.getText())); // Set numtel from TextField
 
-        try {
-            userService.ajouter(user);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Success");
-            alert.setContentText("Personne Ajouter");
-            alert.showAndWait();
-        } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
-            e.printStackTrace(); // Print the stack trace to identify the exact cause of the error
+            try {
+                userService.ajouter(user);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Success");
+                alert.setContentText("Personne Ajouter");
+                alert.showAndWait();
+            } catch (SQLException e) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+                e.printStackTrace(); // Print the stack trace to identify the exact cause of the error
+            }
         }
     }
 
+    private boolean isValidInput() {
+        String nom = nomTF.getText();
+        String prenom = prenomTF.getText();
+        String adresse = adresseTF.getText();
+        String email = emailTF.getText();
+        String password = mdpTF.getText();
+        String numtel = numtelTF.getText();
+
+        if (nom.isEmpty() || prenom.isEmpty() || adresse.isEmpty() || email.isEmpty() || password.isEmpty() || numtel.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Champs obligatoires");
+            alert.setContentText("Veuillez remplir tous les champs.");
+            alert.showAndWait();
+            return false;
+        }
+
+        if (!email.matches("\\b[\\w.%-]+@[-.\\w]+\\.[A-Za-z]{2,4}\\b")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Format d'email incorrect");
+            alert.setContentText("Veuillez entrer une adresse email valide.");
+            alert.showAndWait();
+            return false;
+        }
+
+        if (!numtel.matches("\\d{8}")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Format de numéro de téléphone incorrect");
+            alert.setContentText("Le numéro de téléphone doit contenir exactement 8 chiffres.");
+            alert.showAndWait();
+            return false;
+        }
+
+        return true;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -102,8 +138,4 @@ public class AjouterUser implements Initializable {
             selectedRadioButton = (RadioButton) newValue;
         });
     }
-
-
-
-
 }

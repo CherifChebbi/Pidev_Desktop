@@ -104,21 +104,54 @@ public class UserService implements IServices<User> {
         return users;
     }
 
-    public boolean authenticateUser(String name, String pass) {
-        String query = "SELECT * FROM user WHERE nom = ? AND password = ?";
+    public User authenticateUser(String email, String password) {
+        String query = "SELECT * FROM user WHERE email = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, name);
-            statement.setString(2, pass);
+            statement.setString(1, email);
 
             ResultSet resultSet = statement.executeQuery();
 
-            return resultSet.next();
+            if (resultSet.next()) {
+                // User found, check password
+                String storedPassword = resultSet.getString("password");
+                try {
+                    if (BCrypt.checkpw(password, storedPassword)) {
+                        // Passwords match, create and return User object
+                        User user = new User();
+                        user.setId(resultSet.getInt("id"));
+                        user.setNom(resultSet.getString("nom"));
+                        user.setPrenom(resultSet.getString("prenom"));
+                        user.setNationnalite(resultSet.getString("nationnalite"));
+                        user.setEmail(resultSet.getString("email"));
+                        user.setPassword(resultSet.getString("password"));
+                        user.setRoles(resultSet.getString("roles"));
+                        user.setNumtel(resultSet.getInt("numtel"));
+                        return user;
+                    } else {
+                        // Passwords don't match
+                        System.out.println("Login failed: Incorrect password");
+                        return null;
+                    }
+                } catch (IllegalArgumentException e) {
+                    // Handle invalid salt version
+                    System.out.println("Invalid salt version");
+                    return null;
+                }
+            } else {
+                // No user found with the provided email address
+                System.out.println("Login failed: User not found");
+                return null;
+            }
         } catch (SQLException e) {
+            System.err.println("Error during login: " + e.getMessage());
             e.printStackTrace();
-            return false;
+            return null;
         }
-
     }
+
+
+
+
 
     public String roles (int id) {
         try {
@@ -172,14 +205,15 @@ public class UserService implements IServices<User> {
         user.setPassword(hashedPassword);
 
         // Proceed with user insertion
-        String req = "INSERT INTO user(nom, prenom, nationnalite, email, password,numtel) VALUES (?, ?, ?, ?, ?,?)";
+        String req = "INSERT INTO user(nom, prenom, nationnalite, email, password, roles, numtel) VALUES (?, ?, ?, ?, ?, ?, ?)";
         PreparedStatement st = connection.prepareStatement(req);
         st.setString(1, user.getNom());
         st.setString(2, user.getPrenom());
         st.setString(3, user.getNationnalite());
         st.setString(4, user.getEmail());
         st.setString(5, user.getPassword());
-        st.setInt(6,user.getNumtel());
+        st.setString(6, user.getRoles());
+        st.setInt(7, user.getNumtel());
         st.executeUpdate();
     }
 
