@@ -71,11 +71,11 @@ public class ReservationManagment {
 
         try {
             if (i != null && !i.isEmpty() && y != null && !y.isEmpty() && x != null && z != null) {
-                Reservation reservation = new Reservation(5, i, y, x, z);
+                Reservation reservation = new Reservation(70, i, y, x, z);
                 SR.ajouter(reservation);
 
                 // Add the new reservation to the TableView
-                afficher.getItems().add(reservation);
+                afficher.getItems().add(reservation); // Add the new reservation directly to the TableView
 
                 // Clear the input fields after adding the reservation
                 nom.clear();
@@ -91,6 +91,7 @@ public class ReservationManagment {
             System.out.println(e.getMessage());
         }
     }
+
 
     @FXML
     void modifier(ActionEvent event) throws SQLException {

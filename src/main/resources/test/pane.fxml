@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <AnchorPane prefHeight="539.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ReservationManagment">
    <children>
       <Pane prefHeight="92.0" prefWidth="883.0" style="-fx-background-color: grey;">
@@ -16,10 +17,26 @@
       <Pane layoutY="92.0" prefHeight="500.0" prefWidth="148.0" style="-fx-background-color: grey;" />
       <TableView fx:id="afficher" layoutX="148.0" layoutY="92.0" prefHeight="400.0" prefWidth="600.0">
          <columns>
-            <TableColumn text="Nom" />
-            <TableColumn text="Email" />
-            <TableColumn text="Date" />
-            <TableColumn text="Nombre Personnes" />
+            <TableColumn text="Nom" prefWidth="150">
+               <cellValueFactory>
+                  <PropertyValueFactory property="nom"/>
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Email" prefWidth="150">
+               <cellValueFactory>
+                  <PropertyValueFactory property="email"/>
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Date" prefWidth="150">
+               <cellValueFactory>
+                  <PropertyValueFactory property="date"/>
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Nombre Personnes" prefWidth="150">
+               <cellValueFactory>
+                  <PropertyValueFactory property="nbrPersonne"/>
+               </cellValueFactory>
+            </TableColumn>
          </columns>
       </TableView>
       <Pane layoutX="148.0" layoutY="500.0" prefHeight="39.0" prefWidth="600.0">

@@ -17,7 +17,7 @@ public class ServiceReservation {
     }
 
     public void ajouter(Reservation reservation) throws SQLException {
-        String req = "INSERT INTO reservation (hebergement, nom, email, date, nbr_personne) VALUES (5, ?, ?, ?, ?)";
+        String req = "INSERT INTO reservation (hebergement, nom, email, date, nbr_personne) VALUES (70, ?, ?, ?, ?)";
 
         try (PreparedStatement pre = connection.prepareStatement(req)) {
             pre.setString(1, reservation.getNom());
