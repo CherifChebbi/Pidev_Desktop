@@ -1,0 +1,14 @@
+/* styles.css */
+.main-pane {
+    -fx-background-color: #f4f4f4;
+}
+
+.label {
+    -fx-font-family: "Lucida Calligraphy";
+    -fx-font-size: 22px;
+}
+
+.image-view {
+    -fx-fit-height: 118px;
+    -fx-fit-width: 134px;
+}
