@@ -180,7 +180,7 @@ public class PaysFront {
         //Label nbVilleLabel = new Label("Nombre de villes: " + pays.getNb_villes());
 
 
-        // Création d'un bouton pour accéder à la page des villes
+    // Création d'un bouton pour accéder à la page des villes
         Button voirVillesButton = new Button("Voir les villes");
         voirVillesButton.setStyle("-fx-background-color: rgb(160, 21, 62); -fx-text-fill: white;-fx-font-weight: bold;");
         voirVillesButton.setOnAction(event -> {
@@ -198,6 +198,27 @@ public class PaysFront {
                 System.err.println("Error loading FXML file: " + e.getMessage());
             }
         });
+        // Création d'un logo pour Maps
+        ImageView mapLogo = new ImageView(getClass().getResource("/Pays/map-icon.png").toExternalForm());
+        mapLogo.setPreserveRatio(true);
+        mapLogo.setFitWidth(50);
+
+        mapLogo.setOnMouseClicked(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/Map.fxml"));
+                Parent root = loader.load();
+                MapController controller=loader.getController();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.err.println("Error loading FXML file: " + e.getMessage());
+            }
+        });
+
+
         // Création d'une VBox pour organiser les informations verticalement
         VBox infosPaysVBox = new VBox(5); // Espace vertical entre les informations
         infosPaysVBox.getChildren().addAll(
@@ -206,7 +227,8 @@ public class PaysFront {
                 continentBox,
                 nbVilleBox,
                 descBox,
-                voirVillesButton
+                voirVillesButton,
+                mapLogo
         );
 
         // Ajout de marges entre les cartes

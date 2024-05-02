@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Map</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7isPjS2NX3AR-_4qT2ZY6863uBXy_NqA&callback=initMap" async defer></script>
+    <script>
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: -34.397, lng: 150.644},
+                zoom: 8
+            });
+        }
+    </script>
+</head>
+<body onload="initMap()">
+<div id="map" style="height: 500px; width: 100%;"></div>
+</body>
+</html>

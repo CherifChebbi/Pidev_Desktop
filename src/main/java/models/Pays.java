@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import java.util.List;
 
 public class Pays {
+
     private List<Ville> villes;
 
     public List<Ville> getVilles() {
