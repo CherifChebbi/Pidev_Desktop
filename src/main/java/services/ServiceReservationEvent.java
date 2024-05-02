@@ -168,10 +168,7 @@ public class ServiceReservationEvent implements IService<ReservationEvent> {
         return count;
     }
 
-    public void enregistrerReservation(int eventId, String nom, String email, String telephone, java.util.Date dateReservation) {
-        ReservationEvent reservationEvent = new ReservationEvent(eventId, nom, email, telephone, dateReservation);
-        ajouter(reservationEvent);
-    }
+
 
 
 }

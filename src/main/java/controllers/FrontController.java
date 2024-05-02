@@ -45,40 +45,32 @@ public class FrontController {
     public void initialize() {
         List<Event> events = serviceEvent.afficher();
 
-        int columnCount = 3;
-        int rowCount = (int) Math.ceil((double) events.size() / columnCount); // Calculer le nombre de lignes nécessaires
+        for (Event event : events) {
+            ImageView imageView = createEventView(event);
+            Label titleLabel = new Label("Titre: " + event.getTitre());
+            Label descriptionLabel = new Label("Description: " + event.getDescription());
+            Label dateLabel = new Label("Date: " + event.getDateDebut());
+            Label priceLabel = new Label("Prix: " + event.getPrix());
+            Button reserveButton = new Button("Réserver");
+            reserveButton.setOnAction(this::reserveButtonClicked);
+            reserveButton.setUserData(event);
 
-        for (int i = 0; i < rowCount; i++) {
-            for (int j = 0; j < columnCount; j++) {
-                int index = i * columnCount + j;
-                if (index < events.size()) {
-                    Event event = events.get(index);
-                    ImageView imageView = createEventView(event);
-                    Label titleLabel = new Label(event.getTitre());
-                    Label priceLabel = new Label("Prix : " + event.getPrix());
-                    Button reserveButton = new Button("Réserver");
-                    reserveButton.setOnAction(this::reserveButtonClicked);
-                    reserveButton.setUserData(event);
+            VBox eventDetails = new VBox(); // Utilisez VBox pour aligner les éléments verticalement
+            eventDetails.getChildren().addAll(titleLabel, descriptionLabel, dateLabel, priceLabel, reserveButton);
+            eventDetails.setSpacing(10);
+            eventDetails.setAlignment(Pos.CENTER);
 
-                    VBox eventDetails = new VBox(); // Utilisez VBox pour aligner les éléments verticalement
-                    eventDetails.getChildren().addAll(titleLabel, priceLabel, reserveButton);
-                    eventDetails.setSpacing(10);
-                    eventDetails.setPadding(new Insets(10)); // Ajoutez un remplissage aux détails de l'événement
-                    eventDetails.setAlignment(javafx.geometry.Pos.CENTER); // Alignez les éléments au centre horizontalement
+            VBox container = new VBox();
+            container.getChildren().addAll(imageView, eventDetails);
+            container.setSpacing(10);
+            container.setAlignment(Pos.CENTER);
 
-                    // Ajustez la largeur préférée de chaque élément pour occuper environ un tiers de la largeur totale du FlowPane
-                    imageView.setFitWidth(150);
-                    imageView.setFitHeight(150);
-                    eventDetails.setPrefWidth(150);
+            HBox eventContainer = new HBox();
+            eventContainer.getChildren().add(container);
+            eventContainer.setAlignment(Pos.CENTER);
+            eventContainer.setPadding(new Insets(10));
 
-                    // Créez un conteneur pour chaque élément (image et détails de l'événement) et ajoutez-le au FlowPane
-                    HBox eventContainer = new HBox(imageView, eventDetails);
-                    eventContainer.setAlignment(Pos.TOP_LEFT); // Alignez le conteneur en haut à gauche
-                    eventContainer.setSpacing(10); // Ajoutez un espacement horizontal entre l'image et les détails de l'événement
-
-                    eventFlowPane.getChildren().add(eventContainer);
-                }
-            }
+            eventFlowPane.getChildren().add(eventContainer);
         }
     }
 
