@@ -208,7 +208,7 @@ public class FrontManagement {
     private void showVideo(ActionEvent event) {
         try {
             // Load the video file (replace "video.mp4" with the actual path to your video file)
-            String videoFile = getClass().getResource("/video.mp4.mp4").toExternalForm();
+            String videoFile = getClass().getResource("/majd.mp4").toExternalForm();
 
             javafx.scene.media.Media media = new javafx.scene.media.Media(videoFile);
 
