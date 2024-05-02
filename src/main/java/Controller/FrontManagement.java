@@ -190,7 +190,14 @@ public class FrontManagement {
             return "Notre application vous permet de rechercher des restaurants par nom, cuisine ou emplacement. Que recherchez-vous";
         } else if (userInput.contains("reservation existante")) {
             return "Pour consulter vos réservations existantes, veuillez vous connecter à votre compte et accéder à la section réservations.";
-        } else {
+        }
+        if (userInput.contains("chkoun a7ssen we7ed fi groupe pidev")) {
+            return "akiid majd a7sen we7ed tw heda klem aziiz mta3 souha w rayen mte3 oumayma 7keyethom fer8a te3bon toul hhh";
+        } else if (userInput.contains("reservation existante")) {
+            return "Pour consulter vos réservations existantes, veuillez vous connecter à votre compte et accéder à la section réservations.";
+        }
+
+        else {
             return "Je suis là pour vous aider . N'hésitez pas à me poser des questions !";
         }
     }
