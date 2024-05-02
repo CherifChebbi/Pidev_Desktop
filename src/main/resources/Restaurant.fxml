@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="721.0" prefWidth="932.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RestaurantManagement">
+    <children>
+        <Accordion layoutX="68.0" layoutY="86.0" />
+      <Pane layoutX="628.0" layoutY="86.0" prefHeight="259.0" prefWidth="275.0" style="-fx-background-color: #B8D6D9; -fx-background-radius: 20;">
+         <children>
+              <Button layoutX="54.0" layoutY="32.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="39.0" prefWidth="176.0" style="-fx-background-color: WJITE; -fx-border-color: black; -fx-border-radius: 20;" text="Ajouter Restaurant">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+              <Button layoutX="54.0" layoutY="103.0" mnemonicParsing="false" onAction="#modifier" prefHeight="39.0" prefWidth="176.0" style="-fx-background-color: WJITE; -fx-border-color: black; -fx-border-radius: 20;" text="Modifier Restaurant">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+              <Button layoutX="54.0" layoutY="177.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="39.0" prefWidth="176.0" style="-fx-background-color: WJITE; -fx-border-color: black; -fx-border-radius: 20;" text="Supprimer Restaurant">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane layoutX="8.8" layoutY="380.0" prefHeight="358.0" prefWidth="914.0" style="-fx-background-color: #B8D6D9; -fx-border-color: black; -fx-border-radius: 50; -fx-background-radius: 50;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0">
+         <children>
+      
+            
+                    <TableView fx:id="afficher" layoutX="19.0" layoutY="30.0" prefHeight="316.0" prefWidth="883.0" style="-fx-background-color: #FEFFD2; -fx-border-radius: 20; -fx-border-color: black;">
+                  <columns>
+                      <TableColumn fx:id="idcol" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="nomcol" prefWidth="170.3999481201172" text="Nom" />
+                      <TableColumn fx:id="locationcol" prefWidth="150.4000244140625" text="localisation" />
+                      <TableColumn fx:id="imagecol" prefWidth="259.2000732421875" text="Image" />
+                      <TableColumn fx:id="descriptioncol" prefWidth="118.4000244140625" text="Description" />
+                  </columns>
+              </TableView>
+         </children>
+      </Pane>
+      <Pane layoutX="5.0" layoutY="6.0" prefHeight="70.0" prefWidth="923.0" style="-fx-background-color: #828889; -fx-background-radius: 20; -fx-focus-traversable: 10;">
+         <children>
+            <Text layoutX="31.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configurer Les Restaurants" wrappingWidth="330.9999999999999">
+               <font>
+                  <Font name="Calibri" size="25.0" />
+               </font>
+            </Text>
+              <Button fx:id="switchToPlatButton" layoutX="715.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToPlat" prefHeight="39.0" prefWidth="176.0" style="-fx-background-color: Whithe; -fx-border-color: black; -fx-border-radius: 20;" text="Configurer Plat" textFill="WHITE">
+               <font>
+                  <Font name="Century Schoolbook" size="12.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="39.0" fitWidth="33.0" layoutX="609.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/home.png" />
+               </image>
+            </ImageView>
+            <Text fill="WHITE" layoutX="518.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+               <font>
+                  <Font name="Century Schoolbook" size="14.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="9.0" layoutY="86.0" prefHeight="259.0" prefWidth="590.0" style="-fx-background-color: #B8D6D9; -fx-background-radius: 20;">
+         <children>
+                <TextField fx:id="nom" layoutX="194.0" layoutY="10.0" prefHeight="45.0" prefWidth="249.0" promptText="Entrer le nom du restaurant" style="-fx-border-radius: 20; -fx-border-color: black; -fx-background-radius: 20;" />
+                <TextField fx:id="localisation" layoutX="194.0" layoutY="69.0" prefHeight="45.0" prefWidth="249.0" promptText="Enter localisation du restaurant" style="-fx-background-radius: 20; -fx-border-color: black; -fx-position-shape: 20; -fx-border-radius: 20;" />
+              <TextField fx:id="image" layoutX="194.0" layoutY="127.0" prefHeight="45.0" prefWidth="249.0" promptText="Enter image path" style="-fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" />
+                <TextArea fx:id="description" layoutX="194.0" layoutY="191.0" prefHeight="62.0" prefWidth="151.0" promptText="Entrer la description du restaurant" style="-fx-border-color: black;" />
+              <Button layoutX="463.0" layoutY="130.0" mnemonicParsing="false" onAction="#selectImage" prefHeight="39.0" prefWidth="93.0" style="-fx-background-color: WHITE; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" text="Select Image">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
+              <Text layoutX="106.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+              <Text layoutX="78.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localisation:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+              <Text layoutX="98.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image:">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+      
+                    <Text layoutX="69.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>
