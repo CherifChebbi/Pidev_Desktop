@@ -1,88 +1,205 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReserverEventController">
-   <children>
-      <BorderPane layoutX="135.0" layoutY="56.0" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <AnchorPane prefHeight="50.0" prefWidth="600.0" styleClass="center-pane" BorderPane.alignment="CENTER">
-               <children>
-                  <Text fill="#266eff" layoutX="41.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TERRANOVA" wrappingWidth="133.78265380859375">
-                     <font>
-                        <Font name="Book Antiqua" size="19.0" />
-                     </font>
-                  </Text>
-               </children>
-            </AnchorPane>
-         </top>
-         <left>
-            <AnchorPane prefHeight="450.0" prefWidth="794.0" stylesheets="@reservationFront.css" BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane layoutX="124.0" layoutY="225.0" prefHeight="250.0" prefWidth="800.0" styleClass="center-pane" stylesheets="@AjoutEvent.css" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Text layoutX="17.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations sur l'évènement">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Text>
-                        <ImageView fx:id="imgRes" fitHeight="150.0" fitWidth="200.0" layoutX="532.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label layoutX="51.0" layoutY="59.0" />
-                        <Text layoutX="51.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous allez réserver :">
-                           <font>
-                              <Font size="14.0" />
-                           </font></Text>
-                        <Text layoutX="51.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
-                           <font>
-                              <Font size="14.0" />
-                           </font></Text>
-                        <Text layoutX="51.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Durée :">
-                           <font>
-                              <Font size="14.0" />
-                           </font></Text>
-                        <Text layoutX="51.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu :">
-                           <font>
-                              <Font size="14.0" />
-                           </font></Text>
-                        <Text layoutX="50.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix : ">
-                           <font>
-                              <Font size="14.0" />
-                           </font></Text>
-                        <Label fx:id="titreevent" layoutX="183.0" layoutY="51.0" text="TITRE" />
-                        <Label fx:id="descripevent" layoutX="135.0" layoutY="90.0" text="DESCRIPTION" />
-                        <Label fx:id="ddebutevent" layoutX="105.0" layoutY="129.0" text="DATE DEBUT " />
-                        <Label layoutX="200.0" layoutY="128.0" text="-" />
-                        <Label fx:id="dfinevent" layoutX="214.0" layoutY="130.0" text="DATE FIN" />
-                        <Label fx:id="lieuevent" layoutX="92.0" layoutY="163.0" text="LIEU" />
-                        <Label fx:id="prixevent" layoutX="87.0" layoutY="202.0" text="PRIX" />
-                     </children>
-                  </AnchorPane>
-                  <Text layoutX="24.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coordonnées ">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
-                  </Text>
-                  <Label layoutX="31.0" layoutY="317.0" text="Nom et Prénom : " />
-                  <Label layoutX="31.0" layoutY="358.0" text="Email : " />
-                  <TextField fx:id="nomField" layoutX="161.0" layoutY="312.0" />
-                  <TextField fx:id="emailField" layoutX="104.0" layoutY="353.0" />
-                  <Label layoutX="369.0" layoutY="313.0" text="Téléphone :" />
-                  <TextField fx:id="telephoneField" layoutX="472.0" layoutY="308.0" />
-                  <Label layoutX="369.0" layoutY="357.0" text="Date de la réservation : " />
-                  <DatePicker fx:id="datePicker" layoutX="531.0" layoutY="353.0" />
-                  <Button layoutX="614.0" layoutY="409.0" mnemonicParsing="false" onAction="#validerReservEvent" prefHeight="34.0" prefWidth="163.0" text="Passer au Paiement" />
-                  <Button layoutX="39.0" layoutY="410.0" mnemonicParsing="false" onAction="#retourFront" stylesheets="@HomeBack.css" text="Retour" />
-               </children>
-            </AnchorPane>
-         </left>
-      </BorderPane>
-   </children>
+<AnchorPane prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReserverEventController">
+    <children>
+        <AnchorPane layoutY="67.0" prefHeight="640.0" prefWidth="1300.0" style="-fx-background-color: rgb(233, 246, 255);">
+            <children>
+                <ImageView fitHeight="640.0" fitWidth="693.0" layoutX="330.0" opacity="0.17" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/logo1.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="190.0" fitWidth="195.0" layoutX="59.0" layoutY="42.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/tourism.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="255.0" fitWidth="264.0" layoutX="217.0" layoutY="171.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/carte-de-voyage.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="193.0" fitWidth="216.0" layoutX="48.0" layoutY="435.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/tourisme.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="275.0" fitWidth="338.0" layoutX="985.0" layoutY="288.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/voyage-et-tourisme.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="193.0" fitWidth="224.0" layoutX="1030.0" layoutY="40.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/carte-de-voyage.png" />
+                    </image>
+                </ImageView>
+            <Text layoutX="127.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations sur l'évènement">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="imgRes" fitHeight="176.0" fitWidth="275.0" layoutX="642.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="161.0" layoutY="127.0" />
+            <Text layoutX="161.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous allez réserver :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="161.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="161.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Durée :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="161.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Text layoutX="160.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix : ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Label fx:id="titreevent" layoutX="293.0" layoutY="119.0" text="TITRE" />
+            <Label fx:id="descripevent" layoutX="245.0" layoutY="158.0" text="DESCRIPTION" />
+            <Label fx:id="ddebutevent" layoutX="215.0" layoutY="197.0" text="DATE DEBUT " />
+            <Label layoutX="310.0" layoutY="196.0" text="-" />
+            <Label fx:id="dfinevent" layoutX="324.0" layoutY="198.0" text="DATE FIN" />
+            <Label fx:id="lieuevent" layoutX="202.0" layoutY="231.0" text="LIEU" />
+            <Label fx:id="prixevent" layoutX="197.0" layoutY="270.0" text="PRIX" />
+            <Text layoutX="158.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coordonnées ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Label layoutX="165.0" layoutY="433.0" text="Nom et Prénom : " />
+            <Label layoutX="165.0" layoutY="474.0" text="Email : " />
+            <TextField fx:id="nomField" layoutX="295.0" layoutY="428.0" />
+            <TextField fx:id="emailField" layoutX="238.0" layoutY="469.0" />
+            <Label layoutX="503.0" layoutY="429.0" text="Téléphone :" />
+            <TextField fx:id="telephoneField" layoutX="606.0" layoutY="424.0" />
+            <Label layoutX="503.0" layoutY="473.0" text="Date de la réservation : " />
+            <DatePicker fx:id="datePicker" layoutX="665.0" layoutY="469.0" />
+            <Button layoutX="748.0" layoutY="525.0" mnemonicParsing="false" onAction="#validerReservEvent" prefHeight="34.0" prefWidth="163.0" style="-fx-background-color: #000000;" text="Passer au Paiement" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="173.0" layoutY="526.0" mnemonicParsing="false" onAction="#retourFront" style="-fx-background-color: #000000;" stylesheets="@HomeBack.css" text="Retour">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            </children>
+        </AnchorPane>
+        <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/terra-removebg-preview.png" />
+            </image>
+        </ImageView>
+        <HBox layoutX="313.0" layoutY="14.0" prefHeight="40.0" prefWidth="792.0">
+            <children>
+                <HBox prefHeight="40.0" prefWidth="137.0">
+                    <children>
+                        <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/pays.png" />
+                            </image>
+                        </ImageView>
+                        <Button fx:id="Front_Pays" mnemonicParsing="false"  prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: rgb(240, 243, 255);" text="Pays">
+                            <font>
+                                <Font name="Arial Nova Bold" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox prefHeight="40.0" prefWidth="202.0">
+                    <children>
+                        <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/restaurant.png" />
+                            </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" style="-fx-background-color: rgb(240, 243, 255);" text="Restaurants">
+                            <font>
+                                <Font name="Arial Nova Bold" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox prefHeight="40.0" prefWidth="228.0">
+                    <children>
+                        <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/hotel.png" />
+                            </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="203.0" style="-fx-background-color: rgb(240, 243, 255);" text="Hebergements">
+                            <font>
+                                <Font name="Arial Nova Bold" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox prefHeight="40.0" prefWidth="224.0">
+                    <children>
+                        <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/events.png" />
+                            </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
+                            <font>
+                                <Font name="Arial Nova Bold" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+        <HBox layoutX="1150.0" layoutY="15.0" prefHeight="38.0" prefWidth="136.0">
+            <children>
+                <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: rgb(240, 243, 255);" text="Profil" textFill="#0289cf">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="20.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="40.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/6915987.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </HBox>
+    </children>
 </AnchorPane>

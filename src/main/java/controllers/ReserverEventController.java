@@ -102,7 +102,7 @@ public class ReserverEventController {
         stage.close();
 
         // Ouvrir la page front des événements
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Front.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/indexEvent.fxml"));
         Parent root;
         try {
             root = loader.load();

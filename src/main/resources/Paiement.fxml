@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -7,54 +8,175 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaiementController">
-   <children>
-      <ImageView fitHeight="174.0" fitWidth="202.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/TourTravelBusinessLogo.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="297.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payer par carte bancaire">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Text>
-      <Text layoutX="297.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payer avec votre carte bancaire en toute sécurité" />
-      <ImageView fitHeight="24.0" fitWidth="26.0" layoutX="510.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../Downloads/Mastercard-logo.svg.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="24.0" fitWidth="26.0" layoutX="543.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../Downloads/visa.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="297.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
-      <Text layoutX="297.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations de la carte" />
-      <TextField fx:id="numCarte" layoutX="297.0" layoutY="250.0" prefHeight="34.0" prefWidth="302.0" promptText="1234 1234 1234 1234" />
-      <TextField fx:id="carteCVC" layoutX="448.0" layoutY="284.0" prefHeight="34.0" prefWidth="151.0" promptText="CVC" />
-      <Text layoutX="297.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du titulaire de la carte" />
-      <TextField fx:id="nomTitulaire" layoutX="295.0" layoutY="380.0" prefHeight="34.0" prefWidth="211.0" />
-      <TextField fx:id="emailPaiement" layoutX="297.0" layoutY="161.0" prefHeight="34.0" prefWidth="211.0" />
-      <Button layoutX="598.0" layoutY="442.0" mnemonicParsing="false" onAction="#confirmerPaiement" prefHeight="34.0" prefWidth="102.0" style="-fx-background-color: #000000;" text="Payer" textFill="WHITE">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Button>
-      <DatePicker fx:id="expirationDate" layoutX="298.0" layoutY="284.0" prefHeight="34.0" prefWidth="151.0" promptText="Expiration Date" />
-      <Text layoutX="41.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Text>
-      <Label fx:id="prixEventLabel" layoutX="65.0" layoutY="195.0" text="PRIXEV">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-   </children>
+<AnchorPane prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PaiementController">
+    <children>
+        <AnchorPane layoutY="67.0" prefHeight="640.0" prefWidth="1300.0" style="-fx-background-color: rgb(233, 246, 255);">
+            <children>
+                <ImageView fitHeight="640.0" fitWidth="693.0" layoutX="330.0" opacity="0.17" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/logo1.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="190.0" fitWidth="195.0" layoutX="59.0" layoutY="42.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/tourism.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="255.0" fitWidth="264.0" layoutX="217.0" layoutY="171.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/carte-de-voyage.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="193.0" fitWidth="216.0" layoutX="48.0" layoutY="435.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/tourisme.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="275.0" fitWidth="338.0" layoutX="985.0" layoutY="288.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/voyage-et-tourisme.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="193.0" fitWidth="224.0" layoutX="1030.0" layoutY="40.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/carte-de-voyage.png" />
+                    </image>
+                </ImageView>
+            <Text layoutX="410.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payer par carte bancaire">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="410.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payer avec votre carte bancaire en toute sécurité" />
+            <ImageView fitHeight="24.0" fitWidth="26.0" layoutX="623.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Mastercard-logo.svg.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="26.0" layoutX="656.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/visa.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="410.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+            <Text layoutX="410.0" layoutY="328.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations de la carte" />
+            <TextField fx:id="numCarte" layoutX="410.0" layoutY="349.0" prefHeight="34.0" prefWidth="302.0" promptText="1234 1234 1234 1234" />
+            <TextField fx:id="carteCVC" layoutX="561.0" layoutY="383.0" prefHeight="34.0" prefWidth="151.0" promptText="CVC" />
+            <Text layoutX="410.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du titulaire de la carte" />
+            <TextField fx:id="nomTitulaire" layoutX="408.0" layoutY="479.0" prefHeight="34.0" prefWidth="211.0" />
+            <TextField fx:id="emailPaiement" layoutX="410.0" layoutY="260.0" prefHeight="34.0" prefWidth="211.0" />
+            <Button layoutX="711.0" layoutY="541.0" mnemonicParsing="false" onAction="#confirmerPaiement" prefHeight="34.0" prefWidth="102.0" style="-fx-background-color: #000000;" text="Payer" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <DatePicker fx:id="expirationDate" layoutX="411.0" layoutY="383.0" prefHeight="34.0" prefWidth="151.0" promptText="Expiration Date" />
+            <Text layoutX="462.0" layoutY="566.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\$">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Label fx:id="prixEventLabel" layoutX="486.0" layoutY="540.0" text="PRIXEV">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            </children>
+        </AnchorPane>
+        <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/terra-removebg-preview.png" />
+            </image>
+        </ImageView>
+        <HBox layoutX="313.0" layoutY="14.0" prefHeight="40.0" prefWidth="792.0">
+            <children>
+                <HBox prefHeight="40.0" prefWidth="137.0">
+                    <children>
+                        <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/pays.png" />
+                            </image>
+                        </ImageView>
+                        <Button fx:id="Front_Pays" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: rgb(240, 243, 255);" text="Pays">
+                            <font>
+                                <Font name="Arial Nova Bold" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox prefHeight="40.0" prefWidth="202.0">
+                    <children>
+                        <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/restaurant.png" />
+                            </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" style="-fx-background-color: rgb(240, 243, 255);" text="Restaurants">
+                            <font>
+                                <Font name="Arial Nova Bold" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox prefHeight="40.0" prefWidth="228.0">
+                    <children>
+                        <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/hotel.png" />
+                            </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="203.0" style="-fx-background-color: rgb(240, 243, 255);" text="Hebergements">
+                            <font>
+                                <Font name="Arial Nova Bold" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+                <HBox prefHeight="40.0" prefWidth="224.0">
+                    <children>
+                        <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/events.png" />
+                            </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
+                            <font>
+                                <Font name="Arial Nova Bold" size="20.0" />
+                            </font>
+                            <HBox.margin>
+                                <Insets right="20.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+        </HBox>
+        <HBox layoutX="1150.0" layoutY="15.0" prefHeight="38.0" prefWidth="136.0">
+            <children>
+                <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: rgb(240, 243, 255);" text="Profil" textFill="#0289cf">
+                    <font>
+                        <Font name="Arial Rounded MT Bold" size="20.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="40.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@images/6915987.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </HBox>
+    </children>
 </AnchorPane>

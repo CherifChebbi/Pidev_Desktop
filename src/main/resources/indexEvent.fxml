@@ -5,10 +5,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FrontController">
+<AnchorPane prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FrontController">
     <children>
         <AnchorPane layoutY="67.0" prefHeight="640.0" prefWidth="1300.0" style="-fx-background-color: rgb(233, 246, 255);">
             <children>
@@ -42,6 +43,11 @@
                         <Image url="@images/carte-de-voyage.png" />
                     </image>
                 </ImageView>
+            <AnchorPane layoutX="230.0" layoutY="4.0" prefHeight="640.0" prefWidth="1300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <FlowPane fx:id="eventFlowPane" layoutX="302.0" layoutY="205.0" prefHeight="500.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
             </children>
         </AnchorPane>
         <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
@@ -58,7 +64,7 @@
                                 <Image url="@images/pays.png" />
                             </image>
                         </ImageView>
-                        <Button fx:id="Front_Pays" mnemonicParsing="false" onAction="#Front_Pays" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: rgb(240, 243, 255);" text="Pays">
+                        <Button fx:id="Front_Pays" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: rgb(240, 243, 255);" text="Pays">
                             <font>
                                 <Font name="Arial Nova Bold" size="20.0" />
                             </font>
