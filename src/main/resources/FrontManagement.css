@@ -39,3 +39,18 @@
     -fx-alignment: CENTER; /* Center align the pagination */
 }
 
+#reserveButton, #viewPlatsButton {
+    -fx-background-color: black;
+    -fx-border-color: red;
+    -fx-background-radius: 20;
+    -fx-border-radius: 20;
+    -fx-position-shape: 10;
+    -fx-text-fill: white; /* Set text color to white */
+}
+
+#reserveButton:hover, #viewPlatsButton:hover {
+    -fx-background-color: red;
+    -fx-text-fill: black; /* Change text color on hover */
+}
+
+

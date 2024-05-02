@@ -68,10 +68,12 @@ public class FrontManagement {
             Label descriptionLabel = new Label(restaurant.getDescription());
 
             Button reserveButton = new Button("Réserver");
+            reserveButton.setStyle("-fx-background-color: #BEFAFF; -fx-border-color: red; -fx-background-radius: 20; -fx-border-radius: 20; -fx-position-shape: 10; -fx-text-fill: black;"); // Apply CSS styling
             reserveButton.setOnAction(event -> reserveForRestaurant(event, restaurant)); // Set action handler
 
             Button viewPlatsButton = new Button("View Plats");
-            viewPlatsButton.setOnAction(event -> viewPlatsForRestaurant(event, restaurant)); // Set action handler
+            viewPlatsButton.setStyle("-fx-background-color: #BEFAFF; -fx-border-color: red; -fx-background-radius: 20; -fx-border-radius: 20; -fx-position-shape: 10; -fx-text-fill: black;"); // Apply CSS styling
+            viewPlatsButton.setOnAction(event -> viewPlatsForRestaurant(event, restaurant)); // Set action handler/ Set action handler
 
             gridPane.add(imageView, column, row);
             gridPane.add(nameLabel, column, row + 1); // Add the name below the image
