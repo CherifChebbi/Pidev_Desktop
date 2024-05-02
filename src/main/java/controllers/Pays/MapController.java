@@ -11,6 +11,7 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import models.Pays;
 
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -19,11 +20,29 @@ public class MapController {
 
     @FXML
     private WebView webView;
+    private double countryLatitude;
+    private double countryLongitude;
+
 
     public void initialize() {
+
         WebEngine webEngine = webView.getEngine();
         URL url = getClass().getResource("/Pays/map.html");
         webEngine.load(url.toExternalForm());
+    }
+    public void setCountryCoordinates(double latitude, double longitude) {
+        this.countryLatitude = latitude;
+        this.countryLongitude = longitude;
+    }
+
+    @FXML
+    void loadCountryMap(ActionEvent event) {
+        executeJavaScript("map.setCenter(new google.maps.LatLng(" + countryLatitude + ", " + countryLongitude + "));");
+    }
+
+    @FXML
+    private void executeJavaScript(String script) {
+        webView.getEngine().executeScript(script);
     }
     @FXML
     void Front_Pays(ActionEvent event) {
@@ -44,6 +63,7 @@ public class MapController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
+
 }

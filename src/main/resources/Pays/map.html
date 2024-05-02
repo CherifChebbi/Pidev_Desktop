@@ -1,13 +1,16 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Simple Map</title>
+    <title>Carte interactive</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7isPjS2NX3AR-_4qT2ZY6863uBXy_NqA&callback=initMap" async defer></script>
     <script>
         var map;
+
         function initMap() {
+            // Créez une carte centrée sur un point par défaut (par exemple, Paris)
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: -34.397, lng: 150.644},
+                center: {lat: 48.8566, lng: 2.3522}, // Coordonnées de Paris
                 zoom: 8
             });
         }

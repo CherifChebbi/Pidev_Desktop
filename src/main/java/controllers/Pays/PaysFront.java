@@ -207,7 +207,9 @@ public class PaysFront {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/Map.fxml"));
                 Parent root = loader.load();
-                MapController controller=loader.getController();
+                MapController controller =loader.getController();
+                // Passez les coordonnées du pays au contrôleur
+                controller.setCountryCoordinates(pays.getLatitude(), pays.getLongitude());
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
