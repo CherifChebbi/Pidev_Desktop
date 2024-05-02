@@ -14,13 +14,21 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import javax.print.attribute.standard.Media;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import javafx.scene.Group;
+
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 
 public class FrontManagement {
     @FXML
     private GridPane gridPane;
+
+    @FXML
+    private Button videoButton;
 
     @FXML
     private TextField searchNameField;
@@ -122,12 +130,10 @@ public class FrontManagement {
         // Perform input validation for minimum and maximum prices
 
 
-
-            List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter);
-            populateGridPane(filteredRestaurants);
+        List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter);
+        populateGridPane(filteredRestaurants);
 
     }
-
 
 
     @FXML
@@ -138,8 +144,6 @@ public class FrontManagement {
         alert.setContentText(contentText);
         alert.showAndWait();
     }
-
-
 
 
     @FXML
@@ -195,11 +199,38 @@ public class FrontManagement {
             return "akiid majd a7sen we7ed tw heda klem aziiz mta3 souha w rayen mte3 oumayma 7keyethom fer8a te3bon toul hhh";
         } else if (userInput.contains("reservation existante")) {
             return "Pour consulter vos réservations existantes, veuillez vous connecter à votre compte et accéder à la section réservations.";
-        }
-
-        else {
+        } else {
             return "Je suis là pour vous aider . N'hésitez pas à me poser des questions !";
         }
     }
+
+    @FXML
+    private void showVideo(ActionEvent event) {
+        try {
+            // Load the video file (replace "video.mp4" with the actual path to your video file)
+            String videoFile = getClass().getResource("/video.mp4.mp4").toExternalForm();
+
+            javafx.scene.media.Media media = new javafx.scene.media.Media(videoFile);
+
+            // Create a media player
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setAutoPlay(true); // Auto play the video
+
+            // Create a media view to display the video
+            MediaView mediaView = new MediaView(mediaPlayer);
+            mediaView.setFitWidth(600); // Set the width of the media view
+            mediaView.setFitHeight(400); // Set the height of the media view
+
+            // Create a new stage for the video window
+            Stage stage = new Stage();
+            stage.setScene(new Scene(new Group(mediaView)));
+
+            // Show the video window
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

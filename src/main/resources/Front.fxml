@@ -45,6 +45,8 @@
               <Font name="Century Schoolbook" size="14.0" />
           </font>
       </Button>
+    <Button fx:id="videoButton" layoutX="594.0" layoutY="14.0" mnemonicParsing="false" onAction="#showVideo" style="-fx-background-color: white; -fx-background-radius: 40; -fx-border-radius: 40; -fx-border-color: black; -fx-text-fill: black;" text="Qui sommes-nous ?" />
+
 
     <stylesheets>
         <URL value="@FrontManagement.css" />
