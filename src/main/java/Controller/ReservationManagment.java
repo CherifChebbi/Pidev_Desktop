@@ -13,9 +13,21 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
+
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+
+import javax.mail.*;
+import javax.mail.internet.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
+import java.util.Properties;
+
+
+
+
 
 public class ReservationManagment {
 
@@ -74,8 +86,11 @@ public class ReservationManagment {
                 Reservation reservation = new Reservation(70, i, y, x, z);
                 SR.ajouter(reservation);
 
+                // Send email
+                sendEmail(y, reservation); // Pass the email address and reservation object to the sendEmail method
+
                 // Add the new reservation to the TableView
-                afficher.getItems().add(reservation); // Add the new reservation directly to the TableView
+                afficher.getItems().add(reservation);
 
                 // Clear the input fields after adding the reservation
                 nom.clear();
@@ -91,6 +106,58 @@ public class ReservationManagment {
             System.out.println(e.getMessage());
         }
     }
+
+
+    private void sendEmail(String recipientEmail, Reservation reservation) {
+        // Sender's email address and password
+        final String senderEmail = "nsiriaziz009@gmail.com";
+        final String senderPassword = "uoqpcqvcrrxqnbce";
+
+        // SMTP server configuration
+        final String smtpHost = "smtp.gmail.com"; // Change this to your SMTP server
+        final String smtpPort = "587"; // Change this to the SMTP port
+
+        // Email content
+        String subject = "Confirmation de réservation";
+        String body = "Bonjour " + reservation.getNom() + ",\n\n"
+                + "Votre réservation a été effectuée avec succès.\n"
+                + "Date: " + reservation.getDate() + "\n"
+                + "Nombre de personnes: " + reservation.getNbrPersonne() + "\n\n"
+                + "Cordialement,\n"
+                + "Votre équipe de réservation";
+
+        // Set properties for SMTP server
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", smtpHost);
+        props.put("mail.smtp.port", smtpPort);
+
+        // Create a session with authentication
+        Session session = Session.getInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(senderEmail, senderPassword);
+            }
+        });
+
+        try {
+            // Create a message
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(senderEmail));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail));
+            message.setSubject(subject);
+            message.setText(body);
+
+            // Send the message
+            Transport.send(message);
+
+            System.out.println("Email sent successfully to " + recipientEmail);
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     @FXML

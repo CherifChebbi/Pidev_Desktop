@@ -5,6 +5,7 @@ module test {
     requires com.dlsc.formsfx;
     requires java.sql;
     requires java.desktop;
+    requires java.mail;
 
     opens test to javafx.fxml;
     opens Entity to javafx.base;

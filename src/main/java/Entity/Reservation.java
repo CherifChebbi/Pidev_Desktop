@@ -1,14 +1,13 @@
 package Entity;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Reservation {
-    int id;
-    int hebergmenet;
+    private int id;
+    private int hebergmenet;
     private String nom;
     private String email;
-    private LocalDate date; // Change type to LocalDate
+    private LocalDate date;
     private int nbrPersonne;
 
     public Reservation(int id, int hebergmenet, String nom, String email, LocalDate date, int nbrPersonne) {
@@ -28,11 +27,14 @@ public class Reservation {
         this.nbrPersonne = nbrPersonne;
     }
 
-    public Reservation(String i, String y, LocalDate x, Integer z) {
+    public Reservation(String nom, String email, LocalDate date, int nbrPersonne) {
+        this.nom = nom;
+        this.email = email;
+        this.date = date;
+        this.nbrPersonne = nbrPersonne;
     }
-
     public Reservation() {
-
+        // You can initialize default values or leave it empty
     }
 
     public int getId() {
