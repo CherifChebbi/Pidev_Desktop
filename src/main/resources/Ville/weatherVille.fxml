@@ -18,60 +18,60 @@
             <children>
                 <ImageView fitHeight="505.0" fitWidth="612.0" layoutX="396.0" layoutY="137.0" opacity="0.17" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../images/logo1.png" />
+                        <Image url="@../images/logo1.png" />
                     </image>
                 </ImageView>
                 <HBox prefHeight="100.0" prefWidth="200.0" />
                 <ImageView fitHeight="190.0" fitWidth="195.0" layoutX="59.0" layoutY="42.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../images/tourism.png" />
+                        <Image url="@../images/tourism.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="255.0" fitWidth="264.0" layoutX="217.0" layoutY="171.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../images/carte-de-voyage%20(1).png" />
+                        <Image url="@../images/carte-de-voyage%20(1).png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="193.0" fitWidth="216.0" layoutX="48.0" layoutY="435.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../images/tourisme.png" />
+                        <Image url="@../images/tourisme.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="275.0" fitWidth="338.0" layoutX="985.0" layoutY="288.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../images/voyage-et-tourisme.png" />
+                        <Image url="@../images/voyage-et-tourisme.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="193.0" fitWidth="224.0" layoutX="1030.0" layoutY="40.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../images/carte-de-voyage.png" />
+                        <Image url="@../images/carte-de-voyage.png" />
                     </image>
                 </ImageView>
             <Pane layoutX="-1.0" layoutY="-2.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="643.0" prefWidth="1300.0">
                <children>
                   <ImageView fitHeight="643.0" fitWidth="1300.0" pickOnBounds="true">
                      <image>
-                        <Image url="@../../images/weather.jpg" />
+                        <Image url="@../images/weather.jpg" />
                      </image>
                   </ImageView>
-                  <Pane layoutX="782.0" layoutY="-1.0" prefHeight="643.0" prefWidth="516.0" style="-fx-background-color: rgba(31, 29, 40,0.8);">
+                  <Pane layoutX="429.0" layoutY="-1.0" prefHeight="643.0" prefWidth="869.0" style="-fx-background-color: rgba(31, 29, 40,0.8);">
                      <children>
-                        <Label layoutX="89.0" layoutY="131.0" text="Cloudy" textFill="#fffefe">
-                           <font>
-                              <Font name="Calibri Bold" size="24.0" />
-                           </font>
-                        </Label>
                         <Separator layoutX="30.0" layoutY="162.0" prefHeight="0.0" prefWidth="200.0" />
-                            <VBox layoutX="30.0" layoutY="179.0" prefHeight="102.0" prefWidth="313.0" spacing="10.0">
+                            <VBox layoutX="30.0" layoutY="118.0" prefHeight="365.0" prefWidth="545.0" spacing="10.0">
                                 <children>
-                                    <Label text="Météo :" textFill="WHITE">
+                                    <Label fx:id="weatherLabel" textFill="WHITE">
                                  <font>
-                                    <Font name="System Bold Italic" size="20.0" />
+                                    <Font size="20.0" />
                                  </font>
                               </Label>
                                     <Label fx:id="pressureLabel" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
+                                 </font>
+                              </Label>
+                                    <Label text="Météo :" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold Italic" size="20.0" />
                                  </font>
                               </Label>
                                     <Label fx:id="humidityLabel" textFill="WHITE">
@@ -87,11 +87,6 @@
                                  </font>
                               </Label>
                                     <Label fx:id="dateLabel" textFill="WHITE" />
-                                    <Label fx:id="weatherLabel" textFill="WHITE">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
                                     <Label fx:id="temperatureLabel" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
@@ -101,26 +96,6 @@
                             </VBox>
                      </children>
                   </Pane>
-                  <Label layoutX="28.0" layoutY="25.0" prefHeight="49.0" prefWidth="302.0" text="NEW YORK CITY" textFill="#fffefe">
-                     <font>
-                        <Font name="Calibri Bold" size="40.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="22.0" layoutY="344.0" text="14:05:53 pm" textFill="#fffefe">
-                     <font>
-                        <Font name="Calibri" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="22.0" layoutY="366.0" text="Wednesday, 30 Oct 2019" textFill="#fffefe">
-                     <font>
-                        <Font name="Calibri" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="196.0" layoutY="267.0" text="35 ˚C" textFill="#fffefe">
-                     <font>
-                        <Font name="Century Gothic" size="45.0" />
-                     </font>
-                  </Label>
                </children>
             </Pane>
 
@@ -128,7 +103,7 @@
         </AnchorPane>
         <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../images/terra-removebg-preview.png" />
+                <Image url="@../images/terra-removebg-preview.png" />
             </image>
         </ImageView>
         <HBox layoutX="313.0" layoutY="14.0" prefHeight="40.0" prefWidth="792.0">
@@ -137,7 +112,7 @@
                     <children>
                         <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/pays.png" />
+                                <Image url="@../images/pays.png" />
                             </image>
                         </ImageView>
                         <Button fx:id="Front_Pays" mnemonicParsing="false" onAction="#Front_Pays" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: rgb(240, 243, 255);" text="Pays">
@@ -154,7 +129,7 @@
                     <children>
                         <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/restaurant.png" />
+                                <Image url="@../images/restaurant.png" />
                             </image>
                         </ImageView>
                         <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" style="-fx-background-color: rgb(240, 243, 255);" text="Restaurants">
@@ -171,7 +146,7 @@
                     <children>
                         <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/hotel.png" />
+                                <Image url="@../images/hotel.png" />
                             </image>
                         </ImageView>
                         <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="203.0" style="-fx-background-color: rgb(240, 243, 255);" text="Hebergements">
@@ -188,7 +163,7 @@
                     <children>
                         <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../../images/events.png" />
+                                <Image url="@../images/events.png" />
                             </image>
                         </ImageView>
                         <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
@@ -212,7 +187,7 @@
                 </Button>
                 <ImageView fitHeight="40.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../images/6915987.png" />
+                        <Image url="@../images/6915987.png" />
                     </image>
                 </ImageView>
             </children>

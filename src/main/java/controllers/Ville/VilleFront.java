@@ -162,7 +162,7 @@ public class VilleFront {
 
         weatherLogo.setOnMouseClicked(event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ville/VilleWeather/weatherVille.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ville/weatherVille.fxml"));
                 Parent root = loader.load();
                 weatherVille controller = loader.getController();
                 // Passez le nom de la ville au contrôleur de météo
