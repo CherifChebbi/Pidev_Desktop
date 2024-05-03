@@ -25,7 +25,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import models.Pays;
 import models.Ville;
 import services.ServiceVille;
 
@@ -135,18 +134,59 @@ public class VilleFront {
                 System.err.println("Error displaying QR code: " + e.getMessage());
             }
         });
+// Création d'un logo pour Maps
+        ImageView mapLogo = new ImageView(getClass().getResource("/Ville/map-icon.png").toExternalForm());
+        mapLogo.setPreserveRatio(true);
+        mapLogo.setFitWidth(50);
 
+        mapLogo.setOnMouseClicked(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ville/MapVille.fxml"));
+                Parent root = loader.load();
+                MapVille controller =loader.getController();
+                // Passez les coordonnées du pays au contrôleur
+                controller.setVilleCoordinates(Ville.getLatitude(), Ville.getLongitude());
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.err.println("Error loading FXML file: " + e.getMessage());
+            }
+        });
+// Création d'un logo pour Weather
+        ImageView weatherLogo = new ImageView(new Image(getClass().getResourceAsStream("/Ville/weather.png")));
+        weatherLogo.setPreserveRatio(true);
+        weatherLogo.setFitWidth(50);
 
-        //Label latitudeLabel = new Label("Latitude: " + Ville.getLatitude());
-        //Label longitudeLabel = new Label("Longitude: " + Ville.getLongitude());
+        weatherLogo.setOnMouseClicked(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Ville/VilleWeather/weatherVille.fxml"));
+                Parent root = loader.load();
+                weatherVille controller = loader.getController();
+                // Passez le nom de la ville au contrôleur de météo
+                controller.setCity(Ville.getNom_ville());
+                //controller.setVilleCoordinates(Ville.getLatitude(), Ville.getLongitude());
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.err.println("Erreur lors du chargement du fichier FXML: " + e.getMessage());
+            }
+        });
 
+        HBox MapWeather = new HBox(mapLogo, weatherLogo);
 
         // Création d'une VBox pour organiser les informations verticalement
         VBox infosVilleVBox = new VBox(5); // Espace vertical entre les informations
         infosVilleVBox.getChildren().addAll(
                 nomVilleBox,
                 nbMonumentBox,
-                desVilleBox
+                desVilleBox,
+                MapWeather
 
         );
         // Création d'un bouton pour accéder à la page des villes

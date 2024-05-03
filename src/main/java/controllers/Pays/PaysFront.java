@@ -13,8 +13,6 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.itextpdf.text.pdf.qrcode.ErrorCorrectionLevel;
 
 import controllers.Ville.PaysVille;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,9 +34,7 @@ import javafx.stage.Stage;
 import models.Pays;
 import services.ServicePays;
 
-import java.awt.*;
 import java.awt.ScrollPane;
-import java.awt.event.KeyEvent;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -205,9 +201,9 @@ public class PaysFront {
 
         mapLogo.setOnMouseClicked(event -> {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/Map.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/MapPays.fxml"));
                 Parent root = loader.load();
-                MapController controller =loader.getController();
+                MapPays controller =loader.getController();
                 // Passez les coordonnées du pays au contrôleur
                 controller.setCountryCoordinates(pays.getLatitude(), pays.getLongitude());
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -9,13 +9,12 @@ import javafx.scene.Scene;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import models.Pays;
 
 
 import java.io.IOException;
 import java.net.URL;
 
-public class MapController {
+public class MapPays {
 
 
     @FXML

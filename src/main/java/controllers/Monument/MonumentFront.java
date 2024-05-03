@@ -7,6 +7,7 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.itextpdf.text.pdf.qrcode.ErrorCorrectionLevel;
+import controllers.Ville.MapVille;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -119,16 +120,33 @@ public class MonumentFront {
                 System.err.println("Error displaying QR code: " + e.getMessage());
             }
         });
+// Création d'un logo pour Maps
+        ImageView mapLogo = new ImageView(getClass().getResource("/Monument/map-icon.png").toExternalForm());
+        mapLogo.setPreserveRatio(true);
+        mapLogo.setFitWidth(50);
 
-
-        //Label latitudeLabel = new Label("Latitude: " + Monument.getLatitude());
-        //Label longitudeLabel = new Label("Longitude: " + Monument.getLongitude());
-
+        mapLogo.setOnMouseClicked(event -> {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Monument/MapMonument.fxml"));
+                Parent root = loader.load();
+                MapMonument controller =loader.getController();
+                // Passez les coordonnées du pays au contrôleur
+                controller.setMonumentCoordinates(Monument.getLatitude(), Monument.getLongitude());
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.err.println("Error loading FXML file: " + e.getMessage());
+            }
+        });
         // Création d'une VBox pour organiser les informations verticalement
         VBox infosMonumentVBox = new VBox(5); // Espace vertical entre les informations
         infosMonumentVBox.getChildren().addAll(
                 nomMonumentBox,
-                desMonumentBox
+                desMonumentBox,
+                mapLogo
 
         );
         // Création d'un bouton pour accéder à la page des villes
