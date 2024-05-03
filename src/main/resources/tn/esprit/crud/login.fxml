@@ -22,7 +22,7 @@
             <PasswordField fx:id="pass" layoutX="92.0" layoutY="206.0" prefHeight="69.0" prefWidth="565.0" promptText="Mot de passe" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;" />
             <Button fx:id="login" layoutX="446.0" layoutY="313.0" mnemonicParsing="false" onAction="#connecter" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: #B4D4FF;" text="Login" />
             <Button layoutX="435.0" layoutY="384.0" mnemonicParsing="false" onAction="#inscription" prefHeight="30.0" prefWidth="135.0" text="S'authentifier" />
-            <Hyperlink layoutX="367.0" layoutY="470.0" text="Mot de passe oublié ?" />
+            <Hyperlink fx:id="forgetP" layoutX="367.0" layoutY="470.0" onAction="#forgetPassword" text="Mot de passe oublié ?" />
             <Text layoutX="262.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous n'avez pas un compte ?" />
             <Button layoutX="1177.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: rgb(240, 243, 255);" text="HOME" textFill="#ef0606">
                <font>

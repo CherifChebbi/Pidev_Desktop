@@ -6,13 +6,15 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import java.util.Random;
 
 public class UserService implements IServices<User> {
 
     private Connection connection;
     private Statement ste;
-
-
 
     public UserService(){
         connection = MyDatabase.getInstance().getConnection();
@@ -149,9 +151,68 @@ public class UserService implements IServices<User> {
         }
     }
 
+    public void changePasswordByEmail(String text, String hashedPassword) {
+        String query = "UPDATE user SET password = ? WHERE email = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, hashedPassword);
+            preparedStatement.setString(2, text);
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public boolean userExistsByEmail(String email) {
+        String query = "SELECT COUNT(*) FROM user WHERE email = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
 
+    public void changePasswordById(int userId, String newPassword) {
+        String query = "UPDATE user SET password=? WHERE id=?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            preparedStatement.setString(1, hashedPassword);
+            preparedStatement.setInt(2, userId);
+            int rowsUpdated = preparedStatement.executeUpdate();
+            if (rowsUpdated > 0) {
+                System.out.println("User updated successfully!");
+            } else {
+                System.out.println("No user found with the given ID.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
+    public String getVerificationCodeByEmail(String email) {
+        String query = "SELECT verification_code FROM user WHERE email = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                String verificationCode = resultSet.getString("verification_code");
+                return verificationCode;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
     public String roles (int id) {
         try {
@@ -216,6 +277,22 @@ public class UserService implements IServices<User> {
         st.setInt(7, user.getNumtel());
         st.executeUpdate();
     }
+
+    public static String generateCode() {
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        StringBuilder code = new StringBuilder();
+        int codeLength = 4;
+        Random random = new Random();
+
+        for (int i = 0; i < codeLength; i++) {
+            int randomIndex = random.nextInt(characters.length());
+            code.append(characters.charAt(randomIndex));
+        }
+
+        return code.toString();
+    }
+   // Method to generate a random verification code
+
 
 
 

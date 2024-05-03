@@ -5,20 +5,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import tn.esprit.crud.models.User;
 import tn.esprit.crud.services.UserService;
-
+import javafx.scene.Node;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class login {
     @FXML
     private Button insription;
+    @FXML
+    public Hyperlink forgetP;
 
     @FXML
     private Button login;
@@ -116,5 +117,26 @@ public class login {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    @FXML
+    private void forgetPassword(ActionEvent event){
+        UserService userService = new UserService();
+        Stage resetPasswordStage = new Stage();
+        Parent resetPasswordInterface;
+        try {
+            resetPasswordInterface = FXMLLoader.load(getClass().getResource("/tn/esprit/crud//forgetPassword.fxml"));
+            Scene resetPasswordScene = new Scene(resetPasswordInterface);
+            resetPasswordStage.setScene(resetPasswordScene);
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+
+            // Show the UserInterface stage
+            resetPasswordStage.show();
+
+        } catch (IOException ex) {
+            Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 }
