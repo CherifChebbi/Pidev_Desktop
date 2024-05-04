@@ -126,7 +126,7 @@ public class HebergementManagment {
 
     @FXML
      void gocategory(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/Category.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Category.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -136,7 +136,7 @@ public class HebergementManagment {
 
     @FXML
      void backheberg(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/hello-view.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -146,7 +146,7 @@ public class HebergementManagment {
 
     @FXML
     void goreserv(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/reservation.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/reservation.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
