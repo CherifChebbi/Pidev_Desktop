@@ -9,7 +9,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ServiceReservationEvent implements IService<ReservationEvent> {
     private Connection con;
@@ -169,6 +171,25 @@ public class ServiceReservationEvent implements IService<ReservationEvent> {
     }
 
 
+    public static Map<String, Integer> countReservationsByEvent() throws SQLException {
+        Map<String, Integer> reservationsByEvent = new HashMap<>();
+        String query = "SELECT e.titre, COUNT(r.id) AS count " +
+                "FROM event e " +
+                "LEFT JOIN reservation_event r ON e.id = r.id_event_id " +
+                "GROUP BY e.id, e.titre";
 
+        try (Connection conn = DB.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
 
+            while (rs.next()) {
+                String eventTitle = rs.getString("titre");
+                int reservationCount = rs.getInt("count");
+                reservationsByEvent.put(eventTitle, reservationCount);
+            }
+        }
+
+        return reservationsByEvent;
+
+    }
 }

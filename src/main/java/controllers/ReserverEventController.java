@@ -13,8 +13,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import services.ServiceReservationEvent;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class ReserverEventController {
@@ -66,33 +68,27 @@ public class ReserverEventController {
         prixevent.setText(String.valueOf(event.getPrix())); // Afficher le prix de l'événement
         Image image = new Image(event.getImageEvent());
         imgRes.setImage(image);
-
-
     }
 
     @FXML
     private void validerReservEvent(ActionEvent actionEvent) {
-        // Récupérer le FXMLLoader
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Paiement.fxml"));
         Parent root;
         try {
-            // Charger la page de paiement
             root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
 
-            // Passer les données de l'événement au contrôleur de paiement
             PaiementController paiementController = loader.getController();
-            paiementController.initData(event);
+            ServiceReservationEvent serviceReservationEvent = new ServiceReservationEvent(); // Initialisez ServiceReservationEvent
+            paiementController.setServiceReservationEvent(serviceReservationEvent); // Injectez l'instance dans PaiementController
+            paiementController.initData(event, nomField.getText(), emailField.getText(), telephoneField.getText(), datePicker.getValue());
 
-            // Afficher la fenêtre de paiement
             stage.show();
-        } catch (IOException ex) {
+        } catch (IOException | SQLException ex) {
             ex.printStackTrace();
         }
     }
-
-
 
 
     @FXML

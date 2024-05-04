@@ -13,19 +13,24 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import services.ServiceReservationEvent;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 
-import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class PaiementController {
 
-    // Créez une instance de ServiceReservationEvent
     private ServiceReservationEvent serviceReservationEvent;
 
-    // Méthode pour définir le service de réservation
     public void setServiceReservationEvent(ServiceReservationEvent serviceReservationEvent) {
         this.serviceReservationEvent = serviceReservationEvent;
     }
+
+
+    private static final String ACCOUNT_SID = "AC7d0461f0c5c67f8ec8df466b5085708b";
+    private static final String AUTH_TOKEN = "da49924fe6c1f9be3da2b866de3be14a";
+    private static final String TWILIO_NUMBER = "+16504375251";
 
     @FXML
     private TextField carteCVC;
@@ -48,11 +53,20 @@ public class PaiementController {
     private static final String STRIPE_SECRET_KEY = "sk_test_51PBEmP01yLhDc9PJS8ZQspuhCr1it38n8rnCx7Yq8Tzux4D0ib9ntWAe15XD7TBdIvt0z8s90dIvuLWc73Jt0g3800LIFQ6v51";
 
     private Event event;
+    private String nom;
+    private String email;
+    private String telephone;
+    private LocalDate dateReservation;
 
-    public void initData(Event event) {
+    public void initData(Event event, String nom, String email, String telephone, LocalDate dateReservation) {
         this.event = event;
+        this.nom = nom;
+        this.email = email;
+        this.telephone = telephone;
+        this.dateReservation = dateReservation;
         prixEventLabel.setText(String.valueOf(event.getPrix()));
     }
+
 
     @FXML
     void confirmerPaiement(ActionEvent actionEvent) {
@@ -74,9 +88,8 @@ public class PaiementController {
             PaymentIntent paymentIntent = PaymentIntent.create(params);
 
             if (paymentIntent.getStatus().equals("succeeded")) {
-                enregistrerReservation();
+                enregistrerReservation(); // Enregistrer la réservation uniquement si le paiement est réussi
                 afficherMessagePaiementSuccess();
-                afficherMessageConfirmationEmail();
             } else {
                 afficherMessagePaiementFailure();
             }
@@ -89,29 +102,43 @@ public class PaiementController {
         }
     }
 
+
     private void enregistrerReservation() {
         try {
             int eventId = event.getId();
-            String nom = nomTitulaire.getText();
-            String email = emailPaiement.getText();
-            String telephone = "";
-            java.util.Date dateReservation = java.sql.Date.valueOf(LocalDate.now());
+            java.util.Date dateReservation = java.sql.Date.valueOf(this.dateReservation);
 
-            // Créer une instance de ReservationEvent avec les données récupérées
-            ReservationEvent reservationEvent = new ReservationEvent(eventId, nom, email, telephone, dateReservation);
+            // Enregistrer le numéro de téléphone sans l'indicatif du pays dans la base de données
+            String numeroSansIndicatifPays = telephone;
 
-            // Appeler la méthode ajouter de votre service pour enregistrer la réservation dans la base de données
+            // Ajouter l'indicatif du pays au numéro de téléphone pour l'envoyer avec Twilio
+            String numeroAvecIndicatifPays = "+216" + telephone;
+
+            ReservationEvent reservationEvent = new ReservationEvent(eventId, nom, email, numeroSansIndicatifPays, dateReservation);
+
             serviceReservationEvent.ajouter(reservationEvent);
 
-            // Afficher un message de succès
+            // Envoyer un SMS avec Twilio en utilisant le numéro avec l'indicatif du pays
+            envoyerSMS("Votre réservation pour l'événement a été confirmée.", numeroAvecIndicatifPays);
+
             afficherMessagePaiementSuccess();
-            afficherMessageConfirmationEmail();
         } catch (Exception e) {
             e.printStackTrace();
             afficherMessagePaiementFailure();
         }
     }
 
+
+
+
+    private void envoyerSMS(String message, String numeroDestinataire) {
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+        Message.creator(
+                        new PhoneNumber(numeroDestinataire),
+                        new PhoneNumber(TWILIO_NUMBER),
+                        message)
+                .create();
+    }
 
     private void afficherMessagePaiementSuccess() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -126,14 +153,6 @@ public class PaiementController {
         alert.setTitle("Échec du paiement");
         alert.setHeaderText("Le paiement a échoué.");
         alert.setContentText("Veuillez réessayer ou contacter le support.");
-        alert.showAndWait();
-    }
-
-    private void afficherMessageConfirmationEmail() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Confirmation envoyée");
-        alert.setHeaderText("Un e-mail de confirmation vous sera envoyé sous peu.");
-        alert.setContentText("Veuillez vérifier votre boîte de réception.");
         alert.showAndWait();
     }
 }
