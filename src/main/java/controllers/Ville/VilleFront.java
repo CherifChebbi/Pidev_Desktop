@@ -166,7 +166,7 @@ public class VilleFront {
                 Parent root = loader.load();
                 weatherVille controller = loader.getController();
                 // Passez le nom de la ville au contrôleur de météo
-                controller.setCity(Ville.getNom_ville());
+                controller.setCity(Ville.getNom_ville(),Ville.getImg_ville());
                 //controller.setVilleCoordinates(Ville.getLatitude(), Ville.getLongitude());
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root);

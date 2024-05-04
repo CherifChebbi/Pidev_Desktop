@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -19,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.scene.control.Label;
+import models.Ville;
 import org.json.JSONObject;
 
 
@@ -43,11 +46,13 @@ public class weatherVille implements Initializable {
     private double villeLatitude;
     private double villeLongitude;
 
-
+    @FXML
+    private ImageView imageView_ville;
 
 
 
     private String city;
+    private String Img_ville;
 
     // Remplacez "YOUR_API_KEY" par votre clé API OpenWeather
     private final String API_KEY = "b3e5982431cbbbd73d4279bf18254df0";
@@ -58,9 +63,12 @@ public class weatherVille implements Initializable {
         // Vous pouvez initialiser des éléments ici si nécessaire
     }
 
-    public void setCity(String city) {
+    public void setCity(String city,String Img_ville) {
         this.city = city;
+        this.Img_ville = Img_ville;
         updateWeather();
+        ImgVille();
+
     }
     public void setVilleCoordinates(double latitude, double longitude) {
         this.villeLatitude = latitude;
@@ -101,9 +109,9 @@ public class weatherVille implements Initializable {
             String formattedDate = dateFormat.format(date);
 
             // Mise à jour des labels avec les données météo
-            cityLabel.setText("Ville: " + cityName);
-            temperatureLabel.setText("Température: " + temperature + "°C");
-            weatherLabel.setText("Météo: " + weatherDescription);
+            cityLabel.setText(cityName);
+            temperatureLabel.setText(temperature + "°C");
+            weatherLabel.setText(weatherDescription);
             pressureLabel.setText("Pression: " + pressure + " hPa");
             humidityLabel.setText("Humidité: " + humidity + "%");
             dateLabel.setText("Date: " + formattedDate);
@@ -111,6 +119,23 @@ public class weatherVille implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void ImgVille() {
+            if (Img_ville != null && !Img_ville.isEmpty()) {
+                try {
+                    // Construire l'URL de l'image en utilisant le chemin relatif
+                    URL imageUrl = getClass().getResource("/Upload/" + Img_ville);
+                    if (imageUrl != null) {
+                        // Charger l'image à partir de l'URL
+                        javafx.scene.image.Image image = new Image(imageUrl.toExternalForm());
+                        imageView_ville.setImage(image);
+                    } else {
+                        System.out.println("L'image n'a pas été trouvée : " + Img_ville);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Erreur lors du chargement de l'image : " + e.getMessage());
+                }
+            }
     }
     @FXML
     void Front_Pays(ActionEvent event) {
