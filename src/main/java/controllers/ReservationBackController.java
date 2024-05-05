@@ -1,12 +1,7 @@
 package controllers;
 
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.*;
 import entities.Event;
 import entities.ReservationEvent;
 import javafx.beans.property.SimpleStringProperty;
@@ -17,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -26,7 +22,6 @@ import services.ServiceReservationEvent;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -140,7 +135,6 @@ public class ReservationBackController {
     }
 
     // Méthode pour générer et télécharger le PDF du reçu de la réservation
-    // Méthode pour générer et télécharger le PDF du reçu de la réservation
     private void genererEtTelechargerPDFReservation(ReservationEvent reservation) {
         try {
             // Récupérer l'événement correspondant à la réservation
@@ -150,7 +144,7 @@ public class ReservationBackController {
                 String fileName = "recu_reservation_" + reservation.getId() + ".pdf";
 
                 // Créer le contenu PDF avec iText
-                Document document = new Document();
+                Document document = new Document(PageSize.A4, 50, 50, 50, 50); // Ajouter des marges
                 FileChooser fileChooser = new FileChooser();
                 fileChooser.setTitle("Enregistrer le reçu de réservation");
                 fileChooser.setInitialFileName(fileName);
@@ -159,7 +153,9 @@ public class ReservationBackController {
                 File selectedFile = fileChooser.showSaveDialog(null);
 
                 if (selectedFile != null) {
-                    PdfWriter.getInstance(document, new FileOutputStream(selectedFile));
+                    PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(selectedFile));
+                    writer.setBoxSize("art", new Rectangle(36, 54, 559, 788)); // Définir la zone d'impression
+
                     document.open();
 
                     // Titre du document
@@ -181,23 +177,62 @@ public class ReservationBackController {
                         document.add(new Paragraph("\n"));
                     }
 
-                    // Informations sur l'événement
-                    document.add(new Paragraph("Informations sur l'événement :", new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.HELVETICA, 18, com.itextpdf.text.Font.BOLD)));
-                    document.add(new Paragraph(""));
+                    // Informations sur l'événement et la réservation sous forme de tableau
+                    PdfPTable table = new PdfPTable(2); // 2 colonnes
+                    table.setWidthPercentage(100); // Largeur du tableau en pourcentage de la page
+                    table.setSpacingBefore(10f); // Espacement avant le tableau
+                    table.setSpacingAfter(10f); // Espacement après le tableau
 
-                    document.add(new Paragraph("Nom de l'événement : " + event.getTitre()));
-                    document.add(new Paragraph("Date de l'événement : " + event.getDateDebut().toString()));
-                    document.add(new Paragraph("Lieu de l'événement : " + event.getLieu()));
-                    document.add(new Paragraph(""));
+                    // Ajouter les cellules du tableau avec les informations sur l'événement
+                    PdfPCell cell = new PdfPCell(new Paragraph("Informations sur l'événement", new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.HELVETICA, 18, com.itextpdf.text.Font.BOLD)));
+                    cell.setColspan(2); // Fusionner les deux colonnes
+                    cell.setHorizontalAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+                    cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                    table.addCell(cell);
 
-                    // Informations sur la réservation
-                    document.add(new Paragraph("Informations sur la réservation :", new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.HELVETICA, 18, com.itextpdf.text.Font.BOLD)));
-                    document.add(new Paragraph(""));
+                    table.addCell("Titre de l'événement");
+                    table.addCell(event.getTitre());
 
-                    document.add(new Paragraph("Nom du réservant : " + reservation.getNom()));
-                    document.add(new Paragraph("Email du réservant : " + reservation.getEmail()));
-                    document.add(new Paragraph("Numéro de téléphone du réservant : " + reservation.getNumTel()));
-                    document.add(new Paragraph("Date de réservation : " + reservation.getDateReservation().toString()));
+                    table.addCell("Date de l'événement");
+                    table.addCell(event.getDateDebut().toString());
+
+                    table.addCell("Lieu de l'événement");
+                    table.addCell(event.getLieu());
+
+                    table.addCell("Prix de l'événement");
+                    table.addCell(String.valueOf(event.getPrix())); // Ajout du prix de l'événement
+
+                    // Ajouter les cellules du tableau avec les informations sur la réservation
+                    cell = new PdfPCell(new Paragraph("Informations sur la réservation", new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.HELVETICA, 18, com.itextpdf.text.Font.BOLD)));
+                    cell.setColspan(2); // Fusionner les deux colonnes
+                    cell.setHorizontalAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+                    cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
+                    table.addCell(cell);
+
+                    table.addCell("Nom du réservant");
+                    table.addCell(reservation.getNom());
+
+                    table.addCell("Email du réservant");
+                    table.addCell(reservation.getEmail());
+
+                    table.addCell("Numéro de téléphone du réservant");
+                    table.addCell(reservation.getNumTel());
+
+                    table.addCell("Date de réservation");
+                    table.addCell(reservation.getDateReservation().toString());
+
+                    document.add(table);
+
+                    // Ajouter le QR code contenant l'ID de réservation avec une taille de 150x150
+                    BarcodeQRCode qrCode = new BarcodeQRCode(String.valueOf(reservation.getId()), 150, 150, null);
+                    Image qrCodeImage = qrCode.getImage();
+                    qrCodeImage.setAlignment(Element.ALIGN_RIGHT); // Aligner à droite
+                    document.add(qrCodeImage);
+
+                    // Ajouter une phrase personnalisée sous le tableau
+                    Paragraph thankYou = new Paragraph("Merci pour votre réservation et votre confiance.");
+                    thankYou.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
+                    document.add(thankYou);
 
                     // Ajouter le logo de votre application en bas de la page
                     URL logoURL = getClass().getResource("/images/TourTravelBusinessLogo.png");
@@ -208,9 +243,6 @@ public class ReservationBackController {
                         document.add(logo);
                     }
 
-                    // Ajouter un espacement pour déplacer le logo vers le bas
-                    document.add(new Paragraph("\n"));
-
                     document.close();
                     System.out.println("PDF généré avec succès !");
                 }
@@ -219,8 +251,6 @@ public class ReservationBackController {
             e.printStackTrace();
         }
     }
-
-
 
     @FXML
     public void dashboardCategories(ActionEvent event) {
