@@ -3,18 +3,26 @@
 
 package Controller;
 
+import Services.ServicePlat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import Entity.Plat;
+
+import java.sql.SQLException;
 import java.util.List;
 
 public class RestaurantDetailsController {
+
+    @FXML
+    private TextField nomField;
+
 
     @FXML
     private ImageView restaurantImageView;
@@ -27,6 +35,34 @@ public class RestaurantDetailsController {
 
     @FXML
     private GridPane platsGridPane;
+
+    @FXML
+    private TextField minPriceField;
+
+    @FXML
+    private TextField maxPriceField;
+
+
+    private ServicePlat servicePlat = new ServicePlat(); // Create an instance of ServicePlat
+
+    @FXML
+    private void searchPlats() {
+        String nom = nomField.getText(); // Get the plat name from the text field
+
+        // Validate input
+        if (!nom.isEmpty()) {
+            try {
+                // Call method to fetch plats by name using the instance of ServicePlat
+                List<Plat> filteredPlats = servicePlat.getPlatsBySearchCriteria(nom);
+
+                // Display filtered plats
+                displayPlats(filteredPlats);
+            } catch (SQLException e) {
+                // Handle any SQL exception
+                e.printStackTrace();
+            }
+        }
+    }
 
     public void initData(String restaurantName, String restaurantDescription, List<Plat> plats, String imagePath) {
         // Set restaurant name and description

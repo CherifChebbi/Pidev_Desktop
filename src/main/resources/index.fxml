@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -25,13 +29,7 @@
                     </image>
                 </ImageView>
                 <HBox layoutX="678.0" layoutY="48.0" prefHeight="100.0" prefWidth="200.0" />
-                <TextArea fx:id="chatArea" editable="false" layoutX="228.0" layoutY="30.0" prefHeight="168.0" prefWidth="332.0" style="-fx-background-color: black;" wrapText="true" />
-                <Button layoutX="512.0" layoutY="204.0" mnemonicParsing="false" onAction="#handleUserInput" prefHeight="25.0" prefWidth="74.0" style="-fx-background-color: black; -fx-border-color: red; -fx-background-radius: 20; -fx-border-radius: 20; -fx-position-shape: 10;" text="Send">
-                    <font>
-                        <Font name="Century Schoolbook" size="14.0" />
-                    </font>
-                </Button>
-                <TextField fx:id="userInputField" layoutX="245.0" layoutY="206.0" prefHeight="25.0" prefWidth="250.0" promptText="Type your message here..." style="-fx-background-color: #F1FFBE;" />
+                <TextArea fx:id="chatArea" editable="false" layoutX="228.0" layoutY="14.0" prefHeight="168.0" prefWidth="332.0" style="-fx-background-color: black;" wrapText="true" />
                 <ScrollPane layoutX="27.0" layoutY="253.0" prefHeight="354.0" prefWidth="1270.0" style="-fx-background-color: transparent;">
                     <content>
                         <VBox fx:id="restaurantsContainer" spacing="20" style="-fx-background-color: transparent;" />
@@ -53,6 +51,16 @@
                   <Insets />
                </opaqueInsets>
                 </Pane>
+      
+              <ChoiceBox fx:id="questionChoiceBox" layoutX="228.0" layoutY="193.0" onAction="#handleQuestionSelection" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black;">
+                  <items>
+                      <FXCollections fx:factory="observableArrayList">
+                          <String fx:value="Bonjour! Est-ce que je peux vous aider?" />
+                          <String fx:value="Comment puis-je effectuer une réservation?" />
+                          <!-- Add more questions here -->
+                      </FXCollections>
+                  </items>
+              </ChoiceBox>
             </children>
         </AnchorPane>
         <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
@@ -66,5 +74,9 @@
         <HBox layoutX="1150.0" layoutY="15.0" prefHeight="38.0" prefWidth="136.0">
             <!-- HBox content -->
         </HBox>
+
     </children>
+    <stylesheets>
+        <URL value="@front.css" />
+    </stylesheets>
 </AnchorPane>

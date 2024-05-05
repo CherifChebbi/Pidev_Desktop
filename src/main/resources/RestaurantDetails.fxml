@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -22,12 +24,17 @@
                <Image url="@images/terra-removebg-preview.png" />
             </image>
          </ImageView>
-      
+
+
+          <Button layoutX="22.0" layoutY="127.0" mnemonicParsing="false" onAction="#searchPlats" text="Search" />
+          <TextField fx:id="nomField" layoutX="147.0" layoutY="87.0" prefHeight="25.0" prefWidth="200.0" promptText="Nom du Plat" />
+
+
           <!-- Plat Display ScrollPane -->
           <ScrollPane layoutX="22.0" layoutY="187.0" prefHeight="394.0" prefWidth="882.0">
               <content>
                   <!-- GridPane to display restaurant plats -->
-                  <GridPane fx:id="platsGridPane" hgap="20" style="-fx-padding: 20;" vgap="20">
+                  <GridPane fx:id="platsGridPane" hgap="20" prefHeight="378.0" prefWidth="873.0" style="-fx-padding: 20;" vgap="20">
                 <!-- Plats will be populated dynamically -->
             </GridPane>
               </content>

@@ -17,9 +17,41 @@ public class ServicePlat implements IPlat<Plat> {
 
     private Connection connection;
 
+
+
     public ServicePlat() {
+        // Retrieve the database connection
         connection = MyDB.getInstance().getConnection();
     }
+
+    // Method to get plats by price range
+    public List<Plat> getPlatsBySearchCriteria(String nom) throws SQLException {
+        List<Plat> plats = new ArrayList<>();
+        String sql = "SELECT * FROM plat WHERE nom LIKE ?";
+        try (Connection connection = MyDB.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, "%" + nom + "%");
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Plat plat = new Plat();
+                    plat.setNom(resultSet.getString("nom"));
+                    plat.setImage(resultSet.getString("image"));
+                    plat.setPrix(resultSet.getFloat("prix"));
+                    plats.add(plat);
+                }
+            }
+        }
+        return plats;
+    }
+
+
+
+
+    // Other methods...
+
+    // Helper method to fetch Restaurant details by ID
+
+
 
     @Override
     public List<Plat> getAllPlats() throws SQLException {
@@ -49,18 +81,19 @@ public class ServicePlat implements IPlat<Plat> {
 
     // Helper method to fetch Restaurant details by ID
     private Restaurant fetchRestaurantById(int id) throws SQLException {
-        String query = "SELECT * FROM restaurant WHERE idR = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        try (Connection connection = MyDB.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM restaurant WHERE idR = ?")) {
             preparedStatement.setInt(1, id);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                Restaurant restaurant = new Restaurant();
-                restaurant.setIdR(resultSet.getInt("idR"));
-                restaurant.setNom(resultSet.getString("nom"));
-                restaurant.setLocalisataion(resultSet.getString("localisation"));
-                restaurant.setImage(resultSet.getString("image"));
-                restaurant.setDescription(resultSet.getString("description"));
-                return restaurant;
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    Restaurant restaurant = new Restaurant();
+                    restaurant.setIdR(resultSet.getInt("idR"));
+                    restaurant.setNom(resultSet.getString("nom"));
+                    restaurant.setLocalisataion(resultSet.getString("localisation"));
+                    restaurant.setImage(resultSet.getString("image"));
+                    restaurant.setDescription(resultSet.getString("description"));
+                    return restaurant;
+                }
             }
         }
         return null; // Return null if no restaurant found with the given ID
