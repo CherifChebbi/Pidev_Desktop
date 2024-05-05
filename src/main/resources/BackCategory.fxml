@@ -179,10 +179,10 @@
          <children>
             <Text layoutX="35.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de la catégorie" />
             <TextField fx:id="nomCategory" layoutX="168.0" layoutY="36.0" />
-            <Button layoutX="46.0" layoutY="96.0" mnemonicParsing="false" onAction="#AjoutCateg" prefHeight="35.0" prefWidth="75.0" text="Ajouter" />
-            <Button fx:id="btnUpdCat" layoutX="143.0" layoutY="96.0" mnemonicParsing="false" onAction="#UpdateCat" prefHeight="35.0" prefWidth="75.0" text="Update" />
-            <Button fx:id="btnDelCat" layoutX="243.0" layoutY="96.0" mnemonicParsing="false" onAction="#DelCateg" prefHeight="35.0" prefWidth="75.0" text="Delete" />
-            <Button fx:id="btnClearCat" layoutX="343.0" layoutY="96.0" mnemonicParsing="false" onAction="#ClearCat" prefHeight="35.0" prefWidth="75.0" text="Clear" />
+            <Button layoutX="24.0" layoutY="96.0" mnemonicParsing="false" onAction="#AjoutCateg" prefHeight="38.0" prefWidth="87.0" text="Ajouter" />
+            <Button fx:id="btnUpdCat" layoutX="130.0" layoutY="96.0" mnemonicParsing="false" onAction="#UpdateCat" prefHeight="38.0" prefWidth="87.0" text="Modifier" />
+            <Button fx:id="btnDelCat" layoutX="243.0" layoutY="96.0" mnemonicParsing="false" onAction="#DelCateg" prefHeight="38.0" prefWidth="102.0" text="Supprimer" />
+            <Button fx:id="btnClearCat" layoutX="369.0" layoutY="96.0" mnemonicParsing="false" onAction="#ClearCat" prefHeight="38.0" prefWidth="87.0" text="Effacer" />
             <TableView fx:id="categoryTable" layoutX="111.0" layoutY="169.0" prefHeight="172.0" prefWidth="275.0" styleClass="column-header-background" stylesheets="@category.css">
                <columns>
                   <TableColumn fx:id="colid" prefWidth="67.20001220703125" text="ID" />

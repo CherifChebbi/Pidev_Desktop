@@ -180,7 +180,7 @@
       <TableView fx:id="reservationTableView" layoutX="429.0" layoutY="432.0" prefHeight="214.0" prefWidth="760.0">
          <columns>
             <TableColumn fx:id="idColumn" prefWidth="42.4000244140625" text="ID " />
-            <TableColumn fx:id="eventIdColumn" prefWidth="70.39996337890625" text="Event ID" />
+            <TableColumn fx:id="eventColumn" prefWidth="70.39996337890625" text="Event " />
             <TableColumn fx:id="nomColumn" prefWidth="138.39996337890625" text="Nom et Prénom" />
             <TableColumn fx:id="dateReservationColumn" prefWidth="135.99993896484375" text="Date de réservation" />
             <TableColumn fx:id="numTelColumn" minWidth="0.0" prefWidth="87.199951171875" text="Téléphone" />

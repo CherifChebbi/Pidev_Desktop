@@ -2,6 +2,7 @@ package controllers;
 
 import entities.Category;
 import entities.Event;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -118,7 +119,23 @@ public class EventController implements Initializable {
         colLieuEvent.setCellValueFactory(new PropertyValueFactory<>("lieu"));
         colPrixEvent.setCellValueFactory(new PropertyValueFactory<>("prix"));
         colimgEvent.setCellValueFactory(new PropertyValueFactory<>("imageEvent"));
-        colCategEvent.setCellValueFactory(new PropertyValueFactory<>("idCategory"));
+        colCategEvent.setCellValueFactory(cellData -> {
+            int categoryId = cellData.getValue().getIdCategory();
+            Category category = categories.stream().filter(c -> c.getId() == categoryId).findFirst().orElse(null);
+            return new SimpleObjectProperty<>(category);
+        });
+
+        colCategEvent.setCellFactory(column -> new TableCell<Event, Category>() {
+            @Override
+            protected void updateItem(Category category, boolean empty) {
+                super.updateItem(category, empty);
+                if (category == null || empty) {
+                    setText(null);
+                } else {
+                    setText(category.getNom());
+                }
+            }
+        });
 
         afficherEvents();
     }
@@ -135,6 +152,8 @@ public class EventController implements Initializable {
         if (champsNonRemplis(titre, description, localDateDebut, localDateFin, lieu, prixStr)) return;
 
         if (!champsValides(titre, lieu, description, prixStr)) return;
+
+        if (!dateFinApresDateDebut(localDateDebut, localDateFin)) return;
 
         double prix = Double.parseDouble(prixStr);
         String imageEvent = ImgEventAffiche.getImage().getUrl();
@@ -182,6 +201,15 @@ public class EventController implements Initializable {
 
         return true;
     }
+
+    private boolean dateFinApresDateDebut(LocalDate dateDebut, LocalDate dateFin) {
+        if (dateFin.isBefore(dateDebut)) {
+            showAlert(Alert.AlertType.ERROR, "Date de fin invalide", "La date de fin doit être après la date de début.");
+            return false;
+        }
+        return true;
+    }
+
 
     @FXML
     void ClearEvent(ActionEvent event) {

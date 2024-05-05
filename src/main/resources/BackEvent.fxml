@@ -202,15 +202,30 @@
       <TextArea fx:id="descEvent" layoutX="664.0" layoutY="506.0" prefHeight="54.0" prefWidth="231.0" />
       <Label layoutX="582.0" layoutY="506.0" text="Description" />
       <DatePicker fx:id="debEvent" layoutX="664.0" layoutY="591.0" />
-      <DatePicker fx:id="finEvent" layoutX="664.0" layoutY="642.0" />
+      <DatePicker fx:id="finEvent" layoutX="664.0" layoutY="633.0" />
       <Label layoutX="582.0" layoutY="595.0" text="Date Début" />
-      <Label layoutX="582.0" layoutY="646.0" text="Date Fin" />
+      <Label layoutX="582.0" layoutY="636.0" text="Date Fin" />
       <ImageView fx:id="ImgEventAffiche" fitHeight="148.0" fitWidth="130.0" layoutX="1069.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="1070.0" layoutY="634.0" mnemonicParsing="false" onAction="#selectImageAction" prefHeight="37.0" prefWidth="128.0" text="Parcourir..." />
-      <Button layoutX="1199.0" layoutY="291.0" mnemonicParsing="false" onAction="#AjoutEvent" prefHeight="35.0" prefWidth="85.0" text="Add" />
-      <Button layoutX="1199.0" layoutY="400.0" mnemonicParsing="false" onAction="#DelEvent" prefHeight="35.0" prefWidth="85.0" text="Delete" />
-      <Button layoutX="1199.0" layoutY="345.0" mnemonicParsing="false" onAction="#UpdEvent" prefHeight="35.0" prefWidth="85.0" text="Update" />
-      <Button layoutX="1199.0" layoutY="452.0" mnemonicParsing="false" onAction="#ClearEvent" prefHeight="35.0" prefWidth="85.0" text="Clear" />
+      <Button layoutX="1070.0" layoutY="634.0" mnemonicParsing="false" onAction="#selectImageAction" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: rgb(218, 192, 163);" text="Parcourir...">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="1199.0" layoutY="291.0" mnemonicParsing="false" onAction="#AjoutEvent" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Ajouter" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="1199.0" layoutY="400.0" mnemonicParsing="false" onAction="#DelEvent" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Supprimer" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="1199.0" layoutY="345.0" mnemonicParsing="false" onAction="#UpdEvent" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Modifier" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
+      <Button layoutX="1199.0" layoutY="452.0" mnemonicParsing="false" onAction="#ClearEvent" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Effacer" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
       <HBox alignment="CENTER_RIGHT" layoutX="374.0" layoutY="180.0" prefHeight="56.0" prefWidth="787.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(220, 242, 241);">
          <children>
             <Button mnemonicParsing="false" onAction="#homeDashboard" prefHeight="31.0" prefWidth="159.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Home" textFill="#030000">

@@ -37,8 +37,7 @@ public class ReservationBackController {
     private TableColumn<ReservationEvent, Integer> idColumn;
 
     @FXML
-    private TableColumn<ReservationEvent, Integer> eventIdColumn;
-
+    private TableColumn<ReservationEvent, String> eventColumn;
     @FXML
     private TableColumn<ReservationEvent, String> nomColumn;
 
@@ -76,7 +75,14 @@ public class ReservationBackController {
     private void initialize() {
         // Liaison des colonnes avec les propriétés de la classe ReservationEvent
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        eventIdColumn.setCellValueFactory(new PropertyValueFactory<>("idEvent"));
+
+        // Modification de la liaison pour afficher le nom de l'événement
+        eventColumn.setCellValueFactory(cellData -> {
+            int eventId = cellData.getValue().getIdEvent();
+            Event event = serviceEvent.getEventById(eventId);
+            return new SimpleStringProperty(event != null ? event.getTitre() : "");
+        });
+
         nomColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
         numTelColumn.setCellValueFactory(new PropertyValueFactory<>("numTel"));
@@ -113,6 +119,7 @@ public class ReservationBackController {
         // Mettre en place la fonctionnalité de filtrage par date
         datePicker.valueProperty().addListener((observable, oldValue, newValue) -> filtrerReservationParDate(newValue));
     }
+
 
     // Méthode pour charger les réservations depuis la base de données
     private void afficherReservations() {
