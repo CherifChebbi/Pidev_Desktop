@@ -58,7 +58,7 @@ public class CategoryManagment {
 
     public void initialize() {
         nomcategory.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        imagecategory.setCellValueFactory(new PropertyValueFactory<>("images"));
+        imagecategory.setCellValueFactory(new PropertyValueFactory<>("image"));
         desccategory.setCellValueFactory(new PropertyValueFactory<>("description"));
         try {
             afficher();
@@ -155,7 +155,7 @@ public class CategoryManagment {
 
     @FXML
     void take(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Hebergement.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -165,7 +165,7 @@ public class CategoryManagment {
 
     @FXML
     void goheberg(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Hebergement.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

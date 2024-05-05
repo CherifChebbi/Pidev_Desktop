@@ -136,7 +136,7 @@ public class HebergementManagment {
 
     @FXML
      void backheberg(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Hebergement.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
