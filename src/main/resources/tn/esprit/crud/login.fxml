@@ -24,7 +24,7 @@
             <Button layoutX="435.0" layoutY="384.0" mnemonicParsing="false" onAction="#inscription" prefHeight="30.0" prefWidth="135.0" text="S'authentifier" />
             <Hyperlink fx:id="forgetP" layoutX="367.0" layoutY="470.0" onAction="#forgetPassword" text="Mot de passe oublié ?" />
             <Text layoutX="262.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous n'avez pas un compte ?" />
-            <Button layoutX="1177.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: rgb(240, 243, 255);" text="HOME" textFill="#ef0606">
+            <Button fx:id="home" layoutX="1177.0" layoutY="30.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: rgb(240, 243, 255);" text="HOME" textFill="#ef0606">
                <font>
                   <Font size="20.0" />
                </font>

@@ -28,6 +28,7 @@
         <TextField fx:id="mdpTF" layoutX="455.0" layoutY="242.0" promptText="Mot De Passe" style="-fx-background-color: transparant; -fx-border-color: #ef0606; -fx-border-width: 0px 0px 2px 0px;" />
         <Button layoutX="487.0" layoutY="344.0" mnemonicParsing="false" onAction="#inscription" prefHeight="34.0" prefWidth="80.0" style="-fx-background-color: #ef0606;" text="Ajouter" />
       <TextField fx:id="numtelTF" layoutX="455.0" layoutY="294.0" promptText="Numéro de téléphone" style="-fx-background-color: transparant; -fx-border-color: #ef0606; -fx-border-width: 0px 0px 2px 0px;" />
+      <ImageView fx:id="captchaImageView" fitHeight="88.0" fitWidth="128.0" layoutX="601.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
 
     </children>
 </AnchorPane>

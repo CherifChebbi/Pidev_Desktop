@@ -7,9 +7,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import tn.esprit.crud.models.User;
 import tn.esprit.crud.services.UserService;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -43,7 +46,8 @@ public class InscriptionUser implements Initializable {
 
     @FXML
     private RadioButton et;
-
+    @FXML
+    private ImageView captchaImageView;
     @FXML
     private RadioButton fo;
 

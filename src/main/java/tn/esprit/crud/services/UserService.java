@@ -151,17 +151,20 @@ public class UserService implements IServices<User> {
         }
     }
 
-    public void changePasswordByEmail(String text, String hashedPassword) {
+    public boolean changePasswordByEmail(String email, String hashedPassword) {
         String query = "UPDATE user SET password = ? WHERE email = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             preparedStatement.setString(1, hashedPassword);
-            preparedStatement.setString(2, text);
-            preparedStatement.executeUpdate();
+            preparedStatement.setString(2, email);
+            int rowsUpdated = preparedStatement.executeUpdate();
+            return rowsUpdated > 0; // Renvoie vrai si une ligne a été mise à jour
         } catch (SQLException ex) {
             Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            return false; // En cas d'erreur, renvoie false
         }
     }
+
 
     public boolean userExistsByEmail(String email) {
         String query = "SELECT COUNT(*) FROM user WHERE email = ?";
@@ -292,6 +295,68 @@ public class UserService implements IServices<User> {
         return code.toString();
     }
    // Method to generate a random verification code
+   public void editProfile(User user) throws SQLException {
+       String req = "UPDATE user SET nom = ?, prenom = ?, nationnalite = ?, email = ?, password = ?, numtel = ? WHERE id = ?";
+       try (PreparedStatement us = connection.prepareStatement(req)) {
+           us.setString(1, user.getNom());
+           us.setString(2, user.getPrenom());
+           us.setString(3, user.getNationnalite());
+           us.setString(4, user.getEmail());
+           us.setString(5, user.getPassword());
+           us.setInt(6, user.getNumtel());
+           us.setInt(7, user.getId());
+
+           // Log SQL query and user data
+           System.out.println("SQL Query: " + us.toString());
+           System.out.println("User Data: " + user.toString());
+
+           int rowsAffected = us.executeUpdate();
+           if (rowsAffected > 0) {
+               System.out.println("User profile updated successfully");
+           } else {
+               System.out.println("Failed to update user profile");
+           }
+           System.out.println("Rows affected: " + rowsAffected);
+       } catch (SQLException e) {
+           e.printStackTrace();
+           throw e; // Rethrow the exception to handle it in the caller method
+       }
+   }
+
+    // New method to retrieve authenticated user's information
+    public User getUserById(int userId) {
+        String query = "SELECT * FROM user WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, userId);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                // User found, create and return User object
+                User user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setNom(resultSet.getString("nom"));
+                user.setPrenom(resultSet.getString("prenom"));
+                user.setNationnalite(resultSet.getString("nationnalite"));
+                user.setEmail(resultSet.getString("email"));
+                user.setPassword(resultSet.getString("password"));
+                user.setRoles(resultSet.getString("roles"));
+                user.setNumtel(resultSet.getInt("numtel"));
+                return user;
+            } else {
+                // No user found with the provided ID
+                System.out.println("User not found with ID: " + userId);
+                return null;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error fetching user information: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+
 
 
 

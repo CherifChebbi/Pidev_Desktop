@@ -5,10 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338d2e8d-0088-4336-b230-09326ebb8158" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Profile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Front/Profile.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Explore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Explore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/ForgetPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/ForgetPassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/InscriptionUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/InscriptionUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/index.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/index.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/IServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/IServices.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/test/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/test/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Front/Explore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Front/Explore.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Front/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Front/Home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Front/index.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Front/index.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/inscription.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/inscription.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +31,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -57,7 +70,7 @@
     &quot;git-widget-placeholder&quot;: &quot;Gestion__Userrrr&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/nadas/Desktop/nchallah/src/main/resources/tn/esprit/crud&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nadas/Desktop/nchallah/src/main/resources/tn/esprit/crud/images&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -72,13 +85,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\tn\esprit\crud\images" />
       <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\tn\esprit\crud" />
       <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\Front" />
-      <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\tn\esprit\crud\images" />
       <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\tn\esprit\crud\Upload" />
       <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\Front" />
       <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\tn\esprit\crud" />
       <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\tn\esprit\crud\images" />
     </key>
@@ -159,7 +173,8 @@
       <workItem from="1714232256877" duration="28409000" />
       <workItem from="1714385253063" duration="54849000" />
       <workItem from="1714654001608" duration="10930000" />
-      <workItem from="1714730738947" duration="7960000" />
+      <workItem from="1714730738947" duration="39947000" />
+      <workItem from="1714911949405" duration="3758000" />
     </task>
     <servers />
   </component>

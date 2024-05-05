@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import tn.esprit.crud.models.User;
 import tn.esprit.crud.services.UserService;
 import javafx.scene.Node;
+import tn.esprit.crud.utils.UserSession;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -31,7 +33,8 @@ public class login {
     private TextField name;
 
     private final UserService userService = new UserService();
-
+    @FXML
+    private Button Home;
     @FXML
     void connecter(ActionEvent event) {
         String nom = name.getText();
@@ -43,6 +46,8 @@ public class login {
         if (user != null) {
             System.out.println("Login successful");
             // Proceed with any actions after successful login
+            UserSession.setCurrentUser(user);
+
             openAfficherUsers(user); // Call the method to open AfficherUsers
         } else {
             System.out.println("Login failed");
@@ -139,4 +144,21 @@ public class login {
         }
 
     }
+    @FXML
+    private void home (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/front/Home.fxml"));
+        Parent profileInterface = loader.load();
+        Scene profileScene = new Scene(profileInterface);
+        Stage profileStage = new Stage();
+        profileStage.setScene(profileScene);
+
+        // Close the current stage (assuming verifierButton is accessible from here)
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
+
+        // Show the login stage
+        profileStage.show();
+    }
+
+
 }

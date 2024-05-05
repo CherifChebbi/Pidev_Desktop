@@ -18,4 +18,6 @@ public interface IServices<T> {
     List<T> recuperer() throws SQLException;
 
     void inscription(User user) throws SQLException;
+
+    //void editprofile(User user) throws SQLException;
 }
