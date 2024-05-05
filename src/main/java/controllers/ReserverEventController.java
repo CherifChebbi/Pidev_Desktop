@@ -17,7 +17,8 @@ import services.ServiceReservationEvent;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 
 public class ReserverEventController {
 
@@ -72,6 +73,27 @@ public class ReserverEventController {
 
     @FXML
     private void validerReservEvent(ActionEvent actionEvent) {
+        String nom = nomField.getText();
+        String telephone = telephoneField.getText();
+        String email = emailField.getText();
+        LocalDate dateReservation = datePicker.getValue();
+
+        if (nom.isEmpty() || !nom.matches("[a-zA-Z]+")) {
+            showAlert("Erreur de saisie", "Veuillez saisir un nom valide (lettres seulement).");
+            return;
+        }
+
+        if (telephone.length() != 8 || !telephone.matches("\\d+")) {
+            showAlert("Erreur de saisie", "Veuillez saisir un numéro de téléphone valide (10 chiffres).");
+            return;
+        }
+
+        if (!email.contains("@")) {
+            showAlert("Erreur de saisie", "Veuillez saisir une adresse email valide.");
+            return;
+        }
+
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Paiement.fxml"));
         Parent root;
         try {
@@ -82,14 +104,13 @@ public class ReserverEventController {
             PaiementController paiementController = loader.getController();
             ServiceReservationEvent serviceReservationEvent = new ServiceReservationEvent(); // Initialisez ServiceReservationEvent
             paiementController.setServiceReservationEvent(serviceReservationEvent); // Injectez l'instance dans PaiementController
-            paiementController.initData(event, nomField.getText(), emailField.getText(), telephoneField.getText(), datePicker.getValue());
+            paiementController.initData(event, nom, email, telephone, dateReservation);
 
             stage.show();
         } catch (IOException | SQLException ex) {
             ex.printStackTrace();
         }
     }
-
 
     @FXML
     void retourFront(ActionEvent actionEvent) {
@@ -108,5 +129,19 @@ public class ReserverEventController {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    @FXML
+    public void initialize() {
+        // Définir la date du DatePicker sur la date d'aujourd'hui
+        datePicker.setValue(LocalDate.now());
     }
 }
