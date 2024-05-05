@@ -148,4 +148,22 @@ public class StatPays {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    void Charts(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/Charts.fxml"));
+        Parent root = loader.load();
+
+        // Après avoir chargé le contrôleur, récupérez une référence au contrôleur de la page des pays
+        Charts controller = loader.getController();
+
+        // Appelez la méthode de rafraîchissement des données
+        //controller.rafraichirDonnees();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
+
+
