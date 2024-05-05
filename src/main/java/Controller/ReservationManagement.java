@@ -330,9 +330,6 @@ public class ReservationManagement {
     }
 
 
-
-
-
-
-
+    public void selectImage(ActionEvent actionEvent) {
+    }
 }

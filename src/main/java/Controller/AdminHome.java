@@ -44,6 +44,7 @@ public class AdminHome {
     }
 
 
+
     public void navigateBack(MouseEvent mouseEvent) {
         try {
             // Load the FXML file for the restaurant view
@@ -63,7 +64,6 @@ public class AdminHome {
             e.printStackTrace();
         }
     }
-
 
     public void moove (MouseEvent mouseEvent) {
         try {

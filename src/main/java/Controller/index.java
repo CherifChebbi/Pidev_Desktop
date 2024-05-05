@@ -12,17 +12,15 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class FrontManagement {
+public class index {
     @FXML
-    private VBox restaurantsContainer;
+    private GridPane gridPane;
 
     @FXML
     private TextField searchNameField;
@@ -48,63 +46,46 @@ public class FrontManagement {
         }
     }
 
+
     private void displayRestaurants() throws SQLException {
         List<Restaurant> restaurantList = serviceRestaurant.afficher();
-        populateRestaurantsContainer(restaurantList);
+
+        populateGridPane(restaurantList);
     }
 
-    private void populateRestaurantsContainer(List<Restaurant> restaurants) {
-        restaurantsContainer.getChildren().clear(); // Clear existing content from restaurantsContainer
+    @FXML
+    private void populateGridPane(List<Restaurant> restaurants) {
+        gridPane.getChildren().clear(); // Clear existing content from gridPane
 
-        for (int i = 0; i < restaurants.size(); i += 6) {
-            HBox row = createRow(restaurants.subList(i, Math.min(i + 6, restaurants.size())));
-            restaurantsContainer.getChildren().add(row);
-        }
-    }
-
-    private HBox createRow(List<Restaurant> restaurants) {
-        HBox row = new HBox(20); // Spacing between restaurants
-        row.setStyle("-fx-background-color: transparent;"); // Set background to transparent
-
+        int column = 0;
+        int row = 0;
         for (Restaurant restaurant : restaurants) {
-            // Create image view for the restaurant
             ImageView imageView = new ImageView(new Image("file:" + restaurant.getImage()));
             imageView.setFitWidth(200);
             imageView.setFitHeight(150);
 
-            // Create labels for the name and description of the restaurant
             Label nameLabel = new Label(restaurant.getNom());
-            nameLabel.setWrapText(true); // Allow wrapping if the text is too long
-            nameLabel.setMaxWidth(200); // Limit the width to prevent overlapping
             Label descriptionLabel = new Label(restaurant.getDescription());
-            descriptionLabel.setWrapText(true); // Allow wrapping if the text is too long
-            descriptionLabel.setMaxWidth(200); // Limit the width to prevent overlapping
 
-            // Create buttons for reserving and viewing plats
             Button reserveButton = new Button("Réserver");
             reserveButton.setOnAction(event -> reserveForRestaurant(event, restaurant)); // Set action handler
-            Button viewPlatButton = new Button("Voir Plat");
-            viewPlatButton.setOnAction(event -> viewPlatsForRestaurant(event, restaurant)); // Set action handler
 
-            // Create like and dislike buttons
-            Button likeButton = new Button("Like");
-            likeButton.setOnAction(event -> likeRestaurant(event, restaurant)); // Set action handler
-            Button dislikeButton = new Button("Dislike");
-            dislikeButton.setOnAction(event -> dislikeRestaurant(event, restaurant)); // Set action handler
+            Button viewPlatsButton = new Button("View Plats");
+            viewPlatsButton.setOnAction(event -> viewPlatsForRestaurant(event, restaurant)); // Set action handler
 
-            // Create a VBox to contain the labels and buttons
-            VBox restaurantInfo = new VBox(5); // Spacing between elements
-            restaurantInfo.getChildren().addAll(nameLabel, descriptionLabel, reserveButton, viewPlatButton, likeButton, dislikeButton);
+            gridPane.add(imageView, column, row);
+            gridPane.add(nameLabel, column, row + 1); // Add the name below the image
+            gridPane.add(descriptionLabel, column, row + 2); // Add the description below the name
+            gridPane.add(reserveButton, column, row + 3); // Add the reserve button below the description
+            gridPane.add(viewPlatsButton, column, row + 4); // Add the view plats button below the reserve button
 
-            // Create a VBox to contain the image view and restaurant info
-            VBox restaurantBox = new VBox(5); // Spacing between elements
-            restaurantBox.getChildren().addAll(imageView, restaurantInfo);
-
-            // Add the restaurant box to the row
-            row.getChildren().add(restaurantBox);
+            // Increment row and reset column if necessary
+            column++;
+            if (column == 3) {
+                column = 0;
+                row += 5; // Increment by 5 to leave space for image, name, description, reserve button, and view plats button
+            }
         }
-
-        return row;
     }
 
     @FXML
@@ -130,6 +111,7 @@ public class FrontManagement {
         }
     }
 
+
     @FXML
     public void search(ActionEvent actionEvent) {
         String nameFilter = searchNameField.getText();
@@ -137,9 +119,14 @@ public class FrontManagement {
 
         // Perform input validation for minimum and maximum prices
 
+
+
         List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter);
-        populateRestaurantsContainer(filteredRestaurants);
+        populateGridPane(filteredRestaurants);
+
     }
+
+
 
     @FXML
     public void showAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
@@ -149,6 +136,9 @@ public class FrontManagement {
         alert.setContentText(contentText);
         alert.showAndWait();
     }
+
+
+
 
     @FXML
     public void reserveForRestaurant(ActionEvent event, Restaurant restaurant) {
@@ -167,6 +157,7 @@ public class FrontManagement {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     private TextField userInputField;
@@ -202,15 +193,4 @@ public class FrontManagement {
         }
     }
 
-    @FXML
-    private void likeRestaurant(ActionEvent event, Restaurant restaurant) {
-        // Handle like action (e.g., update database, UI, etc.)
-        System.out.println("Liked restaurant: " + restaurant.getNom());
-    }
-
-    @FXML
-    private void dislikeRestaurant(ActionEvent event, Restaurant restaurant) {
-        // Handle dislike action (e.g., update database, UI, etc.)
-        System.out.println("Disliked restaurant: " + restaurant.getNom());
-    }
 }

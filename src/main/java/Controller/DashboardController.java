@@ -361,7 +361,7 @@ public class DashboardController {
     public void switchToRestaurant(ActionEvent actionEvent) {
         try {
             // Load the FXML file for the restaurant view
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/restaurant.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Back.fxml"));
             Parent root = loader.load();
 
             // Create a new scene with the restaurant view

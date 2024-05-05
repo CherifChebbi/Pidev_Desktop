@@ -3,6 +3,7 @@
 
 package Controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -85,5 +86,8 @@ public class RestaurantDetailsController {
     private void goBack() {
         // Handle going back to the previous view
         // You can close the current stage or navigate to another view
+    }
+
+    public void selectImage(ActionEvent actionEvent) {
     }
 }

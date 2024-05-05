@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -37,6 +38,10 @@ public class RestaurantManagement {
 
     @FXML
     private Button managePlatButton;
+
+
+    @FXML
+    private Button front;
 
     @FXML
     private TextField image;
@@ -196,7 +201,7 @@ public class RestaurantManagement {
             stage.close();
 
             // Load the dashboard view from FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackPlat.fxml"));
             Parent root = loader.load();
 
             // Show the dashboard view
@@ -221,4 +226,27 @@ public class RestaurantManagement {
     private boolean isValidInput(String input, Pattern pattern) {
         return pattern.matcher(input).matches();
     }
+
+
+    public void navigateBack() {
+        try {
+            // Load the FXML file for the restaurant view
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/index.fxml"));
+            Parent root = loader.load();
+
+            // Create a new scene with the restaurant view
+            Scene scene = new Scene(root);
+
+            // Get the stage from the button's scene
+            Stage stage = (Stage) front.getScene().getWindow();
+
+            // Set the new scene on the stage
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }
