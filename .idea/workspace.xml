@@ -4,67 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb79324d-adcb-4532-b373-8246f3fe7403" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Category.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Front.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Hebergement.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/6915987.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/banner (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/banner.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/bg-img.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/carte-de-voyage (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/carte-de-voyage.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/emplacement.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/events.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/hotel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_bell_24px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_ellipsis_50px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_empty_trash_32px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_help_32px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_james_bond_32px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_microsoft_excel_48px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_microsoft_powerpoint_2019_48px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_microsoft_word_48px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_pin_50px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_settings_26px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_slider_50px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_star_50px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_steering_wheel_64px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_sync_settings_24px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_time_machine_30px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_widescreen_24px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_windows_homegroup_32px.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/logo1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/marqueur-de-carte (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/marqueur-de-carte.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/pays.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/restaurant.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/statistique.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/statistiques (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/statistiques.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/terra-removebg-preview.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/terra.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tourism.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/tourisme.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/voyage-et-tourisme.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/weather.avif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/weather.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/weather1.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/stylesheet.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CategoryManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/CategoryManagment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/FrontManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/FrontManagment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/HebergementManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/HebergementManagment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/MainFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/style sheet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/test/Category.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/test/front.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/test/hello-view.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/test/pane.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ReservationFront.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/test/reservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/reservation.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="bb79324d-adcb-4532-b373-8246f3fe7403" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -158,7 +98,7 @@
       <workItem from="1714879006279" duration="71000" />
       <workItem from="1714879084081" duration="219000" />
       <workItem from="1714918072871" duration="1199000" />
-      <workItem from="1714919280769" duration="9327000" />
+      <workItem from="1714919280769" duration="9716000" />
     </task>
     <servers />
   </component>
