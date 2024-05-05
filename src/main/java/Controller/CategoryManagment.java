@@ -85,7 +85,7 @@ public class CategoryManagment {
             // Rafraîchir la liste des catégories
             afficher();
             // Add the new category label to the scroll pane in FrontManagment
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/pane.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationFront.fxml"));
             Parent root = loader.load();
             FrontManagment frontController = loader.getController();
 
@@ -155,7 +155,7 @@ public class CategoryManagment {
 
     @FXML
     void take(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Hebergement.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -165,7 +165,7 @@ public class CategoryManagment {
 
     @FXML
     void goheberg(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/hello-view.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Hebergement.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -175,7 +175,7 @@ public class CategoryManagment {
     }
     @FXML
     void goreserv(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/reservation.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/reservation.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -185,7 +185,7 @@ public class CategoryManagment {
     }
     @FXML
     void backcateg(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/Category.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Category.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

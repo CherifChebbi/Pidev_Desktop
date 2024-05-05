@@ -66,7 +66,7 @@ public class FrontManagment {
 
                 reservationButton.setOnAction(event -> {
                     try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/test/pane.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationFront.fxml"));
                         Parent root = loader.load();
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));
