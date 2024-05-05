@@ -15,6 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -23,6 +24,7 @@
     <children>
         <AnchorPane layoutY="67.0" prefHeight="640.0" prefWidth="1300.0" style="-fx-background-color: rgb(233, 246, 255);">
             <children>
+                <MediaView fx:id="mediaView" fitHeight="400.0" fitWidth="600.0" />
                 <ImageView fitHeight="640.0" fitWidth="693.0" layoutX="317.0" layoutY="-7.0" opacity="0.17" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@images/logo1.png" />
@@ -61,6 +63,7 @@
                       </FXCollections>
                   </items>
               </ChoiceBox>
+              <Button fx:id="watchVideoButton" layoutX="594.0" layoutY="10.0" mnemonicParsing="false" onAction="#watchVideo" text="Watch Video" />
             </children>
         </AnchorPane>
         <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
@@ -71,9 +74,15 @@
         <HBox layoutX="313.0" layoutY="14.0" prefHeight="40.0" prefWidth="792.0">
             <!-- HBox content -->
         </HBox>
-        <HBox layoutX="1150.0" layoutY="15.0" prefHeight="38.0" prefWidth="136.0">
-            <!-- HBox content -->
-        </HBox>
+        <HBox layoutX="1243.0" layoutY="13.0" prefHeight="42.0" prefWidth="39.0">
+         <children>
+            <ImageView fx:id="notification" fitHeight="42.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icons/notification.jpg" />
+               </image>
+            </ImageView>
+         </children></HBox>
+
 
     </children>
     <stylesheets>

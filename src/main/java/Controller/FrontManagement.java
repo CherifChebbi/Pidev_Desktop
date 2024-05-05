@@ -6,6 +6,7 @@ import Services.ServiceRestaurant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -14,8 +15,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 
+
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -39,11 +45,41 @@ public class FrontManagement {
 
     @FXML
     private TextField maximum;
+    @FXML
+    private MediaView mediaView;
 
     @FXML
     private TextField minimum;
 
     private ServiceRestaurant serviceRestaurant = new ServiceRestaurant();
+
+
+    @FXML
+    private void watchVideo(ActionEvent event) {
+        try {
+            // Load the video file from the resources directory
+            File file = new File(getClass().getResource("/majd.mp4").toURI());
+            Media media = new Media(file.toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+
+            // Create a new media view and set the player
+            MediaView mediaView = new MediaView(mediaPlayer);
+            mediaView.setFitWidth(600);
+            mediaView.setFitHeight(400);
+
+            // Create a new stage and scene for displaying the media
+            Stage stage = new Stage();
+            stage.setScene(new Scene(new Group(mediaView), 600, 400));
+            stage.show();
+
+            // Start playing the video
+            mediaPlayer.play();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     @FXML
     public void initialize() {
@@ -227,4 +263,6 @@ public class FrontManagement {
         // Handle dislike action (e.g., update database, UI, etc.)
         System.out.println("Disliked restaurant: " + restaurant.getNom());
     }
+
+
 }

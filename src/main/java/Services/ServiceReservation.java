@@ -19,11 +19,6 @@ public class ServiceReservation {
         this.connection = MyDB.getInstance().getConnection();
     }
 
-
-
-
-
-
     public void ajouter(Reservation reservation) throws SQLException {
         String query = "INSERT INTO reservation (idR, nom, email, date, nbr_personne) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -56,29 +51,36 @@ public class ServiceReservation {
         return reservations;
     }
 
+    public String getRestaurantImage(int restaurantId) throws SQLException {
+        String query = "SELECT image_path FROM restaurant WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, restaurantId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("image_path");
+                }
+            }
+        }
+        throw new SQLException("Restaurant image path not found with ID: " + restaurantId);
+    }
+
     public ObservableList<Reservation> afficher(int restaurantId) throws SQLException {
         List<Reservation> reservations = getAllReservationsForRestaurant(restaurantId);
         return FXCollections.observableArrayList(reservations);
     }
 
-    public String getRestaurantName(int restaurantId) {
-        try {
-            String query = "SELECT nom FROM restaurant WHERE id = ?";
-            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                preparedStatement.setInt(1, restaurantId);
-                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                    if (resultSet.next()) {
-                        return resultSet.getString("nom");
-                    }
+    public String getRestaurantName(int restaurantId) throws SQLException {
+        String query = "SELECT nom FROM restaurant WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setInt(1, restaurantId);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    return resultSet.getString("nom");
                 }
             }
-            throw new SQLException("Restaurant not found with ID: " + restaurantId);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null; // Handle the exception appropriately
         }
+        throw new SQLException("Restaurant not found with ID: " + restaurantId);
     }
-
 
     public void deleteReservation(int reservationId) throws SQLException {
         String query = "DELETE FROM reservation WHERE id = ?";
@@ -99,5 +101,4 @@ public class ServiceReservation {
             preparedStatement.executeUpdate();
         }
     }
-
 }

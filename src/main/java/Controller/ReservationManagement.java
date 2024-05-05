@@ -5,19 +5,26 @@ import Services.ServiceReservation;
 import com.itextpdf.kernel.pdf.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
 import javax.swing.text.Document;
 import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
@@ -47,8 +54,12 @@ public class ReservationManagement {
     @FXML
     private TextField nbrpersonne;
 
+
     @FXML
     private ScrollPane reservationScrollPane;
+
+    @FXML
+    private ImageView imagerest;
 
     @FXML
     private Label restaurantLabel; // Label to display the restaurant name
@@ -86,32 +97,7 @@ public class ReservationManagement {
         gridPane.add(reservationText, 0, row);
     }
 
-    // Modify ajouter() method to use addReservationToScrollPane
-    @FXML
-    void ajouter() {
-        try {
-            // Get data from fields
-            String reservationNom = nom.getText();
-            String reservationEmail = email.getText();
-            String reservationDate = datePicker.getValue().toString();
-            int reservationNbrPersonne = Integer.parseInt(nbrpersonne.getText());
 
-            // Create a new reservation object with the selected restaurant ID
-            Reservation newReservation = new Reservation(selectedRestaurantId, reservationNom, reservationEmail, reservationDate, reservationNbrPersonne);
-
-            // Add reservation to the database
-            serviceReservation.ajouter(newReservation);
-
-            // Add reservation to the scroll pane
-            addReservationToScrollPane(newReservation);
-
-        } catch (SQLException | NumberFormatException e) {
-            e.printStackTrace();
-            // Handle SQLException or NumberFormatException
-        }
-    }
-
-    // Modify printReservationToPDF method to use selectedReservation
     @FXML
     void printReservationToPDF(ActionEvent event) {
         try {
@@ -221,6 +207,10 @@ public class ReservationManagement {
 
 
 
+
+
+
+
     private void displayReservations() throws SQLException {
         // Get reservations for the selected restaurant from the service
         List<Reservation> reservations = serviceReservation.getAllReservationsForRestaurant(selectedRestaurantId);
@@ -317,6 +307,8 @@ public class ReservationManagement {
         }
     }
 
+    // Import Image class from JavaFX
+
     public void initData(int restaurantId, String restaurantName) {
         this.selectedRestaurantId = restaurantId;
         this.selectedRestaurantName = restaurantName;
@@ -324,12 +316,24 @@ public class ReservationManagement {
         try {
             // Display existing reservations when initializing the controller
             displayReservations();
+
+            // Get the image path for the selected restaurant from your data source
+            String imagePath = serviceReservation.getRestaurantImage(selectedRestaurantId);
+            if (imagePath != null && !imagePath.isEmpty()) {
+                // Load and set the image of the selected restaurant
+                Image image = new Image(new File(imagePath).toURI().toString());
+                imagerest.setImage(image);
+            } else {
+                // If no image path is found, display a default image or hide the ImageView
+                // For example, you can set a default image like this:
+                // Image defaultImage = new Image("default_image_path/default.png");
+                // imagerest.setImage(defaultImage);
+                // Or you can hide the ImageView if no image is available:
+                // imagerest.setVisible(false);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-
-    public void selectImage(ActionEvent actionEvent) {
-    }
 }
