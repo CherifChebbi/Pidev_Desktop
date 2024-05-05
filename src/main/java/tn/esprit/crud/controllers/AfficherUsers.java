@@ -8,9 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import tn.esprit.crud.models.User;
@@ -45,7 +43,13 @@ public class AfficherUsers {
     private TableColumn<User, Integer> numtelCol;
 
     @FXML
+    private TableColumn<User, Boolean> banCol;
+
+    @FXML
     private Button auth;
+
+    @FXML
+    private RadioButton ban;
 
     private UserService userService;
 
@@ -79,6 +83,25 @@ public class AfficherUsers {
         }
     }
 
+    @FXML
+    private void banUser() {
+        User selectedUser = tableView.getSelectionModel().getSelectedItem();
+        if (selectedUser != null) {
+            try {
+                userService.toggleUserBanStatus(selectedUser.getId(), true);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Ban ");
+                alert.setContentText("Ban ");
+                alert.showAndWait();
+                loadUsers(); // refresh the table view
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("Error: No user selected.");
+        }
+    }
+
     private void loadUsers() {
         try {
             List<User> users = userService.recuperer();
@@ -90,6 +113,7 @@ public class AfficherUsers {
             prenomCol.setCellValueFactory(new PropertyValueFactory<>("prenom"));
             nationnalieCol.setCellValueFactory(new PropertyValueFactory<>("nationnalite"));
             numtelCol.setCellValueFactory(new PropertyValueFactory<>("numtel"));
+            banCol.setCellValueFactory(new PropertyValueFactory<>("banned")); // Set cell value factory for "Banned" column
 
             tableView.setItems(usersList);
         } catch (SQLException e) {

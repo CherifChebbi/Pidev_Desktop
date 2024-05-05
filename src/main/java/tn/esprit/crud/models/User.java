@@ -6,11 +6,12 @@ public class User {
     private String prenom;
     private String nationnalite;
     private String email;
-    private String password; // Corrected attribute name
-    private String roles; // Corrected attribute name
-    private int numtel; // Corrected attribute name
+    private String password;
+    private String roles;
+    private int numtel;
+    private boolean isBanned; // New attribute
 
-    public User(int id, String nom, String prenom, String nationnalite, String email, String password, String roles, int numtel) {
+    public User(int id, String nom, String prenom, String nationnalite, String email, String password, String roles, int numtel, boolean isBanned) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -19,12 +20,13 @@ public class User {
         this.password = password;
         this.roles = roles;
         this.numtel = numtel;
+        this.isBanned = isBanned;
     }
 
     public User() {
     }
 
-    public User(String nom, String prenom, String nationnalite, String email, String password, String roles, int numtel) {
+    public User(String nom, String prenom, String nationnalite, String email, String password, String roles, int numtel, boolean isBanned) {
         this.nom = nom;
         this.prenom = prenom;
         this.nationnalite = nationnalite;
@@ -32,6 +34,7 @@ public class User {
         this.password = password;
         this.roles = roles;
         this.numtel = numtel;
+        this.isBanned = isBanned;
     }
 
     public int getId() {
@@ -98,6 +101,17 @@ public class User {
         this.numtel = numtel;
     }
 
+    public boolean isBanned() {
+        return isBanned;
+    }
+
+    public void setBanned(boolean banned) {
+        isBanned = banned;
+    }
+    public void setIsBanned(boolean isBanned) {
+        this.isBanned = isBanned;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -109,6 +123,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", roles='" + roles + '\'' +
                 ", numtel=" + numtel +
+                ", isBanned=" + isBanned +
                 '}';
     }
 }

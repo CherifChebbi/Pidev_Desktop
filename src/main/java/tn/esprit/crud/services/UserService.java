@@ -38,7 +38,7 @@ public class UserService implements IServices<User> {
 
     @Override
     public void modifier(User user) throws SQLException {
-        String req = "UPDATE user SET nom = ?, prenom = ?, nationnalite = ?, email = ?, numtel = ?, roles = ? WHERE id = ?";
+        String req = "UPDATE user SET nom = ?, prenom = ?, nationnalite = ?, email = ?, numtel = ?, roles = ? is_banned = ? WHERE id = ?";
         try (PreparedStatement us = connection.prepareStatement(req)) {
             us.setString(1, user.getNom());
             us.setString(2, user.getPrenom());
@@ -46,7 +46,8 @@ public class UserService implements IServices<User> {
             us.setString(4, user.getEmail());
             us.setInt(5, user.getNumtel());
             us.setString(6, user.getRoles());
-            us.setInt(7, user.getId());
+            //us.setBoolean(7,user.getisBanned());
+            us.setInt(8, user.getId());
 
             int rowsAffected = us.executeUpdate();
             if (rowsAffected > 0) {
@@ -100,6 +101,7 @@ public class UserService implements IServices<User> {
             user.setPassword(rs.getString("password")); // Use the "mdp" column instead of "nationnalite"
             user.setRoles(rs.getString("roles"));
             user.setNumtel(rs.getInt("numtel"));
+            user.setIsBanned(rs.getBoolean("is_banned"));
 
             users.add(user);
         }
@@ -128,6 +130,7 @@ public class UserService implements IServices<User> {
                         user.setPassword(resultSet.getString("password"));
                         user.setRoles(resultSet.getString("roles"));
                         user.setNumtel(resultSet.getInt("numtel"));
+                        user.setIsBanned(resultSet.getBoolean("is_banned"));
                         return user;
                     } else {
                         // Passwords don't match
@@ -251,9 +254,11 @@ public class UserService implements IServices<User> {
                 String password = resultSet.getString("password"); // Update attribute name
                 String roles = resultSet.getString("roles"); // Update attribute name
                 int numtel = resultSet.getInt("numtel"); // Added for the "numtel" attribute
+                boolean isBanned = resultSet.getBoolean("is_banned"); // Fetch is_banned attribute
 
                 // Create a new User object with retrieved data
-                User user = new User(id, nom, prenom, nationnalite, email, password, roles, numtel);
+                User user = new User(id, nom, prenom, nationnalite, email, password, roles, numtel,isBanned);
+                user.setIsBanned(isBanned); // Set is_banned attribute
                 list.add(user);
             }
         } catch (SQLException e) {
@@ -342,6 +347,7 @@ public class UserService implements IServices<User> {
                 user.setPassword(resultSet.getString("password"));
                 user.setRoles(resultSet.getString("roles"));
                 user.setNumtel(resultSet.getInt("numtel"));
+                user.setIsBanned(resultSet.getBoolean("is_banned"));
                 return user;
             } else {
                 // No user found with the provided ID
@@ -355,8 +361,64 @@ public class UserService implements IServices<User> {
         }
     }
 
+    public void banUser(int userId) throws SQLException {
+        String req = "UPDATE user SET is_banned = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(req)) {
+            statement.setBoolean(1, true);
+            statement.setInt(2, userId);
 
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("User banned successfully");
+            } else {
+                System.out.println("Failed to ban user");
+            }
+            System.out.println("Rows affected: " + rowsAffected);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
 
+    public void toggleUserBanStatus(int userId, boolean isBanned) throws SQLException {
+        String req = "UPDATE user SET is_banned = ? WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(req)) {
+            statement.setBoolean(1, isBanned);
+            statement.setInt(2, userId);
+
+            int rowsAffected = statement.executeUpdate();
+            if (rowsAffected > 0) {
+                if (isBanned) {
+                    System.out.println("User banned successfully");
+                } else {
+                    System.out.println("User unbanned successfully");
+                }
+            } else {
+                System.out.println("Failed to update user ban status");
+            }
+            System.out.println("Rows affected: " + rowsAffected);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public boolean isUserBanned(int userId) {
+        String req = "SELECT is_banned FROM user WHERE id = ?";
+        try (PreparedStatement statement = connection.prepareStatement(req)) {
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getBoolean("is_banned");
+            } else {
+                System.out.println("User not found");
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 
 

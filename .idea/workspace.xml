@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="338d2e8d-0088-4336-b230-09326ebb8158" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Profile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Front/Profile.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Explore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Explore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/ForgetPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/ForgetPassword.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Home.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/InscriptionUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/InscriptionUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/index.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/index.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/IServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/IServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/AfficherUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/AfficherUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/ModifierUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/ModifierUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/models/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/test/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/test/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Front/Explore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Front/Explore.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Front/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Front/Home.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Front/index.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Front/index.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/inscription.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/inscription.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/AfficherUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/AfficherUsers.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +164,7 @@
       <workItem from="1714385253063" duration="54849000" />
       <workItem from="1714654001608" duration="10930000" />
       <workItem from="1714730738947" duration="39947000" />
-      <workItem from="1714911949405" duration="3758000" />
+      <workItem from="1714911949405" duration="13989000" />
     </task>
     <servers />
   </component>

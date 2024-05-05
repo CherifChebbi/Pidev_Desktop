@@ -46,6 +46,8 @@ public class ModifierUser implements Initializable {
     @FXML
     private RadioButton ad;
 
+
+
     private UserService userService = new UserService();
 
     private User selectedUser;
@@ -54,6 +56,7 @@ public class ModifierUser implements Initializable {
         this.selectedUser = user;
         populateFields();
     }
+
 
     private void populateFields() {
         if (selectedUser != null) {

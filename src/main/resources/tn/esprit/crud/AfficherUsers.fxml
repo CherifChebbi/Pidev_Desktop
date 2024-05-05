@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -211,7 +212,7 @@
          </children>
       </HBox>
       <ImageView fx:id="imageView_pays" fitHeight="200" fitWidth="200" layoutX="1069.0" layoutY="332.0" />
-      <TableView fx:id="tableView" layoutX="378.0" layoutY="260.0" prefHeight="392.0" prefWidth="700.0">
+      <TableView fx:id="tableView" layoutX="378.0" layoutY="260.0" prefHeight="392.0" prefWidth="839.0">
          <columns>
             <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="emailCol" prefWidth="129.33334350585938" text="Email" />
@@ -219,7 +220,13 @@
             <TableColumn fx:id="prenomCol" prefWidth="106.0" text="Prénom" />
             <TableColumn fx:id="nationnalieCol" prefWidth="128.66668701171875" text="Nationalité" />
             <TableColumn fx:id="numtelCol" prefWidth="135.33331298828125" text="Téléphone" />
+            <TableColumn fx:id="banCol" prefWidth="135.33331298828125" text="Banned" />
          </columns>
       </TableView>
+      <RadioButton fx:id="ban" layoutX="1181.0" layoutY="198.0" mnemonicParsing="false" onAction="#banUser" prefHeight="30.0" prefWidth="107.0" text="Ban">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </RadioButton>
    </children>
 </AnchorPane>
