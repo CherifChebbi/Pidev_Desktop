@@ -16,13 +16,21 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javax.print.attribute.standard.Media;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import javafx.scene.Group;
+
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 
 public class FrontManagement {
     @FXML
     private VBox restaurantsContainer;
+
+    @FXML
+    private Button videoButton;
 
     @FXML
     private TextField searchNameField;
@@ -82,15 +90,22 @@ public class FrontManagement {
 
             // Create buttons for reserving and viewing plats
             Button reserveButton = new Button("Réserver");
+            reserveButton.setStyle("-fx-background-color: #BEFAFF; -fx-border-color: red; -fx-background-radius: 20; -fx-border-radius: 20; -fx-position-shape: 10; -fx-text-fill: black;"); // Apply CSS styling
             reserveButton.setOnAction(event -> reserveForRestaurant(event, restaurant)); // Set action handler
             Button viewPlatButton = new Button("Voir Plat");
             viewPlatButton.setOnAction(event -> viewPlatsForRestaurant(event, restaurant)); // Set action handler
 
+<<<<<<< HEAD
             // Create like and dislike buttons
             Button likeButton = new Button("Like");
             likeButton.setOnAction(event -> likeRestaurant(event, restaurant)); // Set action handler
             Button dislikeButton = new Button("Dislike");
             dislikeButton.setOnAction(event -> dislikeRestaurant(event, restaurant)); // Set action handler
+=======
+            Button viewPlatsButton = new Button("View Plats");
+            viewPlatsButton.setStyle("-fx-background-color: #BEFAFF; -fx-border-color: red; -fx-background-radius: 20; -fx-border-radius: 20; -fx-position-shape: 10; -fx-text-fill: black;"); // Apply CSS styling
+            viewPlatsButton.setOnAction(event -> viewPlatsForRestaurant(event, restaurant)); // Set action handler/ Set action handler
+>>>>>>> 6340eeb7b3df9b49a518d53dd8bc41491e14862f
 
             // Create a VBox to contain the labels and buttons
             VBox restaurantInfo = new VBox(5); // Spacing between elements
@@ -137,10 +152,20 @@ public class FrontManagement {
 
         // Perform input validation for minimum and maximum prices
 
+<<<<<<< HEAD
         List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter);
         populateRestaurantsContainer(filteredRestaurants);
     }
 
+=======
+
+        List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter);
+        populateGridPane(filteredRestaurants);
+
+    }
+
+
+>>>>>>> 6340eeb7b3df9b49a518d53dd8bc41491e14862f
     @FXML
     public void showAlert(Alert.AlertType alertType, String title, String headerText, String contentText) {
         Alert alert = new Alert(alertType);
@@ -150,6 +175,10 @@ public class FrontManagement {
         alert.showAndWait();
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6340eeb7b3df9b49a518d53dd8bc41491e14862f
     @FXML
     public void reserveForRestaurant(ActionEvent event, Restaurant restaurant) {
         try {
@@ -197,12 +226,18 @@ public class FrontManagement {
             return "Notre application vous permet de rechercher des restaurants par nom, cuisine ou emplacement. Que recherchez-vous";
         } else if (userInput.contains("reservation existante")) {
             return "Pour consulter vos réservations existantes, veuillez vous connecter à votre compte et accéder à la section réservations.";
+        }
+        if (userInput.contains("chkoun a7ssen we7ed fi groupe pidev")) {
+            return "akiid majd a7sen we7ed tw heda klem aziiz mta3 souha w rayen mte3 oumayma 7keyethom fer8a te3bon toul hhh";
+        } else if (userInput.contains("reservation existante")) {
+            return "Pour consulter vos réservations existantes, veuillez vous connecter à votre compte et accéder à la section réservations.";
         } else {
             return "Je suis là pour vous aider . N'hésitez pas à me poser des questions !";
         }
     }
 
     @FXML
+<<<<<<< HEAD
     private void likeRestaurant(ActionEvent event, Restaurant restaurant) {
         // Handle like action (e.g., update database, UI, etc.)
         System.out.println("Liked restaurant: " + restaurant.getNom());
@@ -213,4 +248,34 @@ public class FrontManagement {
         // Handle dislike action (e.g., update database, UI, etc.)
         System.out.println("Disliked restaurant: " + restaurant.getNom());
     }
+=======
+    private void showVideo(ActionEvent event) {
+        try {
+            // Load the video file (replace "video.mp4" with the actual path to your video file)
+            String videoFile = getClass().getResource("/majd.mp4").toExternalForm();
+
+            javafx.scene.media.Media media = new javafx.scene.media.Media(videoFile);
+
+            // Create a media player
+            MediaPlayer mediaPlayer = new MediaPlayer(media);
+            mediaPlayer.setAutoPlay(true); // Auto play the video
+
+            // Create a media view to display the video
+            MediaView mediaView = new MediaView(mediaPlayer);
+            mediaView.setFitWidth(600); // Set the width of the media view
+            mediaView.setFitHeight(400); // Set the height of the media view
+
+            // Create a new stage for the video window
+            Stage stage = new Stage();
+            stage.setScene(new Scene(new Group(mediaView)));
+
+            // Show the video window
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+>>>>>>> 6340eeb7b3df9b49a518d53dd8bc41491e14862f
 }

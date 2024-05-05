@@ -8,6 +8,7 @@ module test {
     requires kernel;
     requires layout;
     requires java.mail;
+    requires javafx.media;
 
     opens test to javafx.fxml;
     opens Entity to javafx.base;
