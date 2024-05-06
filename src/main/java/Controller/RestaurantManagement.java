@@ -1,252 +1,260 @@
-package Controller;
+    package Controller;
 
-import Entity.Restaurant;
-import Services.ServiceRestaurant;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
+    import Entity.Notification;
+    import Entity.Restaurant;
+    import Services.NotificationService;
+    import Services.ServiceRestaurant;
+    import javafx.collections.FXCollections;
+    import javafx.collections.ObservableList;
+    import javafx.event.ActionEvent;
+    import javafx.fxml.FXML;
+    import javafx.fxml.FXMLLoader;
+    import javafx.geometry.Pos;
+    import javafx.scene.Parent;
+    import javafx.scene.Scene;
+    import javafx.scene.control.*;
+    import javafx.scene.control.cell.PropertyValueFactory;
+    import javafx.scene.image.ImageView;
+    import javafx.scene.input.MouseEvent;
+    import javafx.stage.FileChooser;
+    import javafx.stage.Stage;
+    import javafx.util.Duration;
+    import org.controlsfx.control.Notifications;
 
-import java.io.File;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.regex.Pattern;
+    import java.io.File;
+    import java.io.IOException;
+    import java.sql.SQLException;
+    import java.util.List;
+    import java.util.regex.Pattern;
 
-
-
-public class RestaurantManagement {
-    ServiceRestaurant SR = new ServiceRestaurant();
-
-    @FXML
-    private TableView<Restaurant> afficher;
-
-    @FXML
-    private TextArea description;
-
-    @FXML
-    private TableColumn<Restaurant, String> descriptioncol;
-
-    @FXML
-    private Button managePlatButton;
+    import org.controlsfx.control.Notifications;
 
 
-    @FXML
-    private Button front;
 
-    @FXML
-    private TextField image;
-    @FXML
-    private TableColumn<Restaurant, ImageView> imagecol;
+    public class RestaurantManagement {
+        ServiceRestaurant SR = new ServiceRestaurant();
 
-    @FXML
-    private TextField localisation;
+        @FXML
+        private TableView<Restaurant> afficher;
 
-    @FXML
-    private TableColumn<Restaurant, Integer> idcol;
+        @FXML
+        private TextArea description;
 
-    @FXML
-    private TableColumn<Restaurant, String> locationcol;
+        @FXML
+        private TableColumn<Restaurant, String> descriptioncol;
 
-    @FXML
-    private TextField nom;
+        @FXML
+        private Button managePlatButton;
 
-    @FXML
-    private TableColumn<Restaurant, String> nomcol;
 
-    @FXML
-    private Button switchToPlatButton; // Button to switch to Plat view
+        @FXML
+        private Button front;
 
-    private static final Pattern STRING_PATTERN = Pattern.compile("^[a-zA-Zéèêçàâôûî\\s]+$");
-    private static final Pattern INTEGER_PATTERN = Pattern.compile("^\\d+$");
+        @FXML
+        private TextField image;
+        @FXML
+        private TableColumn<Restaurant, ImageView> imagecol;
 
-    @FXML
-    void ajouter(ActionEvent event) throws SQLException {
-        String restaurantName = nom.getText().trim();
-        String restaurantLocation = localisation.getText().trim();
-        String imagePath = image.getText().trim();
-        String restaurantDescription = description.getText().trim();
+        @FXML
+        private TextField localisation;
 
-        // Input validation
-        if (!isValidInput(restaurantName, STRING_PATTERN)) {
-            showAlert("Error", "Le nom du restaurant ne peut pas contenir de chiffres ou de symboles.");
-            return;
-        }
+        @FXML
+        private TableColumn<Restaurant, Integer> idcol;
 
-        if (!isValidInput(restaurantLocation, STRING_PATTERN)) {
-            showAlert("Error", "La localisation du restaurant ne peut pas contenir de chiffres ou de symboles.");
-            return;
-        }
+        @FXML
+        private TableColumn<Restaurant, String> locationcol;
 
-        if (restaurantDescription.isEmpty()) {
-            showAlert("Error", "Veuillez entrer une description pour le restaurant.");
-            return;
-        }
+        @FXML
+        private TextField nom;
 
-        if (restaurantName.isEmpty() || restaurantLocation.isEmpty() || imagePath.isEmpty()) {
-            showAlert("Error", "Veuillez remplir tous les champs pour ajouter un restaurant.");
-            return;
-        }
+        @FXML
+        private TableColumn<Restaurant, String> nomcol;
 
-        SR.ajouter(new Restaurant(restaurantName, restaurantLocation, imagePath, restaurantDescription));
-        afficher();
-        showAlert("Success", "Restaurant ajouté avec succès.");
-    }
+        @FXML
+        private Button switchToPlatButton; // Button to switch to Plat view
 
-    @FXML
-    void selectImage(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Choisir une image");
-        // Set extension filters if needed
-        File selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile != null) {
-            image.setText(selectedFile.getAbsolutePath());
-        }
-    }
+        private static final Pattern STRING_PATTERN = Pattern.compile("^[a-zA-Zéèêçàâôûî\\s]+$");
+        private static final Pattern INTEGER_PATTERN = Pattern.compile("^\\d+$");
 
-    @FXML
-    public void afficher() throws SQLException {
-        List<Restaurant> restaurantList = SR.afficher();
-        ObservableList<Restaurant> observableList = FXCollections.observableArrayList(restaurantList);
-        afficher.setItems(observableList);
-    }
+        NotificationService notificationService = new NotificationService();
 
-    @FXML
-    void modifier(ActionEvent event) throws SQLException {
-        // Check if a row is selected
-        Restaurant selectedRestaurant = afficher.getSelectionModel().getSelectedItem();
-        if (selectedRestaurant != null) {
-            // Retrieve updated data from input fields
-            String newNom = nom.getText().trim();
-            String newLocalisation = localisation.getText().trim();
-            String newImage = image.getText().trim();
-            String newDescription = description.getText().trim();
+        @FXML
+        void ajouter(ActionEvent event) throws SQLException {
+            String restaurantName = nom.getText().trim();
+            String restaurantLocation = localisation.getText().trim();
+            String imagePath = image.getText().trim();
+            String restaurantDescription = description.getText().trim();
 
-            // Input validation
-            if (!isValidInput(newNom, STRING_PATTERN)) {
-                showAlert("Error", "Le nom du restaurant ne peut pas contenir de chiffres ou de symboles.");
-                return;
-            }
+            // Input validation...
 
-            if (!isValidInput(newLocalisation, STRING_PATTERN)) {
-                showAlert("Error", "La localisation du restaurant ne peut pas contenir de chiffres ou de symboles.");
-                return;
-            }
-
-            if (newDescription.isEmpty()) {
-                showAlert("Error", "Veuillez entrer une description pour le restaurant.");
-                return;
-            }
-
-            // Update the selected Restaurant object
-            selectedRestaurant.setNom(newNom);
-            selectedRestaurant.setLocalisataion(newLocalisation);
-            selectedRestaurant.setImage(newImage);
-            selectedRestaurant.setDescription(newDescription);
-
-            // Call the modifier method in ServiceRestaurant
-            SR.modifier(selectedRestaurant);
-
-            // Refresh TableView
+            SR.ajouter(new Restaurant(restaurantName, restaurantLocation, imagePath, restaurantDescription));
             afficher();
-            showAlert("Success", "Restaurant modifié avec succès.");
-        } else {
-            showAlert("Error", "Veuillez sélectionner un restaurant à modifier.");
+
+            // Send notification to the front management
+            String notificationMessage = "Nouveau restaurant ajouté: " + restaurantName;
+            notificationService.addNotification(new Notification(notificationMessage)); // Use Notification constructor
+
+            showAlert("Success", "Restaurant ajouté avec succès.");
+            showNotification("Reservation Added", "Restaurant ajouter avec succes!");
+
+
         }
-    }
 
-    @FXML
-    void supprimer(ActionEvent event) throws SQLException {
-        Restaurant selectedRestaurant = afficher.getSelectionModel().getSelectedItem();
-        if (selectedRestaurant != null) {
-            SR.supprimer(selectedRestaurant);
-            refreshTableView();
-            showAlert("Success", "Restaurant supprimé avec succès.");
-        } else {
-            showAlert("Error", "Veuillez sélectionner un restaurant à supprimer.");
+        private void showNotification(String title, String message) {
+            Notifications.create()
+                    .title(title)
+                    .text(message)
+                    .hideAfter(Duration.seconds(5))  // Set the duration for how long the notification should be displayed
+                    .position(Pos.BOTTOM_RIGHT)
+                    .show();
         }
-    }
 
-    private void refreshTableView() {
-        try {
-            afficher();
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+        @FXML
+        void selectImage(ActionEvent event) {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Choisir une image");
+            // Set extension filters if needed
+            File selectedFile = fileChooser.showOpenDialog(null);
+            if (selectedFile != null) {
+                image.setText(selectedFile.getAbsolutePath());
+            }
         }
-    }
 
-    @FXML
-    private void initialize() {
-        idcol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nomcol.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        locationcol.setCellValueFactory(new PropertyValueFactory<>("localisation"));
-        imagecol.setCellValueFactory(new PropertyValueFactory<>("image"));
-        descriptioncol.setCellValueFactory(new PropertyValueFactory<>("description"));
-    }
-
-    @FXML
-    void switchToPlat(ActionEvent event) {
-        try {
-            // Close the current window
-            Stage stage = (Stage) switchToPlatButton.getScene().getWindow();
-            stage.close();
-
-            // Load the dashboard view from FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackPlat.fxml"));
-            Parent root = loader.load();
-
-            // Show the dashboard view
-            Stage dashboardStage = new Stage();
-            dashboardStage.setTitle("Dashboard");
-            dashboardStage.setScene(new Scene(root));
-            dashboardStage.show();
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle error loading the dashboard view
+        @FXML
+        public void afficher() throws SQLException {
+            List<Restaurant> restaurantList = SR.afficher();
+            ObservableList<Restaurant> observableList = FXCollections.observableArrayList(restaurantList);
+            afficher.setItems(observableList);
         }
-    }
 
+        @FXML
+        void modifier(ActionEvent event) throws SQLException {
+            // Check if a row is selected
+            Restaurant selectedRestaurant = afficher.getSelectionModel().getSelectedItem();
+            if (selectedRestaurant != null) {
+                // Retrieve updated data from input fields
+                String newNom = nom.getText().trim();
+                String newLocalisation = localisation.getText().trim();
+                String newImage = image.getText().trim();
+                String newDescription = description.getText().trim();
 
-    private void showAlert(String title, String content) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
+                // Input validation
+                if (!isValidInput(newNom, STRING_PATTERN)) {
+                    showAlert("Error", "Le nom du restaurant ne peut pas contenir de chiffres ou de symboles.");
+                    return;
+                }
 
-    private boolean isValidInput(String input, Pattern pattern) {
-        return pattern.matcher(input).matches();
-    }
+                if (!isValidInput(newLocalisation, STRING_PATTERN)) {
+                    showAlert("Error", "La localisation du restaurant ne peut pas contenir de chiffres ou de symboles.");
+                    return;
+                }
 
+                if (newDescription.isEmpty()) {
+                    showAlert("Error", "Veuillez entrer une description pour le restaurant.");
+                    return;
+                }
 
-    public void navigateBack() {
-        try {
-            // Load the FXML file for the restaurant view
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/index.fxml"));
-            Parent root = loader.load();
+                // Update the selected Restaurant object
+                selectedRestaurant.setNom(newNom);
+                selectedRestaurant.setLocalisataion(newLocalisation);
+                selectedRestaurant.setImage(newImage);
+                selectedRestaurant.setDescription(newDescription);
 
-            // Create a new scene with the restaurant view
-            Scene scene = new Scene(root);
+                // Call the modifier method in ServiceRestaurant
+                SR.modifier(selectedRestaurant);
 
-            // Get the stage from the button's scene
-            Stage stage = (Stage) front.getScene().getWindow();
-
-            // Set the new scene on the stage
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+                // Refresh TableView
+                afficher();
+                showAlert("Success", "Restaurant modifié avec succès.");
+            } else {
+                showAlert("Error", "Veuillez sélectionner un restaurant à modifier.");
+            }
         }
+
+        @FXML
+        void supprimer(ActionEvent event) throws SQLException {
+            Restaurant selectedRestaurant = afficher.getSelectionModel().getSelectedItem();
+            if (selectedRestaurant != null) {
+                SR.supprimer(selectedRestaurant);
+                refreshTableView();
+                showAlert("Success", "Restaurant supprimé avec succès.");
+            } else {
+                showAlert("Error", "Veuillez sélectionner un restaurant à supprimer.");
+            }
+        }
+
+        private void refreshTableView() {
+            try {
+                afficher();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @FXML
+        private void initialize() {
+            idcol.setCellValueFactory(new PropertyValueFactory<>("id"));
+            nomcol.setCellValueFactory(new PropertyValueFactory<>("nom"));
+            locationcol.setCellValueFactory(new PropertyValueFactory<>("localisation"));
+            imagecol.setCellValueFactory(new PropertyValueFactory<>("image"));
+            descriptioncol.setCellValueFactory(new PropertyValueFactory<>("description"));
+        }
+
+        @FXML
+        void switchToPlat(ActionEvent event) {
+            try {
+                // Close the current window
+                Stage stage = (Stage) switchToPlatButton.getScene().getWindow();
+                stage.close();
+
+                // Load the dashboard view from FXML
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackPlat.fxml"));
+                Parent root = loader.load();
+
+                // Show the dashboard view
+                Stage dashboardStage = new Stage();
+                dashboardStage.setTitle("Dashboard");
+                dashboardStage.setScene(new Scene(root));
+                dashboardStage.show();
+            } catch (IOException e) {
+                e.printStackTrace(); // Handle error loading the dashboard view
+            }
+        }
+
+
+        private void showAlert(String title, String content) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle(title);
+            alert.setHeaderText(null);
+            alert.setContentText(content);
+            alert.showAndWait();
+        }
+
+        private boolean isValidInput(String input, Pattern pattern) {
+            return pattern.matcher(input).matches();
+        }
+
+
+        public void navigateBack() {
+            try {
+                // Load the FXML file for the restaurant view
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/index.fxml"));
+                Parent root = loader.load();
+
+                // Create a new scene with the restaurant view
+                Scene scene = new Scene(root);
+
+                // Get the stage from the button's scene
+                Stage stage = (Stage) front.getScene().getWindow();
+
+                // Set the new scene on the stage
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
-
-
-}

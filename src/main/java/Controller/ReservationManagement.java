@@ -6,6 +6,7 @@ import com.itextpdf.kernel.pdf.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -37,6 +38,8 @@ import javax.mail.internet.*;
 import java.util.Properties;
 
 
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import com.itextpdf.layout.element.Paragraph;
 
@@ -210,7 +213,6 @@ public class ReservationManagement {
 
 
 
-
     private void displayReservations() throws SQLException {
         // Get reservations for the selected restaurant from the service
         List<Reservation> reservations = serviceReservation.getAllReservationsForRestaurant(selectedRestaurantId);
@@ -244,6 +246,8 @@ public class ReservationManagement {
 
             // Send email to the user
             sendEmail(reservationEmail, newReservation);
+            showNotification("Reservation Added", "Reservation has been added successfully!");
+
 
             // Refresh display by fetching and displaying all reservations again
             displayReservations();
@@ -253,7 +257,14 @@ public class ReservationManagement {
             // Handle SQLException or NumberFormatException
         }
     }
-
+    private void showNotification(String title, String message) {
+        Notifications.create()
+                .title(title)
+                .text(message)
+                .hideAfter(Duration.seconds(5))  // Set the duration for how long the notification should be displayed
+                .position(Pos.BOTTOM_RIGHT)
+                .show();
+    }
     private void sendEmail(String recipientEmail, Reservation reservation) {
         // Sender's email address and password
         final String senderEmail = "majdzari2@gmail.com";
@@ -321,8 +332,14 @@ public class ReservationManagement {
             String imagePath = serviceReservation.getRestaurantImage(selectedRestaurantId);
             if (imagePath != null && !imagePath.isEmpty()) {
                 // Load and set the image of the selected restaurant
-                Image image = new Image(new File(imagePath).toURI().toString());
-                imagerest.setImage(image);
+                try {
+                    // Load and set the image of the selected restaurant
+                    Image image = new Image(new File(imagePath).toURI().toString());
+                    imagerest.setImage(image);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
             } else {
                 // If no image path is found, display a default image or hide the ImageView
                 // For example, you can set a default image like this:

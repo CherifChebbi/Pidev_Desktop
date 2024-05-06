@@ -1,11 +1,14 @@
 package Controller;
 
+import Entity.Notification;
 import Entity.Plat;
 import Entity.Restaurant;
+import Services.NotificationService;
 import Services.ServiceRestaurant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,9 +21,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -39,57 +45,105 @@ public class FrontManagement {
     @FXML
     private ChoiceBox<String> questionChoiceBox;
 
-
     @FXML
     private TextArea chatArea;
 
     @FXML
-    private TextField maximum;
-    @FXML
-    private MediaView mediaView;
+    private TextArea notificationArea;
 
     @FXML
-    private TextField minimum;
+    private VBox recommendedRestaurantsContainer;
 
     private ServiceRestaurant serviceRestaurant = new ServiceRestaurant();
+    private NotificationService notificationService;
+
+
+    public FrontManagement() {
+        notificationService = new NotificationService();
+    }
+
+
+
+
+
+    // Existing code...
+
+
+
+    private void displayRecommendedRestaurants() {
+        recommendedRestaurantsContainer.getChildren().clear(); // Clear existing content
+
+        List<Restaurant> recommendedRestaurants = serviceRestaurant.getRecommendedRestaurants(); // Assuming this method exists in ServiceRestaurant
+
+        for (Restaurant restaurant : recommendedRestaurants) {
+            // Create layout for each recommended restaurant
+            ImageView imageView = new ImageView(new Image("file:" + restaurant.getImage()));
+            imageView.setFitWidth(200);
+            imageView.setFitHeight(150);
+
+            Label nameLabel = new Label(restaurant.getNom());
+            nameLabel.setWrapText(true);
+            nameLabel.setMaxWidth(200);
+
+            Label locationLabel = new Label(restaurant.getLocalisataion());
+            locationLabel.setWrapText(true);
+            locationLabel.setMaxWidth(200);
+
+            VBox restaurantInfo = new VBox(5);
+            restaurantInfo.getChildren().addAll(nameLabel, locationLabel);
+
+            VBox restaurantBox = new VBox(5);
+            restaurantBox.getChildren().addAll(imageView, restaurantInfo);
+
+            recommendedRestaurantsContainer.getChildren().add(restaurantBox); // Add the restaurant box to the recommended restaurants container directly
+        }
+    }
+
+
+
+
 
 
     @FXML
     private void watchVideo(ActionEvent event) {
         try {
-            // Load the video file from the resources directory
             File file = new File(getClass().getResource("/majd.mp4").toURI());
             Media media = new Media(file.toURI().toString());
             MediaPlayer mediaPlayer = new MediaPlayer(media);
 
-            // Create a new media view and set the player
             MediaView mediaView = new MediaView(mediaPlayer);
             mediaView.setFitWidth(600);
             mediaView.setFitHeight(400);
 
-            // Create a new stage and scene for displaying the media
             Stage stage = new Stage();
             stage.setScene(new Scene(new Group(mediaView), 600, 400));
             stage.show();
 
-            // Start playing the video
             mediaPlayer.play();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
-
     @FXML
     public void initialize() {
         try {
             displayRestaurants();
+            displayNotifications();
         } catch (SQLException e) {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Erreur", "Erreur lors de l'affichage des restaurants", "Une erreur s'est produite lors de l'affichage des restaurants. Veuillez réessayer.");
         }
     }
+
+    private void displayNotifications() {
+        List<Notification> notifications = notificationService.getNotifications();
+        for (Notification notification : notifications) {
+            notificationArea.appendText(notification.getMessage() + "\n");
+        }
+    }
+
+
 
     private void displayRestaurants() throws SQLException {
         List<Restaurant> restaurantList = serviceRestaurant.afficher();
@@ -97,7 +151,7 @@ public class FrontManagement {
     }
 
     private void populateRestaurantsContainer(List<Restaurant> restaurants) {
-        restaurantsContainer.getChildren().clear(); // Clear existing content from restaurantsContainer
+        restaurantsContainer.getChildren().clear();
 
         for (int i = 0; i < restaurants.size(); i += 6) {
             HBox row = createRow(restaurants.subList(i, Math.min(i + 6, restaurants.size())));
@@ -106,49 +160,75 @@ public class FrontManagement {
     }
 
     private HBox createRow(List<Restaurant> restaurants) {
-        HBox row = new HBox(20); // Spacing between restaurants
-        row.setStyle("-fx-background-color: transparent;"); // Set background to transparent
+        HBox row = new HBox(20);
+        row.setStyle("-fx-background-color: transparent;");
 
         for (Restaurant restaurant : restaurants) {
-            // Create image view for the restaurant
             ImageView imageView = new ImageView(new Image("file:" + restaurant.getImage()));
             imageView.setFitWidth(200);
             imageView.setFitHeight(150);
 
-            // Create labels for the name and description of the restaurant
-            Label nameLabel = new Label(restaurant.getNom());
-            nameLabel.setWrapText(true); // Allow wrapping if the text is too long
-            nameLabel.setMaxWidth(200); // Limit the width to prevent overlapping
-            Label descriptionLabel = new Label(restaurant.getDescription());
-            descriptionLabel.setWrapText(true); // Allow wrapping if the text is too long
-            descriptionLabel.setMaxWidth(200); // Limit the width to prevent overlapping
+            Label nameLabel = createStyledLabel(restaurant.getNom(), 18, FontWeight.BOLD, Color.BLACK);
+            nameLabel.setWrapText(true);
+            nameLabel.setMaxWidth(200);
 
-            // Create buttons for reserving and viewing plats
-            Button reserveButton = new Button("Réserver");
-            reserveButton.setOnAction(event -> reserveForRestaurant(event, restaurant)); // Set action handler
-            Button viewPlatButton = new Button("Voir Plat");
-            viewPlatButton.setOnAction(event -> viewPlatsForRestaurant(event, restaurant)); // Set action handler
+            Label descriptionLabel = createStyledLabel(truncateDescription(restaurant.getDescription(), 3), 14, FontWeight.NORMAL, Color.GRAY);
+            descriptionLabel.setWrapText(true);
+            descriptionLabel.setMaxWidth(200);
 
-            // Create like and dislike buttons
-            Button likeButton = new Button("Like");
-            likeButton.setOnAction(event -> likeRestaurant(event, restaurant)); // Set action handler
-            Button dislikeButton = new Button("Dislike");
-            dislikeButton.setOnAction(event -> dislikeRestaurant(event, restaurant)); // Set action handler
+            Label locationLabel = createStyledLabel(restaurant.getLocalisataion(), 14, FontWeight.NORMAL, Color.GRAY);
+            locationLabel.setWrapText(true);
+            locationLabel.setMaxWidth(200);
 
-            // Create a VBox to contain the labels and buttons
-            VBox restaurantInfo = new VBox(5); // Spacing between elements
-            restaurantInfo.getChildren().addAll(nameLabel, descriptionLabel, reserveButton, viewPlatButton, likeButton, dislikeButton);
+            Button reserveButton = createStyledButton("Réserver");
+            reserveButton.setOnAction(event -> reserveForRestaurant(event, restaurant));
+            Button viewPlatButton = createStyledButton("Voir Plat");
+            viewPlatButton.setOnAction(event -> viewPlatsForRestaurant(event, restaurant));
 
-            // Create a VBox to contain the image view and restaurant info
-            VBox restaurantBox = new VBox(5); // Spacing between elements
+            VBox restaurantInfo = new VBox(5);
+            restaurantInfo.getChildren().addAll(nameLabel, descriptionLabel, locationLabel, reserveButton, viewPlatButton);
+
+            VBox restaurantBox = new VBox(5);
             restaurantBox.getChildren().addAll(imageView, restaurantInfo);
 
-            // Add the restaurant box to the row
             row.getChildren().add(restaurantBox);
         }
 
         return row;
     }
+
+    private String truncateDescription(String description, int maxLines) {
+        String[] lines = description.split("\\r?\\n");
+        StringBuilder truncatedDescription = new StringBuilder();
+        for (int i = 0; i < Math.min(maxLines, lines.length); i++) {
+            truncatedDescription.append(lines[i]);
+            if (i < maxLines - 1) {
+                truncatedDescription.append("\n");
+            }
+        }
+        return truncatedDescription.toString();
+    }
+
+
+    private Label createStyledLabel(String text, double fontSize, FontWeight fontWeight, Color textColor) {
+        Label label = new Label(text);
+        label.setFont(Font.font("Arial", fontWeight, fontSize));
+        label.setTextFill(textColor);
+        return label;
+    }
+
+
+
+
+
+    private Button createStyledButton(String text) {
+        Button button = new Button(text);
+        button.setStyle("-fx-background-color:  #E1FFEF; -fx-border-color: red; -fx-background-radius: 20; -fx-border-radius: 20; -fx-position-shape: 10;");
+        button.setTextFill(Color.BLACK);
+        button.setFont(new Font("Century Schoolbook", 14.0));
+        return button;
+    }
+
 
     @FXML
     public void viewPlatsForRestaurant(ActionEvent event, Restaurant restaurant) {
@@ -156,13 +236,8 @@ public class FrontManagement {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/RestaurantDetails.fxml"));
             Parent root = loader.load();
 
-            // Pass the selected restaurant's details to the RestaurantDetailsController
             RestaurantDetailsController controller = loader.getController();
-
-            // Get the list of plats for the selected restaurant
             List<Plat> plats = serviceRestaurant.getPlatsForRestaurant(restaurant.getIdR());
-
-            // Initialize data with restaurant details and plats
             controller.initData(restaurant.getNom(), restaurant.getDescription(), plats, restaurant.getImage());
 
             Stage stage = new Stage();
@@ -177,9 +252,6 @@ public class FrontManagement {
     public void search(ActionEvent actionEvent) {
         String nameFilter = searchNameField.getText();
         String locationFilter = searchLocationField.getText();
-
-        // Perform input validation for minimum and maximum prices
-
         List<Restaurant> filteredRestaurants = serviceRestaurant.afficher(nameFilter, locationFilter);
         populateRestaurantsContainer(filteredRestaurants);
     }
@@ -199,9 +271,8 @@ public class FrontManagement {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/reservation.fxml"));
             Parent root = loader.load();
 
-            // Pass the selected restaurant's ID and name to the ReservationManagement controller
             ReservationManagement controller = loader.getController();
-            controller.initData(restaurant.getIdR(), restaurant.getNom()); // Pass the restaurant ID and name
+            controller.initData(restaurant.getIdR(), restaurant.getNom());
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -214,9 +285,6 @@ public class FrontManagement {
     @FXML
     private TextField userInputField;
 
-
-
-    // Handle user input and generate responses
     @FXML
     private void handleUserInput(ActionEvent event) {
         String userInput = userInputField.getText().trim();
@@ -228,7 +296,6 @@ public class FrontManagement {
         }
     }
 
-
     @FXML
     private void handleQuestionSelection(ActionEvent event) {
         String selectedQuestion = questionChoiceBox.getValue();
@@ -237,32 +304,30 @@ public class FrontManagement {
             chatArea.appendText("User: " + selectedQuestion + "\n");
             chatArea.appendText("Chatbot: " + response + "\n\n");
         }
-
     }
 
-    // Generate responses based on user input
     private String generateResponse(String selectedQuestion) {
         if (selectedQuestion.contains("Bonjour")) {
             return "Bonjour! Est-ce que je peux vous aider?";
         } else if (selectedQuestion.contains("Comment puis-je effectuer une réservation")) {
             return "Pour effectuer une réservation, veuillez fournir le nom du restaurant et la date/heure de la réservation";
+        }else if (selectedQuestion.contains("Comment utiliser cette application ")) {
+            return "Notre Application est simple a utiliser il suffit de chercher un restaurant est le reserver ";
         } else {
             return "Je suis là pour vous aider. N'hésitez pas à me poser des questions!";
         }
     }
 
-
     @FXML
     private void likeRestaurant(ActionEvent event, Restaurant restaurant) {
-        // Handle like action (e.g., update database, UI, etc.)
         System.out.println("Liked restaurant: " + restaurant.getNom());
     }
 
     @FXML
     private void dislikeRestaurant(ActionEvent event, Restaurant restaurant) {
-        // Handle dislike action (e.g., update database, UI, etc.)
         System.out.println("Disliked restaurant: " + restaurant.getNom());
     }
 
-
+    public void handleNotificationClick(javafx.scene.input.MouseEvent mouseEvent) {
+    }
 }

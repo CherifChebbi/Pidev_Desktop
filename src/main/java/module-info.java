@@ -9,6 +9,7 @@ module test {
     requires layout;
     requires java.mail;
     requires javafx.media;
+    requires org.controlsfx.controls;
 
     opens test to javafx.fxml;
     opens Entity to javafx.base;

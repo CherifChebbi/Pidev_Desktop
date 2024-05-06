@@ -1,5 +1,6 @@
 package Services;
 
+import Entity.Notification;
 import Entity.Plat;
 import Entity.Restaurant;
 import Util.MyDB;
@@ -8,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,9 +17,33 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
 
     private Connection connection;
 
+    private NotificationService notificationService;
+
+
+
+
     public ServiceRestaurant() {
         connection = MyDB.getInstance().getConnection();
+        notificationService = new NotificationService();
     }
+
+
+    public List<Restaurant> getRecommendedRestaurants() {
+        List<Restaurant> allRestaurants = getAllRestaurants();
+        List<Restaurant> recommendedRestaurants = new ArrayList<>();
+
+        for (Restaurant restaurant : allRestaurants) {
+            // Check if the restaurant has many plates (e.g., more than 5)
+            if (getPlatsForRestaurant(restaurant.getIdR()).size() > 5) {
+                recommendedRestaurants.add(restaurant);
+            }
+        }
+
+        return recommendedRestaurants;
+    }
+
+
+
 
     @Override
     public void ajouter(Restaurant restaurant) {
@@ -34,6 +60,8 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
             e.printStackTrace();
             // Handle SQL exception
         }
+        Notification notification = new Notification("Restaurant added: " + restaurant.getNom(), LocalDateTime.now());
+        notificationService.addNotification(notification);
     }
 
     @Override
