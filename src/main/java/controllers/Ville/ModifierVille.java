@@ -119,7 +119,7 @@ public class ModifierVille implements Initializable {
                 }
 
                 // Vérification des caractères spéciaux
-                if (!nomVille.matches("[A-Za-z0-9_]+") || !tf_descVille.getText().matches("[A-Za-z0-9_]+")) {
+                if (!nomVille.matches("[A-Za-z0-9_]+")) {
                     throw new IllegalArgumentException("Les champs ne doivent contenir que des lettres, des chiffres et '_'.");
                 }
 

@@ -101,7 +101,7 @@ public class ModifierPays {
                 }
 
                 // Vérification des caractères spéciaux
-                if (!nomPays.matches("[A-Za-z0-9_]+") || !tf_descPays.getText().matches("[A-Za-z0-9_]+")
+                if (!nomPays.matches("[A-Za-z0-9_]+")
                         || !tf_languePays.getText().matches("[A-Za-z0-9_]+")) {
                     throw new IllegalArgumentException("Les champs ne doivent contenir que des lettres, des chiffres et '_'.");
                 }

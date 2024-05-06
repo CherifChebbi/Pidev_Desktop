@@ -382,6 +382,20 @@ public class ServicePays implements CRUD<Pays> {
         }
         return null;
     }
+    public boolean isNomPaysExistant(String nomPays) throws SQLException {
+        String query = "SELECT COUNT(*) FROM pays WHERE nom_pays = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(query)) {
+            stmt.setString(1, nomPays);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0;
+            }
+        }
+        return false;
+    }
 
 
 

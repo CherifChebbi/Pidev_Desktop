@@ -107,15 +107,21 @@ public class AjouterVille implements Initializable {
             );
 
             ServiceVille sp = new ServiceVille();
-            sp.Add(p);
-            System.out.println(paysSelectionne.getNb_villes());
-            // Incrémenter le nombre de villes pour ce pays
-            paysSelectionne.setNb_villes(paysSelectionne.getNb_villes() + 1);
-            System.out.println(paysSelectionne.getNb_villes());
-            // Mettre à jour le nombre de villes dans la base de données
-            servicePays.updateNbVilles(paysSelectionne);
 
-            switchToAfficherVille();
+            if (sp.isNomVilleExistant(nomVille)) {
+                throw new IllegalArgumentException("Le nom du pays existe déjà.");
+            } else {
+                sp.Add(p);
+                System.out.println(paysSelectionne.getNb_villes());
+                // Incrémenter le nombre de villes pour ce pays
+                paysSelectionne.setNb_villes(paysSelectionne.getNb_villes() + 1);
+                System.out.println(paysSelectionne.getNb_villes());
+                // Mettre à jour le nombre de villes dans la base de données
+                servicePays.updateNbVilles(paysSelectionne);
+
+                switchToAfficherVille();
+            }
+
         } catch (SQLException e) {
             // Imprimer la trace complète de l'exception SQL
             e.printStackTrace();

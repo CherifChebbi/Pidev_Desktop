@@ -354,6 +354,21 @@ public class ServiceVille implements CRUD<Ville> {
         return null;
     }
 
+    public boolean isNomVilleExistant(String nomVille) throws SQLException {
+        String query = "SELECT COUNT(*) FROM ville WHERE nom_ville = ?";
+        try (PreparedStatement stmt = cnx.prepareStatement(query)) {
+            stmt.setString(1, nomVille);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0;
+            }
+        }
+        return false;
+    }
+
 
 
 }

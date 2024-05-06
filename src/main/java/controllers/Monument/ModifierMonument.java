@@ -124,7 +124,7 @@ public class ModifierMonument  implements Initializable {
                 }
 
                 // Vérification des caractères spéciaux
-                if (!nomMonument.matches("[A-Za-z0-9_]+") || !tf_descMonument.getText().matches("[A-Za-z0-9_]+")) {
+                if (!nomMonument.matches("[A-Za-z0-9_]+")) {
                     throw new IllegalArgumentException("Les champs ne doivent contenir que des lettres, des chiffres et '_'.");
                 }
 

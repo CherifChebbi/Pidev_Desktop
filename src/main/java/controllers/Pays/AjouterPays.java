@@ -99,7 +99,7 @@ public class AjouterPays {
             }
 
             // Vérification des caractères spéciaux
-            if (!nomPays.matches("[A-Za-z0-9_]+") || !tf_descPays.getText().matches("[A-Za-z0-9_]+")
+            if (!nomPays.matches("[A-Za-z0-9_]+")
                     || !tf_languePays.getText().matches("[A-Za-z0-9_]+")) {
                 throw new IllegalArgumentException("Les champs ne doivent contenir que des lettres, des chiffres et '_'.");
             }
@@ -114,9 +114,13 @@ public class AjouterPays {
 
             ServicePays sp = new ServicePays();
 
-            sp.Add(p);
-
-            switchToAfficherPays();
+            if (sp.isNomPaysExistant(nomPays)) {
+                throw new IllegalArgumentException("Le nom du pays existe déjà.");
+            } else {
+                // Le nom du pays est unique, vous pouvez ajouter le pays à la base de données
+                sp.Add(p);
+                switchToAfficherPays();
+            }
 
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
