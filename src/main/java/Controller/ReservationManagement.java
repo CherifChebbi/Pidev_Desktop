@@ -68,7 +68,7 @@ public class ReservationManagement {
     private Label restaurantLabel; // Label to display the restaurant name
 
     private final ServiceReservation serviceReservation = new ServiceReservation();
-    private int selectedRestaurantId; // Store the selected restaurant ID
+    private int selectedrestaurant_id; // Store the selected restaurant ID
     private String selectedRestaurantName; // Store the selected restaurant name
 
     private Reservation selectedReservation; // Store the selected reservation
@@ -215,7 +215,7 @@ public class ReservationManagement {
 
     private void displayReservations() throws SQLException {
         // Get reservations for the selected restaurant from the service
-        List<Reservation> reservations = serviceReservation.getAllReservationsForRestaurant(selectedRestaurantId);
+        List<Reservation> reservations = serviceReservation.getAllReservationsForRestaurant(selectedrestaurant_id);
 
         // Clear existing content in the reservationScrollPane
         GridPane gridPane = new GridPane();
@@ -239,7 +239,7 @@ public class ReservationManagement {
             int reservationNbrPersonne = Integer.parseInt(nbrpersonne.getText());
 
             // Create a new reservation object with the selected restaurant ID
-            Reservation newReservation = new Reservation(selectedRestaurantId, reservationNom, reservationEmail, reservationDate, reservationNbrPersonne);
+            Reservation newReservation = new Reservation(selectedrestaurant_id, reservationNom, reservationEmail, reservationDate, reservationNbrPersonne);
 
             // Add reservation to the database
             serviceReservation.ajouter(newReservation);
@@ -320,8 +320,8 @@ public class ReservationManagement {
 
     // Import Image class from JavaFX
 
-    public void initData(int restaurantId, String restaurantName) {
-        this.selectedRestaurantId = restaurantId;
+    public void initData(int restaurant_id, String restaurantName) {
+        this.selectedrestaurant_id = restaurant_id;
         this.selectedRestaurantName = restaurantName;
         restaurantLabel.setText(selectedRestaurantName);
         try {
@@ -329,7 +329,7 @@ public class ReservationManagement {
             displayReservations();
 
             // Get the image path for the selected restaurant from your data source
-            String imagePath = serviceReservation.getRestaurantImage(selectedRestaurantId);
+            String imagePath = serviceReservation.getRestaurantImage(selectedrestaurant_id);
             if (imagePath != null && !imagePath.isEmpty()) {
                 // Load and set the image of the selected restaurant
                 try {

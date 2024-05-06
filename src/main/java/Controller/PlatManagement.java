@@ -43,29 +43,7 @@ public class PlatManagement {
 
     private String imagePath;
 
-    @FXML
-    void ajouter(ActionEvent event) {
-        try {
-            String nomPlat = nom.getText();
-            String imagePlat = imagePath;
-            float prixPlat = Float.parseFloat(prix.getText());
-            Restaurant selectedRestaurant = restaurantComboBox.getValue();
-            Plat plat = new Plat(nomPlat, imagePlat, prixPlat, selectedRestaurant);
-            servicePlat.ajouter(plat);
 
-            // Clear input fields after adding
-            clearFields();
-
-            // Refresh VBox
-            refreshVBox();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            // Handle SQLException
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            // Handle NumberFormatException
-        }
-    }
 
     // Method to display an alert
 

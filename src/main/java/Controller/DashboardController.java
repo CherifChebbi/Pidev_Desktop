@@ -92,8 +92,13 @@ public class DashboardController {
             if (validateInput(nomPlat, imagePlat, prix.getText())) {
                 // Check if a restaurant is selected
                 if (restaurantComboBox.getSelectionModel().getSelectedItem() != null) {
-                    Restaurant selectedRestaurant = restaurantComboBox.getSelectionModel().getSelectedItem();
-                    Plat plat = new Plat(nomPlat, imagePlat, prixPlat, selectedRestaurant);
+                    int restaurantId = restaurantComboBox.getSelectionModel().getSelectedItem().getid();
+
+                    // Create a new Plat with the selected restaurant's ID
+                    Plat plat = new Plat(nomPlat, imagePlat, prixPlat, restaurantId);
+
+
+                    // Add the Plat to the database
                     servicePlat.ajouter(plat);
 
                     // Refresh VBox
@@ -107,6 +112,8 @@ public class DashboardController {
             showAlert(Alert.AlertType.ERROR, "Erreur", "Saisie invalide", "Veuillez saisir un prix valide.");
         }
     }
+
+
 
     // Method to validate input fields
     private boolean validateInput(String nomPlat, String imagePlat, String prixPlat) {

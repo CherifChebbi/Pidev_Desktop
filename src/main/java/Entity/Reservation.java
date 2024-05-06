@@ -13,15 +13,15 @@ import java.sql.SQLException;
 
 public class Reservation {
     private int id;
-    private int restaurantId;
+    private int restaurant_id;
     private String nom;
     private String email;
     private String date;
     private int nbrPersonne;
 
-    public Reservation(int id, int restaurantId, String nom, String email, String date, int nbrPersonne) {
+    public Reservation(int id, int restaurant_id, String nom, String email, String date, int nbrPersonne) {
         this.id = id;
-        this.restaurantId = restaurantId;
+        this.restaurant_id = restaurant_id;
         this.nom = nom;
         this.email = email;
         this.date = date;
@@ -32,8 +32,8 @@ public class Reservation {
         return id;
     }
 
-    public int getRestaurantId() {
-        return restaurantId;
+    public int getrestaurant_id() {
+        return restaurant_id;
     }
 
     public String getNom() {
@@ -56,8 +56,8 @@ public class Reservation {
         this.id = id;
     }
 
-    public void setRestaurantId(int restaurantId) {
-        this.restaurantId = restaurantId;
+    public void setrestaurant_id(int restaurant_id) {
+        this.restaurant_id = restaurant_id;
     }
 
     public void setNom(String nom) {
@@ -75,26 +75,26 @@ public class Reservation {
     public void setNbrPersonne(int nbrPersonne) {
         this.nbrPersonne = nbrPersonne;
     }
-    public Reservation(int restaurantId, String nom, String email, String date, int nbrPersonne) {
-        this.restaurantId = restaurantId;
+    public Reservation(int restaurant_id, String nom, String email, String date, int nbrPersonne) {
+        this.restaurant_id = restaurant_id;
         this.nom = nom;
         this.email = email;
         this.date = date;
         this.nbrPersonne = nbrPersonne;
     }
 
-    public String getRestaurantName(Connection connection, int restaurantId) {
+    public String getRestaurantName(Connection connection, int restaurant_id) {
         try {
             String query = "SELECT nom FROM restaurant WHERE id = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-                preparedStatement.setInt(1, restaurantId);
+                preparedStatement.setInt(1, restaurant_id);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
                         return resultSet.getString("nom");
                     }
                 }
             }
-            throw new SQLException("Restaurant not found with ID: " + restaurantId);
+            throw new SQLException("Restaurant not found with ID: " + restaurant_id);
         } catch (SQLException e) {
             e.printStackTrace();
             return null; // Handle the exception appropriately

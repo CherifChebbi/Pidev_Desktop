@@ -20,9 +20,9 @@ public class ServiceReservation {
     }
 
     public void ajouter(Reservation reservation) throws SQLException {
-        String query = "INSERT INTO reservation (idR, nom, email, date, nbr_personne) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO reservation (restaurant_id, nom, email, date, nbr_personne) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setInt(1, reservation.getRestaurantId());
+            preparedStatement.setInt(1, reservation.getrestaurant_id());
             preparedStatement.setString(2, reservation.getNom());
             preparedStatement.setString(3, reservation.getEmail());
             preparedStatement.setString(4, reservation.getDate());
@@ -33,13 +33,13 @@ public class ServiceReservation {
 
     public List<Reservation> getAllReservationsForRestaurant(int restaurantId) throws SQLException {
         List<Reservation> reservations = new ArrayList<>();
-        String query = "SELECT * FROM reservation WHERE idR = ?";
+        String query = "SELECT * FROM reservation WHERE restaurant_id = ?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, restaurantId);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     int id = resultSet.getInt("id");
-                    int userId = resultSet.getInt("idR");
+                    int userId = resultSet.getInt("restaurant_id");
                     String nom = resultSet.getString("nom");
                     String email = resultSet.getString("email");
                     String date = resultSet.getString("date");

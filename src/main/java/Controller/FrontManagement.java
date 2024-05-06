@@ -237,7 +237,7 @@ public class FrontManagement {
             Parent root = loader.load();
 
             RestaurantDetailsController controller = loader.getController();
-            List<Plat> plats = serviceRestaurant.getPlatsForRestaurant(restaurant.getIdR());
+            List<Plat> plats = serviceRestaurant.getPlatsForRestaurant(restaurant.getid());
             controller.initData(restaurant.getNom(), restaurant.getDescription(), plats, restaurant.getImage());
 
             Stage stage = new Stage();
@@ -247,6 +247,7 @@ public class FrontManagement {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     public void search(ActionEvent actionEvent) {
@@ -272,7 +273,7 @@ public class FrontManagement {
             Parent root = loader.load();
 
             ReservationManagement controller = loader.getController();
-            controller.initData(restaurant.getIdR(), restaurant.getNom());
+            controller.initData(restaurant.getid(), restaurant.getNom());
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

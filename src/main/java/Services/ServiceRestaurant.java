@@ -34,7 +34,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
 
         for (Restaurant restaurant : allRestaurants) {
             // Check if the restaurant has many plates (e.g., more than 5)
-            if (getPlatsForRestaurant(restaurant.getIdR()).size() > 5) {
+            if (getPlatsForRestaurant(restaurant.getid()).size() > 5) {
                 recommendedRestaurants.add(restaurant);
             }
         }
@@ -66,14 +66,14 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
 
     @Override
     public void modifier(Restaurant restaurant) {
-        String req = "UPDATE restaurant SET nom=?, localisation=?, image=?, description=? WHERE idR=?";
+        String req = "UPDATE restaurant SET nom=?, localisation=?, image=?, description=? WHERE id=?";
         try (Connection connection = MyDB.getInstance().getConnection();
              PreparedStatement pre = connection.prepareStatement(req)) {
             pre.setString(1, restaurant.getNom());
             pre.setString(2, restaurant.getLocalisataion());
             pre.setString(3, restaurant.getImage());
             pre.setString(4, restaurant.getDescription());
-            pre.setInt(5, restaurant.getIdR());
+            pre.setInt(5, restaurant.getid());
 
             int affectedRows = pre.executeUpdate();
             if (affectedRows == 1) {
@@ -89,17 +89,17 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
 
     @Override
     public void supprimer(Restaurant restaurant) {
-        String deleteReservationsQuery = "DELETE FROM reservation WHERE idR = ?";
-        String deleteRestaurantQuery = "DELETE FROM restaurant WHERE idR = ?";
+        String deleteReservationsQuery = "DELETE FROM reservation WHERE id = ?";
+        String deleteRestaurantQuery = "DELETE FROM restaurant WHERE id = ?";
 
         try (Connection connection = MyDB.getInstance().getConnection();
              PreparedStatement deleteReservationsStatement = connection.prepareStatement(deleteReservationsQuery);
              PreparedStatement deleteRestaurantStatement = connection.prepareStatement(deleteRestaurantQuery)) {
 
-            deleteReservationsStatement.setInt(1, restaurant.getIdR());
+            deleteReservationsStatement.setInt(1, restaurant.getid());
             deleteReservationsStatement.executeUpdate();
 
-            deleteRestaurantStatement.setInt(1, restaurant.getIdR());
+            deleteRestaurantStatement.setInt(1, restaurant.getid());
             int affectedRows = deleteRestaurantStatement.executeUpdate();
 
             if (affectedRows == 1) {
@@ -136,7 +136,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
 
             while (resultSet.next()) {
                 Restaurant restaurant = new Restaurant();
-                restaurant.setIdR(resultSet.getInt("idR"));
+                restaurant.setid(resultSet.getInt("id"));
                 restaurant.setNom(resultSet.getString("nom"));
                 restaurant.setLocalisataion(resultSet.getString("localisation"));
                 restaurant.setImage(resultSet.getString("image"));
@@ -163,7 +163,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Restaurant restaurant = new Restaurant();
-                restaurant.setIdR(resultSet.getInt("idR"));
+                restaurant.setid(resultSet.getInt("id"));
                 restaurant.setNom(resultSet.getString("nom"));
                 restaurant.setLocalisataion(resultSet.getString("localisation"));
                 restaurant.setImage(resultSet.getString("image"));
@@ -189,13 +189,13 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
 
     public int getRestaurantIdByName(String name) {
         int restaurantId = -1;
-        String query = "SELECT idR FROM restaurant WHERE nom = ?";
+        String query = "SELECT id FROM restaurant WHERE nom = ?";
         try (Connection connection = MyDB.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, name);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
-                    restaurantId = resultSet.getInt("idR");
+                    restaurantId = resultSet.getInt("id");
                 }
             }
         } catch (SQLException e) {
@@ -207,7 +207,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
 
 
     public List<Restaurant> afficher(String nameFilter, String locationFilter, float minPrice, float maxPrice) {
-        String query = "SELECT DISTINCT r.* FROM restaurant r JOIN plat p ON r.idR = p.idR WHERE p.prix BETWEEN ? AND ?";
+        String query = "SELECT DISTINCT r.* FROM restaurant r JOIN plat p ON r.id = p.id WHERE p.prix BETWEEN ? AND ?";
         List<Restaurant> restaurants = new ArrayList<>();
 
         if (nameFilter != null && !nameFilter.isEmpty()) {
@@ -224,7 +224,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Restaurant restaurant = new Restaurant();
-                restaurant.setIdR(resultSet.getInt("idR"));
+                restaurant.setid(resultSet.getInt("id"));
                 restaurant.setNom(resultSet.getString("nom"));
                 restaurant.setLocalisataion(resultSet.getString("localisation"));
                 restaurant.setImage(resultSet.getString("image"));
@@ -256,7 +256,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
         }
     }
     public List<Plat> getPlatsForRestaurant(int restaurantId) {
-        String query = "SELECT * FROM plat WHERE idR = ?";
+        String query = "SELECT * FROM plat WHERE restaurant_id = ?";
         List<Plat> plats = new ArrayList<>();
 
         try (Connection connection = MyDB.getInstance().getConnection();

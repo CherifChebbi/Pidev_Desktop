@@ -98,7 +98,7 @@ public class index {
             RestaurantDetailsController controller = loader.getController();
 
             // Get the list of plats for the selected restaurant
-            List<Plat> plats = serviceRestaurant.getPlatsForRestaurant(restaurant.getIdR());
+            List<Plat> plats = serviceRestaurant.getPlatsForRestaurant(restaurant.getid());
 
             // Initialize data with restaurant details and plats
             controller.initData(restaurant.getNom(), restaurant.getDescription(), plats, restaurant.getImage());
@@ -148,7 +148,7 @@ public class index {
 
             // Pass the selected restaurant's ID and name to the ReservationManagement controller
             ReservationManagement controller = loader.getController();
-            controller.initData(restaurant.getIdR(), restaurant.getNom()); // Pass the restaurant ID and name
+            controller.initData(restaurant.getid(), restaurant.getNom()); // Pass the restaurant ID and name
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

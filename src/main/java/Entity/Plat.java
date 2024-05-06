@@ -5,9 +5,12 @@ public class Plat {
     private String nom;
     private String image;
     private float prix;
+    private int restaurant_id;
     private Restaurant restaurant;
 
+    // Existing constructors...
 
+    // Add a constructor that accepts a Restaurant object
     public Plat(int id, String nom, String image, float prix, Restaurant restaurant) {
         this.id = id;
         this.nom = nom;
@@ -16,16 +19,32 @@ public class Plat {
         this.restaurant = restaurant;
     }
 
-    public Plat() {
+    // Getter and setter for restaurant
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 
-    public Plat(String nom, String image, float prix, Restaurant restaurant) {
-        this.nom = nom;
-        this.image = image;
-        this.prix = prix;
+    public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
     }
 
+    public Plat(int id, String nom, String image, float prix, int restaurant_id) {
+        this.id = id;
+        this.nom = nom;
+        this.image = image;
+        this.prix = prix;
+        this.restaurant_id = restaurant_id;
+    }
+
+    public Plat(String nom, String image, float prix, int restaurant_id) {
+        this.nom = nom;
+        this.image = image;
+        this.prix = prix;
+        this.restaurant_id = restaurant_id;
+    }
+
+    public Plat() {
+    }
 
     public int getId() {
         return id;
@@ -48,9 +67,6 @@ public class Plat {
     }
 
     public String getImage() {
-
-
-
         return image;
     }
 
@@ -66,12 +82,12 @@ public class Plat {
         this.prix = prix;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public int getRestaurant_id() {
+        return restaurant_id;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setRestaurant_id(int restaurant_id) {
+        this.restaurant_id = restaurant_id;
     }
 
     @Override
@@ -81,8 +97,7 @@ public class Plat {
                 ", nom='" + nom + '\'' +
                 ", image='" + image + '\'' +
                 ", prix=" + prix +
-                ", restaurant=" + restaurant +
+                ", restaurant_id=" + restaurant_id +
                 '}';
     }
-
 }
