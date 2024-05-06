@@ -35,6 +35,7 @@ public class login {
     private final UserService userService = new UserService();
     @FXML
     private Button Home;
+
     @FXML
     void connecter(ActionEvent event) {
         String nom = name.getText();
@@ -44,16 +45,22 @@ public class login {
         User user = userService.authenticateUser(nom, mdp);
 
         if (user != null) {
-            System.out.println("Login successful");
-            // Proceed with any actions after successful login
-            UserSession.setCurrentUser(user);
+            if (!user.isBanned()) {
+                System.out.println("Login successful");
+                // Proceed with any actions after successful login
+                UserSession.setCurrentUser(user);
 
-            openAfficherUsers(user); // Call the method to open AfficherUsers
+                openAfficherUsers(user); // Call the method to open AfficherUsers
+            } else {
+                System.out.println("Login failed: User is banned");
+                showAlert("Login Failed", "Your account has been banned. Please contact the administrator for further assistance.");
+            }
         } else {
             System.out.println("Login failed");
             showAlert("Login Failed", "Incorrect username or password.");
         }
     }
+
 
 
     @FXML

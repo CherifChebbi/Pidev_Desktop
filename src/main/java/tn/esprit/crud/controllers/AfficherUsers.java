@@ -3,6 +3,7 @@ package tn.esprit.crud.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,10 +11,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import tn.esprit.crud.models.User;
 import tn.esprit.crud.services.UserService;
 import tn.esprit.crud.test.HelloApplication;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -23,6 +26,9 @@ public class AfficherUsers {
 
     @FXML
     private TableView<User> tableView;
+
+    @FXML
+    private AnchorPane anchorPane; // Assuming the TableView is wrapped inside an AnchorPane
 
     @FXML
     private TableColumn<User, Integer> idCol;
@@ -51,6 +57,10 @@ public class AfficherUsers {
     @FXML
     private RadioButton ban;
 
+    @FXML
+    private Pagination pagination;
+    private ObservableList<User> usersList;
+    private final int rowsPerPage = 5;
     private UserService userService;
 
     @FXML
@@ -105,7 +115,10 @@ public class AfficherUsers {
     private void loadUsers() {
         try {
             List<User> users = userService.recuperer();
-            ObservableList<User> usersList = FXCollections.observableArrayList(users);
+            usersList = FXCollections.observableArrayList(users);
+            pagination.setPageCount((int) Math.ceil((double) usersList.size() / rowsPerPage));
+
+            pagination.setPageFactory(this::createPage);
 
             idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
             emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -120,6 +133,27 @@ public class AfficherUsers {
             System.err.println("Error loading users: " + e.getMessage());
         }
     }
+
+    private Node createPage(int pageIndex) {
+        int fromIndex = pageIndex * rowsPerPage;
+        int toIndex = Math.min(fromIndex + rowsPerPage, usersList.size());
+
+        tableView.setItems(FXCollections.observableArrayList(usersList.subList(fromIndex, toIndex)));
+
+        // Wrap the TableView inside a ScrollPane
+        ScrollPane scrollPane = new ScrollPane(tableView);
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
+
+        scrollPane.setMinWidth(850); // Set minimum width
+        scrollPane.setPrefWidth(850); // Set preferred width
+
+        scrollPane.setMinHeight(400); // Set minimum height
+        scrollPane.setPrefHeight(400); // Set preferred height
+
+        return scrollPane;
+    }
+
 
     @FXML
     void PageModifier(ActionEvent event) {
@@ -162,5 +196,9 @@ public class AfficherUsers {
     void initialize() {
         userService = new UserService();
         loadUsers();
+        tableView.setPrefSize(850, 400);
+
+
+
     }
 }

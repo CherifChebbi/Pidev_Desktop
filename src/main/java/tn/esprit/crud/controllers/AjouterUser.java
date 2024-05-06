@@ -11,6 +11,7 @@ import javafx.scene.control.ToggleGroup;
 import tn.esprit.crud.models.User;
 import tn.esprit.crud.services.UserService;
 import tn.esprit.crud.test.HelloApplication;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 import java.net.URL;
@@ -72,7 +73,7 @@ public class AjouterUser implements Initializable {
             user.setPrenom(prenomTF.getText());
             user.setNationnalite(adresseTF.getText());
             user.setEmail(emailTF.getText());
-            user.setPassword(mdpTF.getText());
+            user.setPassword(BCrypt.hashpw(mdpTF.getText(), BCrypt.gensalt())); // Hash the password
             user.setRoles(selectedRadioButton.getText());
 
             user.setNumtel(Integer.parseInt(numtelTF.getText())); // Set numtel from TextField
@@ -92,6 +93,7 @@ public class AjouterUser implements Initializable {
             }
         }
     }
+
 
     private boolean isValidInput() {
         String nom = nomTF.getText();
