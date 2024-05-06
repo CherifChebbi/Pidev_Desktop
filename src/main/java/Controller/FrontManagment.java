@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,6 +26,10 @@ import java.sql.SQLException;
 public class FrontManagment {
     @FXML
     private ScrollPane front;
+
+    @FXML
+    private Pagination pagination;
+
 
     private ServiceCategory sc = new ServiceCategory();
 

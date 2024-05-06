@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb79324d-adcb-4532-b373-8246f3fe7403" name="Changes" comment="" />
+    <list default="true" id="bb79324d-adcb-4532-b373-8246f3fe7403" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/FrontManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/FrontManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Front.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Front.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,11 +21,15 @@
         <option value="Class" />
         <option value="Interface" />
         <option value="FxmlFile" />
+        <option value="JavaFXApplication" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -48,12 +57,15 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Gestion__Hebergement2",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/MSI/IdeaProjects/Pidev_Desktop-Gestion_Hebergement/src/main/resources",
+    "last_opened_file_path": "C:/Users/MSI/.m2/repository/com/dlsc/formsfx/formsfx-core/11.6.0",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -98,7 +110,11 @@
       <workItem from="1714879006279" duration="71000" />
       <workItem from="1714879084081" duration="219000" />
       <workItem from="1714918072871" duration="1199000" />
-      <workItem from="1714919280769" duration="9716000" />
+      <workItem from="1714919280769" duration="10455000" />
+      <workItem from="1714934964858" duration="3840000" />
+      <workItem from="1714996830880" duration="20000" />
+      <workItem from="1715016919436" duration="6263000" />
+      <workItem from="1715026700941" duration="5474000" />
     </task>
     <servers />
   </component>

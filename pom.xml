@@ -35,6 +35,7 @@
       <version>8.0.33</version>
     </dependency>
 
+
 <dependency>
 
       <groupId>org.openjfx</groupId>
@@ -68,7 +69,8 @@
           <artifactId>*</artifactId>
         </exclusion>
       </exclusions>
-    </dependency><dependency>
+    </dependency>
+    <dependency>
       <groupId>org.kordamp.ikonli</groupId>
       <artifactId>ikonli-javafx</artifactId>
       <version>12.3.1</version>
