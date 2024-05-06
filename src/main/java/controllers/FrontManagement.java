@@ -1,21 +1,19 @@
-package Controller;
+package controllers;
 
-import Entity.Notification;
-import Entity.Plat;
-import Entity.Restaurant;
-import Services.NotificationService;
-import Services.ServiceRestaurant;
+import models.Notification;
+import models.Plat;
+import models.Restaurant;
+import services.NotificationService;
+import services.ServiceRestaurant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -26,7 +24,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;

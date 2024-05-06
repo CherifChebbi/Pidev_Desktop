@@ -1,4 +1,4 @@
-package Controller;
+package controllers;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;

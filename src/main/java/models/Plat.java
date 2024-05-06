@@ -1,4 +1,4 @@
-package Entity;
+package models;
 
 public class Plat {
     private int id;

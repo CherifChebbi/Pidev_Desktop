@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="721.0" prefWidth="932.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RestaurantManagement">
+<AnchorPane prefHeight="721.0" prefWidth="932.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.RestaurantManagement">
     <children>
         <Accordion layoutX="68.0" layoutY="86.0" />
       <Pane layoutX="628.0" layoutY="86.0" prefHeight="259.0" prefWidth="275.0" style="-fx-background-color: #B8D6D9; -fx-background-radius: 20;">

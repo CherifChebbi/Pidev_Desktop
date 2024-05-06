@@ -1,8 +1,8 @@
-package Services;
+package services;
 
-import Entity.Plat;
-import Entity.Restaurant;
-import Util.MyDB;
+import models.Plat;
+import models.Restaurant;
+import utils.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

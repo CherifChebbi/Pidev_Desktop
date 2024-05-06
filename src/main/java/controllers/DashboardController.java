@@ -1,9 +1,9 @@
-package Controller;
+package controllers;
 
-import Entity.Plat;
-import Entity.Restaurant;
-import Services.ServicePlat;
-import Services.ServiceRestaurant;
+import models.Plat;
+import models.Restaurant;
+import services.ServicePlat;
+import services.ServiceRestaurant;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +15,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;

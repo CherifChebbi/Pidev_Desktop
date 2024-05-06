@@ -1,8 +1,8 @@
-package Controller;
+package controllers;
 
-import Entity.Plat;
-import Entity.Restaurant;
-import Services.ServiceRestaurant;
+import models.Plat;
+import models.Restaurant;
+import services.ServiceRestaurant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

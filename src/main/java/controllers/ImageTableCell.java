@@ -1,6 +1,6 @@
 
-package Controller;
-import Entity.Restaurant;
+package controllers;
+import models.Restaurant;
 import javafx.scene.control.TableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;

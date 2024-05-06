@@ -12,8 +12,8 @@ module test {
     requires org.controlsfx.controls;
 
     opens test to javafx.fxml;
-    opens Entity to javafx.base;
+    opens models to javafx.base;
     exports test;
-    exports Controller;
-    opens Controller to javafx.fxml;
+    exports controllers;
+    opens controllers to javafx.fxml;
 }

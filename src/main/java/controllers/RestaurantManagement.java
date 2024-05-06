@@ -1,9 +1,9 @@
-    package Controller;
+    package controllers;
 
-    import Entity.Notification;
-    import Entity.Restaurant;
-    import Services.NotificationService;
-    import Services.ServiceRestaurant;
+    import models.Notification;
+    import models.Restaurant;
+    import services.NotificationService;
+    import services.ServiceRestaurant;
     import javafx.collections.FXCollections;
     import javafx.collections.ObservableList;
     import javafx.event.ActionEvent;
@@ -15,7 +15,6 @@
     import javafx.scene.control.*;
     import javafx.scene.control.cell.PropertyValueFactory;
     import javafx.scene.image.ImageView;
-    import javafx.scene.input.MouseEvent;
     import javafx.stage.FileChooser;
     import javafx.stage.Stage;
     import javafx.util.Duration;
@@ -26,9 +25,6 @@
     import java.sql.SQLException;
     import java.util.List;
     import java.util.regex.Pattern;
-
-    import org.controlsfx.control.Notifications;
-
 
 
     public class RestaurantManagement {

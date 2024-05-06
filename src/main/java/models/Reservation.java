@@ -1,10 +1,4 @@
-package Entity;
-
-import Services.ServiceReservation;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+package models;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

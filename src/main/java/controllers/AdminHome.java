@@ -1,7 +1,7 @@
-package Controller;
+package controllers;
 
-import Services.ServicePlat;
-import Services.ServiceRestaurant;
+import services.ServicePlat;
+import services.ServiceRestaurant;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

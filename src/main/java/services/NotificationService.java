@@ -1,6 +1,6 @@
-package Services;
+package services;
 
-import Entity.Notification;
+import models.Notification;
 
 import java.util.ArrayList;
 import java.util.List;

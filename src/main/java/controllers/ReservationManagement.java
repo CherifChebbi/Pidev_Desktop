@@ -1,31 +1,23 @@
 
-package Controller;
-import Entity.Reservation;
-import Services.ServiceReservation;
+package controllers;
+import models.Reservation;
+import services.ServiceReservation;
 import com.itextpdf.kernel.pdf.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.media.MediaView;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.scene.image.Image;
 
-import javax.swing.text.Document;
 import java.awt.*;
 import java.io.File;
-import java.io.FileOutputStream;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
@@ -35,13 +27,10 @@ import javax.mail.Session;
 
 import javax.mail.*;
 import javax.mail.internet.*;
-import java.util.Properties;
 
 
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
-
-import com.itextpdf.layout.element.Paragraph;
 
 
 public class ReservationManagement {

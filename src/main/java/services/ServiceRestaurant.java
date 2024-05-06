@@ -1,12 +1,11 @@
-package Services;
+package services;
 
-import Entity.Notification;
-import Entity.Plat;
-import Entity.Restaurant;
-import Util.MyDB;
+import models.Notification;
+import models.Plat;
+import models.Restaurant;
+import utils.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 
 import java.sql.*;
 import java.time.LocalDateTime;
