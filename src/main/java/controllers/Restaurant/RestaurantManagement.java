@@ -1,5 +1,10 @@
-    package controllers;
+    package controllers.Restaurant;
 
+    import javafx.scene.Node;
+    import models.Notification;
+    import models.Restaurant;
+    import services.NotificationService;
+    import services.ServiceRestaurant;
     import javafx.collections.FXCollections;
     import javafx.collections.ObservableList;
     import javafx.event.ActionEvent;
@@ -14,11 +19,7 @@
     import javafx.stage.FileChooser;
     import javafx.stage.Stage;
     import javafx.util.Duration;
-    import models.Notification;
-    import models.Restaurant;
     import org.controlsfx.control.Notifications;
-    import services.NotificationService;
-    import services.ServiceRestaurant;
 
     import java.io.File;
     import java.io.IOException;
@@ -205,7 +206,7 @@
                 stage.close();
 
                 // Load the dashboard view from FXML
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/RestaurantFront.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Plat/BackPlat.fxml"));
                 Parent root = loader.load();
 
                 // Show the dashboard view
@@ -235,7 +236,7 @@
         public void navigateBack() {
             try {
                 // Load the FXML file for the restaurant view
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/RestaurantFront.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/index.fxml"));
                 Parent root = loader.load();
 
                 // Create a new scene with the restaurant view
@@ -251,6 +252,20 @@
                 e.printStackTrace();
             }
         }
+
+        //go gestion_restaurant
+        @FXML
+        void Gestion_Restaurant(ActionEvent event) throws IOException {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/Back.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        }
+
+
 
 
     }

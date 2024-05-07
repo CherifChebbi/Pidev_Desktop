@@ -1,35 +1,36 @@
 
-package controllers;
-
-
-import com.itextpdf.kernel.pdf.PdfDocument;
-import com.itextpdf.kernel.pdf.PdfWriter;
+package controllers.Reservation;
+import models.Reservation;
+import services.ServiceReservation;
+import com.itextpdf.kernel.pdf.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
-import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import javafx.util.Duration;
-import models.Reservation;
-import org.controlsfx.control.Notifications;
-import services.ServiceReservation;
+import javafx.scene.image.Image;
 
-import javax.mail.*;
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.internet.*;
 import java.awt.*;
 import java.io.File;
+
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
+import javax.mail.Authenticator;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+
+import javax.mail.*;
+import javax.mail.internet.*;
+
+
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 
 public class ReservationManagement {
@@ -101,7 +102,7 @@ public class ReservationManagement {
             String fileName = "reservation.pdf";
 
             // Create a new PDF document
-            com.itextpdf.kernel.pdf.PdfDocument pdfDocument = new PdfDocument(new PdfWriter(fileName));
+            PdfDocument pdfDocument = new PdfDocument(new PdfWriter(fileName));
 
             // Create a Document instance
             com.itextpdf.layout.Document document = new com.itextpdf.layout.Document(pdfDocument);

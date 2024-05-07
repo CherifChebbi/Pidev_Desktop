@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -14,17 +14,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: ffffff;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardController">
+<AnchorPane id="AnchorPane" prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: ffffff;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Restaurant.RestaurantManagement">
     <children>
         <ImageView fx:id="Background" fitHeight="570.0" fitWidth="658.0" layoutX="378.0" layoutY="133.0" opacity="0.08" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/logo1.png" />
+                <Image url="@../images/logo1.png" />
             </image>
         </ImageView>
         <AnchorPane prefHeight="56.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);">
             <children>
-                <Button fx:id="front" layoutX="1142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: rgb(240, 243, 255);" text="Acceder Front" textFill="#ea1010">
+                <Button fx:id="front" layoutX="1142.0" mnemonicParsing="false" onAction="#navigateBack" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: rgb(240, 243, 255);" text="Acceder Front" textFill="#ea1010">
                     <font>
                         <Font name="System Bold Italic" size="15.0" />
                     </font>
@@ -44,12 +45,12 @@
                 </Label>
                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1256.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/icons8_settings_26px.png" />
+                        <Image url="@../images/icons8_settings_26px.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1208.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/icons8_bell_24px.png" />
+                        <Image url="@../images/icons8_bell_24px.png" />
                     </image>
                 </ImageView>
                 <TextField layoutX="965.0" layoutY="14.0" opacity="0.16" prefHeight="40.0" prefWidth="229.0" promptText="Search Drive" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: rgb(30, 3, 66);" text="Search ....">
@@ -62,7 +63,7 @@
                 </TextField>
                 <ImageView fitHeight="154.0" fitWidth="164.0" layoutX="34.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/logo1.png" />
+                        <Image url="@../images/logo1.png" />
                     </image>
                 </ImageView>
             </children>
@@ -78,7 +79,7 @@
                             <children>
                                 <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true">
                                     <image>
-                                        <Image url="@images/icons8_james_bond_32px.png" />
+                                        <Image url="@../images/icons8_james_bond_32px.png" />
                                     </image>
                                 </ImageView>
                                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="204.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Users" textFill="#030000">
@@ -95,7 +96,7 @@
                             <children>
                                 <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@images/icons8_james_bond_32px.png" />
+                                        <Image url="@../images/icons8_james_bond_32px.png" />
                                     </image>
                                 </ImageView>
                                 <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Pays" textFill="#030000">
@@ -115,10 +116,10 @@
                             <children>
                                 <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@images/icons8_james_bond_32px.png" />
+                                        <Image url="@../images/icons8_james_bond_32px.png" />
                                     </image>
                                 </ImageView>
-                                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Restaurants" textFill="#030000">
+                                <Button mnemonicParsing="false" onAction="#Gestion_Restaurant" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Restaurants" textFill="#030000">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>
@@ -135,7 +136,7 @@
                             <children>
                                 <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@images/icons8_james_bond_32px.png" />
+                                        <Image url="@../images/icons8_james_bond_32px.png" />
                                     </image>
                                 </ImageView>
                                 <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="213.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Hebegements" textFill="#030000">
@@ -155,7 +156,7 @@
                             <children>
                                 <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@images/icons8_james_bond_32px.png" />
+                                        <Image url="@../images/icons8_james_bond_32px.png" />
                                     </image>
                                 </ImageView>
                                 <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Evenements" textFill="#030000">
@@ -177,11 +178,11 @@
         </AnchorPane>
         <HBox alignment="CENTER_RIGHT" layoutX="365.0" layoutY="185.0" prefHeight="56.0" prefWidth="787.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(220, 242, 241);">
             <children>
-                <Button mnemonicParsing="false" onAction="#afficher" prefHeight="29.0" prefWidth="158.0" style="-fx-background-color: rgb(218, 192, 163); -fx-border-color:20 ; -fx-border-radius: 20; -fx-background-radius: 50;" text="Afficher" textFill="#030000">
-                    <font>
-                        <Font name="Century Schoolbook" size="15.0" />
-                    </font>
-                </Button>
+            <Button fx:id="switchToPlatButton" mnemonicParsing="false" onAction="#switchToPlat" prefHeight="29.0" prefWidth="158.0" style="-fx-background-color: rgb(218, 192, 163); -fx-border-color:20 ; -fx-border-radius: 20; -fx-background-radius: 50;" text="Configurer Plat" textFill="#030000">
+               <font>
+                  <Font name="Century Schoolbook" size="15.0" />
+               </font>
+            </Button>
                 <Button mnemonicParsing="false" onAction="#ajouter" prefHeight="31.0" prefWidth="159.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Ajouter" textFill="#030000">
                     <font>
                         <Font name="Arial Narrow Bold" size="15.0" />
@@ -209,31 +210,47 @@
             </children>
         </HBox>
         <ImageView fx:id="imageView_pays" fitHeight="200" fitWidth="200" layoutX="1069.0" layoutY="332.0" />
-        <AnchorPane layoutX="341.0" layoutY="249.0" prefHeight="447.0" prefWidth="958.0">
+      <AnchorPane layoutX="341.0" layoutY="284.0" prefHeight="408.0" prefWidth="958.0">
          <children>
-            <TextField fx:id="nom" layoutX="14.0" layoutY="39.0" prefHeight="26.0" prefWidth="167.0" promptText="Ajouter un plat" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-color: black;">
-               <cursor>
-                  <Cursor fx:constant="DEFAULT" />
-               </cursor>
-            </TextField>
-            <TextField fx:id="image" centerShape="false" editable="false" layoutX="217.0" layoutY="39.0" opacity="0.55" prefHeight="27.0" prefWidth="167.0" promptText="Choisir un image" style="-fx-background-color: white; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-color: black;">
-               <cursor>
-                  <Cursor fx:constant="S_RESIZE" />
-               </cursor>
-            </TextField>
-            <TextField fx:id="prix" layoutX="436.0" layoutY="39.0" prefHeight="26.0" prefWidth="167.0" promptText="Ajouter un prix" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-color: black;" />
-            <ComboBox fx:id="restaurantComboBox" layoutX="635.0" layoutY="39.0" onAction="#selectRestaurant" prefHeight="28.0" prefWidth="167.0" promptText="Selectionner un plat" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" />
-            <Label layoutX="21.0" layoutY="5.0" text="Nom" />
-            <Button layoutX="223.0" layoutY="76.0" minWidth="37.0" mnemonicParsing="false" onAction="#selectImage" prefHeight="30.0" prefWidth="93.0" style="-fx-background-color: transparet; -fx-border-color: black; -fx-border-radius: 20;" text="Select Image" />
-            <Label layoutX="223.0" layoutY="5.0" text="Image" />
-            <Label layoutX="436.0" layoutY="14.0" text="Prix" />
-            <Label layoutX="635.0" layoutY="5.0" text="Restaurant" />
-            <ScrollPane layoutX="11.0" layoutY="122.0" prefHeight="326.0" prefWidth="941.0" styleClass="scroll-pane">
-               <content>
-                  <VBox fx:id="vboxPlats" prefHeight="326.0" prefWidth="940.0" spacing="10" style="-fx-background-radius: 50; -fx-border-color: black;" styleClass="content-box" />
-               </content>
-            </ScrollPane>
+            <TextField fx:id="nom" layoutX="141.0" layoutY="7.0" prefHeight="45.0" prefWidth="249.0" promptText="Entrer le nom du restaurant" style="-fx-border-radius: 20; -fx-border-color: black; -fx-background-radius: 20;" />
+            <TextField fx:id="localisation" layoutX="141.0" layoutY="120.0" prefHeight="45.0" prefWidth="249.0" promptText="Enter localisation du restaurant" style="-fx-background-radius: 20; -fx-border-color: black; -fx-position-shape: 20; -fx-border-radius: 20;" />
+            <TextField fx:id="image" layoutX="141.0" layoutY="63.0" prefHeight="45.0" prefWidth="249.0" promptText="Enter image path" style="-fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" />
+            <TextArea fx:id="description" layoutX="171.0" layoutY="183.0" prefHeight="62.0" prefWidth="151.0" promptText="Entrer la description du restaurant" style="-fx-border-color: black;" />
+            <Text layoutX="43.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Text layoutX="30.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localisation:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="43.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image:">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <Text layoutX="29.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Text>
+            <TableView fx:id="afficher" layoutX="479.0" layoutY="11.0" prefHeight="262.0" prefWidth="462.0" style="-fx-background-color: rgb(220, 242, 241); -fx-border-radius: 20; -fx-border-color: black;">
+               <columns>
+                  <TableColumn fx:id="idcol" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="nomcol" prefWidth="170.3999481201172" text="Nom" />
+                  <TableColumn fx:id="locationcol" prefWidth="150.4000244140625" text="localisation" />
+                  <TableColumn fx:id="imagecol" prefWidth="259.2000732421875" text="Image" />
+                  <TableColumn fx:id="descriptioncol" prefWidth="118.4000244140625" text="Description" />
+               </columns>
+            </TableView>
+            <Button layoutX="399.0" layoutY="66.0" mnemonicParsing="false" onAction="#selectImage" prefHeight="39.0" prefWidth="69.0" style="-fx-background-color: WHITE; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" text="Select Image">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Button>
          </children>
-        </AnchorPane>
+      </AnchorPane>
     </children>
 </AnchorPane>
