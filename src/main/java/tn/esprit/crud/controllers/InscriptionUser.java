@@ -3,10 +3,8 @@ package tn.esprit.crud.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import tn.esprit.crud.models.User;
@@ -16,6 +14,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -25,6 +24,7 @@ public class InscriptionUser implements Initializable {
     private RadioButton selectedRadioButton;
 
     private UserService userService = new UserService();
+    private String captcha;
 
     @FXML
     private TextField adresseTF;
@@ -53,9 +53,19 @@ public class InscriptionUser implements Initializable {
 
     @FXML
     private RadioButton ad;
+    @FXML
+    Label captchaCode;
+    @FXML
+    TextField captchaInput;
 
     @FXML
     void inscription(ActionEvent event) throws SQLException, IOException {
+        // Check if captcha matches
+        if (!captchaInput.getText().equals(captcha)) {
+            showAlert("Captcha does not match");
+            return;
+        }
+
         String nom = nomTF.getText().trim();
         String prenom = prenomTF.getText().trim();
         String adresse = adresseTF.getText().trim();
@@ -114,7 +124,29 @@ public class InscriptionUser implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Generate captcha
+        generateCaptcha();
+    }
 
+    private void generateCaptcha() {
+        Random rand = new Random();
+        StringBuilder captchaBuilder = new StringBuilder();
+        // Generate a captcha of length 6
+        for (int i = 0; i < 6; i++) {
+            // For each iteration, randomly decide to append a character or a number
+            if (rand.nextBoolean()) {
+                // Append a random number between 0 and 9
+                int randomNumber = rand.nextInt(10);
+                captchaBuilder.append(randomNumber);
+            } else {
+                // Append a random character from 'A' to 'Z'
+                char randomChar = (char) ('A' + rand.nextInt(26));
+                captchaBuilder.append(randomChar);
+            }
+        }
+        // Combine the random numbers and characters to form the captcha
+        captcha = captchaBuilder.toString();
+        captchaCode.setText(captcha);
     }
 
     private void showAlert(String message) {

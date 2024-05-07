@@ -38,7 +38,7 @@ public class UserService implements IServices<User> {
 
     @Override
     public void modifier(User user) throws SQLException {
-        String req = "UPDATE user SET nom = ?, prenom = ?, nationnalite = ?, email = ?, numtel = ?, roles = ? is_banned = ? WHERE id = ?";
+        String req = "UPDATE user SET nom = ?, prenom = ?, nationnalite = ?, email = ?, numtel = ?, roles = ?  WHERE id = ?";
         try (PreparedStatement us = connection.prepareStatement(req)) {
             us.setString(1, user.getNom());
             us.setString(2, user.getPrenom());
@@ -47,7 +47,7 @@ public class UserService implements IServices<User> {
             us.setInt(5, user.getNumtel());
             us.setString(6, user.getRoles());
             //us.setBoolean(7,user.getisBanned());
-            us.setInt(8, user.getId());
+            us.setInt(7, user.getId());
 
             int rowsAffected = us.executeUpdate();
             if (rowsAffected > 0) {
