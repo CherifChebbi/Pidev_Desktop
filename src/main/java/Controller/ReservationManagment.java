@@ -6,12 +6,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import javax.mail.Authenticator;
@@ -26,8 +23,11 @@ import java.util.Optional;
 import java.util.Properties;
 
 
-
-
+import javafx.stage.Stage;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class ReservationManagment {
 
@@ -45,7 +45,8 @@ public class ReservationManagment {
 
     @FXML
     private TextField nbr;
-
+    @FXML
+    private Button excel;
     private ObservableList<Reservation> reservations = FXCollections.observableArrayList();
 
     private ServiceReservation SR = new ServiceReservation();
@@ -196,5 +197,57 @@ public class ReservationManagment {
         }
     }
 
+    @FXML
+    void generateExcel(ActionEvent event) {
+        // Create a new workbook
+        try (Workbook workbook = new XSSFWorkbook()) {
+            // Create a new sheet
+            Sheet sheet = workbook.createSheet("Reservations");
 
+            // Create header row
+            Row headerRow = sheet.createRow(0);
+            headerRow.createCell(0).setCellValue("Nom");
+            headerRow.createCell(1).setCellValue("Email");
+            headerRow.createCell(2).setCellValue("Date");
+            headerRow.createCell(3).setCellValue("Nombre de personnes");
+
+            // Populate data rows
+            int rowNum = 1;
+            for (Reservation reservation : reservations) {
+                Row row = sheet.createRow(rowNum++);
+                row.createCell(0).setCellValue(reservation.getNom());
+                row.createCell(1).setCellValue(reservation.getEmail());
+                row.createCell(2).setCellValue(reservation.getDate().toString());
+                row.createCell(3).setCellValue(reservation.getNbrPersonne());
+            }
+
+            // Create a file chooser dialog
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save Excel File");
+            fileChooser.setInitialFileName("reservations.xlsx");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Excel Files", "*.xlsx"));
+
+            // Get the stage to show the file chooser dialog
+            Stage stage = (Stage) excel.getScene().getWindow();
+            // Show the save file dialog
+              java.io.File file = fileChooser.showSaveDialog(stage);
+
+            if (file != null) {
+                // Write the workbook content to the selected file
+                try (FileOutputStream fileOut = new FileOutputStream(file)) {
+                    workbook.write(fileOut);
+                    System.out.println("Excel file generated successfully.");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void categoryback(ActionEvent event) {
+    }
+
+    public void heberback(ActionEvent event) {
+    }
 }

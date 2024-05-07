@@ -6,6 +6,8 @@ module test {
     requires java.sql;
     requires java.desktop;
     requires java.mail;
+    requires org.apache.poi.poi;
+    requires org.apache.poi.ooxml;
 
     opens test to javafx.fxml;
     opens Entity to javafx.base;

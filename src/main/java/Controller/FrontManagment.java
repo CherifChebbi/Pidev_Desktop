@@ -29,6 +29,8 @@ public class FrontManagment {
 
     @FXML
     private Pagination pagination;
+    @FXML
+    private Button excel;
 
 
     private ServiceCategory sc = new ServiceCategory();
