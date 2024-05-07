@@ -1,8 +1,9 @@
 // RestaurantDetailsController.java
 
 
-package controllers;
+package controllers.Restaurant;
 
+import services.ServicePlat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -11,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import models.Plat;
-import services.ServicePlat;
 
 import java.sql.SQLException;
 import java.util.List;

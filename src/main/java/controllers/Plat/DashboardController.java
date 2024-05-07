@@ -1,5 +1,9 @@
-package controllers;
+package controllers.Plat;
 
+import models.Plat;
+import models.Restaurant;
+import services.ServicePlat;
+import services.ServiceRestaurant;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,10 +18,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import models.Plat;
-import models.Restaurant;
-import services.ServicePlat;
-import services.ServiceRestaurant;
 
 import java.io.File;
 import java.io.IOException;
@@ -63,7 +63,7 @@ public class DashboardController {
     public void navigate(MouseEvent mouseEvent) {
         try {
             // Load the FXML file for the restaurant view
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Front.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/Front.fxml"));
             Parent root = loader.load();
 
             // Create a new scene with the restaurant view
@@ -367,7 +367,7 @@ public class DashboardController {
     public void switchToRestaurant(ActionEvent actionEvent) {
         try {
             // Load the FXML file for the restaurant view
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Back.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/Back.fxml"));
             Parent root = loader.load();
 
             // Create a new scene with the restaurant view
@@ -385,4 +385,27 @@ public class DashboardController {
         }
     }
 
+    //go gestion_restaurant
+    @FXML
+    void Gestion_Restaurant(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/Back.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+
+    @FXML
+    void Restaurant_Front(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/index.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
 }

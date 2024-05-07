@@ -1,5 +1,11 @@
-package controllers;
+package controllers.Restaurant;
 
+import controllers.Reservation.ReservationManagement;
+import models.Notification;
+import models.Plat;
+import models.Restaurant;
+import services.NotificationService;
+import services.ServiceRestaurant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +24,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-import models.Notification;
-import models.Plat;
-import models.Restaurant;
-import services.NotificationService;
-import services.ServiceRestaurant;
 
 import java.io.File;
 import java.io.IOException;
@@ -230,7 +231,7 @@ public class FrontManagement {
     @FXML
     public void viewPlatsForRestaurant(ActionEvent event, Restaurant restaurant) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/RestaurantDetails.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/RestaurantDetails.fxml"));
             Parent root = loader.load();
 
             RestaurantDetailsController controller = loader.getController();
@@ -266,7 +267,7 @@ public class FrontManagement {
     @FXML
     public void reserveForRestaurant(ActionEvent event, Restaurant restaurant) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/reservation.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Reservation/Reservation.fxml"));
             Parent root = loader.load();
 
             ReservationManagement controller = loader.getController();

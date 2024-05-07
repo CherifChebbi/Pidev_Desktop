@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="586.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardController">
+<AnchorPane prefHeight="586.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Plat.DashboardController">
     <children>
         <TextField fx:id="nom" layoutX="263.0" layoutY="54.0" prefHeight="26.0" prefWidth="398.0" promptText="Plat Name" />
         <TextField fx:id="image" layoutX="263.0" layoutY="89.0" prefHeight="26.0" prefWidth="398.0" />

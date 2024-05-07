@@ -1,19 +1,17 @@
-package controllers;
+package controllers.Plat;
 
+import models.Plat;
+import models.Restaurant;
+import services.ServicePlat;
+import services.ServiceRestaurant;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import models.Plat;
-import models.Restaurant;
-import services.ServicePlat;
-import services.ServiceRestaurant;
 
 import java.io.File;
 import java.io.IOException;
@@ -58,7 +56,7 @@ public class PlatManagement {
         servicePlat = new ServicePlat();
         serviceRestaurant = new ServiceRestaurant();
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Plat.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Plat/Plat.fxml"));
             loader.setController(this); // Set the controller for the FXMLLoader
             Parent root = loader.load();
             // Additional initialization code...
@@ -81,7 +79,7 @@ public class PlatManagement {
         try {
             List<Plat> plats = servicePlat.getAllPlats();
             for (Plat plat : plats) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Plat.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Plat/Plat.fxml"));
                 PlatItemController controller = new PlatItemController(plat); // Create an instance of PlatItemController
                 loader.setController(controller); // Set the controller for the FXMLLoader
                 Parent platItem = loader.load();

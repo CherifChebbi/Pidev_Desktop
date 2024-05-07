@@ -350,7 +350,7 @@ public class AfficherPays {
     //go gestion_restaurant
     @FXML
     void Gestion_Restaurant(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Back.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/Back.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
