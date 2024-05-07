@@ -1,0 +1,16 @@
+/* styles.css */
+.gradient-background {
+    -fx-background-color: linear-gradient(from 25% 25% to 800% 100%, #D91F4E, #FF854C);
+}
+
+/* styles.css */
+.line-color {
+    -fx-background-color: #F3ABB5;
+}
+
+
+
+.root {
+    -fx-background-color: linear-gradient(from 100% 100% to 800% 100%, #D91F4E, #FF854C);
+}
+

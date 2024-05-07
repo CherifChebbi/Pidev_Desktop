@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="636.0" prefWidth="1300.0" styleClass="styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Reservation.ReservationManagement">
+    <children>
+        <AnchorPane prefHeight="634.0" prefWidth="1300.0" style="-fx-background-color: #f0f0f0;">
+            <children>
+                <Label fx:id="restaurantLabel" layoutX="1080.0" layoutY="287.0" prefHeight="38.0" prefWidth="177.0" text="" />
+
+                <Button layoutX="1090.0" layoutY="27.0" mnemonicParsing="false" onAction="#ajouterEtActualiser" prefHeight="26.0" prefWidth="158.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-weight: bold;" text="Réserver Restaurant">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </Button>
+                <Button layoutX="1090.0" layoutY="77.0" mnemonicParsing="false" onAction="#modifier" prefHeight="26.0" prefWidth="158.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-weight: bold;" text="Modifier Reservation">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </Button>
+                <Button layoutX="1090.0" layoutY="141.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0" prefWidth="158.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-font-weight: bold;" text="Supprimer Reservation">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </Button>
+
+                <Button layoutX="1090.0" layoutY="566.0" mnemonicParsing="false" onAction="#printReservationToPDF" prefHeight="26.0" prefWidth="158.0" style="-fx-background-color: red; -fx-text-fill: white; -fx-font-weight: bold;" text="Print Reservation to PDF">
+                    <font>
+                        <Font size="12.0" />
+                    </font>
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                </Button>
+
+                <ScrollPane fx:id="reservationScrollPane" layoutX="198.0" layoutY="287.0" prefHeight="306.0" prefWidth="820.0">
+                    <!-- Content inside the ScrollPane will be populated dynamically -->
+                </ScrollPane>
+            <Pane layoutX="50.0" layoutY="77.0" prefHeight="200.0" prefWidth="653.0">
+               <children>
+                      <TextField fx:id="nom" layoutX="209.0" layoutY="23.0" prefHeight="26.0" prefWidth="130.0" promptText="Ajouter Votre nom" />
+      
+                      <Text fill="#4e4e4e" layoutX="148.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom:">
+                          <font>
+                              <Font size="14.0" />
+                          </font>
+                      </Text>
+                      <TextField fx:id="email" layoutX="209.0" layoutY="73.0" prefHeight="26.0" prefWidth="130.0" promptText="Ajouter Votre Email" />
+      
+                      <Text fill="#4e4e4e" layoutX="146.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+                          <font>
+                              <Font size="14.0" />
+                          </font>
+                      </Text>
+                      <DatePicker fx:id="datePicker" layoutX="386.0" layoutY="23.0" prefHeight="26.0" prefWidth="130.0" promptText="Choisir la Date" />
+      
+                      <Text fill="#4e4e4e" layoutX="539.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date:">
+                          <font>
+                              <Font size="14.0" />
+                          </font>
+                      </Text>
+                      <TextField fx:id="nbrpersonne" layoutX="386.0" layoutY="73.0" prefHeight="26.0" prefWidth="130.0" promptText="Combien de personnes" />
+      
+                      <Text fill="#4e4e4e" layoutX="543.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Personne:" wrappingWidth="109.63476562500011">
+                          <font>
+                              <Font size="14.0" />
+                          </font>
+                      </Text>
+               </children>
+            </Pane>
+            <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/terra-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imagerest" fitHeight="187.0" fitWidth="220.0" layoutX="1058.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
