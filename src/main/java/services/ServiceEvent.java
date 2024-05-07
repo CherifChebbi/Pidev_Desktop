@@ -1,13 +1,11 @@
 package services;
 
-import entities.Event;
+import models.Event;
 import utils.DB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.SQLException;
@@ -183,12 +181,133 @@ public class ServiceEvent implements IService<Event> {
              ResultSet rs = stmt.executeQuery()) {
 
             if (rs.next()) {
-                count = rs.getInt(1); 
+                count = rs.getInt(1);
             }
         }
 
         return count;
     }
+
+    public List<Event> filtrerParPrixCroissant() {
+        List<Event> events = new ArrayList<>();
+        String query = "SELECT * FROM event ORDER BY prix ASC";
+        try (PreparedStatement stmt = con.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String titre = rs.getString("titre");
+                String description = rs.getString("description");
+                Date dateDebut = rs.getDate("date_debut");
+                Date dateFin = rs.getDate("date_fin");
+                String lieu = rs.getString("lieu");
+                double prix = rs.getDouble("prix");
+                String imageEvent = rs.getString("image_event");
+                int idCategory = rs.getInt("id_category_id");
+
+                Event event = new Event(id, titre, description, dateDebut, dateFin, lieu, prix, imageEvent, idCategory);
+                events.add(event);            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return events;
+    }
+
+    public List<Event> filtrerParPrixDécroissant() {
+        List<Event> events = new ArrayList<>();
+        String query = "SELECT * FROM event ORDER BY prix DESC";
+        try (PreparedStatement stmt = con.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String titre = rs.getString("titre");
+                String description = rs.getString("description");
+                Date dateDebut = rs.getDate("date_debut");
+                Date dateFin = rs.getDate("date_fin");
+                String lieu = rs.getString("lieu");
+                double prix = rs.getDouble("prix");
+                String imageEvent = rs.getString("image_event");
+                int idCategory = rs.getInt("id_category_id");
+
+                Event event = new Event(id, titre, description, dateDebut, dateFin, lieu, prix, imageEvent, idCategory);
+                events.add(event);            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return events;
+    }
+
+    public List<Event> filtrerParDateLaPlusProche() {
+        List<Event> events = new ArrayList<>();
+        String query = "SELECT * FROM event WHERE date_fin >= CURRENT_DATE() ORDER BY date_fin ASC";
+        try (PreparedStatement stmt = con.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String titre = rs.getString("titre");
+                String description = rs.getString("description");
+                Date dateDebut = rs.getDate("date_debut");
+                Date dateFin = rs.getDate("date_fin");
+                String lieu = rs.getString("lieu");
+                double prix = rs.getDouble("prix");
+                String imageEvent = rs.getString("image_event");
+                int idCategory = rs.getInt("id_category_id");
+
+                Event event = new Event(id, titre, description, dateDebut, dateFin, lieu, prix, imageEvent, idCategory);
+                events.add(event);            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return events;
+    }
+
+    public List<Event> filtrerParTitreAZ() {
+        List<Event> events = new ArrayList<>();
+        String query = "SELECT * FROM event ORDER BY titre ASC";
+        try (PreparedStatement stmt = con.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String titre = rs.getString("titre");
+                String description = rs.getString("description");
+                Date dateDebut = rs.getDate("date_debut");
+                Date dateFin = rs.getDate("date_fin");
+                String lieu = rs.getString("lieu");
+                double prix = rs.getDouble("prix");
+                String imageEvent = rs.getString("image_event");
+                int idCategory = rs.getInt("id_category_id");
+
+                Event event = new Event(id, titre, description, dateDebut, dateFin, lieu, prix, imageEvent, idCategory);
+                events.add(event);            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return events;
+    }
+
+    public List<Event> filtrerParTitreZA() {
+        List<Event> events = new ArrayList<>();
+        String query = "SELECT * FROM event ORDER BY titre DESC";
+        try (PreparedStatement stmt = con.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String titre = rs.getString("titre");
+                String description = rs.getString("description");
+                Date dateDebut = rs.getDate("date_debut");
+                Date dateFin = rs.getDate("date_fin");
+                String lieu = rs.getString("lieu");
+                double prix = rs.getDouble("prix");
+                String imageEvent = rs.getString("image_event");
+                int idCategory = rs.getInt("id_category_id");
+
+                Event event = new Event(id, titre, description, dateDebut, dateFin, lieu, prix, imageEvent, idCategory);
+                events.add(event);            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return events;
+    }
+
 
 
 

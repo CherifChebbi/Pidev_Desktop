@@ -1,7 +1,6 @@
 package services;
 
-import entities.Event;
-import entities.ReservationEvent;
+import models.ReservationEvent;
 import utils.DB;
 
 import java.sql.Connection;

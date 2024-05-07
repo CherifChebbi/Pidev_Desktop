@@ -2,8 +2,8 @@ package controllers;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.*;
-import entities.Event;
-import entities.ReservationEvent;
+import models.Event;
+import models.ReservationEvent;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

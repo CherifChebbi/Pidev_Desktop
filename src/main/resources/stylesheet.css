@@ -16,3 +16,17 @@
 .sidebar-btn:hover .sidebar-btn-text{
     -fx-text-fill: #7AA2E7;
 }
+
+.reserve-button {
+    -fx-background-color: #4CAF50; /* Green */
+    -fx-border: none;
+    -fx-color: white;
+    -fx-padding: 10px 20px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-cursor: pointer;
+}
+
+.reserve-button:hover {
+    -fx-background-color: #45a049; /* Darker Green */
+}

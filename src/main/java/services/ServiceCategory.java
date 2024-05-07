@@ -1,6 +1,6 @@
 package services;
 
-import entities.Category;
+import models.Category;
 import utils.DB;
 
 import java.sql.Connection;

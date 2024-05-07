@@ -1,7 +1,7 @@
 package controllers;
 
-import entities.Category;
-import entities.Event;
+import models.Category;
+import models.Event;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

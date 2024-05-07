@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.Event;
+import models.Event;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +18,6 @@ import services.ServiceReservationEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.ZoneId;
 
 public class ReserverEventController {
 

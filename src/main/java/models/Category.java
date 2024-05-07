@@ -1,4 +1,4 @@
-package entities;
+package models;
 
 public class Category {
     private int id;

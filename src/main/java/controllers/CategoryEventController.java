@@ -1,6 +1,6 @@
 package controllers;
 
-import entities.Category;
+import models.Category;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
