@@ -85,7 +85,11 @@ public class CategoryManagment {
             // Rafraîchir la liste des catégories
             afficher();
             // Add the new category label to the scroll pane in FrontManagment
+<<<<<<< HEAD
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationFront.fxml"));
+=======
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("pane.fxml"));
+>>>>>>> f8b6b9103f8fd6fe7dd117de01e732d0fbe523cc
             Parent root = loader.load();
             FrontManagment frontController = loader.getController();
 

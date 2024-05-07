@@ -77,7 +77,7 @@ public class ServiceHebergement implements IHebergement<Hebergement> {
                 Category plat = new Category();
                 plat.setId(resultSet.getInt("id"));
                 plat.setNom(resultSet.getString("nom"));
-                plat.setDescription(resultSet.getString("image"));
+                plat.setDescription(resultSet.getString("images"));
                 plat.setImage(resultSet.getString("prix"));
                 // Assuming the "idR" column is the foreign key referencing the Restaurant table
                 // You may need to set the corresponding Restaurant object here if needed

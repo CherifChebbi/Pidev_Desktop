@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb79324d-adcb-4532-b373-8246f3fe7403" name="Changes" comment="" />
+    <list default="true" id="bb79324d-adcb-4532-b373-8246f3fe7403" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CategoryManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/CategoryManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/FrontManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/FrontManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/HebergementManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/HebergementManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ServiceCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Services/ServiceCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/front.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Front.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +23,11 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+<<<<<<< HEAD
         <option value="JavaFXApplication" />
+=======
+        <option value="Class" />
+>>>>>>> f8b6b9103f8fd6fe7dd117de01e732d0fbe523cc
         <option value="FxmlFile" />
         <option value="Class" />
       </list>
@@ -45,6 +58,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -62,6 +76,23 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Gestion__Hebergement2",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/MSI/IdeaProjects/Pidev_Desktop-Gestion_Hebergement/src/main/resources/Category2.fxml",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
+    "vue.rearranger.settings.migration": "true"
+>>>>>>> f8b6b9103f8fd6fe7dd117de01e732d0fbe523cc
   }
 }</component>
   <component name="RecentsManager">
@@ -101,6 +132,7 @@
       <workItem from="1713820184379" duration="1755000" />
       <workItem from="1713951163946" duration="8008000" />
       <workItem from="1713983181424" duration="21574000" />
+<<<<<<< HEAD
       <workItem from="1714600283705" duration="8269000" />
       <workItem from="1714879006279" duration="71000" />
       <workItem from="1714879084081" duration="219000" />
@@ -111,6 +143,20 @@
       <workItem from="1715016919436" duration="6263000" />
       <workItem from="1715026700941" duration="10606000" />
       <workItem from="1715041901304" duration="1084000" />
+=======
+      <workItem from="1714600283705" duration="9701000" />
+      <workItem from="1714614414132" duration="1300000" />
+      <workItem from="1714650977813" duration="2058000" />
+      <workItem from="1714657004936" duration="483000" />
+      <workItem from="1714689534714" duration="1595000" />
+      <workItem from="1714766708761" duration="848000" />
+      <workItem from="1714831702820" duration="1850000" />
+      <workItem from="1714860112884" duration="885000" />
+      <workItem from="1714861291038" duration="261000" />
+      <workItem from="1714861566487" duration="191000" />
+      <workItem from="1714861768738" duration="277000" />
+      <workItem from="1714862057858" duration="5721000" />
+>>>>>>> f8b6b9103f8fd6fe7dd117de01e732d0fbe523cc
     </task>
     <servers />
   </component>
@@ -126,5 +172,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

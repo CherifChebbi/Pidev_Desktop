@@ -73,7 +73,11 @@ public class FrontManagment {
 
                 reservationButton.setOnAction(event -> {
                     try {
+<<<<<<< HEAD
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationFront.fxml"));
+=======
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Front.fxml"));
+>>>>>>> f8b6b9103f8fd6fe7dd117de01e732d0fbe523cc
                         Parent root = loader.load();
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));
@@ -86,7 +90,7 @@ public class FrontManagment {
                 anchorPane.getChildren().addAll(label, imageView, descLabel, reservationButton);
                 layoutY += 200.0; // Increment layoutY for the next label, image, description, and button
             }
-            front.setContent(anchorPane);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
