@@ -1,6 +1,6 @@
 package services.ReservationService;
 
-import models.ReservationEntity.Reservation;
+import models.Reservation;
 import utils.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

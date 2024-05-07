@@ -1,8 +1,8 @@
     package controllers.Restaurant;
 
     import javafx.scene.Node;
-    import models.RestaurantEntity.Notification;
-    import models.RestaurantEntity.Restaurant;
+    import models.Notification;
+    import models.Restaurant;
     import services.RestaurantService.NotificationService;
     import services.RestaurantService.ServiceRestaurant;
     import javafx.collections.FXCollections;

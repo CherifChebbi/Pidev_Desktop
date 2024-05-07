@@ -1,6 +1,6 @@
 package services.PlatService;
 
-import models.PlatEntity.Plat;
+import models.Plat;
 import javafx.collections.ObservableList;
 
 import java.sql.SQLException;

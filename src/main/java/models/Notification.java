@@ -1,4 +1,4 @@
-package models.RestaurantEntity;
+package models;
 
 import java.time.LocalDateTime;
 

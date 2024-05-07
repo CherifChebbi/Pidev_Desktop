@@ -1,7 +1,7 @@
 package controllers.Plat;
 
-import models.PlatEntity.Plat;
-import models.RestaurantEntity.Restaurant;
+import models.Plat;
+import models.Restaurant;
 import services.PlatService.ServicePlat;
 import services.RestaurantService.ServiceRestaurant;
 import javafx.collections.FXCollections;

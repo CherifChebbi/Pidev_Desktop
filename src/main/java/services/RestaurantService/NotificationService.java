@@ -1,6 +1,6 @@
 package services.RestaurantService;
 
-import models.RestaurantEntity.Notification;
+import models.Notification;
 
 import java.util.ArrayList;
 import java.util.List;

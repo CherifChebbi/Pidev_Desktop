@@ -1,6 +1,6 @@
 
 package controllers.Reservation;
-import models.ReservationEntity.Reservation;
+import models.Reservation;
 import services.ReservationService.ServiceReservation;
 import com.itextpdf.kernel.pdf.*;
 import javafx.event.ActionEvent;

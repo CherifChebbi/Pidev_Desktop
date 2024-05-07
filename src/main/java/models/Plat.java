@@ -1,6 +1,4 @@
-package models.PlatEntity;
-
-import models.RestaurantEntity.Restaurant;
+package models;
 
 public class Plat {
     private int id;

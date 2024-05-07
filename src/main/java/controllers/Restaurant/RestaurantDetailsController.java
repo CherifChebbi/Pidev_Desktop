@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import models.PlatEntity.Plat;
+import models.Plat;
 
 import java.sql.SQLException;
 import java.util.List;

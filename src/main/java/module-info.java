@@ -22,7 +22,6 @@ module test {
     opens controllers.Plat to javafx.fxml;
     exports controllers.Reservation;
     opens controllers.Reservation to javafx.fxml;
-    opens models.PlatEntity to javafx.base;
-    opens models.ReservationEntity to javafx.base;
-    opens models.RestaurantEntity to javafx.base;
+
+    opens models to javafx.base;
 }

@@ -1,9 +1,9 @@
 package controllers.Restaurant;
 
 import controllers.Reservation.ReservationManagement;
-import models.RestaurantEntity.Notification;
-import models.PlatEntity.Plat;
-import models.RestaurantEntity.Restaurant;
+import models.Notification;
+import models.Plat;
+import models.Restaurant;
 import services.RestaurantService.NotificationService;
 import services.RestaurantService.ServiceRestaurant;
 import javafx.event.ActionEvent;

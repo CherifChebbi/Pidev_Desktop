@@ -1,8 +1,8 @@
 package services.RestaurantService;
 
-import models.RestaurantEntity.Notification;
-import models.PlatEntity.Plat;
-import models.RestaurantEntity.Restaurant;
+import models.Notification;
+import models.Plat;
+import models.Restaurant;
 import utils.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

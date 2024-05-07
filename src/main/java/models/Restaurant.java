@@ -1,8 +1,8 @@
-    package models.RestaurantEntity;
+    package models;
 
     import javafx.scene.image.Image;
     import javafx.scene.image.ImageView;
-    import models.PlatEntity.Plat;
+    import models.Plat;
 
     import java.util.List;
 
