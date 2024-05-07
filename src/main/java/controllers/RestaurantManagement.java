@@ -235,7 +235,7 @@
         public void navigateBack() {
             try {
                 // Load the FXML file for the restaurant view
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/RestaurantFront.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackPlat.fxml"));
                 Parent root = loader.load();
 
                 // Create a new scene with the restaurant view
