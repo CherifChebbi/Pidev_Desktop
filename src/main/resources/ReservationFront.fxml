@@ -48,6 +48,6 @@
             <Button layoutX="546.0" layoutY="10.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
          </children>
       </Pane>
-      <Button fx:id="excel" layoutX="781.0" layoutY="507.0" mnemonicParsing="false" text="Button" onAction="#generateExcel" />
+      <Button fx:id="excel" layoutX="781.0" layoutY="507.0" mnemonicParsing="false" onAction="#generateExcel" text="Button" />
    </children>
 </AnchorPane>
