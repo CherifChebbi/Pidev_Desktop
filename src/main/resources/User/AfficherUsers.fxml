@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: ffffff;" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.User.AfficherUsers">
+
+   <children>
+      <ImageView fx:id="Background" fitHeight="570.0" fitWidth="658.0" layoutX="378.0" layoutY="133.0" opacity="0.08" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/logo1.png" />
+         </image>
+      </ImageView>
+      <AnchorPane prefHeight="56.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);">
+         <children>
+            <Button layoutX="1142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: rgb(240, 243, 255);" text="Acceder Front" textFill="#ea1010">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="47.0" prefHeight="151.0" prefWidth="1300.0" style="-fx-background-color: rgb(127, 199, 217);">
+         <children>
+            <Label alignment="CENTER" layoutX="275.0" layoutY="1.0" prefHeight="144.0" prefWidth="571.0" text="TeraNova Dashboard" textFill="#1b0000">
+               <font>
+                  <Font name="Onyx" size="84.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1256.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8_settings_26px.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1208.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/icons8_bell_24px.png" />
+               </image>
+            </ImageView>
+            <TextField layoutX="965.0" layoutY="14.0" opacity="0.16" prefHeight="40.0" prefWidth="229.0" promptText="Search Drive" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: rgb(30, 3, 66);" text="Search ....">
+               <font>
+                  <Font name="Berlin Sans FB" size="13.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#b9b6b6" />
+               </effect>
+            </TextField>
+            <ImageView fitHeight="154.0" fitWidth="164.0" layoutX="34.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="25.0" layoutY="180.0" prefHeight="490.0" prefWidth="280.0" style="-fx-background-color: rgb(220, 242, 241); -fx-background-radius: 30px 30px 30px 30px;">
+         <children>
+            <VBox layoutX="9.0" layoutY="68.0" prefHeight="425.0" prefWidth="262.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(254, 250, 246);" styleClass="sidebar-btn-text">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@../images/icons8_james_bond_32px.png" />
+                           </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="204.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Users" textFill="#030000">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="202.0" style="-fx-background-color: rgb(254, 250, 246); -fx-background-radius: 50px 50px 50px 50px;" styleClass="sidebar-btn-text">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8_james_bond_32px.png" />
+                           </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Pays" textFill="#030000">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="202.0" style="-fx-background-color: rgb(254, 250, 246); -fx-background-radius: 50px 50px 50px 50px;" styleClass="sidebar-btn-text">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8_james_bond_32px.png" />
+                           </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Restaurants" textFill="#030000">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="260.0" style="-fx-background-color: rgb(254, 250, 246); -fx-background-radius: 50px 50px 50px 50px;" styleClass="sidebar-btn-text">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8_james_bond_32px.png" />
+                           </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="213.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Hebegements" textFill="#030000">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="gestion_Evenement" alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="202.0" style="-fx-background-color: rgb(254, 250, 246); -fx-background-radius: 50px 50px 50px 50px;" styleClass="sidebar-btn-text">
+                     <children>
+                        <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8_james_bond_32px.png" />
+                           </image>
+                        </ImageView>
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Evenements" textFill="#030000">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+
+      </AnchorPane>
+      <HBox alignment="CENTER_RIGHT" layoutX="365.0" layoutY="185.0" prefHeight="56.0" prefWidth="787.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(220, 242, 241);">
+         <children>
+            <Button mnemonicParsing="false" onAction="#ReturnToAjouter" prefHeight="31.0" prefWidth="159.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Ajouter" textFill="#030000">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#PageModifier" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Modifier " textFill="#030000">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#supprimer" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Supprimer">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="auth" mnemonicParsing="false" onAction="#auth" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="S'authentifier" textFill="#030000">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <ImageView fx:id="imageView_pays" fitHeight="200" fitWidth="200" layoutX="1069.0" layoutY="332.0" />
+      <TableView fx:id="tableView" layoutX="847.0" layoutY="306.0" prefHeight="137.0" prefWidth="146.0">
+         <columns>
+            <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="emailCol" prefWidth="129.33334350585938" text="Email" />
+            <TableColumn fx:id="nomCol" prefWidth="125.33331298828125" text="Nom" />
+            <TableColumn fx:id="prenomCol" prefWidth="106.0" text="Prénom" />
+            <TableColumn fx:id="nationnalieCol" prefWidth="128.66668701171875" text="Nationalité" />
+            <TableColumn fx:id="numtelCol" prefWidth="135.33331298828125" text="Téléphone" />
+            <TableColumn fx:id="banCol" prefWidth="135.33331298828125" text="Banned" />
+         </columns>
+      </TableView>
+      <RadioButton fx:id="ban" layoutX="1181.0" layoutY="198.0" mnemonicParsing="false" onAction="#banUser" prefHeight="30.0" prefWidth="107.0" text="Ban">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </RadioButton>
+
+      <!-- Pagination control -->
+      <Pagination fx:id="pagination" layoutX="365.0" layoutY="321.0" />
+   </children>
+</AnchorPane>

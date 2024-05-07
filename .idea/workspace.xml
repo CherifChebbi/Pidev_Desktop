@@ -7,9 +7,95 @@
     <list default="true" id="338d2e8d-0088-4336-b230-09326ebb8158" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/InscriptionUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/InscriptionUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/inscription.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/inscription.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/CodeGenerator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/AfficherUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/User/AfficherUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/AjouterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/User/AjouterUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Captcha.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/User/Captcha.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/EditProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/User/EditProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Explore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/User/Explore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/ForgetPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/User/ForgetPassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/User/Home.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/InscriptionUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/User/InscriptionUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/ModifierUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/User/ModifierUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/Profile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/SupprimerUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/User/SupprimerUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/index.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/User/index.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/controllers/login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/User/login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/IServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/User/IServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/User/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/test/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/utils/MailUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/MailUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/utils/MyDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/MyDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tn/esprit/crud/utils/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/UserSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Front/Explore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Front/Explore.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Front/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Front/Home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Front/Profile.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Front/index.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Front/index.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/AfficherUsers.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/User/AfficherUsers.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/AjouterUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/User/AjouterUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/BLEU.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/Changerpwd.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/User/Changerpwd.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/EditProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/User/EditProfile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/ModifierUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/User/ModifierUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/SupprimerUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/User/SupprimerUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/Tour Travel Business Logo (3).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/User/Tour Travel Business Logo (3).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/Upload/arc_tri.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Upload/arc_tri.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/Upload/berlin.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Upload/berlin.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/Upload/champs.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Upload/champs.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/Upload/france.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Upload/france.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/Upload/italie.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Upload/italie.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/Upload/lille.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Upload/lille.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/Upload/nice.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Upload/nice.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/Upload/paris.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Upload/paris.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/Upload/qatar.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Upload/qatar.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/Upload/suisse.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Upload/suisse.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/Upload/tour_eiffel.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Upload/tour_eiffel.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/blanche.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/forgetPassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/User/forgetPassword.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/6915987.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/6915987.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/airplane.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/airplane.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/banner (1).jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/banner (1).jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/banner.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/banner.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/carte-de-voyage (1).png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/carte-de-voyage (1).png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/carte-de-voyage.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/carte-de-voyage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/emplacement.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/emplacement.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/events.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/events.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/globe.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/globe.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/hotel.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/hotel.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_bell_24px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_bell_24px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_ellipsis_50px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_ellipsis_50px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_empty_trash_32px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_empty_trash_32px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_help_32px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_help_32px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_james_bond_32px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_james_bond_32px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_microsoft_excel_48px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_microsoft_excel_48px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_microsoft_powerpoint_2019_48px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_microsoft_powerpoint_2019_48px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_microsoft_word_48px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_microsoft_word_48px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_pin_50px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_pin_50px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_settings_26px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_settings_26px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_slider_50px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_slider_50px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_star_50px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_star_50px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_steering_wheel_64px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_steering_wheel_64px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_sync_settings_24px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_sync_settings_24px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_time_machine_30px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_time_machine_30px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_widescreen_24px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_widescreen_24px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/icons8_windows_homegroup_32px.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/icons8_windows_homegroup_32px.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/logo1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/logo1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/marqueur-de-carte.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/marqueur-de-carte.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/pays.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/pays.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/pouch.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/pouch.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/restaurant.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/restaurant.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/terra-removebg-preview.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/terra-removebg-preview.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/terra.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/terra.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/tourism.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/tourism.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/tourisme.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/tourisme.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/voiture.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/voiture.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/images/voyage-et-tourisme.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/voyage-et-tourisme.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/inscription.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/User/inscription.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/User/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/tn/esprit/crud/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/User/stylesheet.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,33 +130,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Espritify [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.crud [org.openjfx:javafx-maven-plugin:0.0.8:run].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Gestion__Userrrr&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/nadas/Desktop/nchallah/src/main/resources/tn/esprit/crud/images&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.HelloApplication.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Maven.Espritify [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "Maven.crud [org.openjfx:javafx-maven-plugin:0.0.8:run].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Gestion__Userrrr",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/nadas/Desktop/piCopie/Userrrr",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\tn\esprit\crud\images" />
@@ -80,9 +166,14 @@
       <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\User" />
+      <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources" />
       <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\Front" />
       <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\tn\esprit\crud" />
       <recent name="C:\Users\nadas\Desktop\nchallah\src\main\resources\tn\esprit\crud\images" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="tn.esprit.crud.utils" />
@@ -105,12 +196,12 @@
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="21" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="tn.esprit.crud.test.HelloApplication" />
+      <option name="MAIN_CLASS_NAME" value="test.HelloApplication" />
       <module name="crud" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\khouloud\Desktop\openjfx-21.0.2_windows-x64_bin-sdk\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tn.esprit.crud.test.*" />
+          <option name="PATTERN" value="test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -119,11 +210,11 @@
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tn.esprit.crud.test.Main" />
+      <option name="MAIN_CLASS_NAME" value="test.Main" />
       <module name="crud" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="tn.esprit.crud.test.*" />
+          <option name="PATTERN" value="test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -165,6 +256,7 @@
       <workItem from="1714911949405" duration="15071000" />
       <workItem from="1714983776791" duration="20030000" />
       <workItem from="1715072982785" duration="4071000" />
+      <workItem from="1715082170546" duration="10121000" />
     </task>
     <servers />
   </component>
