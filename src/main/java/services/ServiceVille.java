@@ -57,7 +57,7 @@ public class ServiceVille implements CRUD<Ville> {
 
 
         ps.executeUpdate();
-        ps.close();
+
     }
 
     @Override
@@ -73,7 +73,7 @@ public class ServiceVille implements CRUD<Ville> {
         PreparedStatement ps = cnx.prepareStatement(req);
         ps.setInt(1, ville.getId_ville());
         ps.executeUpdate();
-        ps.close();
+
     }
 
     @Override
@@ -99,8 +99,7 @@ public class ServiceVille implements CRUD<Ville> {
             villeList.add(p);
         }
 
-        rs.close();
-        st.close();
+
 
         return villeList;
     }
@@ -128,8 +127,7 @@ public class ServiceVille implements CRUD<Ville> {
             filteredville.add(p);
         }
 
-        rs.close();
-        ps.close();
+
 
         return filteredville;
     }
@@ -157,8 +155,7 @@ public class ServiceVille implements CRUD<Ville> {
             VilleList.add(p);
         }
 
-        rs.close();
-        ps.close();
+
 
         return VilleList;
     }
@@ -186,8 +183,7 @@ public class ServiceVille implements CRUD<Ville> {
             filteredville.add(p);
         }
 
-        rs.close();
-        ps.close();
+
 
         return filteredville;
     }
@@ -304,14 +300,14 @@ public class ServiceVille implements CRUD<Ville> {
         PreparedStatement psDeleteMonuments = cnx.prepareStatement(reqDeleteMonuments);
         psDeleteMonuments.setInt(1, paysId);
         psDeleteMonuments.executeUpdate();
-        psDeleteMonuments.close();
+
 
         // Supprimer les villes associées à ce pays
         String reqDeleteVilles = "DELETE FROM ville WHERE id_pays=?";
         PreparedStatement psDeleteVilles = cnx.prepareStatement(reqDeleteVilles);
         psDeleteVilles.setInt(1, paysId);
         psDeleteVilles.executeUpdate();
-        psDeleteVilles.close();
+
     }
     public Ville getVilleWithMostMonuments() throws SQLException {
         String query = "SELECT * FROM ville ORDER BY nb_monuments DESC LIMIT 1";
