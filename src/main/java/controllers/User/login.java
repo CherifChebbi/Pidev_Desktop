@@ -136,7 +136,7 @@ public class login {
         Stage resetPasswordStage = new Stage();
         Parent resetPasswordInterface;
         try {
-            resetPasswordInterface = FXMLLoader.load(getClass().getResource("/tn/esprit/crud//forgetPassword.fxml"));
+            resetPasswordInterface = FXMLLoader.load(getClass().getResource("/User/forgetPassword.fxml"));
             Scene resetPasswordScene = new Scene(resetPasswordInterface);
             resetPasswordStage.setScene(resetPasswordScene);
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
