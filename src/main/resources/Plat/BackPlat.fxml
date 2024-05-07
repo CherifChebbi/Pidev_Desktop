@@ -24,7 +24,7 @@
         </ImageView>
         <AnchorPane prefHeight="56.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);">
             <children>
-                <Button fx:id="front" layoutX="1142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: rgb(240, 243, 255);" text="Acceder Front" textFill="#ea1010">
+                <Button fx:id="front" layoutX="1142.0" mnemonicParsing="false" onAction="#Restaurant_Front" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: rgb(240, 243, 255);" text="Acceder Front" textFill="#ea1010">
                     <font>
                         <Font name="System Bold Italic" size="15.0" />
                     </font>
@@ -118,7 +118,7 @@
                                         <Image url="@../images/icons8_james_bond_32px.png" />
                                     </image>
                                 </ImageView>
-                                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Restaurants" textFill="#030000">
+                                <Button mnemonicParsing="false" onAction="#Gestion_Restaurant" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Restaurants" textFill="#030000">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>

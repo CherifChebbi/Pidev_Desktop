@@ -67,7 +67,7 @@ public class ServicePlat {
     }
 
     private Restaurant fetchRestaurantById(int id) throws SQLException {
-        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM restaurant WHERE id_restaurant = ?")) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM restaurant WHERE id = ?")) {
             preparedStatement.setInt(1, id);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 if (resultSet.next()) {
@@ -81,6 +81,7 @@ public class ServicePlat {
         }
         return null; // Return null if no restaurant found with the given ID
     }
+
 
     public void ajouter(Plat plat) throws SQLException {
         String req = "INSERT INTO plat (nom, image, prix, restaurant_id) VALUES (?, ?, ?, ?)";
