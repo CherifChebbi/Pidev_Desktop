@@ -15,7 +15,15 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.DatagramPacket;
 import java.sql.SQLException;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
+import javafx.scene.chart.PieChart;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CategoryManagment {
 
@@ -65,7 +73,28 @@ public class CategoryManagment {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        initializePieChart();
     }
+
+    private void initializePieChart() {
+        Map<String, Integer> data = getDataForStatistics();
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+        for (Map.Entry<String, Integer> entry : data.entrySet()) {
+            pieChartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
+        }
+        DatagramPacket pieChart;
+
+    }
+
+    private Map<String, Integer> getDataForStatistics() {
+        Map<String, Integer> data = new HashMap<>();
+        data.put("Hôtel 1", 25);
+        data.put("Hôtel 2", 40);
+        data.put("Hôtel 3", 30);
+        return data;
+    }
+
+    // Other methods remain unchanged...
 
     @FXML
     void Ajouter(ActionEvent event) throws SQLException, IOException {

@@ -8,6 +8,7 @@ module test {
     requires java.mail;
     requires org.apache.poi.poi;
     requires org.apache.poi.ooxml;
+    requires org.apache.pdfbox;
 
     opens test to javafx.fxml;
     opens Entity to javafx.base;

@@ -7,10 +7,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
-
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
@@ -21,13 +23,18 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Properties;
-
-
 import javafx.stage.Stage;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.PDPage;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
+
+
 
 public class ReservationManagment {
 
@@ -50,6 +57,9 @@ public class ReservationManagment {
     private ObservableList<Reservation> reservations = FXCollections.observableArrayList();
 
     private ServiceReservation SR = new ServiceReservation();
+
+
+    // Other methods...
 
     @FXML
     public void initialize() {
@@ -194,6 +204,80 @@ public class ReservationManagment {
             }
         } else {
             System.out.println("Veuillez sélectionner une réservation à supprimer.");
+        }
+    }
+    @FXML
+    void generatePDF(ActionEvent event) {
+        try {
+            // Create a new PDF document
+            PDDocument document = new PDDocument();
+
+            // Add a page to the document
+            PDPage page = new PDPage();
+            document.addPage(page);
+
+            // Create a content stream for the page
+            PDPageContentStream contentStream = new PDPageContentStream(document, page);
+
+            // Set font and font size
+            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
+
+            // Define the starting y-coordinate for the content
+            float y = page.getMediaBox().getHeight() - 50;
+
+            // Write header row
+            contentStream.beginText();
+            contentStream.newLineAtOffset(50, y);
+            contentStream.showText("Nom");
+            contentStream.newLineAtOffset(100, 0);
+            contentStream.showText("Email");
+            contentStream.newLineAtOffset(100, 0);
+            contentStream.showText("Date");
+            contentStream.newLineAtOffset(100, 0);
+            contentStream.showText("Nombre de personnes");
+            contentStream.endText();
+
+            // Set font and font size for data rows
+            contentStream.setFont(PDType1Font.HELVETICA, 12);
+
+            // Write data rows
+            y -= 20;
+            for (Reservation reservation : reservations) {
+                contentStream.beginText();
+                contentStream.newLineAtOffset(50, y);
+                contentStream.showText(reservation.getNom());
+                contentStream.newLineAtOffset(100, 0);
+                contentStream.showText(reservation.getEmail());
+                contentStream.newLineAtOffset(100, 0);
+                contentStream.showText(reservation.getDate().toString());
+                contentStream.newLineAtOffset(100, 0);
+                contentStream.showText(Integer.toString(reservation.getNbrPersonne()));
+                contentStream.endText();
+                y -= 20;
+            }
+
+            // Close content stream
+            contentStream.close();
+
+            // Create a file chooser dialog
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save PDF File");
+            fileChooser.setInitialFileName("reservations.pdf");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PDF Files", "*.pdf"));
+
+            // Get the stage to show the file chooser dialog
+            Stage stage = (Stage) excel.getScene().getWindow();
+            // Show the save file dialog
+            java.io.File file = fileChooser.showSaveDialog(stage);
+
+            if (file != null) {
+                // Save the PDF document to the selected file
+                document.save(file);
+                document.close();
+                System.out.println("PDF file generated successfully.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

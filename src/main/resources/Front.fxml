@@ -45,7 +45,7 @@
                         <Image url="@../images/carte-de-voyage.png" />
                     </image>
                 </ImageView>
-            <Pagination fx:id="pagination" layoutX="459.0" layoutY="578.0" prefHeight="69.0" prefWidth="226.0" />
+            <Pagination fx:id="pagination" layoutX="459.0" layoutY="578.0" pageCount="123456789" prefHeight="69.0" prefWidth="226.0" />
             <ScrollPane fx:id="front" layoutX="5.0" layoutY="11.0" prefHeight="589.0" prefWidth="1312.0" />
             </children>
         </AnchorPane>

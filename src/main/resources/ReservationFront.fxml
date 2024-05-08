@@ -48,6 +48,9 @@
             <Button layoutX="546.0" layoutY="10.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
          </children>
       </Pane>
-      <Button fx:id="excel" layoutX="781.0" layoutY="507.0" mnemonicParsing="false" onAction="#generateExcel" text="Button" />
+      <Button fx:id="generatePDFButton" layoutX="763.0" layoutY="540.0" onAction="#generatePDF" text="Generate PDF" />
+
+      <Button fx:id="excel" layoutX="760.0" layoutY="507.0" mnemonicParsing="false" onAction="#generateExcel" text="Generate excel" />
+      <TextField fx:id="numTel" layoutX="203.0" layoutY="553.0" promptText="Mobile" />
    </children>
 </AnchorPane>
