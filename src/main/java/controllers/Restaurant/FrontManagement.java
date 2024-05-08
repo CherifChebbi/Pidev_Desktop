@@ -1,11 +1,14 @@
 package controllers.Restaurant;
 
 import controllers.Reservation.ReservationManagement;
+import javafx.scene.layout.GridPane;
 import models.Notification;
 import models.Plat;
+import models.Reservation;
 import models.Restaurant;
-import services.NotificationService;
-import services.ServiceRestaurant;
+import services.ReservationService.ServiceReservation;
+import services.RestaurantService.NotificationService;
+import services.RestaurantService.ServiceRestaurant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,6 +39,8 @@ public class FrontManagement {
 
     @FXML
     private TextField searchNameField;
+    @FXML
+    private Button calendar;
 
     @FXML
     private TextField searchLocationField;
@@ -53,6 +58,7 @@ public class FrontManagement {
     private VBox recommendedRestaurantsContainer;
 
     private ServiceRestaurant serviceRestaurant = new ServiceRestaurant();
+    private ServiceReservation serviceReservation = new ServiceReservation();
     private NotificationService notificationService;
 
 
@@ -61,46 +67,19 @@ public class FrontManagement {
     }
 
 
+    @FXML
+    private void openCalendar(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Calendar/Calendar.fxml"));
+            Parent root = loader.load();
 
-
-
-    // Existing code...
-
-
-
-    private void displayRecommendedRestaurants() {
-        recommendedRestaurantsContainer.getChildren().clear(); // Clear existing content
-
-        List<Restaurant> recommendedRestaurants = serviceRestaurant.getRecommendedRestaurants(); // Assuming this method exists in ServiceRestaurant
-
-        for (Restaurant restaurant : recommendedRestaurants) {
-            // Create layout for each recommended restaurant
-            ImageView imageView = new ImageView(new Image("file:" + restaurant.getImage()));
-            imageView.setFitWidth(200);
-            imageView.setFitHeight(150);
-
-            Label nameLabel = new Label(restaurant.getNom());
-            nameLabel.setWrapText(true);
-            nameLabel.setMaxWidth(200);
-
-            Label locationLabel = new Label(restaurant.getLocalisataion());
-            locationLabel.setWrapText(true);
-            locationLabel.setMaxWidth(200);
-
-            VBox restaurantInfo = new VBox(5);
-            restaurantInfo.getChildren().addAll(nameLabel, locationLabel);
-
-            VBox restaurantBox = new VBox(5);
-            restaurantBox.getChildren().addAll(imageView, restaurantInfo);
-
-            recommendedRestaurantsContainer.getChildren().add(restaurantBox); // Add the restaurant box to the recommended restaurants container directly
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-
-
-
-
-
 
     @FXML
     private void watchVideo(ActionEvent event) {
@@ -141,8 +120,6 @@ public class FrontManagement {
         }
     }
 
-
-
     private void displayRestaurants() throws SQLException {
         List<Restaurant> restaurantList = serviceRestaurant.afficher();
         populateRestaurantsContainer(restaurantList);
@@ -156,6 +133,8 @@ public class FrontManagement {
             restaurantsContainer.getChildren().add(row);
         }
     }
+
+
 
     private HBox createRow(List<Restaurant> restaurants) {
         HBox row = new HBox(20);
@@ -183,6 +162,7 @@ public class FrontManagement {
             Button viewPlatButton = createStyledButton("Voir Plat");
             viewPlatButton.setOnAction(event -> viewPlatsForRestaurant(event, restaurant));
 
+
             VBox restaurantInfo = new VBox(5);
             restaurantInfo.getChildren().addAll(nameLabel, descriptionLabel, locationLabel, reserveButton, viewPlatButton);
 
@@ -207,17 +187,12 @@ public class FrontManagement {
         return truncatedDescription.toString();
     }
 
-
     private Label createStyledLabel(String text, double fontSize, FontWeight fontWeight, Color textColor) {
         Label label = new Label(text);
         label.setFont(Font.font("Arial", fontWeight, fontSize));
         label.setTextFill(textColor);
         return label;
     }
-
-
-
-
 
     private Button createStyledButton(String text) {
         Button button = new Button(text);
@@ -226,7 +201,6 @@ public class FrontManagement {
         button.setFont(new Font("Century Schoolbook", 14.0));
         return button;
     }
-
 
     @FXML
     public void viewPlatsForRestaurant(ActionEvent event, Restaurant restaurant) {
@@ -245,7 +219,6 @@ public class FrontManagement {
             e.printStackTrace();
         }
     }
-
 
     @FXML
     public void search(ActionEvent actionEvent) {
@@ -310,7 +283,7 @@ public class FrontManagement {
             return "Bonjour! Est-ce que je peux vous aider?";
         } else if (selectedQuestion.contains("Comment puis-je effectuer une réservation")) {
             return "Pour effectuer une réservation, veuillez fournir le nom du restaurant et la date/heure de la réservation";
-        }else if (selectedQuestion.contains("Comment utiliser cette application ")) {
+        } else if (selectedQuestion.contains("Comment utiliser cette application ")) {
             return "Notre Application est simple a utiliser il suffit de chercher un restaurant est le reserver ";
         } else {
             return "Je suis là pour vous aider. N'hésitez pas à me poser des questions!";
@@ -328,5 +301,38 @@ public class FrontManagement {
     }
 
     public void handleNotificationClick(javafx.scene.input.MouseEvent mouseEvent) {
+    }
+
+
+    public void displayReservationsCalendar(ActionEvent actionEvent, Restaurant restaurant) {
+
+        try {
+            List<Reservation> reservations = serviceReservation.getReservationsForRestaurant(restaurant.getid());
+
+            // Create and populate a GridPane with reservation details
+            GridPane gridPane = new GridPane();
+            gridPane.setHgap(10);
+            gridPane.setVgap(10);
+
+            int row = 0;
+            for (Reservation reservation : reservations) {
+                gridPane.addRow(row++, new Label(reservation.getNom()), new Label(reservation.getDate()));
+            }
+
+            // Create a new VBox to contain the GridPane
+            VBox vBox = new VBox(10, new Label("Reservations for " + restaurant.getNom()), gridPane);
+
+            // Create a new Stage to display the reservations calendar
+            Stage stage = new Stage();
+            stage.setScene(new Scene(vBox));
+            stage.show();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            showAlert(Alert.AlertType.ERROR, "Error", "Error fetching reservations", "An error occurred while fetching reservations.");
+        }
+    }
+
+
+    public void displayReservationsCalendar(ActionEvent actionEvent) {
     }
 }

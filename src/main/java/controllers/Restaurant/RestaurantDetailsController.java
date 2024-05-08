@@ -3,7 +3,7 @@
 
 package controllers.Restaurant;
 
-import services.ServicePlat;
+import services.PlatService.ServicePlat;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

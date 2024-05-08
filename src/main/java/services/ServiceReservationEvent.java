@@ -177,6 +177,7 @@ public class ServiceReservationEvent implements IService<ReservationEvent> {
                 "LEFT JOIN reservation_event r ON e.id = r.id_event_id " +
                 "GROUP BY e.id, e.titre";
 
+        // Use the existing connection instead of creating a new one
         try (Connection conn = DBConnexion.getInstance().getCnx();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
@@ -186,9 +187,11 @@ public class ServiceReservationEvent implements IService<ReservationEvent> {
                 int reservationCount = rs.getInt("count");
                 reservationsByEvent.put(eventTitle, reservationCount);
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
         return reservationsByEvent;
-
     }
+
 }

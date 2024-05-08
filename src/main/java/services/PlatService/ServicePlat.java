@@ -1,15 +1,12 @@
-package services;
+package services.PlatService;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import models.Plat;
 import models.Restaurant;
 import utils.DBConnexion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,6 +81,7 @@ public class ServicePlat {
         }
         return null; // Return null if no restaurant found with the given ID
     }
+
 
     public void ajouter(Plat plat) throws SQLException {
         String req = "INSERT INTO plat (nom, image, prix, restaurant_id) VALUES (?, ?, ?, ?)";

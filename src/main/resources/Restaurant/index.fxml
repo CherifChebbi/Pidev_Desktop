@@ -58,11 +58,14 @@
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Bonjour! Est-ce que je peux vous aider?" />
                             <String fx:value="Comment puis-je effectuer une réservation?" />
-                            <String fx:value="Comment utiliser cette application"/>
+                            <String fx:value="Comment utiliser cette application" />
                         </FXCollections>
                     </items>
                 </ChoiceBox>
                 <Button fx:id="watchVideoButton" layoutX="1202.0" layoutY="14.0" mnemonicParsing="false" onAction="#watchVideo" style="-fx-background-color: #E1FFEF; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black;" text="Watch Video" />
+                <Button fx:id="calendar" layoutX="857.0" layoutY="64.0" onAction="#openCalendar" text="Show Calendar" />
+
+
             </children>
         </AnchorPane>
         <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">

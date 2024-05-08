@@ -17,7 +17,7 @@ public class ServiceReservationH {
     }
 
     public void ajouter(ReservationH reservationH) {
-        String req = "INSERT INTO reservation (hebergement, nom, email, date, nbr_personne) VALUES (70, ?, ?, ?, ?)";
+        String req = "INSERT INTO reservation_h (hebergement, nom, email, date, nbr_personne) VALUES (70, ?, ?, ?, ?)";
 
         try (PreparedStatement pre = connection.prepareStatement(req)) {
             pre.setString(1, reservationH.getNom());
@@ -40,7 +40,7 @@ public class ServiceReservationH {
     }
 
     public ObservableList<ReservationH> afficher() throws SQLException {
-        String req = "SELECT * FROM reservation WHERE hebergement=5";
+        String req = "SELECT * FROM reservation_h WHERE hebergement=5";
         ObservableList<ReservationH> list = FXCollections.observableArrayList();
         try (PreparedStatement pre = connection.prepareStatement(req)) {
             ResultSet res = pre.executeQuery();

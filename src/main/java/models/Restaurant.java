@@ -2,6 +2,7 @@
 
     import javafx.scene.image.Image;
     import javafx.scene.image.ImageView;
+    import models.Plat;
 
     import java.util.List;
 

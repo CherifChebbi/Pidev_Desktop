@@ -23,7 +23,7 @@ public class ServiceCategoryH implements ICategoryH<CategoryH> {
     public ServiceCategoryH(){connection= DBConnexion.getInstance().getCnx();}
     @Override
     public void ajouter(CategoryH categoryH) throws SQLException {
-        String req ="INSERT INTO category (nom, image, description) VALUES (?,?,?)";
+        String req ="INSERT INTO category_h (nom, image, description) VALUES (?,?,?)";
 
         try (PreparedStatement pre = connection.prepareStatement(req)) {
             pre.setString(1, categoryH.getNom());
@@ -37,7 +37,7 @@ public class ServiceCategoryH implements ICategoryH<CategoryH> {
 
     @Override
     public void modifier(CategoryH categoryH, int id) throws SQLException {
-        String req = "UPDATE category SET nom=?, image=?, description=? WHERE id=?";
+        String req = "UPDATE category_h SET nom=?, image=?, description=? WHERE id=?";
         try (PreparedStatement pre = connection.prepareStatement(req)) {
             pre.setString(1, categoryH.getNom());
             pre.setString(2, categoryH.getImage());
@@ -66,7 +66,7 @@ public class ServiceCategoryH implements ICategoryH<CategoryH> {
 
     @Override
     public ObservableList<CategoryH> afficher() throws SQLException {
-        String req ="SELECT * FROM category";
+        String req ="SELECT * FROM category_h";
         ObservableList<CategoryH> list = FXCollections.observableArrayList();
         PreparedStatement pre= connection.prepareStatement(req);
         ResultSet res = pre.executeQuery();
@@ -84,7 +84,7 @@ public class ServiceCategoryH implements ICategoryH<CategoryH> {
 
     @Override
     public void supprimer(int categorie_id) throws SQLException {
-        String req = "DELETE FROM category WHERE id=?";
+        String req = "DELETE FROM category_h WHERE id=?";
         try (PreparedStatement pre = connection.prepareStatement(req)) {
             pre.setInt(1, categorie_id);
             pre.executeUpdate();
@@ -93,7 +93,7 @@ public class ServiceCategoryH implements ICategoryH<CategoryH> {
     }
 
     public List<CategoryH> getAllCategories() {
-        String query = "SELECT * FROM category";
+        String query = "SELECT * FROM category_h";
         List<CategoryH> plats = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             ResultSet resultSet = preparedStatement.executeQuery();

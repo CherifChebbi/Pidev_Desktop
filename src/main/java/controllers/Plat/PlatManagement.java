@@ -2,8 +2,8 @@ package controllers.Plat;
 
 import models.Plat;
 import models.Restaurant;
-import services.ServicePlat;
-import services.ServiceRestaurant;
+import services.PlatService.ServicePlat;
+import services.RestaurantService.ServiceRestaurant;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

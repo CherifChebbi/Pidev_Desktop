@@ -1,7 +1,7 @@
-package services;
+package services.PlatService;
 
-import javafx.collections.ObservableList;
 import models.Plat;
+import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 import java.util.List;
