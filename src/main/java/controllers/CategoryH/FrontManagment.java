@@ -54,7 +54,7 @@ public class FrontManagment {
 
                 try {
                     // Attempt to load the image
-                    Image image = new Image(new File(categoryH.getImage()).toURI().toString());
+                     Image image = new Image(new File(categoryH.getImage()).toURI().toString());
                     imageView.setImage(image);
                 } catch (Exception e) {
                     System.err.println("Error loading image: " + e.getMessage());

@@ -1,7 +1,7 @@
 package controllers.ReservationH;
 
 import models.ReservationH;
-import services.ServiceReservationH;
+import services.ServiceReservation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -53,7 +53,7 @@ public class ReservationHManagment {
     private Button excel;
     private ObservableList<ReservationH> reservationHS = FXCollections.observableArrayList();
 
-    private ServiceReservationH SR = new ServiceReservationH();
+    private ServiceReservation SR = new ServiceReservation();
 
 
     // Other methods...

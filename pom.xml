@@ -81,6 +81,20 @@
       <version>8.0.33</version>
     </dependency>
 
+    <!-- https://mvnrepository.com/artifact/com.twilio.sdk/twilio -->
+    <dependency>
+      <groupId>com.twilio.sdk</groupId>
+      <artifactId>twilio</artifactId>
+      <version>10.1.5</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-gmail</artifactId>
+      <version>v1-rev110-1.25.0</version>
+    </dependency>
+
+
+
 
 
 

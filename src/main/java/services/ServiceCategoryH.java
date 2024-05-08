@@ -10,7 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ServiceCategoryH implements ICategoryH<CategoryH> {
 
@@ -112,5 +114,24 @@ public class ServiceCategoryH implements ICategoryH<CategoryH> {
         }
         return plats;
 
+    }
+
+    public Map<String, Integer> getReservationsParJour() {
+        String query = "SELECT date AS jour, COUNT(*) AS nb_reservations FROM reservation GROUP BY jour";
+        Map<String, Integer> reservationsParJour = new HashMap<>();
+
+        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String jour = resultSet.getString("jour");
+                int nbReservations = resultSet.getInt("nb_reservations");
+                reservationsParJour.put(jour, nbReservations);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Gérer l'exception selon vos besoins
+        }
+
+        return reservationsParJour;
     }
 }

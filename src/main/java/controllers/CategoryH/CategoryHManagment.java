@@ -1,5 +1,7 @@
 package controllers.CategoryH;
 
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import models.CategoryH;
 import services.ServiceCategoryH;
 import javafx.event.ActionEvent;
@@ -15,17 +17,10 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.DatagramPacket;
 import java.sql.SQLException;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.chart.PieChart;
-
-import java.util.HashMap;
 import java.util.Map;
 
 public class CategoryHManagment {
-
 
     @FXML
     private TextField description;
@@ -36,6 +31,8 @@ public class CategoryHManagment {
     @FXML
     private Button selectimage;
 
+    @FXML
+    private BarChart<String, Integer> statistiquesRes;
 
     @FXML
     private TextField nom;
@@ -48,20 +45,11 @@ public class CategoryHManagment {
 
     @FXML
     private TableView<CategoryH> afficher;
+
     @FXML
     private TableColumn<CategoryH, String> desccategory;
 
-
-
     ServiceCategoryH sc = new ServiceCategoryH();
-
-    private void selection(){
-        CategoryH c=afficher.getItems().get(afficher.getSelectionModel().getSelectedIndex());
-
-        nom.setText(String.valueOf(c.getNom()));
-        image.setText(String.valueOf(c.getImage()));
-        description.setText(String.valueOf(c.getDescription()));
-    }
 
     public void initialize() {
         nomcategory.setCellValueFactory(new PropertyValueFactory<>("nom"));
@@ -69,72 +57,37 @@ public class CategoryHManagment {
         desccategory.setCellValueFactory(new PropertyValueFactory<>("description"));
         try {
             afficher();
+            afficherStatistiques();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        initializePieChart();
     }
-
-    private void initializePieChart() {
-        Map<String, Integer> data = getDataForStatistics();
-        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
-        for (Map.Entry<String, Integer> entry : data.entrySet()) {
-            pieChartData.add(new PieChart.Data(entry.getKey(), entry.getValue()));
-        }
-        DatagramPacket pieChart;
-
-    }
-
-    private Map<String, Integer> getDataForStatistics() {
-        Map<String, Integer> data = new HashMap<>();
-        data.put("Hôtel 1", 25);
-        data.put("Hôtel 2", 40);
-        data.put("Hôtel 3", 30);
-        return data;
-    }
-
-    // Other methods remain unchanged...
 
     @FXML
     void Ajouter(ActionEvent event) throws SQLException, IOException {
-        String i = String.valueOf(nom.getText());
-        String j = String.valueOf(image.getText());
-        String y = String.valueOf(description.getText());
+        String nomText = nom.getText();
+        String imageText = image.getText();
+        String descriptionText = description.getText();
 
-        // Vérifier si les champs requis sont remplis
-        if (i.isEmpty() || j.isEmpty() || y.isEmpty()) {
-            // Afficher un message d'alerte
+        if (nomText.isEmpty() || imageText.isEmpty() || descriptionText.isEmpty()) {
             showAlert("Veuillez remplir tous les champs.");
         } else {
-            // Ajouter la catégorie
-            sc.ajouter(new CategoryH(i, j, y));
-            // Afficher un message de succès
+            sc.ajouter(new CategoryH(nomText, imageText, descriptionText));
             showAlert("Catégorie ajoutée avec succès.");
-            // Rafraîchir la liste des catégories
             afficher();
-            // Add the new category label to the scroll pane in FrontManagment
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationH/ReservationFront.fxml"));
-            Parent root = loader.load();
-            FrontManagment frontController = loader.getController();
-
         }
-
     }
 
     @FXML
     void selectImage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choisir une image");
-        // Set extension filters if needed
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile != null) {
             image.setText(selectedFile.getAbsolutePath());
         }
     }
 
-
-
-    // Méthode pour afficher un message d'alerte
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
@@ -143,13 +96,21 @@ public class CategoryHManagment {
         alert.showAndWait();
     }
 
-
-
-
     private void afficher() throws SQLException {
         afficher.setItems(sc.afficher());
     }
 
+    private void afficherStatistiques() {
+        Map<String, Integer> reservationsParJour = sc.getReservationsParJour();
+        XYChart.Series<String, Integer> series = new XYChart.Series<>();
+        series.setName("Nombre de réservations par jour");
+
+        for (Map.Entry<String, Integer> entry : reservationsParJour.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+        }
+
+        statistiquesRes.getData().add(series);
+    }
     @FXML
     void modifier(ActionEvent event) throws SQLException {
         CategoryH c = afficher.getSelectionModel().getSelectedItem();
@@ -221,8 +182,5 @@ public class CategoryHManagment {
         st.show();
 
     }
-
-
-
 
 }
