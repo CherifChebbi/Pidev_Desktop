@@ -1,0 +1,11 @@
+/* styles.css */
+.like-button, .dislike-button {
+    -fx-background-color: #4CAF50; /* Green */
+    -fx-border-radius: 20;
+    -fx-border-color: #4CAF50;
+    -fx-text-fill: white;
+}
+
+.like-button:hover, .dislike-button:hover {
+    -fx-background-color: #45a049; /* Darker Green */
+}
