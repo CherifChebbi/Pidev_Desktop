@@ -1,7 +1,7 @@
-package Controller;
+package controllers.CategoryH;
 
-import Entity.Category;
-import Services.ServiceCategory;
+import models.Category;
+import services.ServiceCategory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,9 +19,8 @@ import java.net.DatagramPacket;
 import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
-import javafx.scene.chart.PieChart;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -114,7 +113,7 @@ public class CategoryManagment {
             // Rafraîchir la liste des catégories
             afficher();
             // Add the new category label to the scroll pane in FrontManagment
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationFront.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationH/ReservationFront.fxml"));
             Parent root = loader.load();
             FrontManagment frontController = loader.getController();
 
@@ -184,7 +183,7 @@ public class CategoryManagment {
 
     @FXML
     void take(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Hebergement.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Hebergement/Hebergement.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -194,7 +193,7 @@ public class CategoryManagment {
 
     @FXML
     void goheberg(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Hebergement.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Hebergement/Hebergement.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -204,7 +203,7 @@ public class CategoryManagment {
     }
     @FXML
     void goreserv(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/reservation.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationH/reservation.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -214,7 +213,7 @@ public class CategoryManagment {
     }
     @FXML
     void backcateg(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Category.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CategoryH/Category.fxml"));
         Parent root = loader.load();
         Stage st = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);

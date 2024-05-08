@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FrontManagment">
+<AnchorPane prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CategoryH.FrontManagment">
     <children>
         <AnchorPane layoutY="67.0" prefHeight="640.0" prefWidth="1300.0" style="-fx-background-color: rgb(233, 246, 255);">
             <children>

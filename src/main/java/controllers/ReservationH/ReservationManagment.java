@@ -1,7 +1,7 @@
-package Controller;
+package controllers.ReservationH;
 
-import Entity.Reservation;
-import Services.ServiceReservation;
+import models.Reservation;
+import services.ServiceReservation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,17 +17,14 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 
-import javax.mail.*;
-import javax.mail.internet.*;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
-import java.util.Properties;
+
 import javafx.stage.Stage;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;

@@ -1,4 +1,4 @@
-package Util;
+package utils;
 import java.sql.*;
 
 public class MyDB {

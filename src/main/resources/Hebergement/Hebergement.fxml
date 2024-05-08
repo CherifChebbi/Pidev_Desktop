@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -16,11 +16,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: ffffff;" stylesheets="@/stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CategoryManagment">
+<AnchorPane id="AnchorPane" prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: ffffff;" stylesheets="@../CategoryH/stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Hebergement.HebergementManagment">
    <children>
-      <ImageView fx:id="Background" fitHeight="570.0" fitWidth="658.0" layoutX="320.0" layoutY="123.0" opacity="0.08" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="Background" fitHeight="541.0" fitWidth="787.0" layoutX="53.0" layoutY="174.0" opacity="0.08" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/logo1.png" />
+            <Image url="@../images/logo1.png" />
          </image>
       </ImageView>
       <AnchorPane prefHeight="56.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);">
@@ -44,12 +44,12 @@
             </Label>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1256.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/icons8_settings_26px.png" />
+                  <Image url="@../images/icons8_settings_26px.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="1208.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/icons8_bell_24px.png" />
+                  <Image url="@../images/icons8_bell_24px.png" />
                </image>
             </ImageView>
             <TextField layoutX="965.0" layoutY="14.0" opacity="0.16" prefHeight="40.0" prefWidth="229.0" promptText="Search Drive" style="-fx-background-color: transparent; -fx-border-radius: 50px; -fx-border-color: rgb(30, 3, 66);" text="Search ....">
@@ -62,7 +62,7 @@
             </TextField>
             <ImageView fitHeight="154.0" fitWidth="164.0" layoutX="34.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/logo1.png" />
+                  <Image url="@../images/logo1.png" />
                </image>
             </ImageView>
          </children>
@@ -78,7 +78,7 @@
                      <children>
                         <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true">
                            <image>
-                              <Image url="@images/icons8_james_bond_32px.png" />
+                              <Image url="@../images/icons8_james_bond_32px.png" />
                            </image>
                         </ImageView>
                         <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="204.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Users" textFill="#030000">
@@ -95,7 +95,7 @@
                      <children>
                         <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/icons8_james_bond_32px.png" />
+                              <Image url="@../images/icons8_james_bond_32px.png" />
                            </image>
                         </ImageView>
                         <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Pays" textFill="#030000">
@@ -115,7 +115,7 @@
                      <children>
                         <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/icons8_james_bond_32px.png" />
+                              <Image url="@../images/icons8_james_bond_32px.png" />
                            </image>
                         </ImageView>
                         <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Restaurants" textFill="#030000">
@@ -135,7 +135,7 @@
                      <children>
                         <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/icons8_james_bond_32px.png" />
+                              <Image url="@../images/icons8_james_bond_32px.png" />
                            </image>
                         </ImageView>
                         <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="213.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Hebegements" textFill="#030000">
@@ -155,7 +155,7 @@
                      <children>
                         <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@images/icons8_james_bond_32px.png" />
+                              <Image url="@../images/icons8_james_bond_32px.png" />
                            </image>
                         </ImageView>
                         <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Evenements" textFill="#030000">
@@ -177,7 +177,7 @@
       </AnchorPane>
       <HBox alignment="CENTER_RIGHT" layoutX="365.0" layoutY="185.0" prefHeight="56.0" prefWidth="787.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(220, 242, 241);">
          <children>
-            <Button mnemonicParsing="false" onAction="#backcateg" prefHeight="31.0" prefWidth="159.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Category" textFill="#030000">
+            <Button mnemonicParsing="false" onAction="#gocategory" prefHeight="31.0" prefWidth="159.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Category" textFill="#030000">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -185,7 +185,7 @@
                   <Insets left="10.0" right="10.0" />
                </HBox.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#goheberg" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Hebergement" textFill="#030000">
+            <Button mnemonicParsing="false" onAction="#backheberg" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Hebergement" textFill="#030000">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -204,27 +204,19 @@
          </children>
       </HBox>
       <ImageView fx:id="imageView_pays" fitHeight="200" fitWidth="200" layoutX="1069.0" layoutY="332.0" />
-      <TextField fx:id="nom" layoutX="374.0" layoutY="252.0" />
-      <TextField fx:id="image" layoutX="365.0" layoutY="293.0" />
-      <TextField fx:id="description" layoutX="389.0" layoutY="340.0" />
-      <Button layoutX="322.0" layoutY="375.0" mnemonicParsing="false" onAction="#Ajouter" text="Ajouter" />
-      <Button layoutX="409.0" layoutY="375.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
-      <Button layoutX="490.0" layoutY="375.0" mnemonicParsing="false" onAction="#supprimer" text="Supprimer" />
-      <Text layoutX="320.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
-      <Text layoutX="317.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" />
-      <Text layoutX="316.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" />
-      <Button fx:id="selectimage" layoutX="526.0" layoutY="293.0" mnemonicParsing="false" onAction="#selectImage" text="select image" />
-      <TableView fx:id="afficher" layoutX="320.0" layoutY="428.0" prefHeight="208.0" prefWidth="262.0">
+      <TextField fx:id="Nom" layoutX="637.0" layoutY="312.0" />
+      <TextField fx:id="Description" layoutX="632.0" layoutY="377.0" />
+      <Text layoutX="557.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="nom" />
+      <Text layoutX="540.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="description" />
+      <Button fx:id="ajouter" layoutX="582.0" layoutY="470.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+      <Button layoutX="707.0" layoutY="470.0" mnemonicParsing="false" onAction="#modifier" text="Modifier" />
+      <Button layoutX="850.0" layoutY="470.0" mnemonicParsing="false" onAction="#supp" text="supp" />
+      <ComboBox fx:id="comboxid" layoutX="625.0" layoutY="419.0" onAction="#selectrestaurant" prefWidth="150.0" />
+      <TableView fx:id="afficher" layoutX="487.0" layoutY="532.0" prefHeight="214.0" prefWidth="413.0">
          <columns>
-            <TableColumn fx:id="nomcategory" prefWidth="75.0" text="nom" />
-            <TableColumn fx:id="imagecategory" prefWidth="75.0" text="image" />
-            <TableColumn fx:id="desccategory" prefWidth="75.0" text="description" />
+            <TableColumn fx:id="afficherNom" prefWidth="75.0" text="nom" />
+            <TableColumn fx:id="afficherdesc" prefWidth="75.0" text="description" />
          </columns>
       </TableView>
-      <AnchorPane fx:id="statistiques" layoutX="689.0" layoutY="314.0" prefHeight="366.0" prefWidth="540.0">
-         <children>
-            <PieChart fx:id="pieChart" layoutX="-4.0" layoutY="3.0" prefHeight="357.0" prefWidth="540.0" />
-         </children>
-      </AnchorPane>
    </children>
 </AnchorPane>

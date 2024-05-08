@@ -1,8 +1,8 @@
-package Services;
+package services;
 
-import Entity.Category;
-import Entity.Hebergement;
-import Util.MyDB;
+import models.Category;
+import models.Hebergement;
+import utils.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

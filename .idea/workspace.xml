@@ -6,13 +6,32 @@
   <component name="ChangeListManager">
     <list default="true" id="bb79324d-adcb-4532-b373-8246f3fe7403" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CategoryManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/CategoryManagment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ReservationManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ReservationManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CalendarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CategoryH/CalendarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/CategoryManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CategoryH/CategoryManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/FrontManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CategoryH/FrontManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/HebergementManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/Hebergement/HebergementManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ReservationManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReservationH/ReservationManagment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/CalendarActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/CalendarActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Hebergement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Hebergement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Entity/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ICategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ICategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/IHebergement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/IHebergement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/IReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/IReservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ServiceCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ServiceCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ServiceHebergement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ServiceHebergement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Services/ServiceReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ServiceReservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Util/MyDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/MyDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Category.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Category.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Front.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Front.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ReservationFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ReservationFront.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Category.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CategoryH/Category.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Front.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CategoryH/Front.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Hebergement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Hebergement/Hebergement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ReservationFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ReservationH/ReservationFront.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/calendar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CategoryH/calendar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/reservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ReservationH/reservation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/stylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CategoryH/stylesheet.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,25 +73,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Gestion__Hebergement2",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/MSI/.m2/repository/com/dlsc/formsfx/formsfx-core/11.6.0",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Gestion__Hebergement2&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/MSI/.m2/repository/com/dlsc/formsfx/formsfx-core/11.6.0&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\MSI\IdeaProjects\Pidev_Desktop-Gestion_Hebergement\src\main\resources" />
@@ -121,6 +140,7 @@
       <workItem from="1715026700941" duration="10606000" />
       <workItem from="1715041901304" duration="1084000" />
       <workItem from="1715085019433" duration="19509000" />
+      <workItem from="1715168076911" duration="996000" />
     </task>
     <servers />
   </component>

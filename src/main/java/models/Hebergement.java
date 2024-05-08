@@ -1,4 +1,4 @@
-package Entity;
+package models;
 
 public class Hebergement {
     int id;

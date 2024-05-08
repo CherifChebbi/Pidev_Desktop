@@ -1,12 +1,10 @@
-package Controller;
+package controllers.CategoryH;
 
-import Entity.Category;
-import Entity.Hebergement;
-import Services.ServiceCategory;
+import models.Category;
+import services.ServiceCategory;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,7 +14,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -73,7 +70,7 @@ public class FrontManagment {
 
                 reservationButton.setOnAction(event -> {
                     try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationFront.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationH/ReservationFront.fxml"));
                         Parent root = loader.load();
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));

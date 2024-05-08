@@ -11,8 +11,14 @@ module test {
     requires org.apache.pdfbox;
 
     opens test to javafx.fxml;
-    opens Entity to javafx.base;
+    opens models to javafx.base;
     exports test;
-    exports Controller;
-    opens Controller to javafx.fxml;
+    exports controllers;
+    opens controllers to javafx.fxml;
+    exports controllers.CategoryH;
+    opens controllers.CategoryH to javafx.fxml;
+    exports controllers.Hebergement;
+    opens controllers.Hebergement to javafx.fxml;
+    exports controllers.ReservationH;
+    opens controllers.ReservationH to javafx.fxml;
 }
