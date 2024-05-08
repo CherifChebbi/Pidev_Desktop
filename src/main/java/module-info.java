@@ -13,8 +13,8 @@ module test {
     opens test to javafx.fxml;
     opens models to javafx.base;
     exports test;
-    exports controllers;
-    opens controllers to javafx.fxml;
+
+
     exports controllers.CategoryH;
     opens controllers.CategoryH to javafx.fxml;
     exports controllers.Hebergement;
