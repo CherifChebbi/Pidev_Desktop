@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
 import models.Event;
@@ -31,7 +32,7 @@ import java.util.List;
 public class FrontController {
 
     @FXML
-    private FlowPane eventFlowPane;
+    private ScrollPane eventScrollPane;
 
     @FXML
     private TextField rechEventFront;
@@ -62,23 +63,20 @@ public class FrontController {
         // Affichez tous les événements initialement
         afficherEvenements(serviceEvent.afficher());
 
-        // Ajoutez de l'espace autour de chaque événement dans le FlowPane
-        eventFlowPane.setPadding(new Insets(20)); // Ajoutez 20 pixels d'espace autour de chaque événement
-        eventFlowPane.setHgap(10); // Espacement horizontal entre les images
-        eventFlowPane.setVgap(10); // Espacement vertical entre les images
-        eventFlowPane.setAlignment(Pos.CENTER); // Centrer les événements dans le FlowPane
-
-        // Calculez la largeur préférée à laquelle le FlowPane doit retourner à la ligne
-        int preferredWidth = (int) (4 * 220 + 40); // 4 événements par ligne, 220 est la largeur des images + les marges
-        eventFlowPane.setPrefWrapLength(preferredWidth);
+        // Ajoutez une marge supérieure et des marges sur les côtés pour le ScrollPane
+        eventScrollPane.setPadding(new Insets(20, 20, 20, 20));
     }
 
-
-
     private void afficherEvenements(List<Event> events) {
-        eventFlowPane.getChildren().clear(); // Effacez les événements actuellement affichés
+        VBox eventVBox = new VBox(); // Utilisez un VBox pour stocker les événements
+        eventVBox.setSpacing(20); // Espacement vertical entre les conteneurs d'événements
 
-        for (Event event : events) {
+        HBox eventLine = new HBox(); // Utilisez un HBox pour chaque ligne d'événements
+        eventLine.setSpacing(20); // Espacement horizontal entre les conteneurs d'événements
+
+        for (int i = 0; i < events.size(); i++) {
+            Event event = events.get(i);
+
             ImageView imageView = createEventView(event);
             imageView.setFitWidth(200); // Largeur de l'image
             imageView.setFitHeight(180); // Hauteur de l'image
@@ -87,6 +85,7 @@ public class FrontController {
             Label dateLabel = new Label("Date: " + event.getDateDebut());
             Label priceLabel = new Label("Prix: " + event.getPrix());
             Button reserveButton = new Button("Réserver");
+            reserveButton.setStyle("-fx-background-color: #FF0000;");
             reserveButton.setOnAction(this::reserveButtonClicked);
             reserveButton.setUserData(event);
 
@@ -97,29 +96,25 @@ public class FrontController {
 
             VBox container = new VBox();
             container.getChildren().addAll(imageView, eventDetails);
-            container.setSpacing(10);
+            container.setSpacing(50); // Ajouter un espacement vertical entre chaque image
             container.setAlignment(Pos.CENTER);
 
-            HBox eventContainer = new HBox();
-            eventContainer.getChildren().add(container);
-            eventContainer.setAlignment(Pos.CENTER);
-            eventContainer.setPadding(new Insets(10));
+            eventLine.getChildren().add(container); // Ajoutez chaque conteneur d'événement à la ligne
 
-            // Créer un rectangle noir pour le cadre autour de chaque événement
-            Rectangle rectangle = new Rectangle();
-            rectangle.setWidth(220); // Largeur du rectangle (ajustez selon vos besoins)
-            rectangle.setHeight(250); // Hauteur du rectangle (ajustez selon vos besoins)
-            rectangle.setFill(Color.ORANGERED); // Couleur du rectangle (noir)
-            rectangle.setOpacity(0.5); // Opacité du rectangle
-
-            // Créer un StackPane pour superposer le rectangle et le contenu de l'événement
-            StackPane stackPane = new StackPane();
-            stackPane.getChildren().addAll(rectangle, eventContainer);
-
-            // Ajouter le StackPane au FlowPane
-            eventFlowPane.getChildren().add(stackPane);
+            // Si nous avons atteint le nombre maximal d'événements par ligne ou si c'est le dernier événement, ajoutez la ligne actuelle à eventVBox
+            if ((i + 1) % 4 == 0 || i == events.size() - 1) {
+                eventVBox.getChildren().add(eventLine); // Ajoutez la ligne d'événements à eventVBox
+                eventLine = new HBox(); // Créez une nouvelle ligne pour les événements suivants
+                eventLine.setSpacing(20); // Réinitialisez l'espacement horizontal pour la nouvelle ligne
+            }
         }
+
+        eventScrollPane.setContent(eventVBox); // Définissez le contenu du ScrollPane comme le VBox contenant tous les événements
     }
+
+
+
+
 
     private ImageView createEventView(Event event) {
         ImageView imageView = new ImageView();
@@ -128,7 +123,7 @@ public class FrontController {
 
         // Ajoutez une marge autour de l'imageView
         StackPane stackPane = new StackPane(imageView);
-        stackPane.setPadding(new Insets(15)); // Définissez la marge sur le StackPane
+        stackPane.setPadding(new Insets(5)); // Définissez la marge sur le StackPane
         return imageView;
     }
 
@@ -164,7 +159,6 @@ public class FrontController {
         }
     }
 
-
     @FXML
     public void reserveButtonClicked(ActionEvent event) {
         Button buttonClicked = (Button) event.getSource();
@@ -199,5 +193,4 @@ public class FrontController {
             afficherEvenements(events);
         }
     }
-
 }

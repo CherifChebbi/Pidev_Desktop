@@ -4,18 +4,18 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FrontController">
+<AnchorPane prefHeight="706.0" prefWidth="1100.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FrontController">
    <children>
-      <ImageView fitHeight="65.0" fitWidth="202.0" layoutX="42.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="101.0" fitWidth="290.0" layoutX="14.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/terra-removebg-preview.png" />
          </image>
@@ -108,7 +108,6 @@
             </ImageView>
          </children>
       </HBox>
-      <FlowPane fx:id="eventFlowPane" layoutX="-2.0" layoutY="200.0" prefHeight="626.0" prefWidth="1040.0" />
       <Label layoutX="59.0" layoutY="93.0" text="Événements à venir">
          <font>
             <Font size="30.0" />
@@ -120,12 +119,13 @@
          </font>
       </Label>
       <TextField fx:id="rechEventFront" layoutX="63.0" layoutY="176.0" prefHeight="26.0" prefWidth="209.0" />
-      <Button layoutX="276.0" layoutY="175.0" mnemonicParsing="false" onAction="#rechercherEventFront" text="Rechercher" />
+      <Button layoutX="276.0" layoutY="175.0" mnemonicParsing="false" onAction="#rechercherEventFront" style="-fx-background-color: FF0000;" text="Rechercher" />
       <Text layoutX="413.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filtrer par:">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
       <ChoiceBox fx:id="choiceFiltreEvent" layoutX="488.0" layoutY="181.0" prefWidth="150.0" />
+      <ScrollPane fx:id="eventScrollPane" layoutX="42.0" layoutY="262.0" prefHeight="444.0" prefWidth="1208.0" styleClass="center-pane" stylesheets="@AjoutEvent.css" />
    </children>
 </AnchorPane>
