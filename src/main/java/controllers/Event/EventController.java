@@ -1,4 +1,4 @@
-package controllers;
+package controllers.Event;
 
 import models.Category;
 import models.Event;

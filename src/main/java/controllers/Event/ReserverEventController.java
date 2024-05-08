@@ -1,5 +1,6 @@
-package controllers;
+package controllers.Event;
 
+import controllers.ReservationEvent.PaiementController;
 import models.Event;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

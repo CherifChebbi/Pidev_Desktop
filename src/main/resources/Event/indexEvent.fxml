@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="706.0" prefWidth="1268.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FrontController">
+<AnchorPane prefHeight="706.0" prefWidth="1268.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Event.FrontController">
    <children>
       <ImageView fitHeight="101.0" fitWidth="290.0" layoutX="14.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
          <image>

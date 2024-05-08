@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: ffffff;" stylesheets="@../Event/stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CategoryEventController">
+<AnchorPane id="AnchorPane" prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: ffffff;" stylesheets="@../Event/stylesheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CategoryEvent.CategoryEventController">
     <children>
         <ImageView fx:id="Background" fitHeight="570.0" fitWidth="658.0" layoutX="378.0" layoutY="133.0" opacity="0.08" pickOnBounds="true" preserveRatio="true">
             <image>

@@ -1,4 +1,4 @@
-package controllers;
+package controllers.ReservationEvent;
 
 import com.stripe.Stripe;
 import com.stripe.exception.StripeException;

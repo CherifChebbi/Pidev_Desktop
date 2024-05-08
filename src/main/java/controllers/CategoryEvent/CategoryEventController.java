@@ -1,4 +1,4 @@
-package controllers;
+package controllers.CategoryEvent;
 
 import models.Category;
 import javafx.collections.ObservableList;
