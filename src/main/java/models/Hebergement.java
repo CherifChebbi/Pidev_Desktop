@@ -6,13 +6,13 @@ public class Hebergement {
     String nom;
     String description;
 
-    private Category restaurant;
+    private CategoryH restaurant;
 
-    public Category getRestaurant() {
+    public CategoryH getRestaurant() {
         return restaurant;
     }
 
-    public void setRestaurant(Category restaurant) {
+    public void setRestaurant(CategoryH restaurant) {
         this.restaurant = restaurant;
     }
 
@@ -22,11 +22,11 @@ public class Hebergement {
 
     public Hebergement() {}
 
-    public Hebergement(int categorie_id, String nom, String description, Category category) {
+    public Hebergement(int categorie_id, String nom, String description, CategoryH categoryH) {
         this.categorie_id = categorie_id;
         this.nom = nom;
         this.description = description;
-        this.restaurant = category;
+        this.restaurant = categoryH;
     }
 
     public Hebergement(String nom, String description) {

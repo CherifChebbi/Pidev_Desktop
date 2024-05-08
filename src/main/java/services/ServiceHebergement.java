@@ -1,6 +1,6 @@
 package services;
 
-import models.Category;
+import models.CategoryH;
 import models.Hebergement;
 import utils.MyDB;
 import javafx.collections.FXCollections;
@@ -68,13 +68,13 @@ public class ServiceHebergement implements IHebergement<Hebergement> {
         }
     }
 
-    public List<Category> getAllCategories() {
+    public List<CategoryH> getAllCategories() {
         String query = "SELECT * FROM category";
-        List<Category> plats = new ArrayList<>();
+        List<CategoryH> plats = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Category plat = new Category();
+                CategoryH plat = new CategoryH();
                 plat.setId(resultSet.getInt("id"));
                 plat.setNom(resultSet.getString("nom"));
                 plat.setDescription(resultSet.getString("image"));

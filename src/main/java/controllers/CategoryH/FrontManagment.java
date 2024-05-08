@@ -1,6 +1,6 @@
 package controllers.CategoryH;
 
-import models.Category;
+import models.CategoryH;
 import services.ServiceCategory;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -38,11 +38,11 @@ public class FrontManagment {
 
     private void afficherCategories() {
         try {
-            ObservableList<Category> categories = sc.afficher();
+            ObservableList<CategoryH> categories = sc.afficher();
             AnchorPane anchorPane = new AnchorPane();
             double layoutY = 10.0; // Initial layoutY value for the first label
-            for (Category category : categories) {
-                Label label = new Label(category.getNom());
+            for (CategoryH categoryH : categories) {
+                Label label = new Label(categoryH.getNom());
                 label.setLayoutX(10.0);
                 label.setLayoutY(layoutY);
 
@@ -54,13 +54,13 @@ public class FrontManagment {
 
                 try {
                     // Attempt to load the image
-                    Image image = new Image(new File(category.getImage()).toURI().toString());
+                    Image image = new Image(new File(categoryH.getImage()).toURI().toString());
                     imageView.setImage(image);
                 } catch (Exception e) {
                     System.err.println("Error loading image: " + e.getMessage());
                 }
 
-                Label descLabel = new Label(category.getDescription());
+                Label descLabel = new Label(categoryH.getDescription());
                 descLabel.setLayoutX(10.0);
                 descLabel.setLayoutY(layoutY + 110); // Position the description label below the image
 

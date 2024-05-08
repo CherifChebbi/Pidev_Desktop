@@ -2,7 +2,7 @@ package models;
 
 import java.time.LocalDate;
 
-public class Reservation {
+public class ReservationH {
     private int id;
     private int hebergmenet;
     private String nom;
@@ -10,7 +10,7 @@ public class Reservation {
     private LocalDate date;
     private int nbrPersonne;
 
-    public Reservation(int id, int hebergmenet, String nom, String email, LocalDate date, int nbrPersonne) {
+    public ReservationH(int id, int hebergmenet, String nom, String email, LocalDate date, int nbrPersonne) {
         this.id = id;
         this.hebergmenet = hebergmenet;
         this.nom = nom;
@@ -19,7 +19,7 @@ public class Reservation {
         this.nbrPersonne = nbrPersonne;
     }
 
-    public Reservation(int hebergmenet, String nom, String email, LocalDate date, int nbrPersonne) {
+    public ReservationH(int hebergmenet, String nom, String email, LocalDate date, int nbrPersonne) {
         this.hebergmenet = hebergmenet;
         this.nom = nom;
         this.email = email;
@@ -27,13 +27,13 @@ public class Reservation {
         this.nbrPersonne = nbrPersonne;
     }
 
-    public Reservation(String nom, String email, LocalDate date, int nbrPersonne) {
+    public ReservationH(String nom, String email, LocalDate date, int nbrPersonne) {
         this.nom = nom;
         this.email = email;
         this.date = date;
         this.nbrPersonne = nbrPersonne;
     }
-    public Reservation() {
+    public ReservationH() {
         // You can initialize default values or leave it empty
     }
 

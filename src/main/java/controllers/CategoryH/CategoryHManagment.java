@@ -1,6 +1,6 @@
 package controllers.CategoryH;
 
-import models.Category;
+import models.CategoryH;
 import services.ServiceCategory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,7 +24,7 @@ import javafx.scene.chart.PieChart;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CategoryManagment {
+public class CategoryHManagment {
 
 
     @FXML
@@ -41,22 +41,22 @@ public class CategoryManagment {
     private TextField nom;
 
     @FXML
-    private TableColumn<Category, String> imagecategory;
+    private TableColumn<CategoryH, String> imagecategory;
 
     @FXML
-    private TableColumn<Category, String> nomcategory;
+    private TableColumn<CategoryH, String> nomcategory;
 
     @FXML
-    private TableView<Category> afficher;
+    private TableView<CategoryH> afficher;
     @FXML
-    private TableColumn<Category, String> desccategory;
+    private TableColumn<CategoryH, String> desccategory;
 
 
 
     ServiceCategory sc = new ServiceCategory();
 
     private void selection(){
-        Category c=afficher.getItems().get(afficher.getSelectionModel().getSelectedIndex());
+        CategoryH c=afficher.getItems().get(afficher.getSelectionModel().getSelectedIndex());
 
         nom.setText(String.valueOf(c.getNom()));
         image.setText(String.valueOf(c.getImage()));
@@ -107,7 +107,7 @@ public class CategoryManagment {
             showAlert("Veuillez remplir tous les champs.");
         } else {
             // Ajouter la catégorie
-            sc.ajouter(new Category(i, j, y));
+            sc.ajouter(new CategoryH(i, j, y));
             // Afficher un message de succès
             showAlert("Catégorie ajoutée avec succès.");
             // Rafraîchir la liste des catégories
@@ -152,7 +152,7 @@ public class CategoryManagment {
 
     @FXML
     void modifier(ActionEvent event) throws SQLException {
-        Category c = afficher.getSelectionModel().getSelectedItem();
+        CategoryH c = afficher.getSelectionModel().getSelectedItem();
         String i = String.valueOf(nom.getText());
         String mo = String.valueOf(image.getText());
         String z = String.valueOf(description.getText());
@@ -162,7 +162,7 @@ public class CategoryManagment {
             // Afficher un message d'alerte
             showAlert("Veuillez remplir tous les champs.");
         } else {
-            Category ct = new Category(i, mo, z);
+            CategoryH ct = new CategoryH(i, mo, z);
             sc.modifier(ct, c.getId());
 
             // Clear the ListView and then re-populate it with updated data
@@ -174,7 +174,7 @@ public class CategoryManagment {
 
     @FXML
     void supprimer(ActionEvent event) throws SQLException {
-        Category c = afficher.getSelectionModel().getSelectedItem();
+        CategoryH c = afficher.getSelectionModel().getSelectedItem();
         System.out.println(c.getId());
         sc.supprimer(c.getId());
         afficher();

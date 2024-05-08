@@ -1,6 +1,6 @@
 package services;
 
-import models.Category;
+import models.CategoryH;
 import utils.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -12,9 +12,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceCategory implements ICategory<Category>{
+public class ServiceCategory implements ICategory<CategoryH>{
 
-    private ObservableList<Category> categoryList = FXCollections.observableArrayList();
+    private ObservableList<CategoryH> categoryHList = FXCollections.observableArrayList();
 
 
 
@@ -22,13 +22,13 @@ public class ServiceCategory implements ICategory<Category>{
     private Connection connection;
     public ServiceCategory(){connection= MyDB.getCon();}
     @Override
-    public void ajouter(Category category) throws SQLException {
+    public void ajouter(CategoryH categoryH) throws SQLException {
         String req ="INSERT INTO category (nom, image, description) VALUES (?,?,?)";
 
         try (PreparedStatement pre = connection.prepareStatement(req)) {
-            pre.setString(1, category.getNom());
-            pre.setString(2, category.getImage());
-            pre.setString(3, category.getDescription());
+            pre.setString(1, categoryH.getNom());
+            pre.setString(2, categoryH.getImage());
+            pre.setString(3, categoryH.getDescription());
             pre.executeUpdate();
             System.out.println("Category added successfully!");
         }
@@ -36,42 +36,42 @@ public class ServiceCategory implements ICategory<Category>{
 
 
     @Override
-    public void modifier(Category category, int id) throws SQLException {
+    public void modifier(CategoryH categoryH, int id) throws SQLException {
         String req = "UPDATE category SET nom=?, image=?, description=? WHERE id=?";
         try (PreparedStatement pre = connection.prepareStatement(req)) {
-            pre.setString(1, category.getNom());
-            pre.setString(2, category.getImage());
-            pre.setString(3, category.getDescription());
+            pre.setString(1, categoryH.getNom());
+            pre.setString(2, categoryH.getImage());
+            pre.setString(3, categoryH.getDescription());
             pre.setInt(4, id); // Use the original category id for updating
             pre.executeUpdate();
             System.out.println("Category modified successfully!");
 
             // Create a copy of the current list
-            ObservableList<Category> newList = FXCollections.observableArrayList(categoryList);
+            ObservableList<CategoryH> newList = FXCollections.observableArrayList(categoryHList);
 
             // Update the copy with the modified category
-            for (Category c : newList) {
+            for (CategoryH c : newList) {
                 if (c.getId() == id) {
-                    c.setNom(category.getNom());
-                    c.setImage(category.getImage());
-                    c.setDescription(category.getDescription());
+                    c.setNom(categoryH.getNom());
+                    c.setImage(categoryH.getImage());
+                    c.setDescription(categoryH.getDescription());
                     break;
                 }
             }
 
             // Replace the old list with the new list
-            categoryList.setAll(newList);
+            categoryHList.setAll(newList);
         }
     }
 
     @Override
-    public ObservableList<Category> afficher() throws SQLException {
+    public ObservableList<CategoryH> afficher() throws SQLException {
         String req ="SELECT * FROM category";
-        ObservableList<Category> list = FXCollections.observableArrayList();
+        ObservableList<CategoryH> list = FXCollections.observableArrayList();
         PreparedStatement pre= connection.prepareStatement(req);
         ResultSet res = pre.executeQuery();
         while (res.next()) {
-            Category c= new Category();
+            CategoryH c= new CategoryH();
             c.setId(res.getInt("id"));
             c.setNom(res.getString("nom"));
             c.setImage(res.getString("image"));
@@ -92,13 +92,13 @@ public class ServiceCategory implements ICategory<Category>{
         }
     }
 
-    public List<Category> getAllCategories() {
+    public List<CategoryH> getAllCategories() {
         String query = "SELECT * FROM category";
-        List<Category> plats = new ArrayList<>();
+        List<CategoryH> plats = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Category plat = new Category();
+                CategoryH plat = new CategoryH();
                 plat.setId(resultSet.getInt("id"));
                 plat.setNom(resultSet.getString("nom"));
                 plat.setDescription(resultSet.getString("Description"));

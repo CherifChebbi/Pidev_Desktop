@@ -1,6 +1,6 @@
 package controllers.Hebergement;
 
-import models.Category;
+import models.CategoryH;
 import models.Hebergement;
 import services.ServiceCategory;
 import services.ServiceHebergement;
@@ -28,7 +28,7 @@ public class HebergementManagment {
     private TextField Nom;
 
     @FXML
-    private ComboBox<Category> comboxid;
+    private ComboBox<CategoryH> comboxid;
 
     @FXML
     private TableView<Hebergement> afficher;
@@ -61,7 +61,7 @@ public class HebergementManagment {
     }
 
     private void populateComboBox() throws SQLException {
-        List<Category> categories = SC.getAllCategories();
+        List<CategoryH> categories = SC.getAllCategories();
         comboxid.setItems(FXCollections.observableArrayList(categories));
     }
 
@@ -70,9 +70,9 @@ public class HebergementManagment {
     void ajouter(ActionEvent event) throws SQLException {
         String i = Nom.getText();
         String j = Description.getText();
-        Category selectedCategory = comboxid.getValue();
+        CategoryH selectedCategoryH = comboxid.getValue();
 
-        if (i.isEmpty() || j.isEmpty() || selectedCategory == null) {
+        if (i.isEmpty() || j.isEmpty() || selectedCategoryH == null) {
             showAlert("Veuillez remplir tous les champs.");
         } else {
             SH.ajouter(new Hebergement(i, j));

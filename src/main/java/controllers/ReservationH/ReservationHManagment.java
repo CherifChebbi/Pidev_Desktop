@@ -1,6 +1,6 @@
 package controllers.ReservationH;
 
-import models.Reservation;
+import models.ReservationH;
 import services.ServiceReservation;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,10 +33,10 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 
 
-public class ReservationManagment {
+public class ReservationHManagment {
 
     @FXML
-    private TableView<Reservation> afficher;
+    private TableView<ReservationH> afficher;
 
     @FXML
     private TextField nom;
@@ -51,7 +51,7 @@ public class ReservationManagment {
     private TextField nbr;
     @FXML
     private Button excel;
-    private ObservableList<Reservation> reservations = FXCollections.observableArrayList();
+    private ObservableList<ReservationH> reservationHS = FXCollections.observableArrayList();
 
     private ServiceReservation SR = new ServiceReservation();
 
@@ -70,9 +70,9 @@ public class ReservationManagment {
 
     @FXML
     public void afficher() throws SQLException {
-        reservations.clear();
-        reservations.addAll(SR.afficher());
-        afficher.setItems(reservations);
+        reservationHS.clear();
+        reservationHS.addAll(SR.afficher());
+        afficher.setItems(reservationHS);
     }
     private void refreshTableView() {
         try {
@@ -91,14 +91,14 @@ public class ReservationManagment {
 
         try {
             if (i != null && !i.isEmpty() && y != null && !y.isEmpty() && x != null && z != null) {
-                Reservation reservation = new Reservation(70, i, y, x, z);
-                SR.ajouter(reservation);
+                ReservationH reservationH = new ReservationH(70, i, y, x, z);
+                SR.ajouter(reservationH);
 
                 // Send email
-                sendEmail(y, reservation); // Pass the email address and reservation object to the sendEmail method
+                sendEmail(y, reservationH); // Pass the email address and reservation object to the sendEmail method
 
                 // Add the new reservation to the TableView
-                afficher.getItems().add(reservation);
+                afficher.getItems().add(reservationH);
 
                 // Clear the input fields after adding the reservation
                 nom.clear();
@@ -116,7 +116,7 @@ public class ReservationManagment {
     }
 
 
-    private void sendEmail(String recipientEmail, Reservation reservation) {
+    private void sendEmail(String recipientEmail, ReservationH reservationH) {
         // Sender's email address and password
         final String senderEmail = "nsiriaziz009@gmail.com";
         final String senderPassword = "uoqpcqvcrrxqnbce";
@@ -127,10 +127,10 @@ public class ReservationManagment {
 
         // Email content
         String subject = "Confirmation de réservation";
-        String body = "Bonjour " + reservation.getNom() + ",\n\n"
+        String body = "Bonjour " + reservationH.getNom() + ",\n\n"
                 + "Votre réservation a été effectuée avec succès.\n"
-                + "Date: " + reservation.getDate() + "\n"
-                + "Nombre de personnes: " + reservation.getNbrPersonne() + "\n\n"
+                + "Date: " + reservationH.getDate() + "\n"
+                + "Nombre de personnes: " + reservationH.getNbrPersonne() + "\n\n"
                 + "Cordialement,\n"
                 + "Votre équipe de réservation";
 
@@ -170,11 +170,11 @@ public class ReservationManagment {
 
     @FXML
     void modifier(ActionEvent event) throws SQLException {
-        Reservation selectedReservation = afficher.getSelectionModel().getSelectedItem();
-        if (selectedReservation != null) {
+        ReservationH selectedReservationH = afficher.getSelectionModel().getSelectedItem();
+        if (selectedReservationH != null) {
             // Show a dialog or form to edit the reservation details
             // After editing, update the reservation in the database
-            SR.modifier(selectedReservation); // You need to implement the modifier method in ServiceReservation
+            SR.modifier(selectedReservationH); // You need to implement the modifier method in ServiceReservation
             // Refresh the TableView
             afficher();
         } else {
@@ -184,8 +184,8 @@ public class ReservationManagment {
 
     @FXML
     void supprimer(ActionEvent event) throws SQLException {
-        Reservation selectedReservation = afficher.getSelectionModel().getSelectedItem();
-        if (selectedReservation != null) {
+        ReservationH selectedReservationH = afficher.getSelectionModel().getSelectedItem();
+        if (selectedReservationH != null) {
             // Show a confirmation dialog
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
@@ -194,8 +194,8 @@ public class ReservationManagment {
             Optional<ButtonType> result = alert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 // User confirmed, delete the reservation
-                SR.supprimer(selectedReservation.getId()); // You need to implement the supprimer method in ServiceReservation
-                reservations.remove(selectedReservation);
+                SR.supprimer(selectedReservationH.getId()); // You need to implement the supprimer method in ServiceReservation
+                reservationHS.remove(selectedReservationH);
                 // Refresh the TableView
                 afficher();
             }
@@ -239,16 +239,16 @@ public class ReservationManagment {
 
             // Write data rows
             y -= 20;
-            for (Reservation reservation : reservations) {
+            for (ReservationH reservationH : reservationHS) {
                 contentStream.beginText();
                 contentStream.newLineAtOffset(50, y);
-                contentStream.showText(reservation.getNom());
+                contentStream.showText(reservationH.getNom());
                 contentStream.newLineAtOffset(100, 0);
-                contentStream.showText(reservation.getEmail());
+                contentStream.showText(reservationH.getEmail());
                 contentStream.newLineAtOffset(100, 0);
-                contentStream.showText(reservation.getDate().toString());
+                contentStream.showText(reservationH.getDate().toString());
                 contentStream.newLineAtOffset(100, 0);
-                contentStream.showText(Integer.toString(reservation.getNbrPersonne()));
+                contentStream.showText(Integer.toString(reservationH.getNbrPersonne()));
                 contentStream.endText();
                 y -= 20;
             }
@@ -294,12 +294,12 @@ public class ReservationManagment {
 
             // Populate data rows
             int rowNum = 1;
-            for (Reservation reservation : reservations) {
+            for (ReservationH reservationH : reservationHS) {
                 Row row = sheet.createRow(rowNum++);
-                row.createCell(0).setCellValue(reservation.getNom());
-                row.createCell(1).setCellValue(reservation.getEmail());
-                row.createCell(2).setCellValue(reservation.getDate().toString());
-                row.createCell(3).setCellValue(reservation.getNbrPersonne());
+                row.createCell(0).setCellValue(reservationH.getNom());
+                row.createCell(1).setCellValue(reservationH.getEmail());
+                row.createCell(2).setCellValue(reservationH.getDate().toString());
+                row.createCell(3).setCellValue(reservationH.getNbrPersonne());
             }
 
             // Create a file chooser dialog

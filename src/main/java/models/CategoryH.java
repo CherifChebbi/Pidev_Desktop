@@ -3,7 +3,7 @@ package models;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Category {
+public class CategoryH {
     int id;
     String nom;
     String image;
@@ -11,7 +11,7 @@ public class Category {
     ImageView imageView;
 
 
-    public Category(int id, String nom, String image, String description) {
+    public CategoryH(int id, String nom, String image, String description) {
         this.id = id;
         this.nom = nom;
         this.image = image;
@@ -21,13 +21,13 @@ public class Category {
         this.imageView.setFitHeight(100);
     }
 
-    public Category(String nom, String image, String description) {
+    public CategoryH(String nom, String image, String description) {
         this.nom = nom;
         this.image = image;
         this.description = description;
     }
 
-    public Category() {
+    public CategoryH() {
 
     }
 
