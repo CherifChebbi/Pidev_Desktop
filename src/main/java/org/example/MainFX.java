@@ -1,6 +1,5 @@
 package org.example;
 
-import com.stripe.Stripe;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,12 +14,12 @@ public class MainFX extends Application {
     public void start(Stage primaryStage) throws IOException {
         try {
             // Charger la vue de la page "BackHome"
-            FXMLLoader backHomeLoader = new FXMLLoader(getClass().getResource("/HomeBack.fxml"));
+            FXMLLoader backHomeLoader = new FXMLLoader(getClass().getResource("/Event/HomeBack.fxml"));
             Parent backHomeRoot = backHomeLoader.load();
             Scene backHomeScene = new Scene(backHomeRoot);
 
             // Charger la vue de la page "ReservationFront"
-            FXMLLoader reservationFrontLoader = new FXMLLoader(getClass().getResource("/indexEvent.fxml"));
+            FXMLLoader reservationFrontLoader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
             Parent reservationFrontRoot = reservationFrontLoader.load();
             Scene reservationFrontScene = new Scene(reservationFrontRoot);
 

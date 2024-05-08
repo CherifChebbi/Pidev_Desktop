@@ -93,7 +93,7 @@ public class ReserverEventController {
         }
 
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Paiement.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationEvent/Paiement.fxml"));
         Parent root;
         try {
             root = loader.load();
@@ -118,7 +118,7 @@ public class ReserverEventController {
         stage.close();
 
         // Ouvrir la page front des événements
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/indexEvent.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
         Parent root;
         try {
             root = loader.load();

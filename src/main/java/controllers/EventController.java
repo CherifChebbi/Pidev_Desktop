@@ -264,7 +264,7 @@ public class EventController implements Initializable {
     void dashboardCategories(ActionEvent event) {
         try {
             // Charger le fichier FXML de la page AjoutCategory.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackCategory.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CategoryEvent/BackCategory.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène avec le contenu de la page AjoutCategory.fxml
@@ -285,7 +285,7 @@ public class EventController implements Initializable {
     void dashboardReservations(ActionEvent event) {
         try {
             // Charger le fichier FXML de la page des réservations
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationBack.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationEvent/ReservationBack.fxml"));
             Parent root = loader.load();
 
             // Accéder à la fenêtre principale de votre application
@@ -305,7 +305,7 @@ public class EventController implements Initializable {
     void dashboardEvents(ActionEvent event) {
         try {
             // Charger le fichier FXML de la page du tableau de bord des événements
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackEvent.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/BackEvent.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène avec le contenu de la page du tableau de bord des événements
@@ -325,7 +325,7 @@ public class EventController implements Initializable {
     @FXML
     public void homeDashboard(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/HomeBack.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/HomeBack.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));

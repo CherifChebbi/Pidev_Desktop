@@ -26,12 +26,12 @@
                </font></Text>
             <ImageView fitHeight="35.0" fitWidth="44.0" layoutX="985.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/Mastercard-logo.svg.png" />
+                  <Image url="@../images/Mastercard-logo.svg.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="35.0" fitWidth="56.0" layoutX="1043.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/visa.png" />
+                  <Image url="@../images/visa.png" />
                </image>
             </ImageView>
             <Text layoutX="703.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
@@ -66,11 +66,11 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <AnchorPane prefHeight="756.0" prefWidth="562.0" styleClass="center-pane" stylesheets="@AjoutEvent.css">
+            <AnchorPane prefHeight="756.0" prefWidth="562.0" styleClass="center-pane" stylesheets="@../Event/AjoutEvent.css">
                <children>
                   <ImageView fitHeight="442.0" fitWidth="536.0" layoutX="70.0" layoutY="154.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/TourTravelBusinessLogo.png" />
+                        <Image url="@../images/TourTravelBusinessLogo.png" />
                      </image>
                   </ImageView>
                </children>

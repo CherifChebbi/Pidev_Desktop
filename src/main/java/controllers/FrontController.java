@@ -16,15 +16,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import services.ServiceEvent;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import java.awt.*;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -163,7 +159,7 @@ public class FrontController {
     public void reserveButtonClicked(ActionEvent event) {
         Button buttonClicked = (Button) event.getSource();
         Event selectedEvent = (Event) buttonClicked.getUserData();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReserverEvent.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationEvent/ReserverEvent.fxml"));
         Parent root;
         try {
             root = loader.load();

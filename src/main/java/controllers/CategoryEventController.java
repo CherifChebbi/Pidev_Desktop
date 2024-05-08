@@ -139,7 +139,7 @@ public class CategoryEventController implements Initializable {
     @FXML
     public void dashboardCategories(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackCategory.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CategoryEvent/BackCategory.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -152,7 +152,7 @@ public class CategoryEventController implements Initializable {
     @FXML
     public void dashboardReservations(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationBack.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationEvent/ReservationBack.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -165,7 +165,7 @@ public class CategoryEventController implements Initializable {
     @FXML
     public void dashboardEvents(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/BackEvent.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/BackEvent.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -178,7 +178,7 @@ public class CategoryEventController implements Initializable {
     @FXML
     public void homeDashboard(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/HomeBack.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/HomeBack.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));

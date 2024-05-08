@@ -261,22 +261,22 @@ public class ReservationBackController {
 
     @FXML
     public void dashboardCategories(ActionEvent event) {
-        loadView("/BackCategory.fxml", event);
+        loadView("/CategoryEvent/BackCategory.fxml", event);
     }
 
     @FXML
     public void dashboardReservations(ActionEvent event) {
-        loadView("/ReservationBack.fxml", event);
+        loadView("/ReservationEvent/ReservationBack.fxml", event);
     }
 
     @FXML
     public void dashboardEvents(ActionEvent event) {
-        loadView("/BackEvent.fxml", event);
+        loadView("/Event/BackEvent.fxml", event);
     }
 
     @FXML
     public void homeDashboard(ActionEvent event) {
-        loadView("/HomeBack.fxml", event);
+        loadView("/Event/HomeBack.fxml", event);
     }
 
     private void loadView(String viewPath, ActionEvent event) {

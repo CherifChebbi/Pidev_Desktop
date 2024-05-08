@@ -18,32 +18,32 @@
             <children>
                 <ImageView fitHeight="640.0" fitWidth="693.0" layoutX="330.0" opacity="0.17" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/logo1.png" />
+                        <Image url="@../images/logo1.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="190.0" fitWidth="195.0" layoutX="59.0" layoutY="42.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/tourism.png" />
+                        <Image url="@../images/tourism.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="255.0" fitWidth="264.0" layoutX="217.0" layoutY="171.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/carte-de-voyage.png" />
+                        <Image url="@../images/carte-de-voyage.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="193.0" fitWidth="216.0" layoutX="48.0" layoutY="435.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/tourisme.png" />
+                        <Image url="@../images/tourisme.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="275.0" fitWidth="338.0" layoutX="985.0" layoutY="288.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/voyage-et-tourisme.png" />
+                        <Image url="@../images/voyage-et-tourisme.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="193.0" fitWidth="224.0" layoutX="1030.0" layoutY="40.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/carte-de-voyage.png" />
+                        <Image url="@../images/carte-de-voyage.png" />
                     </image>
                 </ImageView>
             <Text fill="#ff5757" layoutX="127.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations sur l'évènement">
@@ -115,7 +115,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="173.0" layoutY="526.0" mnemonicParsing="false" onAction="#retourFront" style="-fx-background-color: #000000;" stylesheets="@HomeBack.css" text="Retour">
+            <Button layoutX="173.0" layoutY="526.0" mnemonicParsing="false" onAction="#retourFront" style="-fx-background-color: #000000;" stylesheets="@../Event/HomeBack.css" text="Retour">
                <font>
                   <Font size="14.0" />
                </font>
@@ -124,7 +124,7 @@
         </AnchorPane>
         <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@images/terra-removebg-preview.png" />
+                <Image url="@../images/terra-removebg-preview.png" />
             </image>
         </ImageView>
         <HBox layoutX="313.0" layoutY="14.0" prefHeight="40.0" prefWidth="792.0">
@@ -133,7 +133,7 @@
                     <children>
                         <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/pays.png" />
+                                <Image url="@../images/pays.png" />
                             </image>
                         </ImageView>
                         <Button fx:id="Front_Pays" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: rgb(240, 243, 255);" text="Pays">
@@ -150,7 +150,7 @@
                     <children>
                         <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/restaurant.png" />
+                                <Image url="@../images/restaurant.png" />
                             </image>
                         </ImageView>
                         <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" style="-fx-background-color: rgb(240, 243, 255);" text="Restaurants">
@@ -167,7 +167,7 @@
                     <children>
                         <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/hotel.png" />
+                                <Image url="@../images/hotel.png" />
                             </image>
                         </ImageView>
                         <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="203.0" style="-fx-background-color: rgb(240, 243, 255);" text="Hebergements">
@@ -184,7 +184,7 @@
                     <children>
                         <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@images/events.png" />
+                                <Image url="@../images/events.png" />
                             </image>
                         </ImageView>
                         <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
@@ -208,7 +208,7 @@
                 </Button>
                 <ImageView fitHeight="40.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@images/6915987.png" />
+                        <Image url="@../images/6915987.png" />
                     </image>
                 </ImageView>
             </children>

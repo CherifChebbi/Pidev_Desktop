@@ -13,11 +13,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="706.0" prefWidth="1100.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FrontController">
+<AnchorPane prefHeight="706.0" prefWidth="1268.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.FrontController">
    <children>
       <ImageView fitHeight="101.0" fitWidth="290.0" layoutX="14.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/terra-removebg-preview.png" />
+            <Image url="@../images/terra-removebg-preview.png" />
          </image>
       </ImageView>
       <HBox layoutX="313.0" layoutY="14.0" prefHeight="40.0" prefWidth="792.0">
@@ -27,7 +27,7 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/pays.png" />
+                        <Image url="@../images/pays.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="Front_Pays" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: rgb(240, 243, 255);" text="Pays">
@@ -44,7 +44,7 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/restaurant.png" />
+                        <Image url="@../images/restaurant.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="Front_Restaurants" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" style="-fx-background-color: rgb(240, 243, 255);" text="Restaurants">
@@ -61,7 +61,7 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/hotel.png" />
+                        <Image url="@../images/hotel.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="Front_Hebergements" mnemonicParsing="false" prefHeight="47.0" prefWidth="203.0" style="-fx-background-color: rgb(240, 243, 255);" text="Hebergements">
@@ -78,7 +78,7 @@
                <children>
                   <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/events.png" />
+                        <Image url="@../images/events.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="Front_Events" mnemonicParsing="false" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
@@ -103,7 +103,7 @@
             </Button>
             <ImageView fitHeight="40.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/6915987.png" />
+                  <Image url="@../images/6915987.png" />
                </image>
             </ImageView>
          </children>
@@ -126,6 +126,6 @@
          </font>
       </Text>
       <ChoiceBox fx:id="choiceFiltreEvent" layoutX="488.0" layoutY="181.0" prefWidth="150.0" />
-      <ScrollPane fx:id="eventScrollPane" layoutX="42.0" layoutY="262.0" prefHeight="444.0" prefWidth="1208.0" styleClass="center-pane" stylesheets="@AjoutEvent.css" />
+      <ScrollPane fx:id="eventScrollPane" layoutX="42.0" layoutY="262.0" prefHeight="444.0" prefWidth="1244.0" styleClass="center-pane" stylesheets="@AjoutEvent.css" />
    </children>
 </AnchorPane>
