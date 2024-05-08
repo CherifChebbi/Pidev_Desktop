@@ -139,14 +139,12 @@ public class AfficherUsers {
 
         // Wrap the TableView inside a ScrollPane
         ScrollPane scrollPane = new ScrollPane(tableView);
-        scrollPane.setFitToWidth(true);
-        scrollPane.setFitToHeight(true);
 
-        scrollPane.setMinWidth(850); // Set minimum width
-        scrollPane.setPrefWidth(850); // Set preferred width
+       // scrollPane.setMinWidth(850); // Set minimum width
+      //  scrollPane.setPrefWidth(850); // Set preferred width
 
-        scrollPane.setMinHeight(400); // Set minimum height
-        scrollPane.setPrefHeight(400); // Set preferred height
+      //  scrollPane.setMinHeight(120); // Set minimum height
+       // scrollPane.setPrefHeight(120); // Set preferred height
 
         return scrollPane;
     }
@@ -193,7 +191,7 @@ public class AfficherUsers {
     void initialize() {
         userService = new UserService();
         loadUsers();
-        tableView.setPrefSize(850, 400);
+       // tableView.setPrefSize(850, 400);
 
 
 
@@ -235,11 +233,24 @@ public class AfficherUsers {
 
 
     }
-
+    //go gestion_Event BACK
     @FXML
     public void homeDashboard(ActionEvent event) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/HomeBack.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    //go gestion_Hebergement BACK
+    @FXML
+    public void Gestion_Hebergement(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/CategoryH/Category.fxml"));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
