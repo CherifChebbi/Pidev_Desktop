@@ -164,7 +164,7 @@
         </HBox>
         <HBox layoutX="1150.0" layoutY="15.0" prefHeight="38.0" prefWidth="136.0">
             <children>
-                <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: rgb(240, 243, 255);" text="Profil" textFill="#0289cf">
+                <Button fx:id="profil" mnemonicParsing="false" onAction="#editProfile" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: rgb(240, 243, 255);" text="Profil" textFill="#0289cf">
                     <font>
                         <Font name="Arial Rounded MT Bold" size="20.0" />
                     </font>

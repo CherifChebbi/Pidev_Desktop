@@ -19,7 +19,6 @@ public class FxMain extends Application {
                 .getResource("/Pays/AfficherPays.fxml"));
         Parent parent = loader.load();
         AnchorPane root = new AnchorPane();
-        // Charger le fichier CSS
 
         Scene scene = new Scene(parent);
 
