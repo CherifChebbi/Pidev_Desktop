@@ -8,11 +8,11 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 import java.time.LocalDate;
 
-public class ServiceReservation {
+public class ServiceReservationH {
 
     private Connection connection;
 
-    public ServiceReservation() {
+    public ServiceReservationH() {
         connection = MyDB.getCon();
     }
 
