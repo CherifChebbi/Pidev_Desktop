@@ -22,12 +22,7 @@
                 <Image url="@../images/terra-removebg-preview.png" />
             </image>
         </ImageView>
-        <Button layoutX="1160.0" layoutY="11.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="126.0" style="-fx-background-color: rgb(240, 243, 255);" text="Login" textFill="#d90505">
-            <font>
-                <Font name="Arial Nova Bold" size="20.0" />
-            </font>
-        </Button>
-        <Button layoutX="1041.0" layoutY="11.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="119.0" style="-fx-background-color: rgb(240, 243, 255);" text="Home" textFill="#d90505">
+        <Button layoutX="1166.0" layoutY="11.0" mnemonicParsing="false" onAction="#returnHome" prefHeight="47.0" prefWidth="119.0" style="-fx-background-color: rgb(240, 243, 255);" text="Home" textFill="#d90505">
             <font>
                 <Font name="Arial Nova Bold" size="20.0" />
             </font>

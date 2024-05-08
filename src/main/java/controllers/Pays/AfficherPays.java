@@ -318,16 +318,6 @@ public class AfficherPays {
         }
     }
     @FXML
-    void returnToListPays(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/AfficherPays.fxml"));
-        Parent root = loader.load();
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
-    }
-    @FXML
     void exportToPDF(ActionEvent event) {
         PdfExporter.export(paysTable.getItems());
     }
@@ -347,7 +337,29 @@ public class AfficherPays {
         stage.show();
 
     }
-    //go gestion_restaurant
+    @FXML
+    public void returnToListPays(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/AfficherPays.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    //go Gestion_Pays BACK
+
+    void Gestion_Pays(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/AfficherPays.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    //go Gestion_restaurant BACK
     @FXML
     void Gestion_Restaurant(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/Back.fxml"));
@@ -358,8 +370,9 @@ public class AfficherPays {
         stage.show();
 
     }
+    //go gestion_User BACK
     @FXML
-    void Gestion_user(ActionEvent event) throws IOException {
+    void Gestion_User(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/User/AfficherUsers.fxml"));
         Parent root = loader.load();
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -369,6 +382,5 @@ public class AfficherPays {
 
 
     }
-
 
 }
