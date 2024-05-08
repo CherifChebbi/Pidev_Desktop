@@ -129,8 +129,6 @@ public class PaiementController {
     }
 
 
-
-
     private void envoyerSMS(String message, String numeroDestinataire) {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message.creator(

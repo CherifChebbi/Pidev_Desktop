@@ -67,46 +67,44 @@ public class FrontController {
         VBox eventVBox = new VBox(); // Utilisez un VBox pour stocker les événements
         eventVBox.setSpacing(20); // Espacement vertical entre les conteneurs d'événements
 
-        HBox eventLine = new HBox(); // Utilisez un HBox pour chaque ligne d'événements
-        eventLine.setSpacing(20); // Espacement horizontal entre les conteneurs d'événements
+        for (int i = 0; i < events.size(); i += 4) { // Incrémentez i par 4 pour créer des lignes avec 4 événements par ligne
+            HBox eventLine = new HBox(); // Utilisez un HBox pour chaque ligne d'événements
+            eventLine.setSpacing(100); // Espacement horizontal entre les conteneurs d'événements dans une ligne
 
-        for (int i = 0; i < events.size(); i++) {
-            Event event = events.get(i);
+            for (int j = i; j < Math.min(i + 4, events.size()); j++) {
+                Event event = events.get(j);
 
-            ImageView imageView = createEventView(event);
-            imageView.setFitWidth(200); // Largeur de l'image
-            imageView.setFitHeight(180); // Hauteur de l'image
-            Label titleLabel = new Label("Titre: " + event.getTitre());
-            Label descriptionLabel = new Label("Description: " + event.getDescription());
-            Label dateLabel = new Label("Date: " + event.getDateDebut());
-            Label priceLabel = new Label("Prix: " + event.getPrix());
-            Button reserveButton = new Button("Réserver");
-            reserveButton.setStyle("-fx-background-color: #FF0000;");
-            reserveButton.setOnAction(this::reserveButtonClicked);
-            reserveButton.setUserData(event);
+                ImageView imageView = createEventView(event);
+                imageView.setFitWidth(200); // Largeur de l'image
+                imageView.setFitHeight(180); // Hauteur de l'image
+                Label titleLabel = new Label("Titre: " + event.getTitre());
+                Label descriptionLabel = new Label("Description: " + event.getDescription());
+                Label dateLabel = new Label("Date: " + event.getDateDebut());
+                Label priceLabel = new Label("Prix: " + event.getPrix());
+                Button reserveButton = new Button("Réserver");
+                reserveButton.setStyle("-fx-background-color: #FF0000;");
+                reserveButton.setOnAction(this::reserveButtonClicked);
+                reserveButton.setUserData(event);
 
-            VBox eventDetails = new VBox(); // Utilisez VBox pour aligner les éléments verticalement
-            eventDetails.getChildren().addAll(titleLabel, descriptionLabel, dateLabel, priceLabel, reserveButton);
-            eventDetails.setSpacing(10);
-            eventDetails.setAlignment(Pos.CENTER);
+                VBox eventDetails = new VBox(); // Utilisez VBox pour aligner les éléments verticalement
+                eventDetails.getChildren().addAll(titleLabel, descriptionLabel, dateLabel, priceLabel, reserveButton);
+                eventDetails.setSpacing(10);
+                eventDetails.setAlignment(Pos.CENTER);
 
-            VBox container = new VBox();
-            container.getChildren().addAll(imageView, eventDetails);
-            container.setSpacing(50); // Ajouter un espacement vertical entre chaque image
-            container.setAlignment(Pos.CENTER);
+                VBox container = new VBox();
+                container.getChildren().addAll(imageView, eventDetails);
+                container.setSpacing(20); // Ajouter un espacement vertical entre chaque image et les détails de l'événement
+                container.setAlignment(Pos.CENTER);
 
-            eventLine.getChildren().add(container); // Ajoutez chaque conteneur d'événement à la ligne
-
-            // Si nous avons atteint le nombre maximal d'événements par ligne ou si c'est le dernier événement, ajoutez la ligne actuelle à eventVBox
-            if ((i + 1) % 4 == 0 || i == events.size() - 1) {
-                eventVBox.getChildren().add(eventLine); // Ajoutez la ligne d'événements à eventVBox
-                eventLine = new HBox(); // Créez une nouvelle ligne pour les événements suivants
-                eventLine.setSpacing(20); // Réinitialisez l'espacement horizontal pour la nouvelle ligne
+                eventLine.getChildren().add(container); // Ajoutez chaque conteneur d'événement à la ligne
             }
+
+            eventVBox.getChildren().add(eventLine); // Ajoutez la ligne d'événements à eventVBox
         }
 
         eventScrollPane.setContent(eventVBox); // Définissez le contenu du ScrollPane comme le VBox contenant tous les événements
     }
+
 
 
 
@@ -189,4 +187,20 @@ public class FrontController {
             afficherEvenements(events);
         }
     }
+
+    @FXML
+    public void Front_Events(ActionEvent actionEvent) {
+        // Par exemple, ouvrir une nouvelle fenêtre pour afficher tous les événements
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/indexEvent.fxml"));
+        Parent root;
+        try {
+            root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }

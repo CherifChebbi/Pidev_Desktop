@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="706.0" prefWidth="1268.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Event.FrontController">
+<AnchorPane prefHeight="727.0" prefWidth="1274.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Event.FrontController">
    <children>
       <ImageView fitHeight="101.0" fitWidth="290.0" layoutX="14.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -81,7 +81,7 @@
                         <Image url="@../images/events.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="Front_Events" mnemonicParsing="false" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
+                  <Button fx:id="Front_Events" mnemonicParsing="false" onAction="#Front_Events" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
                      <font>
                         <Font name="Arial Nova Bold" size="20.0" />
                      </font>
@@ -126,6 +126,8 @@
          </font>
       </Text>
       <ChoiceBox fx:id="choiceFiltreEvent" layoutX="488.0" layoutY="181.0" prefWidth="150.0" />
-      <ScrollPane fx:id="eventScrollPane" layoutX="42.0" layoutY="262.0" prefHeight="444.0" prefWidth="1244.0" styleClass="center-pane" stylesheets="@AjoutEvent.css" />
+      <AnchorPane layoutX="59.0" layoutY="236.0" prefHeight="472.0" prefWidth="1227.0" />
+      <ScrollPane fx:id="eventScrollPane" layoutX="52.0" layoutY="272.0" prefHeight="444.0" prefWidth="1227.0" />
+      <ScrollPane fx:id="eventScrollPane" layoutX="53.0" layoutY="273.0" prefHeight="454.0" prefWidth="1227.0" />
    </children>
 </AnchorPane>

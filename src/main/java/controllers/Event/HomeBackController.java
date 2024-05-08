@@ -149,4 +149,24 @@ public class HomeBackController {
     }
 
 
+    public void frontEvent(ActionEvent actionEvent) {
+        try {
+            // Charger le fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/indexEvent.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la fenêtre actuelle
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            // Définir la scène sur la fenêtre
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement du FXML
+        }
+    }
 }
