@@ -25,8 +25,6 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class CategoryEventController implements Initializable {
-    private Connection con; // Declare connection variable
-
 
     private final ServiceCategory sc;
 

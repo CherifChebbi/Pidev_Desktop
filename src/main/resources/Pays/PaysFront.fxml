@@ -116,7 +116,7 @@
                                 <Image url="@../images/restaurant.png" />
                             </image>
                         </ImageView>
-                        <Button mnemonicParsing="false" onAction="#restaurant" prefHeight="47.0" prefWidth="218.0" style="-fx-background-color: rgb(240, 243, 255);" text="Restaurants">
+                        <Button mnemonicParsing="false" onAction="#Front_Restaurant" prefHeight="47.0" prefWidth="218.0" style="-fx-background-color: rgb(240, 243, 255);" text="Restaurants">
                             <font>
                                 <Font name="Arial Nova Bold" size="20.0" />
                             </font>
@@ -150,7 +150,7 @@
                                 <Image url="@../images/events.png" />
                             </image>
                         </ImageView>
-                        <Button fx:id="Front_Events" mnemonicParsing="false" onAction="#Front_Events" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
+                        <Button fx:id="Front_Events" mnemonicParsing="false" onAction="#Front_Event" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
                             <font>
                                 <Font name="Arial Nova Bold" size="20.0" />
                             </font>

@@ -257,27 +257,7 @@ public class PaysFront {
         }
     }
 
-    @FXML
-    void Front_Pays(ActionEvent event) {
-        try {
-            // Charger le fichier FXML de la page d'ajout de pays
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/PaysFront.fxml"));
-            Parent root = loader.load();
 
-            // Créer une nouvelle scène avec le contenu de la page d'ajout de pays
-            Scene scene = new Scene(root);
-
-            // Obtenir la fenêtre principale à partir de l'événement du bouton ou d'une autre manière
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Définir la nouvelle scène sur la fenêtre principale
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     @FXML
     void listMonument(ActionEvent event) {
@@ -378,9 +358,30 @@ public class PaysFront {
         // Show the login stage
         profileStage.show();
     }
+    @FXML
+    void Front_Pays(ActionEvent event) {
+        try {
+            // Charger le fichier FXML de la page d'ajout de pays
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/PaysFront.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène avec le contenu de la page d'ajout de pays
+            Scene scene = new Scene(root);
+
+            // Obtenir la fenêtre principale à partir de l'événement du bouton ou d'une autre manière
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Définir la nouvelle scène sur la fenêtre principale
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
 
     @FXML
-    private void Front_Events (ActionEvent event) throws IOException {
+    private void Front_Event (ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
         Parent profileInterface = loader.load();
         Scene profileScene = new Scene(profileInterface);
@@ -409,9 +410,8 @@ public class PaysFront {
         // Show the login stage
         profileStage.show();
     }
-
     @FXML
-    public void restaurant(ActionEvent actionEvent) throws IOException {
+    public void Front_Restaurant(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/index.fxml"));
         Parent profileInterface = loader.load();
         Scene profileScene = new Scene(profileInterface);

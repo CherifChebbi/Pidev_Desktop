@@ -30,7 +30,7 @@
                         <Image url="@../images/pays.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="Front_Pays" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: rgb(240, 243, 255);" text="Pays">
+                  <Button fx:id="Front_Pays" mnemonicParsing="false" onAction="#Front_Pays" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: rgb(240, 243, 255);" text="Pays">
                      <font>
                         <Font name="Arial Nova Bold" size="20.0" />
                      </font>
@@ -47,7 +47,7 @@
                         <Image url="@../images/restaurant.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="Front_Restaurants" mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" style="-fx-background-color: rgb(240, 243, 255);" text="Restaurants">
+                  <Button fx:id="Front_Restaurants" mnemonicParsing="false" onAction="#Front_Restaurant" prefHeight="47.0" prefWidth="218.0" style="-fx-background-color: rgb(240, 243, 255);" text="Restaurants">
                      <font>
                         <Font name="Arial Nova Bold" size="20.0" />
                      </font>
@@ -64,7 +64,7 @@
                         <Image url="@../images/hotel.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="Front_Hebergements" mnemonicParsing="false" prefHeight="47.0" prefWidth="203.0" style="-fx-background-color: rgb(240, 243, 255);" text="Hebergements">
+                  <Button fx:id="Front_Hebergements" mnemonicParsing="false" onAction="#Front_Hebergement" prefHeight="47.0" prefWidth="203.0" style="-fx-background-color: rgb(240, 243, 255);" text="Hebergements">
                      <font>
                         <Font name="Arial Nova Bold" size="20.0" />
                      </font>
@@ -81,7 +81,7 @@
                         <Image url="@../images/events.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="Front_Events" mnemonicParsing="false" onAction="#Front_Events" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
+                  <Button fx:id="Front_Events" mnemonicParsing="false" onAction="#Front_Event" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
                      <font>
                         <Font name="Arial Nova Bold" size="20.0" />
                      </font>
@@ -96,7 +96,7 @@
       <HBox layoutX="1150.0" layoutY="15.0" prefHeight="38.0" prefWidth="136.0">
          <!-- Bouton de profil -->
          <children>
-            <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: rgb(240, 243, 255);" text="Profil" textFill="#0289cf">
+            <Button mnemonicParsing="false" onAction="#editProfile" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: rgb(240, 243, 255);" text="Profil" textFill="#0289cf">
                <font>
                   <Font name="Arial Rounded MT Bold" size="20.0" />
                </font>
