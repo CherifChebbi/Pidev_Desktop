@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServiceCategory implements ICategory<CategoryH>{
+public class ServiceCategoryH implements ICategoryH<CategoryH> {
 
     private ObservableList<CategoryH> categoryHList = FXCollections.observableArrayList();
 
@@ -20,7 +20,7 @@ public class ServiceCategory implements ICategory<CategoryH>{
 
 
     private Connection connection;
-    public ServiceCategory(){connection= MyDB.getCon();}
+    public ServiceCategoryH(){connection= MyDB.getCon();}
     @Override
     public void ajouter(CategoryH categoryH) throws SQLException {
         String req ="INSERT INTO category (nom, image, description) VALUES (?,?,?)";

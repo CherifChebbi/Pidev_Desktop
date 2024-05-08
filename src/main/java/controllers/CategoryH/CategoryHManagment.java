@@ -1,7 +1,7 @@
 package controllers.CategoryH;
 
 import models.CategoryH;
-import services.ServiceCategory;
+import services.ServiceCategoryH;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,7 +53,7 @@ public class CategoryHManagment {
 
 
 
-    ServiceCategory sc = new ServiceCategory();
+    ServiceCategoryH sc = new ServiceCategoryH();
 
     private void selection(){
         CategoryH c=afficher.getItems().get(afficher.getSelectionModel().getSelectedIndex());

@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb79324d-adcb-4532-b373-8246f3fe7403" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CategoryH/CategoryManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CategoryH/CategoryHManagment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CategoryH/FrontManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CategoryH/FrontManagment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/Hebergement/HebergementManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/Hebergement/HebergementManagment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReservationH/ReservationManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReservationH/ReservationHManagment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/CategoryH.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Hebergement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/Hebergement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/models/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/models/ReservationH.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/ServiceCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ServiceCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/ServiceHebergement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ServiceHebergement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/ServiceReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ServiceReservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/CategoryH/Category.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CategoryH/Category.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Hebergement/Hebergement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Hebergement/Hebergement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ReservationH/ReservationFront.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ReservationH/ReservationFront.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ReservationH/reservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ReservationH/reservation.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="bb79324d-adcb-4532-b373-8246f3fe7403" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,7 +118,7 @@
       <workItem from="1715041901304" duration="1084000" />
       <workItem from="1715085019433" duration="19509000" />
       <workItem from="1715168076911" duration="1737000" />
-      <workItem from="1715169822339" duration="1985000" />
+      <workItem from="1715169822339" duration="2306000" />
     </task>
     <servers />
   </component>

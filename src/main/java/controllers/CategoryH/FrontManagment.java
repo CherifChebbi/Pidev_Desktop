@@ -1,7 +1,7 @@
 package controllers.CategoryH;
 
 import models.CategoryH;
-import services.ServiceCategory;
+import services.ServiceCategoryH;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +30,7 @@ public class FrontManagment {
     private Button excel;
 
 
-    private ServiceCategory sc = new ServiceCategory();
+    private ServiceCategoryH sc = new ServiceCategoryH();
 
     public void initialize() {
         afficherCategories();

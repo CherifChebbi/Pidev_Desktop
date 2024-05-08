@@ -2,7 +2,7 @@ package controllers.Hebergement;
 
 import models.CategoryH;
 import models.Hebergement;
-import services.ServiceCategory;
+import services.ServiceCategoryH;
 import services.ServiceHebergement;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -47,7 +47,7 @@ public class HebergementManagment {
 
     private ServiceHebergement SH = new ServiceHebergement();
 
-    private ServiceCategory SC = new ServiceCategory();
+    private ServiceCategoryH SC = new ServiceCategoryH();
 
     public void initialize() {
         afficherNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
