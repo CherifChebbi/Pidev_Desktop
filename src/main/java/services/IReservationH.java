@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 
 import java.sql.SQLException;
 
-public interface IReservation <T>{
+public interface IReservationH<T>{
     public void ajouter (T t) throws SQLException;
     public void modifier (T t,int id) throws SQLException;
     public ObservableList<T> afficher () throws SQLException;
