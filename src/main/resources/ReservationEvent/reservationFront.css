@@ -1,0 +1,42 @@
+/* Styles pour le texte */
+.text {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-fill: #333333; /* Couleur du texte */
+}
+
+/* Styles pour les labels */
+.label {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333; /* Couleur du texte */
+}
+
+/* Styles pour les champs texte */
+.text-field {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-prompt-text-fill: #999999; /* Couleur du texte indicatif */
+}
+
+/* Styles pour les boutons */
+.button {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-background-color: #266eff; /* Couleur de fond */
+    -fx-background-radius: 5px; /* Rayon des bords */
+    -fx-padding: 8px 16px; /* Espacement interne */
+}
+
+.button:hover {
+    -fx-background-color: #1957b8; /* Couleur de fond au survol */
+}
+
+/* Styles pour les titres */
+.title {
+    -fx-font-family: "Arial";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #266eff; /* Couleur du texte */
+}

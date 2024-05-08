@@ -1,0 +1,36 @@
+/* HomeBack.css */
+.center-pane {
+    -fx-background-color: #37474F; /* Bleu marine */
+    -fx-background-radius: 10px; /* Coins arrondis */
+    -fx-padding: 10px; /* Espacement intérieur */
+    -fx-border-radius: 10px; /* Coins arrondis pour la bordure */
+    -fx-border-color: #78909C; /* Couleur de la bordure gris-bleu */
+    -fx-border-width: 2px; /* Largeur de la bordure */
+}
+
+.label {
+    -fx-text-fill: #EEEEEE; /* Texte blanc */
+}
+
+.label.total-label {
+    -fx-font-size: 18px; /* Taille de la police */
+}
+
+.anchor-pane {
+    -fx-background-color: #000066; /* Bleu marine moins foncé */
+}
+
+
+.button {
+    -fx-background-color: #607D8B; /* Bleu grisâtre */
+    -fx-text-fill: #FFFFFF; /* Texte blanc */
+    -fx-font-size: 14px; /* Taille de la police */
+}
+
+.button:hover {
+    -fx-background-color: #455A64; /* Bleu marine plus foncé au survol */
+}
+
+.imageView {
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.7) , 5,0,0,1 );
+}

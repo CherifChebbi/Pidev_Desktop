@@ -12,6 +12,7 @@ import models.Pays;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.net.URL;
+import com.itextpdf.text.pdf.BarcodeQRCode;
 
 public class PdfExporter {
 
@@ -19,7 +20,7 @@ public class PdfExporter {
         String filePath = "C:\\Users\\cheri\\Downloads\\exported_Pays.pdf"; // Specify the file path
 
         Document document = new Document(PageSize.A4); // Set page size
-        document.setMargins(50, 50, 50, 50); // Add margins to create a border effect
+        document.setMargins(20, 20, 50, 50); // Add margins to create a border effect
         try {
             PdfWriter.getInstance(document, new FileOutputStream(filePath));
             document.open();
@@ -82,7 +83,14 @@ public class PdfExporter {
         for (Pays pays : data) {
             table.addCell(String.valueOf(pays.getId_pays()));
             table.addCell(pays.getNom_pays());
-            table.addCell(pays.getDesc_pays());
+            // Generate QR code for description
+            BarcodeQRCode qrCode = new BarcodeQRCode(pays.getDesc_pays(), 1000, 1000, null);
+            Image qrCodeImage = qrCode.getImage();
+            qrCodeImage.scaleAbsolute(50, 50); // Adjust size as needed;
+            PdfPCell qrCodeCell = new PdfPCell(qrCodeImage);
+            qrCodeCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(qrCodeCell);
+            //table.addCell(pays.getDesc_pays());
             table.addCell(pays.getLangue());
             table.addCell(pays.getContinent());
             table.addCell(String.valueOf(pays.getNb_villes()));

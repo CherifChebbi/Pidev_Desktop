@@ -70,26 +70,6 @@
             <children>
                 <VBox layoutX="9.0" layoutY="68.0" prefHeight="425.0" prefWidth="262.0">
                     <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(254, 250, 246);" styleClass="sidebar-btn-text">
-                            <padding>
-                                <Insets left="5.0" />
-                            </padding>
-                            <children>
-                                <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true">
-                                    <image>
-                                        <Image url="@../images/icons8_james_bond_32px.png" />
-                                    </image>
-                                </ImageView>
-                                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="204.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Users" textFill="#030000">
-                                    <font>
-                                        <Font name="System Bold" size="18.0" />
-                                    </font>
-                                    <HBox.margin>
-                                        <Insets left="5.0" />
-                                    </HBox.margin>
-                                </Button>
-                            </children>
-                        </HBox>
                         <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="202.0" style="-fx-background-color: rgb(254, 250, 246); -fx-background-radius: 50px 50px 50px 50px;" styleClass="sidebar-btn-text">
                             <children>
                                 <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
@@ -98,66 +78,6 @@
                                     </image>
                                 </ImageView>
                                 <Button fx:id="returnToListPays1" mnemonicParsing="false" onAction="#returnToListPays" prefHeight="40.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Pays" textFill="#030000">
-                                    <font>
-                                        <Font name="System Bold" size="18.0" />
-                                    </font>
-                                </Button>
-                            </children>
-                            <padding>
-                                <Insets left="5.0" />
-                            </padding>
-                            <VBox.margin>
-                                <Insets top="20.0" />
-                            </VBox.margin>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="202.0" style="-fx-background-color: rgb(254, 250, 246); -fx-background-radius: 50px 50px 50px 50px;" styleClass="sidebar-btn-text">
-                            <children>
-                                <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../images/icons8_james_bond_32px.png" />
-                                    </image>
-                                </ImageView>
-                                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Restaurants" textFill="#030000">
-                                    <font>
-                                        <Font name="System Bold" size="18.0" />
-                                    </font>
-                                </Button>
-                            </children>
-                            <padding>
-                                <Insets left="5.0" />
-                            </padding>
-                            <VBox.margin>
-                                <Insets top="20.0" />
-                            </VBox.margin>
-                        </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="260.0" style="-fx-background-color: rgb(254, 250, 246); -fx-background-radius: 50px 50px 50px 50px;" styleClass="sidebar-btn-text">
-                            <children>
-                                <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../images/icons8_james_bond_32px.png" />
-                                    </image>
-                                </ImageView>
-                                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="213.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Hebegements" textFill="#030000">
-                                    <font>
-                                        <Font name="System Bold" size="18.0" />
-                                    </font>
-                                </Button>
-                            </children>
-                            <padding>
-                                <Insets left="5.0" />
-                            </padding>
-                            <VBox.margin>
-                                <Insets top="20.0" />
-                            </VBox.margin>
-                        </HBox>
-                        <HBox fx:id="gestion_Evenement" alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="202.0" style="-fx-background-color: rgb(254, 250, 246); -fx-background-radius: 50px 50px 50px 50px;" styleClass="sidebar-btn-text">
-                            <children>
-                                <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../images/icons8_james_bond_32px.png" />
-                                    </image>
-                                </ImageView>
-                                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Evenements" textFill="#030000">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>

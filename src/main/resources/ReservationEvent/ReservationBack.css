@@ -1,0 +1,22 @@
+/* Style pour les boutons du côté gauche */
+.button {
+    -fx-font-size: 15px; /* Taille de la police */
+    -fx-padding: 8px 16px; /* Espacement intérieur (haut, droite, bas, gauche) */
+    -fx-background-color: #4e47b9; /* Nouvelle couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-border-radius: 3px; /* Rayon de la bordure */
+    -fx-border-color: #4e47b9; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-cursor: hand; /* Curseur de la souris */
+}
+
+/* Style pour les boutons survolés */
+.button:hover {
+    -fx-background-color: #574eb9; /* Nouvelle couleur de fond au survol */
+}
+
+/* Style pour les boutons désactivés */
+.button:disabled {
+    -fx-opacity: 0.5; /* Opacité réduite */
+    -fx-cursor: default; /* Curseur par défaut */
+}
