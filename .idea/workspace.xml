@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb79324d-adcb-4532-b373-8246f3fe7403" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CategoryH/CategoryHManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CategoryH/CategoryHManagment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CategoryH/FrontManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CategoryH/FrontManagment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ReservationH/ReservationHManagment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ReservationH/ReservationHManagment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/ServiceCategoryH.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ServiceCategoryH.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/ServiceReservationH.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ServiceReservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/CategoryH/Category.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/CategoryH/Category.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="bb79324d-adcb-4532-b373-8246f3fe7403" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -127,7 +118,7 @@
       <workItem from="1715041901304" duration="1084000" />
       <workItem from="1715085019433" duration="19509000" />
       <workItem from="1715168076911" duration="1737000" />
-      <workItem from="1715169822339" duration="17605000" />
+      <workItem from="1715169822339" duration="17936000" />
     </task>
     <servers />
   </component>
