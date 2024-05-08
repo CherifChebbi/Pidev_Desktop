@@ -46,7 +46,7 @@
                     </image>
                 </ImageView>
             <Pagination fx:id="pagination" layoutX="459.0" layoutY="578.0" pageCount="123456789" prefHeight="69.0" prefWidth="226.0" />
-            <ScrollPane fx:id="front" layoutX="5.0" layoutY="11.0" prefHeight="589.0" prefWidth="1312.0" />
+                <ScrollPane fx:id="front" layoutX="5.0" layoutY="11.0" prefHeight="589.0" prefWidth="1290.0" style="-fx-background-color: #ffffff; -fx-border-color: #CCCCCC; -fx-border-width: 1px; -fx-border-radius: 5px;"></ScrollPane>
             </children>
         </AnchorPane>
         <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">

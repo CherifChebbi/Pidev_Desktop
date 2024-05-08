@@ -1,56 +1,178 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="539.0" prefWidth="757.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReservationH.ReservationHManagment">
+<AnchorPane prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReservationH.ReservationHManagment">
    <children>
-      <Pane prefHeight="92.0" prefWidth="883.0" style="-fx-background-color: grey;">
-         <!-- Header Pane content -->
-      </Pane>
-      <Pane layoutY="92.0" prefHeight="500.0" prefWidth="148.0" style="-fx-background-color: grey;" />
-      <TableView fx:id="afficher" layoutX="148.0" layoutY="92.0" prefHeight="400.0" prefWidth="600.0">
-         <columns>
-            <TableColumn prefWidth="150" text="Nom">
-               <cellValueFactory>
-                  <PropertyValueFactory property="nom" />
-               </cellValueFactory>
-            </TableColumn>
-            <TableColumn prefWidth="150" text="Email">
-               <cellValueFactory>
-                  <PropertyValueFactory property="email" />
-               </cellValueFactory>
-            </TableColumn>
-            <TableColumn prefWidth="150" text="Date">
-               <cellValueFactory>
-                  <PropertyValueFactory property="date" />
-               </cellValueFactory>
-            </TableColumn>
-            <TableColumn prefWidth="150" text="Nombre Personnes">
-               <cellValueFactory>
-                  <PropertyValueFactory property="nbrPersonne" />
-               </cellValueFactory>
-            </TableColumn>
-         </columns>
-      </TableView>
-      <Pane layoutX="148.0" layoutY="500.0" prefHeight="39.0" prefWidth="600.0">
+      <AnchorPane layoutY="67.0" prefHeight="640.0" prefWidth="1300.0" style="-fx-background-color: rgb(233, 246, 255);">
          <children>
-            <TextField fx:id="nom" layoutX="14.0" layoutY="10.0" promptText="Nom" />
-            <TextField fx:id="email" layoutX="140.0" layoutY="10.0" promptText="Email" />
-            <DatePicker fx:id="date" layoutX="262.0" layoutY="10.0" promptText="Date" />
-            <TextField fx:id="nbr" layoutX="398.0" layoutY="10.0" promptText="Nombre Personnes" />
-            <Button layoutX="546.0" layoutY="10.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+            <ImageView fitHeight="640.0" fitWidth="693.0" layoutX="330.0" opacity="0.17" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/logo1.png" />
+               </image>
+            </ImageView>
+            <HBox prefHeight="100.0" prefWidth="200.0" />
+            <ImageView fitHeight="190.0" fitWidth="195.0" layoutX="59.0" layoutY="42.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/tourism.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="255.0" fitWidth="264.0" layoutX="217.0" layoutY="171.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/carte-de-voyage.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="193.0" fitWidth="216.0" layoutX="48.0" layoutY="435.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/tourisme.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="275.0" fitWidth="338.0" layoutX="985.0" layoutY="288.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/voyage-et-tourisme.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="193.0" fitWidth="224.0" layoutX="1030.0" layoutY="40.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/carte-de-voyage.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="afficher" layoutX="172.0" layoutY="384.0" prefHeight="203.0" prefWidth="600.0">
+               <columns>
+                  <TableColumn prefWidth="150" text="Nom">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="nom" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="150" text="Email">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="email" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="150" text="Date">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="date" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn prefWidth="150" text="Nombre Personnes">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="nbrPersonne" />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+            </TableView>
+            <Pane layoutX="158.0" layoutY="510.0" prefHeight="39.0" prefWidth="600.0" />
+            <Button fx:id="generatePDFButton" layoutX="674.0" layoutY="232.0" onAction="#generatePDF" text="Generate PDF" />
+            <Button fx:id="excel" layoutX="671.0" layoutY="162.0" mnemonicParsing="false" onAction="#generateExcel" text="Generate excel" />
+            <TextField fx:id="nom" layoutX="182.0" layoutY="136.0" promptText="Nom" />
+            <TextField fx:id="email" layoutX="187.0" layoutY="189.0" promptText="Email" />
+            <DatePicker fx:id="date" layoutX="193.0" layoutY="245.0" promptText="Date" />
+            <TextField fx:id="nbr" layoutX="206.0" layoutY="284.0" promptText="Nombre Personnes" />
+            <Button layoutX="253.0" layoutY="326.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
          </children>
-      </Pane>
-      <Button fx:id="generatePDFButton" layoutX="763.0" layoutY="540.0" onAction="#generatePDF" text="Generate PDF" />
-
-      <Button fx:id="excel" layoutX="760.0" layoutY="507.0" mnemonicParsing="false" onAction="#generateExcel" text="Generate excel" />
-      <TextField fx:id="numTel" layoutX="203.0" layoutY="553.0" promptText="Mobile" />
+      </AnchorPane>
+      <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/terra-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <HBox layoutX="313.0" layoutY="14.0" prefHeight="40.0" prefWidth="792.0">
+         <children>
+            <HBox prefHeight="40.0" prefWidth="137.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/pays.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="Front_Pays" mnemonicParsing="false" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: rgb(240, 243, 255);" text="Pays">
+                     <font>
+                        <Font name="Arial Nova Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="202.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/restaurant.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="218.0" style="-fx-background-color: rgb(240, 243, 255);" text="Restaurants">
+                     <font>
+                        <Font name="Arial Nova Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="228.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/hotel.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="203.0" style="-fx-background-color: rgb(240, 243, 255);" text="Hebergements">
+                     <font>
+                        <Font name="Arial Nova Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="224.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/events.png" />
+                     </image>
+                  </ImageView>
+                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
+                     <font>
+                        <Font name="Arial Nova Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox layoutX="1150.0" layoutY="15.0" prefHeight="38.0" prefWidth="136.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: rgb(240, 243, 255);" text="Profil" textFill="#0289cf">
+               <font>
+                  <Font name="Arial Rounded MT Bold" size="20.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="40.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/6915987.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>
