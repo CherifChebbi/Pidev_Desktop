@@ -31,7 +31,17 @@ public class DBConnexion {
     }
 
     public Connection getCnx() {
+        try {
+            if (cnx.isClosed() || cnx ==null) {
+                cnx = DriverManager.getConnection(URL, USER, PASSWORD);
+            }
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return cnx;
     }
+
+
 
 }

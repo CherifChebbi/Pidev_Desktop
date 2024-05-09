@@ -12,28 +12,23 @@
 
 <AnchorPane prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.User.login">
    <children>
-      <AnchorPane layoutX="1.0" prefHeight="640.0" prefWidth="1300.0" style="-fx-background-color: rgb(233, 246, 255);">
+      <AnchorPane layoutX="1.0" layoutY="75.0" opacity="0.56" prefHeight="631.0" prefWidth="1300.0" style="-fx-background-color: rgb(202, 244, 255);">
          <children>
-            <ImageView fitHeight="616.0" fitWidth="613.0" layoutX="-19.0" layoutY="14.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="631.0" fitWidth="858.0" layoutX="33.0" layoutY="10.0" opacity="0.62" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/logo1.png" />
                </image>
             </ImageView>
             <PasswordField fx:id="pass" layoutX="92.0" layoutY="206.0" prefHeight="69.0" prefWidth="565.0" promptText="Mot de passe" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button fx:id="login" layoutX="446.0" layoutY="313.0" mnemonicParsing="false" onAction="#connecter" prefHeight="30.0" prefWidth="86.0" style="-fx-background-color: #B4D4FF;" text="Login" />
             <Button layoutX="435.0" layoutY="384.0" mnemonicParsing="false" onAction="#inscription" prefHeight="30.0" prefWidth="135.0" text="S'authentifier" />
             <Hyperlink fx:id="forgetP" layoutX="367.0" layoutY="470.0" onAction="#forgetPassword" text="Mot de passe oublié ?" />
             <Text layoutX="262.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous n'avez pas un compte ?" />
-            <Button fx:id="home" layoutX="1177.0" layoutY="30.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: rgb(240, 243, 255);" text="HOME" textFill="#ef0606">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="593.0" fitWidth="548.0" layoutX="726.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="616.0" fitWidth="548.0" layoutX="714.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/globe.jpg" />
                </image>
             </ImageView>
+            <Button fx:id="login" layoutX="438.0" layoutY="313.0" mnemonicParsing="false" onAction="#connecter" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: rgb(90, 178, 255);" text="Login" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
@@ -42,5 +37,10 @@
          </image>
       </ImageView>
       <TextField fx:id="name" layoutX="93.0" layoutY="141.0" prefHeight="75.0" prefWidth="565.0" promptText="Email" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;" />
+      <Button fx:id="home" layoutX="1191.0" layoutY="21.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: rgb(240, 243, 255);" text="HOME" textFill="#ef0606">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

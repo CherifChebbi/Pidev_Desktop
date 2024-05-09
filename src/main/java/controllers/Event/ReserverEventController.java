@@ -107,7 +107,7 @@ public class ReserverEventController {
             paiementController.initData(event, nom, email, telephone, dateReservation);
 
             stage.show();
-        } catch (IOException | SQLException ex) {
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
