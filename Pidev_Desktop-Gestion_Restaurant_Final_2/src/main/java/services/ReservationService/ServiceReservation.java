@@ -1,7 +1,7 @@
 package services.ReservationService;
 
 import models.Reservation;
-import utils.MyDB;
+import utils.DBConnexion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -16,7 +16,7 @@ public class ServiceReservation {
     private final Connection connection;
 
     public ServiceReservation() {
-        this.connection = MyDB.getInstance().getConnection();
+        this.connection = DBConnexion.getInstance().getCnx();
     }
 
     public void ajouter(Reservation reservation) throws SQLException {
@@ -184,7 +184,7 @@ public class ServiceReservation {
     public List<Reservation> getReservationsForRestaurant(int restaurantId) throws SQLException {
         List<Reservation> reservations = new ArrayList<>();
         String query = "SELECT * FROM reservation WHERE restaurant_id = ?";
-        try (Connection connection = MyDB.getInstance().getConnection();
+        try (Connection connection = DBConnexion.getInstance().getCnx();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, restaurantId);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {

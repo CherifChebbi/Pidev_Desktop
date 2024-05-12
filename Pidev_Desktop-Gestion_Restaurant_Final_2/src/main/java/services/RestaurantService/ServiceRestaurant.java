@@ -3,7 +3,7 @@ package services.RestaurantService;
 import models.Notification;
 import models.Plat;
 import models.Restaurant;
-import utils.MyDB;
+import utils.DBConnexion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -22,7 +22,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
 
 
     public ServiceRestaurant() {
-        connection = MyDB.getInstance().getConnection();
+        connection = DBConnexion.getInstance().getCnx();
         notificationService = new NotificationService();
     }
 
@@ -66,7 +66,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
     @Override
     public void modifier(Restaurant restaurant) {
         String req = "UPDATE restaurant SET nom=?, localisation=?, image=?, description=? WHERE id=?";
-        try (Connection connection = MyDB.getInstance().getConnection();
+        try (Connection connection = DBConnexion.getInstance().getCnx();
              PreparedStatement pre = connection.prepareStatement(req)) {
             pre.setString(1, restaurant.getNom());
             pre.setString(2, restaurant.getLocalisataion());
@@ -91,7 +91,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
         String deleteReservationsQuery = "DELETE FROM reservation WHERE id = ?";
         String deleteRestaurantQuery = "DELETE FROM restaurant WHERE id = ?";
 
-        try (Connection connection = MyDB.getInstance().getConnection();
+        try (Connection connection = DBConnexion.getInstance().getCnx();
              PreparedStatement deleteReservationsStatement = connection.prepareStatement(deleteReservationsQuery);
              PreparedStatement deleteRestaurantStatement = connection.prepareStatement(deleteRestaurantQuery)) {
 
@@ -129,7 +129,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
             query += " localisation LIKE '%" + locationFilter + "%'";
         }
 
-        try (Connection connection = MyDB.getInstance().getConnection();
+        try (Connection connection = DBConnexion.getInstance().getCnx();
              PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
@@ -189,7 +189,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
     public int getRestaurantIdByName(String name) {
         int restaurantId = -1;
         String query = "SELECT id FROM restaurant WHERE nom = ?";
-        try (Connection connection = MyDB.getInstance().getConnection();
+        try (Connection connection = DBConnexion.getInstance().getCnx();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, name);
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -216,7 +216,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
             query += " AND r.localisation LIKE '%" + locationFilter + "%'";
         }
 
-        try (Connection connection = MyDB.getInstance().getConnection();
+        try (Connection connection = DBConnexion.getInstance().getCnx();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setFloat(1, minPrice);
             preparedStatement.setFloat(2, maxPrice);
@@ -242,7 +242,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
 
 
     public void insertPlat(Plat plat) {
-        try (Connection connection = MyDB.getInstance().getConnection();
+        try (Connection connection = DBConnexion.getInstance().getCnx();
              PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO plat (id, nom, image, prix) VALUES (?, ?, ?, ?)")) {
             preparedStatement.setInt(1, plat.getId());
             preparedStatement.setString(2, plat.getNom());
@@ -258,7 +258,7 @@ public class ServiceRestaurant implements Irestaurant<Restaurant> {
         String query = "SELECT * FROM plat WHERE restaurant_id = ?";
         List<Plat> plats = new ArrayList<>();
 
-        try (Connection connection = MyDB.getInstance().getConnection();
+        try (Connection connection = DBConnexion.getInstance().getCnx();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, restaurantId);
             ResultSet resultSet = preparedStatement.executeQuery();

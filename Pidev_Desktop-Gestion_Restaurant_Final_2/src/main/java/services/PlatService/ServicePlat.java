@@ -2,7 +2,7 @@ package services.PlatService;
 
 import models.Plat;
 import models.Restaurant;
-import utils.MyDB;
+import utils.DBConnexion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -15,7 +15,7 @@ public class ServicePlat {
 
     public ServicePlat() {
         // Retrieve the database connection
-        connection = MyDB.getInstance().getConnection();
+        connection = DBConnexion.getInstance().getCnx();
     }
 
     public ObservableList<Plat> afficher() throws SQLException {
@@ -26,7 +26,7 @@ public class ServicePlat {
     public List<Plat> getPlatsBySearchCriteria(String nom) throws SQLException {
         List<Plat> plats = new ArrayList<>();
         String sql = "SELECT * FROM plat WHERE nom LIKE ?";
-        try (Connection connection = MyDB.getInstance().getConnection();
+        try (Connection connection = DBConnexion.getInstance().getCnx();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, "%" + nom + "%");
             try (ResultSet resultSet = statement.executeQuery()) {
