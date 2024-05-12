@@ -75,7 +75,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <Button layoutX="611.0" layoutY="596.0" mnemonicParsing="false" onAction="#confirmerPaiement" prefHeight="34.0" prefWidth="102.0" style="-fx-background-color: #000000;" text="Retour" textFill="WHITE">
+            <Button layoutX="611.0" layoutY="596.0" mnemonicParsing="false" onAction="#retourReservation" prefHeight="34.0" prefWidth="102.0" style="-fx-background-color: #000000;" text="Retour" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

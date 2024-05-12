@@ -1,5 +1,6 @@
 package controllers.Event;
 
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -154,21 +155,27 @@ public class FrontController {
 
     @FXML
     public void reserveButtonClicked(ActionEvent event) {
-        Button buttonClicked = (Button) event.getSource();
-        Event selectedEvent = (Event) buttonClicked.getUserData();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationEvent/ReserverEvent.fxml"));
-        Parent root;
         try {
-            root = loader.load();
+            // Charger le fichier FXML de la page de réservation de l'événement
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationEvent/ReserverEvent.fxml"));
+            Parent root = loader.load();
+
+            // Récupérer la scène de la fenêtre actuelle
+            Scene scene = ((Node) event.getSource()).getScene();
+
+            // Remplacer la racine de la scène par la nouvelle vue chargée
+            scene.setRoot(root);
+
+            // Initialiser les données du contrôleur de la nouvelle vue
             ReserverEventController controller = loader.getController();
+            Button buttonClicked = (Button) event.getSource();
+            Event selectedEvent = (Event) buttonClicked.getUserData();
             controller.initData(selectedEvent);
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
+
 
     @FXML
     public void rechercherEventFront(ActionEvent actionEvent) {
@@ -189,14 +196,16 @@ public class FrontController {
 
     @FXML
     public void Front_Events(ActionEvent actionEvent) {
-        // Par exemple, ouvrir une nouvelle fenêtre pour afficher tous les événements
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
-        Parent root;
         try {
-            root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
+            // Charger le fichier FXML de la page d'accueil des événements
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
+            Parent root = loader.load();
+
+            // Récupérer la scène de la fenêtre actuelle
+            Scene scene = eventScrollPane.getScene();
+
+            // Remplacer la racine de la scène par la nouvelle vue chargée
+            scene.setRoot(root);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
