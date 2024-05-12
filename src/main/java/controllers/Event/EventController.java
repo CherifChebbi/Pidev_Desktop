@@ -179,10 +179,6 @@ public class EventController implements Initializable {
     }
 
     private boolean champsValides(String titre, String lieu, String description, String prixStr) {
-        if (!titre.matches("[a-zA-Z]+")) {
-            showAlert(Alert.AlertType.ERROR, "Titre invalide", "Le titre ne peut contenir que des lettres.");
-            return false;
-        }
 
         if (!lieu.matches("[a-zA-Z]+")) {
             showAlert(Alert.AlertType.ERROR, "Lieu invalide", "Le lieu ne peut contenir que des lettres.");
@@ -383,7 +379,7 @@ public class EventController implements Initializable {
     public void frontEvent(ActionEvent actionEvent) {
         try {
             // Charger le fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/indexEvent.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène

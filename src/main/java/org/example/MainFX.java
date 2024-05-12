@@ -18,23 +18,13 @@ public class MainFX extends Application {
             Parent backHomeRoot = backHomeLoader.load();
             Scene backHomeScene = new Scene(backHomeRoot);
 
-            // Charger la vue de la page "ReservationFront"
-            FXMLLoader reservationFrontLoader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
-            Parent reservationFrontRoot = reservationFrontLoader.load();
-            Scene reservationFrontScene = new Scene(reservationFrontRoot);
-
-            // Créer une nouvelle fenêtre pour chaque scène
+            // Créer une nouvelle fenêtre pour la scène "BackHome"
             Stage backHomeStage = new Stage();
             backHomeStage.setScene(backHomeScene);
             backHomeStage.setTitle("Back");
 
-            Stage reservationFrontStage = new Stage();
-            reservationFrontStage.setScene(reservationFrontScene);
-            reservationFrontStage.setTitle("Front");
-
-            // Afficher les fenêtres
+            // Afficher la fenêtre
             backHomeStage.show();
-            reservationFrontStage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -44,5 +34,3 @@ public class MainFX extends Application {
         launch(args);
     }
 }
-
-

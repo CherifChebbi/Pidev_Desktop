@@ -63,6 +63,29 @@ public class FrontController {
         eventScrollPane.setPadding(new Insets(20, 20, 20, 20));
     }
 
+    private VBox createEventContainer(Event event) {
+        ImageView imageView = createEventView(event);
+        imageView.setFitWidth(200); // Largeur de l'image
+        imageView.setFitHeight(180); // Hauteur de l'image
+
+        Label titleLabel = new Label("Titre: " + event.getTitre());
+        Label dateLabel = new Label("Date: " + event.getDateDebut());
+        Label priceLabel = new Label("Prix: " + event.getPrix());
+        Button reserveButton = new Button("Réserver");
+        reserveButton.setStyle("-fx-background-color: #FF0000;");
+        reserveButton.setOnAction(this::reserveButtonClicked);
+        reserveButton.setUserData(event);
+
+        VBox eventDetails = new VBox(titleLabel,dateLabel, priceLabel, reserveButton);
+        eventDetails.setSpacing(5); // Espacement vertical entre chaque détail
+        eventDetails.setAlignment(Pos.CENTER);
+
+        VBox eventContainer = new VBox(imageView, eventDetails);
+        eventContainer.setSpacing(10); // Espacement vertical entre l'image et les détails
+        eventContainer.setAlignment(Pos.CENTER); // Centrer le contenu
+        return eventContainer;
+    }
+
     private void afficherEvenements(List<Event> events) {
         VBox eventVBox = new VBox(); // Utilisez un VBox pour stocker les événements
         eventVBox.setSpacing(20); // Espacement vertical entre les conteneurs d'événements
@@ -73,30 +96,8 @@ public class FrontController {
 
             for (int j = i; j < Math.min(i + 4, events.size()); j++) {
                 Event event = events.get(j);
-
-                ImageView imageView = createEventView(event);
-                imageView.setFitWidth(200); // Largeur de l'image
-                imageView.setFitHeight(180); // Hauteur de l'image
-                Label titleLabel = new Label("Titre: " + event.getTitre());
-                Label descriptionLabel = new Label("Description: " + event.getDescription());
-                Label dateLabel = new Label("Date: " + event.getDateDebut());
-                Label priceLabel = new Label("Prix: " + event.getPrix());
-                Button reserveButton = new Button("Réserver");
-                reserveButton.setStyle("-fx-background-color: #FF0000;");
-                reserveButton.setOnAction(this::reserveButtonClicked);
-                reserveButton.setUserData(event);
-
-                VBox eventDetails = new VBox(); // Utilisez VBox pour aligner les éléments verticalement
-                eventDetails.getChildren().addAll(titleLabel, descriptionLabel, dateLabel, priceLabel, reserveButton);
-                eventDetails.setSpacing(10);
-                eventDetails.setAlignment(Pos.CENTER);
-
-                VBox container = new VBox();
-                container.getChildren().addAll(imageView, eventDetails);
-                container.setSpacing(20); // Ajouter un espacement vertical entre chaque image et les détails de l'événement
-                container.setAlignment(Pos.CENTER);
-
-                eventLine.getChildren().add(container); // Ajoutez chaque conteneur d'événement à la ligne
+                VBox eventContainer = createEventContainer(event);
+                eventLine.getChildren().add(eventContainer); // Ajoutez chaque conteneur d'événement à la ligne
             }
 
             eventVBox.getChildren().add(eventLine); // Ajoutez la ligne d'événements à eventVBox
@@ -104,8 +105,6 @@ public class FrontController {
 
         eventScrollPane.setContent(eventVBox); // Définissez le contenu du ScrollPane comme le VBox contenant tous les événements
     }
-
-
 
 
 
@@ -191,7 +190,7 @@ public class FrontController {
     @FXML
     public void Front_Events(ActionEvent actionEvent) {
         // Par exemple, ouvrir une nouvelle fenêtre pour afficher tous les événements
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/indexEvent.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
         Parent root;
         try {
             root = loader.load();

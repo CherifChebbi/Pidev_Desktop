@@ -29,7 +29,7 @@ public class PaiementController {
 
 
     private static final String ACCOUNT_SID = "AC7d0461f0c5c67f8ec8df466b5085708b";
-    private static final String AUTH_TOKEN = "da49924fe6c1f9be3da2b866de3be14a";
+    private static final String AUTH_TOKEN = "3b03eb67bebef1564bbb5d3bbd0f1cc6";
     private static final String TWILIO_NUMBER = "+16504375251";
 
     @FXML

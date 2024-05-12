@@ -51,7 +51,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <ImageView fx:id="imgRes" fitHeight="176.0" fitWidth="275.0" layoutX="642.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="imgRes" fitHeight="176.0" fitWidth="275.0" layoutX="481.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true" />
             <Label layoutX="161.0" layoutY="127.0" />
             <Text layoutX="161.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous allez réserver :">
                <font>
@@ -60,22 +60,22 @@
             </Text>
             <Text layoutX="161.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Text>
             <Text layoutX="161.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Durée :">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Text>
             <Text layoutX="161.0" layoutY="242.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu :">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Text>
             <Text layoutX="160.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix : ">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Text>
             <Label fx:id="titreevent" layoutX="303.0" layoutY="119.0" text="TITRE" />
@@ -105,9 +105,9 @@
                   <Font name="System Bold" size="13.0" />
                </font></Label>
             <TextField fx:id="telephoneField" layoutX="606.0" layoutY="424.0" />
-            <Label layoutX="503.0" layoutY="473.0" text="Date de la réservation : ">
+            <Label layoutX="503.0" layoutY="472.0" text="Date de la réservation : ">
                <font>
-                  <Font size="13.0" />
+                  <Font name="System Bold" size="13.0" />
                </font></Label>
             <DatePicker fx:id="datePicker" layoutX="665.0" layoutY="469.0" />
             <Button layoutX="748.0" layoutY="525.0" mnemonicParsing="false" onAction="#validerReservEvent" prefHeight="34.0" prefWidth="163.0" style="-fx-background-color: #000000;" text="Passer au Paiement" textFill="WHITE">
