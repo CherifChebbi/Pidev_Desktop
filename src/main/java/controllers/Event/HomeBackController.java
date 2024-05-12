@@ -152,7 +152,7 @@ public class HomeBackController {
     public void frontEvent(ActionEvent actionEvent) {
         try {
             // Charger le fichier FXML
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/indexEvent.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
             Parent root = loader.load();
 
             // Créer une nouvelle scène

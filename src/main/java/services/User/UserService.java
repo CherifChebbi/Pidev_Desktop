@@ -190,7 +190,7 @@ public class UserService implements IServices<User> {
         String query = "UPDATE user SET password=? WHERE id=?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
-            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt());
+            String hashedPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt(13));
             preparedStatement.setString(1, hashedPassword);
             preparedStatement.setInt(2, userId);
             int rowsUpdated = preparedStatement.executeUpdate();
@@ -270,7 +270,7 @@ public class UserService implements IServices<User> {
 
     public void inscription(User user) throws SQLException {
         // Hash the password using bcrypt
-        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(13));
         user.setPassword(hashedPassword);
 
         // Proceed with user insertion

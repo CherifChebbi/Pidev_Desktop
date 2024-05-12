@@ -1,11 +1,11 @@
 package controllers.Plat;
 
-import models.Plat;
-import models.Restaurant;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import models.Plat;
+import models.Restaurant;
 
 public class PlatItemController {
 

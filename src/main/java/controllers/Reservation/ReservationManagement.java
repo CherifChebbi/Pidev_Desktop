@@ -1,36 +1,32 @@
 
 package controllers.Reservation;
-import models.Reservation;
-import services.ReservationService.ServiceReservation;
-import com.itextpdf.kernel.pdf.*;
+
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import javafx.scene.image.Image;
+import javafx.util.Duration;
+import models.Reservation;
+import org.controlsfx.control.Notifications;
+import services.ReservationService.ServiceReservation;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.awt.*;
 import java.io.File;
-
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-
-import javax.mail.*;
-import javax.mail.internet.*;
-
-
-import javafx.util.Duration;
-import org.controlsfx.control.Notifications;
 
 
 public class ReservationManagement {

@@ -1,9 +1,9 @@
 package services.ReservationService;
 
-import models.Reservation;
-import utils.DBConnexion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import models.Reservation;
+import utils.DBConnexion;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

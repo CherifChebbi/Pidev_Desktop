@@ -72,7 +72,7 @@ public class AjouterUser implements Initializable {
             user.setPrenom(prenomTF.getText());
             user.setNationnalite(adresseTF.getText());
             user.setEmail(emailTF.getText());
-            user.setPassword(BCrypt.hashpw(mdpTF.getText(), BCrypt.gensalt())); // Hash the password
+            user.setPassword(BCrypt.hashpw(mdpTF.getText(), BCrypt.gensalt(13))); // Hash the password
             user.setRoles(selectedRadioButton.getText());
 
             user.setNumtel(Integer.parseInt(numtelTF.getText())); // Set numtel from TextField

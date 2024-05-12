@@ -1,9 +1,5 @@
 package controllers.Plat;
 
-import models.Plat;
-import models.Restaurant;
-import services.PlatService.ServicePlat;
-import services.RestaurantService.ServiceRestaurant;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +14,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import models.Plat;
+import models.Restaurant;
+import services.PlatService.ServicePlat;
+import services.RestaurantService.ServiceRestaurant;
 
 import java.io.File;
 import java.io.IOException;
@@ -153,7 +153,8 @@ public class DashboardController {
         // Create labels for the Plat item
         Label nomLabel = new Label("Nom: " + plat.getNom());
         Label prixLabel = new Label("Prix: " + plat.getPrix());
-        Label restaurantLabel = new Label("Restaurant: " + plat.getRestaurant().getNom()); // Access the restaurant's name
+        String restaurantName = (plat.getRestaurant() != null) ? plat.getRestaurant().getNom() : "N/A";
+        Label restaurantLabel = new Label("Restaurant: " + restaurantName);
 
         // Create a button to show the image
         Button showImageButton = new Button("Show Image");

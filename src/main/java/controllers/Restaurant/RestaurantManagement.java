@@ -1,16 +1,12 @@
     package controllers.Restaurant;
 
-    import javafx.scene.Node;
-    import models.Notification;
-    import models.Restaurant;
-    import services.RestaurantService.NotificationService;
-    import services.RestaurantService.ServiceRestaurant;
     import javafx.collections.FXCollections;
     import javafx.collections.ObservableList;
     import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
     import javafx.fxml.FXMLLoader;
     import javafx.geometry.Pos;
+    import javafx.scene.Node;
     import javafx.scene.Parent;
     import javafx.scene.Scene;
     import javafx.scene.control.*;
@@ -19,7 +15,11 @@
     import javafx.stage.FileChooser;
     import javafx.stage.Stage;
     import javafx.util.Duration;
+    import models.Notification;
+    import models.Restaurant;
     import org.controlsfx.control.Notifications;
+    import services.RestaurantService.NotificationService;
+    import services.RestaurantService.ServiceRestaurant;
 
     import java.io.File;
     import java.io.IOException;
@@ -253,38 +253,6 @@
             }
         }
 
-        //go gestion_restaurant
-        @FXML
-        void Gestion_Restaurant(ActionEvent event) throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/Back.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-
-        }
-
-        @FXML
-        public void AccederFront(ActionEvent event) throws IOException {
-            try {
-                // Load the FXML file for the restaurant view
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/index.fxml"));
-                Parent root = loader.load();
-
-                // Create a new scene with the restaurant view
-                Scene scene = new Scene(root);
-
-                // Get the stage from the button's scene
-                Stage stage = (Stage) front.getScene().getWindow();
-
-                // Set the new scene on the stage
-                stage.setScene(scene);
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
         @FXML
         public void Back_Gestion_User(ActionEvent event) throws IOException {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/User/AfficherUsers.fxml"));
@@ -330,6 +298,7 @@
             stage.setScene(scene);
             stage.show();
         }
+
 
 
 

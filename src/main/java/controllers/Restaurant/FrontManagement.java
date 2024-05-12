@@ -1,24 +1,17 @@
 package controllers.Restaurant;
 
 import controllers.Reservation.ReservationManagement;
-import javafx.scene.Node;
-import javafx.scene.layout.GridPane;
-import models.Notification;
-import models.Plat;
-import models.Reservation;
-import models.Restaurant;
-import services.ReservationService.ServiceReservation;
-import services.RestaurantService.NotificationService;
-import services.RestaurantService.ServiceRestaurant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
@@ -28,6 +21,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import models.Notification;
+import models.Plat;
+import models.Reservation;
+import models.Restaurant;
+import services.ReservationService.ServiceReservation;
+import services.RestaurantService.NotificationService;
+import services.RestaurantService.ServiceRestaurant;
 
 import java.io.File;
 import java.io.IOException;
@@ -334,9 +334,21 @@ public class FrontManagement {
     }
 
 
-    public void displayReservationsCalendar(ActionEvent actionEvent) {
-    }
+    @FXML
+    private void editProfile (ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/User/EditProfile.fxml"));
+        Parent profileInterface = loader.load();
+        Scene profileScene = new Scene(profileInterface);
+        Stage profileStage = new Stage();
+        profileStage.setScene(profileScene);
 
+        // Close the current stage (assuming verifierButton is accessible from here)
+        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        currentStage.close();
+
+        // Show the login stage
+        profileStage.show();
+    }
     @FXML
     void Front_Pays(ActionEvent event) {
         try {
@@ -399,21 +411,6 @@ public class FrontManagement {
 
         // Close the current stage (assuming verifierButton is accessible from here)
         Stage currentStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        currentStage.close();
-
-        // Show the login stage
-        profileStage.show();
-    }
-    @FXML
-    private void editProfile (ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/User/EditProfile.fxml"));
-        Parent profileInterface = loader.load();
-        Scene profileScene = new Scene(profileInterface);
-        Stage profileStage = new Stage();
-        profileStage.setScene(profileScene);
-
-        // Close the current stage (assuming verifierButton is accessible from here)
-        Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         currentStage.close();
 
         // Show the login stage
