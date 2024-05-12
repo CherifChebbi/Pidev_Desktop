@@ -24,6 +24,8 @@ import services.ServiceEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -156,13 +158,13 @@ public class EventController implements Initializable {
         if (!dateFinApresDateDebut(localDateDebut, localDateFin)) return;
 
         double prix = Double.parseDouble(prixStr);
-        String imageEvent = ImgEventAffiche.getImage().getUrl();
+       // String imageEvent = ImgEventAffiche.getImage().getUrl();
         Category selectedCategory = categorieEvent.getValue();
 
         Date dateDebut = Date.valueOf(localDateDebut);
         Date dateFin = Date.valueOf(localDateFin);
 
-        Event newEvent = new Event(0, titre, description, dateDebut, dateFin, lieu, prix, imageEvent, selectedCategory.getId());
+        Event newEvent = new Event(0, titre, description, dateDebut, dateFin, lieu, prix, file.getName(), selectedCategory.getId());
         serviceEvent.ajouter(newEvent);
 
         afficherEvents();
@@ -219,16 +221,25 @@ public class EventController implements Initializable {
         categorieEvent.getSelectionModel().clearSelection();
     }
 
+    private File file;
+
     @FXML
     private void selectImageAction() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif"));
-        File selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile != null) {
-            String imagePath = selectedFile.toURI().toString();
-            ImgEventAffiche.setImage(new Image(imagePath));
+        fileChooser.setTitle("Choisir une image");
+        file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+            // Copier l'image dans le dossier d'upload de votre projet
+            String destinationPath = "C:/Users/rayen/IdeaProjects/JAVAPI/src/main/resources/upload/" + file.getName();
+            try {
+                Files.copy(file.toPath(), new File(destinationPath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                //tf_imgPays.setText(destinationPath);
+            } catch (IOException e) {
+                e.printStackTrace(); // Gérer l'erreur d'écriture du fichier
+            }
         }
     }
+
 
     @FXML
     void rechercherParTitre(ActionEvent event) {

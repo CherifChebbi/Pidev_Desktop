@@ -1,6 +1,5 @@
 package controllers.Event;
 
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -23,6 +22,7 @@ import javafx.stage.Stage;
 import services.ServiceEvent;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -112,14 +112,31 @@ public class FrontController {
 
     private ImageView createEventView(Event event) {
         ImageView imageView = new ImageView();
-        Image image = new Image(event.getImageEvent());
-        imageView.setImage(image);
+        // Récupérez uniquement le nom de fichier de l'image
+        String imageName = event.getImageEvent();
 
-        // Ajoutez une marge autour de l'imageView
-        StackPane stackPane = new StackPane(imageView);
-        stackPane.setPadding(new Insets(5)); // Définissez la marge sur le StackPane
+        // Créez une URL relative au nom de fichier de l'image
+        URL imageUrl = getClass().getResource("/upload/" + imageName);
+
+        // Vérifiez si l'URL de la ressource est valide
+        if (imageUrl != null) {
+            // Créez l'objet Image avec l'URL relative
+            Image image = new Image(imageUrl.toExternalForm());
+            imageView.setImage(image);
+
+            // Ajoutez une marge autour de l'imageView
+            StackPane stackPane = new StackPane(imageView);
+            stackPane.setPadding(new Insets(5)); // Définissez la marge sur le StackPane
+        } else {
+            // Affichez un message d'erreur si la ressource n'est pas trouvée
+            System.err.println("Image resource not found: " + imageName);
+        }
+
         return imageView;
     }
+
+
+
 
     private void filtrerEvenements(ActionEvent event) {
         // Obtenez le critère de filtrage sélectionné
@@ -155,27 +172,21 @@ public class FrontController {
 
     @FXML
     public void reserveButtonClicked(ActionEvent event) {
+        Button buttonClicked = (Button) event.getSource();
+        Event selectedEvent = (Event) buttonClicked.getUserData();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationEvent/ReserverEvent.fxml"));
+        Parent root;
         try {
-            // Charger le fichier FXML de la page de réservation de l'événement
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationEvent/ReserverEvent.fxml"));
-            Parent root = loader.load();
-
-            // Récupérer la scène de la fenêtre actuelle
-            Scene scene = ((Node) event.getSource()).getScene();
-
-            // Remplacer la racine de la scène par la nouvelle vue chargée
-            scene.setRoot(root);
-
-            // Initialiser les données du contrôleur de la nouvelle vue
+            root = loader.load();
             ReserverEventController controller = loader.getController();
-            Button buttonClicked = (Button) event.getSource();
-            Event selectedEvent = (Event) buttonClicked.getUserData();
             controller.initData(selectedEvent);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
-
 
     @FXML
     public void rechercherEventFront(ActionEvent actionEvent) {
@@ -196,16 +207,14 @@ public class FrontController {
 
     @FXML
     public void Front_Events(ActionEvent actionEvent) {
+        // Par exemple, ouvrir une nouvelle fenêtre pour afficher tous les événements
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
+        Parent root;
         try {
-            // Charger le fichier FXML de la page d'accueil des événements
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
-            Parent root = loader.load();
-
-            // Récupérer la scène de la fenêtre actuelle
-            Scene scene = eventScrollPane.getScene();
-
-            // Remplacer la racine de la scène par la nouvelle vue chargée
-            scene.setRoot(root);
+            root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
         } catch (IOException ex) {
             ex.printStackTrace();
         }

@@ -194,7 +194,7 @@
                   <Image url="@../images/reservation.png" />
                </image>
             </ImageView>
-            <Label fx:id="totalEventsLabel" layoutX="301.0" layoutY="20.0" prefHeight="35.0" prefWidth="25.0" text="0" textFill="WHITE">
+            <Label fx:id="totalEventsLabel" layoutX="293.0" layoutY="20.0" prefHeight="35.0" prefWidth="34.0" text="0" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>

@@ -127,7 +127,6 @@
       </Text>
       <ChoiceBox fx:id="choiceFiltreEvent" layoutX="488.0" layoutY="181.0" prefWidth="150.0" />
       <AnchorPane layoutX="59.0" layoutY="236.0" prefHeight="472.0" prefWidth="1227.0" />
-      <ScrollPane fx:id="eventScrollPane" layoutX="52.0" layoutY="272.0" prefHeight="444.0" prefWidth="1227.0" />
       <ScrollPane fx:id="eventScrollPane" layoutX="53.0" layoutY="273.0" prefHeight="454.0" prefWidth="1227.0" />
    </children>
 </AnchorPane>
