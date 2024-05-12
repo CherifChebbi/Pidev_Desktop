@@ -233,7 +233,13 @@ public class EventController implements Initializable {
             String destinationPath = "C:/Users/rayen/IdeaProjects/JAVAPI/src/main/resources/upload/" + file.getName();
             try {
                 Files.copy(file.toPath(), new File(destinationPath).toPath(), StandardCopyOption.REPLACE_EXISTING);
-                //tf_imgPays.setText(destinationPath);
+
+                // Charger l'image dans l'ImageView
+                Image image = new Image(file.toURI().toString());
+                ImgEventAffiche.setImage(image);
+
+                // Enregistrer le chemin de l'image dans le champ imgPath (si nécessaire)
+                imgPath.setText(destinationPath);
             } catch (IOException e) {
                 e.printStackTrace(); // Gérer l'erreur d'écriture du fichier
             }

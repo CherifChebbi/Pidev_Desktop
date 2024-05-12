@@ -67,9 +67,18 @@ public class ReserverEventController {
         dfinevent.setText(event.getDateFin().toString());
         lieuevent.setText(event.getLieu());
         prixevent.setText(String.valueOf(event.getPrix())); // Afficher le prix de l'événement
-        Image image = new Image(event.getImageEvent());
-        imgRes.setImage(image);
+        try {
+            // Construire le chemin relatif vers le fichier image
+            String imagePath = "/upload/" + event.getImageEvent();
+            // Charger l'image à partir du chemin relatif
+            Image image = new Image(getClass().getResourceAsStream(imagePath));
+            imgRes.setImage(image);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de l'image
+        }
     }
+
 
     @FXML
     private void validerReservEvent(ActionEvent actionEvent) {
