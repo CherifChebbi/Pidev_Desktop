@@ -90,7 +90,7 @@ public class login {
             FXMLLoader loader = new FXMLLoader();
 
             // Check the role of the user
-            if (user.getRoles().equals("ADMIN")) {
+            if (user.getRoles().equals("[\"ROLE_ADMIN\"]")) {
                 // If the user is an ADMIN, load AfficherUsers.fxml
                 loader.setLocation(getClass().getResource("/User/AfficherUsers.fxml"));
             } else {

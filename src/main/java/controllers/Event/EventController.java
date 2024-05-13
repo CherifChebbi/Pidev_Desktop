@@ -24,6 +24,8 @@ import services.ServiceEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -156,13 +158,13 @@ public class EventController implements Initializable {
         if (!dateFinApresDateDebut(localDateDebut, localDateFin)) return;
 
         double prix = Double.parseDouble(prixStr);
-        String imageEvent = ImgEventAffiche.getImage().getUrl();
+        // String imageEvent = ImgEventAffiche.getImage().getUrl();
         Category selectedCategory = categorieEvent.getValue();
 
         Date dateDebut = Date.valueOf(localDateDebut);
         Date dateFin = Date.valueOf(localDateFin);
 
-        Event newEvent = new Event(0, titre, description, dateDebut, dateFin, lieu, prix, imageEvent, selectedCategory.getId());
+        Event newEvent = new Event(0, titre, description, dateDebut, dateFin, lieu, prix, file.getName(), selectedCategory.getId());
         serviceEvent.ajouter(newEvent);
 
         afficherEvents();
@@ -179,10 +181,6 @@ public class EventController implements Initializable {
     }
 
     private boolean champsValides(String titre, String lieu, String description, String prixStr) {
-        if (!titre.matches("[a-zA-Z]+")) {
-            showAlert(Alert.AlertType.ERROR, "Titre invalide", "Le titre ne peut contenir que des lettres.");
-            return false;
-        }
 
         if (!lieu.matches("[a-zA-Z]+")) {
             showAlert(Alert.AlertType.ERROR, "Lieu invalide", "Le lieu ne peut contenir que des lettres.");
@@ -223,16 +221,31 @@ public class EventController implements Initializable {
         categorieEvent.getSelectionModel().clearSelection();
     }
 
+    private File file;
+
     @FXML
     private void selectImageAction() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.gif"));
-        File selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile != null) {
-            String imagePath = selectedFile.toURI().toString();
-            ImgEventAffiche.setImage(new Image(imagePath));
+        fileChooser.setTitle("Choisir une image");
+        file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+            // Copier l'image dans le dossier d'upload de votre projet
+            String destinationPath = "C:/Users/cheri/Documents/-- ESPRIT --/3eme/--- SEMESTRE  2 ----/-- PI_Java --/------- PI_JAVA_Finale -------/Integration/src/main/resources/Upload/" + file.getName();
+            try {
+                Files.copy(file.toPath(), new File(destinationPath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+                // Charger l'image dans l'ImageView
+                Image image = new Image(file.toURI().toString());
+                ImgEventAffiche.setImage(image);
+
+                // Enregistrer le chemin de l'image dans le champ imgPath (si nécessaire)
+                imgPath.setText(destinationPath);
+            } catch (IOException e) {
+                e.printStackTrace(); // Gérer l'erreur d'écriture du fichier
+            }
         }
     }
+
 
     @FXML
     void rechercherParTitre(ActionEvent event) {
@@ -271,7 +284,7 @@ public class EventController implements Initializable {
             Scene scene = new Scene(root);
 
             // Accéder à la fenêtre principale de votre application
-            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((javafx.scene.control.Button) event.getSource()).getScene().getWindow();
 
             // Afficher la nouvelle scène dans la fenêtre principale
             stage.setScene(scene);
@@ -289,7 +302,7 @@ public class EventController implements Initializable {
             Parent root = loader.load();
 
             // Accéder à la fenêtre principale de votre application
-            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((javafx.scene.control.Button) event.getSource()).getScene().getWindow();
 
             // Changer la scène actuelle pour afficher la nouvelle vue
             Scene scene = new Scene(root);
@@ -312,7 +325,7 @@ public class EventController implements Initializable {
             Scene scene = new Scene(root);
 
             // Accéder à la fenêtre principale de votre application
-            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((javafx.scene.control.Button) event.getSource()).getScene().getWindow();
 
             // Afficher la nouvelle scène dans la fenêtre principale
             stage.setScene(scene);
@@ -378,6 +391,74 @@ public class EventController implements Initializable {
             // Si aucun événement n'est sélectionné, afficher une alerte d'erreur
             showAlert(Alert.AlertType.ERROR, "Aucun événement sélectionné", "Veuillez sélectionner un événement à mettre à jour.");
         }
+    }
+
+
+    public void frontEvent(ActionEvent actionEvent) {
+        try {
+            // Charger le fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la fenêtre actuelle
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            // Définir la scène sur la fenêtre
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement du FXML
+        }
+    }
+
+    @FXML
+    public void Back_Gestion_User(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/User/AfficherUsers.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void Back_Gestion_Pays(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/AfficherPays.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void Back_Gestion_Restaurant(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/Back.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void Back_Gestion_Hebergement(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CategoryH/Category.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void Back_Gestion_Event(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/HomeBack.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

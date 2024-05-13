@@ -4,6 +4,11 @@ import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import models.Event;
 import models.ReservationEvent;
 import javafx.event.ActionEvent;
@@ -17,6 +22,7 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class PaiementController {
@@ -29,7 +35,7 @@ public class PaiementController {
 
 
     private static final String ACCOUNT_SID = "AC7d0461f0c5c67f8ec8df466b5085708b";
-    private static final String AUTH_TOKEN = "da49924fe6c1f9be3da2b866de3be14a";
+    private static final String AUTH_TOKEN = "3b03eb67bebef1564bbb5d3bbd0f1cc6";
     private static final String TWILIO_NUMBER = "+16504375251";
 
     @FXML
@@ -129,8 +135,6 @@ public class PaiementController {
     }
 
 
-
-
     private void envoyerSMS(String message, String numeroDestinataire) {
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
         Message.creator(
@@ -154,5 +158,26 @@ public class PaiementController {
         alert.setHeaderText("Le paiement a échoué.");
         alert.setContentText("Veuillez réessayer ou contacter le support.");
         alert.showAndWait();
+    }
+
+    public void retourReservation(ActionEvent actionEvent) {
+        try {
+            // Load the FXML file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationEvent/ReserverEvent.fxml"));
+            Parent root = loader.load();
+
+            // Create a new scene with the loaded FXML content
+            Scene scene = new Scene(root);
+
+            // Get the stage from the action event
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            // Set the new scene
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Handle the exception if the FXML file cannot be loaded
+        }
     }
 }

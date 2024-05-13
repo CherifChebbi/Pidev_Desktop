@@ -31,6 +31,7 @@ import services.RestaurantService.ServiceRestaurant;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -142,35 +143,40 @@ public class FrontManagement {
         row.setStyle("-fx-background-color: transparent;");
 
         for (Restaurant restaurant : restaurants) {
-            ImageView imageView = new ImageView(new Image("file:" + restaurant.getImage()));
-            imageView.setFitWidth(200);
-            imageView.setFitHeight(150);
+            String imageName = restaurant.getImage();
+            if (imageName != null && !imageName.isEmpty()) {
+                URL imageUrl = getClass().getResource("/upload/" + imageName);
+                if (imageUrl != null) {
+                    ImageView imageView = new ImageView(new Image(imageUrl.toExternalForm()));
+                    imageView.setFitWidth(200);
+                    imageView.setFitHeight(150);
 
-            Label nameLabel = createStyledLabel(restaurant.getNom(), 18, FontWeight.BOLD, Color.BLACK);
-            nameLabel.setWrapText(true);
-            nameLabel.setMaxWidth(200);
+                    Label nameLabel = createStyledLabel(restaurant.getNom(), 18, FontWeight.BOLD, Color.BLACK);
+                    nameLabel.setWrapText(true);
+                    nameLabel.setMaxWidth(200);
 
-            Label descriptionLabel = createStyledLabel(truncateDescription(restaurant.getDescription(), 3), 14, FontWeight.NORMAL, Color.GRAY);
-            descriptionLabel.setWrapText(true);
-            descriptionLabel.setMaxWidth(200);
+                    Label descriptionLabel = createStyledLabel(truncateDescription(restaurant.getDescription(), 3), 14, FontWeight.NORMAL, Color.GRAY);
+                    descriptionLabel.setWrapText(true);
+                    descriptionLabel.setMaxWidth(200);
 
-            Label locationLabel = createStyledLabel(restaurant.getLocalisataion(), 14, FontWeight.NORMAL, Color.GRAY);
-            locationLabel.setWrapText(true);
-            locationLabel.setMaxWidth(200);
+                    Label locationLabel = createStyledLabel(restaurant.getLocalisataion(), 14, FontWeight.NORMAL, Color.GRAY);
+                    locationLabel.setWrapText(true);
+                    locationLabel.setMaxWidth(200);
 
-            Button reserveButton = createStyledButton("Réserver");
-            reserveButton.setOnAction(event -> reserveForRestaurant(event, restaurant));
-            Button viewPlatButton = createStyledButton("Voir Plat");
-            viewPlatButton.setOnAction(event -> viewPlatsForRestaurant(event, restaurant));
+                    Button reserveButton = createStyledButton("Réserver");
+                    reserveButton.setOnAction(event -> reserveForRestaurant(event, restaurant));
+                    Button viewPlatButton = createStyledButton("Voir Plat");
+                    viewPlatButton.setOnAction(event -> viewPlatsForRestaurant(event, restaurant));
 
+                    VBox restaurantInfo = new VBox(5);
+                    restaurantInfo.getChildren().addAll(nameLabel, descriptionLabel, locationLabel, reserveButton, viewPlatButton);
 
-            VBox restaurantInfo = new VBox(5);
-            restaurantInfo.getChildren().addAll(nameLabel, descriptionLabel, locationLabel, reserveButton, viewPlatButton);
+                    VBox restaurantBox = new VBox(5);
+                    restaurantBox.getChildren().addAll(imageView, restaurantInfo);
 
-            VBox restaurantBox = new VBox(5);
-            restaurantBox.getChildren().addAll(imageView, restaurantInfo);
-
-            row.getChildren().add(restaurantBox);
+                    row.getChildren().add(restaurantBox);
+                }
+            }
         }
 
         return row;
@@ -211,7 +217,12 @@ public class FrontManagement {
 
             RestaurantDetailsController controller = loader.getController();
             List<Plat> plats = serviceRestaurant.getPlatsForRestaurant(restaurant.getid());
-            controller.initData(restaurant.getNom(), restaurant.getDescription(), plats, restaurant.getImage());
+
+            String imageName = restaurant.getImage();
+            URL imageUrl = getClass().getResource("/upload/" + imageName);
+
+
+            controller.initData(restaurant.getNom(), restaurant.getDescription(), plats,imageUrl);
 
             Stage stage = new Stage();
             stage.setScene(new Scene(root));

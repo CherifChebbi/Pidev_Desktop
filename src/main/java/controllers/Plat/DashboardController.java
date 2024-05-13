@@ -21,6 +21,9 @@ import services.RestaurantService.ServiceRestaurant;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -55,6 +58,8 @@ public class DashboardController {
     @FXML
     private ImageView exit;
 
+    private File file;
+
     private void setSelectedPlat(Plat plat) {
         this.selectedPlat = plat;
     }
@@ -79,12 +84,28 @@ public class DashboardController {
             e.printStackTrace();
         }
     }
+    @FXML
+    void importerImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choisir une image");
+        file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+            // Copier l'image dans le dossier d'upload de votre projet
+            String destinationPath = "C:/Users/cheri/Documents/-- ESPRIT --/3eme/--- SEMESTRE  2 ----/-- PI_Java --/------- PI_JAVA_Finale -------/Integration/src/main/resources/Upload/" + file.getName();
+            try {
+                Files.copy(file.toPath(), new File(destinationPath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                //tf_imgPays.setText(destinationPath);
+            } catch (IOException e) {
+                e.printStackTrace(); // Gérer l'erreur d'écriture du fichier
+            }
+        }
+    }
 
     @FXML
     void ajouter(ActionEvent event) {
         try {
             String nomPlat = nom.getText();
-            String imagePlat = imagePath;
+            String imagePlat = file.getName();
             float prixPlat = Float.parseFloat(prix.getText());
 
             // Check if the input fields are valid
@@ -94,7 +115,7 @@ public class DashboardController {
                     int restaurantId = restaurantComboBox.getSelectionModel().getSelectedItem().getid();
 
                     // Create a new Plat with the selected restaurant's ID
-                    Plat plat = new Plat(nomPlat, imagePlat, prixPlat, restaurantId);
+                    Plat plat = new Plat(nomPlat, file.getName(), prixPlat, restaurantId);
 
 
                     // Add the Plat to the database
@@ -162,29 +183,32 @@ public class DashboardController {
         // Set action for the button
         showImageButton.setOnAction(event -> {
             try {
-                // Check if the image file exists
+                /* Check if the image file exists
                 File imageFile = new File(plat.getImage());
                 if (!imageFile.exists()) {
                     System.err.println("Error: Image file does not exist.");
                     return;
                 }
-
-                // Load the image using an absolute file path
+*/
+                /* Load the image using an absolute file path
                 Image image = new Image(imageFile.toURI().toString());
 
                 // Check if the image was loaded successfully
                 if (image.isError()) {
                     System.err.println("Error loading image: " + image.getException().getMessage());
                     return;
-                }
+                }*/
 
                 // Create and configure the dialog
                 Dialog<ButtonType> dialog = new Dialog<>();
                 dialog.setTitle("Plat Image");
                 dialog.setHeaderText(null);
 
+                String imageName = plat.getImage();
+                URL imageUrl = getClass().getResource("/upload/" + imageName);
+
                 // Create an ImageView to display the image
-                ImageView dialogImageView = new ImageView(image);
+                ImageView dialogImageView = new ImageView(new Image(imageUrl.toExternalForm()));
                 dialogImageView.setPreserveRatio(true);
 
                 // Add the ImageView to the dialog's content pane
@@ -409,4 +433,6 @@ public class DashboardController {
         stage.show();
 
     }
+
+
 }

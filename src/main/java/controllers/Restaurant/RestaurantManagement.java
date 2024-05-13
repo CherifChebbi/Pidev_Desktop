@@ -23,6 +23,8 @@
 
     import java.io.File;
     import java.io.IOException;
+    import java.nio.file.Files;
+    import java.nio.file.StandardCopyOption;
     import java.sql.SQLException;
     import java.util.List;
     import java.util.regex.Pattern;
@@ -70,21 +72,39 @@
         @FXML
         private Button switchToPlatButton; // Button to switch to Plat view
 
+        private File file;
+
         private static final Pattern STRING_PATTERN = Pattern.compile("^[a-zA-Zéèêçàâôûî\\s]+$");
         private static final Pattern INTEGER_PATTERN = Pattern.compile("^\\d+$");
 
         NotificationService notificationService = new NotificationService();
 
         @FXML
+        void importerImage(ActionEvent event) {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Choisir une image");
+            file = fileChooser.showOpenDialog(null);
+            if (file != null) {
+                // Copier l'image dans le dossier d'upload de votre projet
+                String destinationPath = "C:/Users/cheri/Documents/-- ESPRIT --/3eme/--- SEMESTRE  2 ----/-- PI_Java --/------- PI_JAVA_Finale -------/Integration/src/main/resources/Upload/" + file.getName();
+                try {
+                    Files.copy(file.toPath(), new File(destinationPath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    //tf_imgPays.setText(destinationPath);
+                } catch (IOException e) {
+                    e.printStackTrace(); // Gérer l'erreur d'écriture du fichier
+                }
+            }
+        }
+        @FXML
         void ajouter(ActionEvent event) throws SQLException {
             String restaurantName = nom.getText().trim();
             String restaurantLocation = localisation.getText().trim();
-            String imagePath = image.getText().trim();
-            String restaurantDescription = description.getText().trim();
+            //String imagePath = image.getText().trim();
+            //String imageName = new File(imagePath).getName();
 
             // Input validation...
 
-            SR.ajouter(new Restaurant(restaurantName, restaurantLocation, imagePath, restaurantDescription));
+            SR.ajouter(new Restaurant(restaurantName, restaurantLocation,  file.getName(), description.getText().trim()));
             afficher();
 
             // Send notification to the front management

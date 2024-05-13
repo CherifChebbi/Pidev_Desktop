@@ -18,7 +18,7 @@ public class ServiceHebergement implements IHebergement<Hebergement> {
     private Connection connection;
     public ServiceHebergement(){connection= DBConnexion.getInstance().getCnx();}
     public void ajouter(Hebergement hebergement) throws SQLException {
-        String req ="INSERT INTO hebergement (categorie_id, nom, description) VALUES (58,?,?)";
+        String req ="INSERT INTO hebergement (categorie_id, nom, description) VALUES (15,?,?)";
 
         try (PreparedStatement pre = connection.prepareStatement(req)) {
             pre.setString(1, hebergement.getNom());

@@ -99,7 +99,7 @@ public class InscriptionUser implements Initializable {
         if (selectedRadioButton != null) {
             role = selectedRadioButton.getText();
         } else {
-            role = "USER"; // Default role
+            role = "[]"; // Default role
         }
         user.setRoles(role);
         user.setNumtel(numtel);

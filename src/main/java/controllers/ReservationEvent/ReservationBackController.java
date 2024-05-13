@@ -166,8 +166,8 @@ public class ReservationBackController {
                     document.open();
 
                     // Titre du document
-                    Paragraph title = new Paragraph("Reçu de Réservation", new Font(Font.FontFamily.HELVETICA, 24, Font.BOLD, BaseColor.BLUE));
-                    title.setAlignment(Element.ALIGN_CENTER);
+                    Paragraph title = new Paragraph("Reçu de Réservation", new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.HELVETICA, 24, com.itextpdf.text.Font.BOLD, BaseColor.BLUE));
+                    title.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
                     document.add(title);
 
                     // Ajouter l'image de l'événement s'il y en a une
@@ -191,9 +191,9 @@ public class ReservationBackController {
                     table.setSpacingAfter(10f); // Espacement après le tableau
 
                     // Ajouter les cellules du tableau avec les informations sur l'événement
-                    PdfPCell cell = new PdfPCell(new Paragraph("Informations sur l'événement", new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD)));
+                    PdfPCell cell = new PdfPCell(new Paragraph("Informations sur l'événement", new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.HELVETICA, 18, com.itextpdf.text.Font.BOLD)));
                     cell.setColspan(2); // Fusionner les deux colonnes
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    cell.setHorizontalAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
                     cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
                     table.addCell(cell);
 
@@ -210,19 +210,19 @@ public class ReservationBackController {
                     table.addCell(String.valueOf(event.getPrix())); // Ajout du prix de l'événement
 
                     // Ajouter les cellules du tableau avec les informations sur la réservation
-                    cell = new PdfPCell(new Paragraph("Informations sur la réservation", new Font(Font.FontFamily.HELVETICA, 18, Font.BOLD)));
+                    cell = new PdfPCell(new Paragraph("Informations sur la réservation", new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.HELVETICA, 18, com.itextpdf.text.Font.BOLD)));
                     cell.setColspan(2); // Fusionner les deux colonnes
-                    cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                    cell.setHorizontalAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
                     cell.setBackgroundColor(BaseColor.LIGHT_GRAY);
                     table.addCell(cell);
 
                     table.addCell("Nom du réservant");
                     table.addCell(reservation.getNom());
 
-                    table.addCell("Email du réservant");
+                    table.addCell("Email du client");
                     table.addCell(reservation.getEmail());
 
-                    table.addCell("Numéro de téléphone du réservant");
+                    table.addCell("Numéro de téléphone");
                     table.addCell(reservation.getNumTel());
 
                     table.addCell("Date de réservation");
@@ -238,7 +238,7 @@ public class ReservationBackController {
 
                     // Ajouter une phrase personnalisée sous le tableau
                     Paragraph thankYou = new Paragraph("Merci pour votre réservation et votre confiance.");
-                    thankYou.setAlignment(Element.ALIGN_CENTER);
+                    thankYou.setAlignment(com.itextpdf.text.Element.ALIGN_CENTER);
                     document.add(thankYou);
 
                     // Ajouter le logo de votre application en bas de la page
@@ -289,5 +289,72 @@ public class ReservationBackController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void frontEvent(ActionEvent actionEvent) {
+        try {
+            // Charger le fichier FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la fenêtre actuelle
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            // Définir la scène sur la fenêtre
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement du FXML
+        }
+    }
+
+    @FXML
+    public void Back_Gestion_User(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/User/AfficherUsers.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void Back_Gestion_Pays(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pays/AfficherPays.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void Back_Gestion_Restaurant(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/Back.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void Back_Gestion_Hebergement(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CategoryH/Category.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void Back_Gestion_Event(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/HomeBack.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

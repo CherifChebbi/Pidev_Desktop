@@ -153,5 +153,14 @@ public class HebergementManagment {
         st.setScene(scene);
         st.show();
     }
+    @FXML
+    public void Back_Gestion_Hebergement(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/CategoryH/Category.fxml"));
+        Parent root = loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
 }

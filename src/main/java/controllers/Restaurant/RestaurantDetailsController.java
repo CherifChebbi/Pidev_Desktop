@@ -13,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import models.Plat;
 import services.PlatService.ServicePlat;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -62,13 +63,16 @@ public class RestaurantDetailsController {
         }
     }
 
-    public void initData(String restaurantName, String restaurantDescription, List<Plat> plats, String imagePath) {
+    public void initData(String restaurantName, String restaurantDescription, List<Plat> plats, URL imageUrl) {
         // Set restaurant name and description
         restaurantNameLabel.setText(restaurantName);
         restaurantDescriptionLabel.setText(restaurantDescription);
 
         // Set restaurant image
-        restaurantImageView.setImage(new Image("file:" + imagePath));
+
+
+        restaurantImageView.setImage(new Image(imageUrl.toExternalForm()));
+
 
         // Check if plats is not null before displaying
         if (plats != null) {
@@ -85,8 +89,11 @@ public class RestaurantDetailsController {
         int column = 0;
         int row = 0;
         for (Plat plat : plats) {
+            String imageName = plat.getImage();
+            URL imageUrl = getClass().getResource("/upload/" + imageName);
+            ImageView imageView = new ImageView(new Image(imageUrl.toExternalForm()));
+
             // Create an ImageView for the plat image
-            ImageView imageView = new ImageView(new Image("file:" + plat.getImage()));
             imageView.setFitWidth(200);
             imageView.setFitHeight(150);
 

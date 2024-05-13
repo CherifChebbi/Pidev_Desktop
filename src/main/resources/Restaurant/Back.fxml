@@ -245,7 +245,7 @@
                   <TableColumn fx:id="descriptioncol" prefWidth="118.4000244140625" text="Description" />
                </columns>
             </TableView>
-            <Button layoutX="399.0" layoutY="66.0" mnemonicParsing="false" onAction="#selectImage" prefHeight="39.0" prefWidth="69.0" style="-fx-background-color: WHITE; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" text="Select Image">
+            <Button layoutX="399.0" layoutY="66.0" mnemonicParsing="false" onAction="#importerImage" prefHeight="39.0" prefWidth="69.0" style="-fx-background-color: WHITE; -fx-background-radius: 20; -fx-border-color: black; -fx-border-radius: 20;" text="Select Image">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

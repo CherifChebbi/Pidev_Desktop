@@ -24,18 +24,6 @@
                 <Image url="@../images/logo1.png" />
             </image>
         </ImageView>
-        <AnchorPane prefHeight="56.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);">
-            <children>
-                <Button layoutX="1142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="159.0" style="-fx-background-color: rgb(240, 243, 255);" text="Acceder Front" textFill="#ea1010">
-                    <font>
-                        <Font name="System Bold Italic" size="15.0" />
-                    </font>
-                    <HBox.margin>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                    </HBox.margin>
-                </Button>
-            </children>
-        </AnchorPane>
         <AnchorPane layoutY="47.0" prefHeight="151.0" prefWidth="1300.0" style="-fx-background-color: rgb(127, 199, 217);">
             <children>
                 <Label alignment="CENTER" layoutX="275.0" layoutY="1.0" prefHeight="144.0" prefWidth="571.0" text="TeraNova Dashboard" textFill="#1b0000">
@@ -82,7 +70,7 @@
                                         <Image url="@../images/icons8_james_bond_32px.png" />
                                     </image>
                                 </ImageView>
-                                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="204.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Users" textFill="#030000">
+                                <Button mnemonicParsing="false" onAction="#Back_Gestion_User" prefHeight="40.0" prefWidth="204.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Users" textFill="#030000">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>
@@ -99,7 +87,7 @@
                                         <Image url="@../images/icons8_james_bond_32px.png" />
                                     </image>
                                 </ImageView>
-                                <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Pays" textFill="#030000">
+                                <Button mnemonicParsing="false" onAction="#Back_Gestion_Pays" prefHeight="40.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Pays" textFill="#030000">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>
@@ -119,7 +107,7 @@
                                         <Image url="@../images/icons8_james_bond_32px.png" />
                                     </image>
                                 </ImageView>
-                                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Restaurants" textFill="#030000">
+                                <Button mnemonicParsing="false" onAction="#Back_Gestion_Restaurant" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Restaurants" textFill="#030000">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>
@@ -139,7 +127,7 @@
                                         <Image url="@../images/icons8_james_bond_32px.png" />
                                     </image>
                                 </ImageView>
-                                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="213.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Hebegements" textFill="#030000">
+                                <Button mnemonicParsing="false" onAction="#Back_Gestion_Hebergement" prefHeight="43.0" prefWidth="213.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Hebegements" textFill="#030000">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>
@@ -159,7 +147,7 @@
                                         <Image url="@../images/icons8_james_bond_32px.png" />
                                     </image>
                                 </ImageView>
-                                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Evenements" textFill="#030000">
+                                <Button mnemonicParsing="false" onAction="#Back_Gestion_Event" prefHeight="43.0" prefWidth="214.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Gestion_Evenements" textFill="#030000">
                                     <font>
                                         <Font name="System Bold" size="18.0" />
                                     </font>
@@ -177,90 +165,88 @@
             </children>
         </AnchorPane>
         <ImageView fx:id="imageView_pays" fitHeight="200" fitWidth="200" layoutX="1069.0" layoutY="332.0" />
-      <TextField fx:id="rechercheTitreEvent" layoutX="322.0" layoutY="252.0" onAction="#rechercherParTitre" prefHeight="26.0" prefWidth="189.0" promptText="Rechercher par titre" />
-      <TableView fx:id="eventTable" layoutX="322.0" layoutY="291.0" prefHeight="179.0" prefWidth="858.0">
-         <columns>
-            <TableColumn fx:id="colidEvent" prefWidth="36.79998779296875" text="ID" />
-            <TableColumn fx:id="colTitreEvent" prefWidth="103.20001220703125" text="Titre" />
-            <TableColumn fx:id="colDescEvent" prefWidth="86.4000244140625" text="Description" />
-            <TableColumn fx:id="colCategEvent" prefWidth="80.00003051757812" text="Catégorie" />
-            <TableColumn fx:id="colDebEvent" prefWidth="109.60003662109375" text="Date Début" />
-            <TableColumn fx:id="colFinEvent" prefWidth="100.0" text="Date Fin" />
-            <TableColumn fx:id="colLieuEvent" prefWidth="100.7999267578125" text="Lieu" />
-            <TableColumn fx:id="colPrixEvent" prefWidth="90.4000244140625" text="Prix" />
-            <TableColumn fx:id="colimgEvent" prefWidth="144.79998779296875" text="Image" />
-         </columns>
-      </TableView>
-      <TextField fx:id="titreEvent" layoutX="356.0" layoutY="501.0" prefHeight="26.0" prefWidth="177.0" />
-      <Label layoutX="322.0" layoutY="506.0" text="Titre" />
-      <ChoiceBox fx:id="categorieEvent" layoutX="396.0" layoutY="545.0" prefWidth="150.0" />
-      <Label layoutX="322.0" layoutY="553.0" text="Catégorie" />
-      <TextField fx:id="lieuEvent" layoutX="382.0" layoutY="588.0" />
-      <Label layoutX="322.0" layoutY="594.0" text="Lieu" />
-      <TextField fx:id="prixEvent" layoutX="382.0" layoutY="633.0" />
-      <Label layoutX="322.0" layoutY="636.0" text="Prix" />
-      <TextArea fx:id="descEvent" layoutX="664.0" layoutY="506.0" prefHeight="54.0" prefWidth="231.0" />
-      <Label layoutX="582.0" layoutY="506.0" text="Description" />
-      <DatePicker fx:id="debEvent" layoutX="664.0" layoutY="591.0" />
-      <DatePicker fx:id="finEvent" layoutX="664.0" layoutY="633.0" />
-      <Label layoutX="582.0" layoutY="595.0" text="Date Début" />
-      <Label layoutX="582.0" layoutY="636.0" text="Date Fin" />
-      <ImageView fx:id="ImgEventAffiche" fitHeight="148.0" fitWidth="130.0" layoutX="1069.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="1070.0" layoutY="634.0" mnemonicParsing="false" onAction="#selectImageAction" prefHeight="37.0" prefWidth="128.0" style="-fx-background-color: rgb(218, 192, 163);" text="Parcourir...">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <Button layoutX="1199.0" layoutY="291.0" mnemonicParsing="false" onAction="#AjoutEvent" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Ajouter" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <Button layoutX="1199.0" layoutY="400.0" mnemonicParsing="false" onAction="#DelEvent" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Supprimer" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <Button layoutX="1199.0" layoutY="345.0" mnemonicParsing="false" onAction="#UpdEvent" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Modifier" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <Button layoutX="1199.0" layoutY="452.0" mnemonicParsing="false" onAction="#ClearEvent" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Effacer" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font></Button>
-      <HBox alignment="CENTER_RIGHT" layoutX="374.0" layoutY="180.0" prefHeight="56.0" prefWidth="787.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(220, 242, 241);">
-         <children>
-            <Button mnemonicParsing="false" onAction="#homeDashboard" prefHeight="31.0" prefWidth="159.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Home" textFill="#030000">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#dashboardCategories" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Catégories" textFill="#030000">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#dashboardEvents" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Evénements">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </Button>
-            <Button mnemonicParsing="false" onAction="#dashboardReservations" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Réservations" textFill="#030000">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" />
-               </HBox.margin>
-            </Button>
-         </children>
-      </HBox>
+        <TextField fx:id="rechercheTitreEvent" layoutX="322.0" layoutY="252.0" onAction="#rechercherParTitre" prefHeight="26.0" prefWidth="189.0" promptText="Rechercher par titre" />
+        <TableView fx:id="eventTable" layoutX="322.0" layoutY="291.0" prefHeight="179.0" prefWidth="858.0">
+            <columns>
+                <TableColumn fx:id="colidEvent" prefWidth="36.79998779296875" text="ID" />
+                <TableColumn fx:id="colTitreEvent" prefWidth="103.20001220703125" text="Titre" />
+                <TableColumn fx:id="colDescEvent" prefWidth="86.4000244140625" text="Description" />
+                <TableColumn fx:id="colCategEvent" prefWidth="80.00003051757812" text="Catégorie" />
+                <TableColumn fx:id="colDebEvent" prefWidth="109.60003662109375" text="Date Début" />
+                <TableColumn fx:id="colFinEvent" prefWidth="100.0" text="Date Fin" />
+                <TableColumn fx:id="colLieuEvent" prefWidth="100.7999267578125" text="Lieu" />
+                <TableColumn fx:id="colPrixEvent" prefWidth="90.4000244140625" text="Prix" />
+                <TableColumn fx:id="colimgEvent" prefWidth="144.79998779296875" text="Image" />
+            </columns>
+        </TableView>
+        <TextField fx:id="titreEvent" layoutX="356.0" layoutY="501.0" prefHeight="26.0" prefWidth="177.0" />
+        <Label layoutX="322.0" layoutY="506.0" text="Titre" />
+        <ChoiceBox fx:id="categorieEvent" layoutX="396.0" layoutY="545.0" prefWidth="150.0" />
+        <Label layoutX="322.0" layoutY="553.0" text="Catégorie" />
+        <TextField fx:id="lieuEvent" layoutX="382.0" layoutY="588.0" />
+        <Label layoutX="322.0" layoutY="594.0" text="Lieu" />
+        <TextField fx:id="prixEvent" layoutX="382.0" layoutY="633.0" />
+        <Label layoutX="322.0" layoutY="636.0" text="Prix" />
+        <TextArea fx:id="descEvent" layoutX="664.0" layoutY="506.0" prefHeight="54.0" prefWidth="231.0" />
+        <Label layoutX="582.0" layoutY="506.0" text="Description" />
+        <DatePicker fx:id="debEvent" layoutX="664.0" layoutY="591.0" />
+        <DatePicker fx:id="finEvent" layoutX="664.0" layoutY="633.0" />
+        <Label layoutX="582.0" layoutY="595.0" text="Date Début" />
+        <Label layoutX="582.0" layoutY="636.0" text="Date Fin" />
+        <ImageView fx:id="ImgEventAffiche" fitHeight="148.0" fitWidth="164.0" layoutX="1016.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true" />
+        <Button layoutX="1016.0" layoutY="646.0" mnemonicParsing="false" onAction="#selectImageAction" prefHeight="26.0" prefWidth="164.0" style="-fx-background-color: rgb(218, 192, 163);" text="Parcourir...">
+            <font>
+                <Font size="14.0" />
+            </font></Button>
+        <Button layoutX="1199.0" layoutY="291.0" mnemonicParsing="false" onAction="#AjoutEvent" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Ajouter" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font></Button>
+        <Button layoutX="1199.0" layoutY="400.0" mnemonicParsing="false" onAction="#DelEvent" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Supprimer" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font></Button>
+        <Button layoutX="1199.0" layoutY="345.0" mnemonicParsing="false" onAction="#UpdEvent" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Modifier" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font></Button>
+        <Button layoutX="1199.0" layoutY="452.0" mnemonicParsing="false" onAction="#ClearEvent" prefHeight="35.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Effacer" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font></Button>
+        <HBox alignment="CENTER_RIGHT" layoutX="611.0" layoutY="186.0" prefHeight="56.0" prefWidth="542.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(220, 242, 241);">
+            <children>
+                <Button mnemonicParsing="false" onAction="#dashboardCategories" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Catégories" textFill="#030000">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#dashboardEvents" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Evénements">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </HBox.margin>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#dashboardReservations" prefHeight="30.0" prefWidth="155.0" style="-fx-background-radius: 50px 50px 50px 50px; -fx-background-color: rgb(218, 192, 163);" text="Réservations" textFill="#030000">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                    </HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+        <Button layoutX="1124.0" layoutY="6.0" mnemonicParsing="false" onAction="#frontEvent" prefHeight="35.0" prefWidth="144.0" style="-fx-background-color: rgb(240, 243, 255);" text="Acceder Front" textFill="#ea1010">
+            <font>
+                <Font name="System Bold Italic" size="15.0" />
+            </font>
+        </Button>
+      <ImageView fx:id="ImgEventAffiche1" fitHeight="148.0" fitWidth="164.0" layoutX="1016.0" layoutY="497.0" pickOnBounds="true" preserveRatio="true" />
     </children>
 </AnchorPane>

@@ -67,8 +67,16 @@ public class ReserverEventController {
         dfinevent.setText(event.getDateFin().toString());
         lieuevent.setText(event.getLieu());
         prixevent.setText(String.valueOf(event.getPrix())); // Afficher le prix de l'événement
-        Image image = new Image(event.getImageEvent());
-        imgRes.setImage(image);
+        try {
+            // Construire le chemin relatif vers le fichier image
+            String imagePath = "/upload/" + event.getImageEvent();
+            // Charger l'image à partir du chemin relatif
+            Image image = new Image(getClass().getResourceAsStream(imagePath));
+            imgRes.setImage(image);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de l'image
+        }
     }
 
     @FXML
@@ -78,7 +86,7 @@ public class ReserverEventController {
         String email = emailField.getText();
         LocalDate dateReservation = datePicker.getValue();
 
-        if (nom.isEmpty() || !nom.matches("[a-zA-Z]+")) {
+        if (nom.isEmpty() || !nom.matches("[a-zA-Z\\s]+")) {
             showAlert("Erreur de saisie", "Veuillez saisir un nom valide (lettres seulement).");
             return;
         }
@@ -93,39 +101,40 @@ public class ReserverEventController {
             return;
         }
 
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationEvent/Paiement.fxml"));
-        Parent root;
         try {
-            root = loader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+            // Charger le fichier FXML de la page de paiement
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationEvent/Paiement.fxml"));
+            Parent root = loader.load();
 
+            // Récupérer la scène de la fenêtre actuelle
+            Scene scene = nomField.getScene();
+
+            // Remplacer la racine de la scène par la nouvelle vue chargée
+            scene.setRoot(root);
+
+            // Initialiser les données du contrôleur de la nouvelle vue
             PaiementController paiementController = loader.getController();
             ServiceReservationEvent serviceReservationEvent = new ServiceReservationEvent(); // Initialisez ServiceReservationEvent
             paiementController.setServiceReservationEvent(serviceReservationEvent); // Injectez l'instance dans PaiementController
             paiementController.initData(event, nom, email, telephone, dateReservation);
-
-            stage.show();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
+
     @FXML
     void retourFront(ActionEvent actionEvent) {
-        // Fermer la fenêtre de réservation
-        Stage stage = (Stage) nomField.getScene().getWindow();
-        stage.close();
-
-        // Ouvrir la page front des événements
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
-        Parent root;
         try {
-            root = loader.load();
-            Stage frontStage = new Stage();
-            frontStage.setScene(new Scene(root));
-            frontStage.show();
+            // Charger le fichier FXML de la page front des événements
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
+            Parent root = loader.load();
+
+            // Récupérer la scène de la fenêtre actuelle
+            Scene scene = nomField.getScene();
+
+            // Remplacer la racine de la scène par la nouvelle vue chargée
+            scene.setRoot(root);
         } catch (IOException ex) {
             ex.printStackTrace();
         }

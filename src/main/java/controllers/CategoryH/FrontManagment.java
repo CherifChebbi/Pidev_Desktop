@@ -2,6 +2,7 @@ package controllers.CategoryH;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.layout.HBox;
 import models.CategoryH;
 import services.ServiceCategoryH;
 import javafx.collections.ObservableList;
@@ -20,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 
 public class FrontManagment {
@@ -41,50 +43,88 @@ public class FrontManagment {
     private void afficherCategories() {
         try {
             ObservableList<CategoryH> categories = sc.afficher();
+            int rowCount = (categories.size() + 4) / 5; // Calculate the number of rows needed
+
             AnchorPane anchorPane = new AnchorPane();
-            double layoutY = 10.0; // Initial layoutY value for the first label
-            for (CategoryH categoryH : categories) {
-                Label label = new Label(categoryH.getNom());
-                label.setLayoutX(10.0);
-                label.setLayoutY(layoutY);
+            double layoutY = 10.0; // Initial layoutY value for the first row
 
-                ImageView imageView = new ImageView();
-                imageView.setFitWidth(100);
-                imageView.setFitHeight(100);
-                imageView.setLayoutX(150.0);
-                imageView.setLayoutY(layoutY);
+            for (int i = 0; i < rowCount; i++) {
+                // Iterate through each row
+                HBox row = new HBox(10); // Create a horizontal box for each row
+                row.setLayoutY(layoutY); // Set the layoutY for the row
 
-                try {
-                    // Attempt to load the image
-                    Image image = new Image(new File(categoryH.getImage()).toURI().toString());
-                    imageView.setImage(image);
-                } catch (Exception e) {
-                    System.err.println("Error loading image: " + e.getMessage());
+                // Add four categories to the row or fewer if less than four categories remain
+                for (int j = i * 5; j < Math.min((i + 1) * 5, categories.size()); j++) {
+                    CategoryH categoryH = categories.get(j);
+
+                    // Create an AnchorPane to hold the category elements
+                    AnchorPane categoryPane = new AnchorPane();
+                    categoryPane.setPrefWidth(250); // Set preferred width to hold all elements
+
+                    String imageName = categoryH.getImage();
+                    URL imageUrl = getClass().getResource("/Upload/" + imageName);
+                    if (imageUrl != null) {
+                        // Create an ImageView for the category image
+                        ImageView imageView = new ImageView(new Image(imageUrl.toExternalForm()));
+                        imageView.setFitWidth(200);
+                        imageView.setFitHeight(200);
+                        AnchorPane.setTopAnchor(imageView, 10.0);
+                        AnchorPane.setLeftAnchor(imageView, 25.0);
+
+                        // Create a Label for the category name
+                        Label nameLabel = new Label(categoryH.getNom());
+                        nameLabel.setLayoutY(220); // Position below the image
+                        nameLabel.setLayoutX(25); // Align with the left side
+                        nameLabel.setPrefWidth(200); // Set preferred width to prevent text overflow
+                        nameLabel.setStyle("-fx-font-weight: bold");
+
+                        // Create a Label for the category description
+                        Label descLabel = new Label(categoryH.getDescription());
+                        descLabel.setLayoutY(250); // Position below the name
+                        descLabel.setLayoutX(25); // Align with the left side
+                        descLabel.setPrefWidth(200); // Set preferred width to prevent text overflow
+                        descLabel.setWrapText(true); // Allow text to wrap if it exceeds the width
+
+                        // Create a Button for reservation
+                        Button reservationButton = new Button("Reserve");
+                        reservationButton.setLayoutY(290); // Position below the description
+                        reservationButton.setLayoutX(25);// Align with the left side
+                        AnchorPane.setBottomAnchor(descLabel, 10.0);
+
+                        // Add padding between reservation button and description
+                        AnchorPane.setBottomAnchor(descLabel, 10.0);
+
+                        // Set the action for the reservation button
+                        reservationButton.setOnAction(event -> {
+                            try {
+                                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationH/ReservationFront.fxml"));
+                                Parent root = loader.load();
+                                Stage stage = new Stage();
+                                stage.setScene(new Scene(root));
+                                stage.show();
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
+                        });
+
+
+
+                        // Add all elements to the category pane
+                        categoryPane.getChildren().addAll(imageView, nameLabel, descLabel, reservationButton);
+
+                        // Add the category pane to the row
+                        row.getChildren().add(categoryPane);
+                    }
                 }
 
-                Label descLabel = new Label(categoryH.getDescription());
-                descLabel.setLayoutX(10.0);
-                descLabel.setLayoutY(layoutY + 110); // Position the description label below the image
+                // Add the row to the anchor pane
+                anchorPane.getChildren().add(row);
 
-                Button reservationButton = new Button("Reserve");
-                reservationButton.setLayoutX(10.0);
-                reservationButton.setLayoutY(layoutY + 140); // Position the reservation button below the description label
-
-                reservationButton.setOnAction(event -> {
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ReservationH/ReservationFront.fxml"));
-                        Parent root = loader.load();
-                        Stage stage = new Stage();
-                        stage.setScene(new Scene(root));
-                        stage.show();
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                });
-
-                anchorPane.getChildren().addAll(label, imageView, descLabel, reservationButton);
-                layoutY += 200.0; // Increment layoutY for the next label, image, description, and button
+                // Increment layoutY for the next row
+                layoutY += 350;
             }
+
+            // Set the content of the scroll pane to the anchor pane
             front.setContent(anchorPane);
         } catch (SQLException e) {
             e.printStackTrace();

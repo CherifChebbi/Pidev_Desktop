@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import services.ServiceEvent;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -112,14 +113,31 @@ public class FrontController {
 
     private ImageView createEventView(Event event) {
         ImageView imageView = new ImageView();
-        Image image = new Image(event.getImageEvent());
-        imageView.setImage(image);
+        // Récupérez uniquement le nom de fichier de l'image
+        String imageName = event.getImageEvent();
 
-        // Ajoutez une marge autour de l'imageView
-        StackPane stackPane = new StackPane(imageView);
-        stackPane.setPadding(new Insets(5)); // Définissez la marge sur le StackPane
+        // Créez une URL relative au nom de fichier de l'image
+        URL imageUrl = getClass().getResource("/upload/" + imageName);
+
+        // Vérifiez si l'URL de la ressource est valide
+        if (imageUrl != null) {
+            // Créez l'objet Image avec l'URL relative
+            Image image = new Image(imageUrl.toExternalForm());
+            imageView.setImage(image);
+
+            // Ajoutez une marge autour de l'imageView
+            StackPane stackPane = new StackPane(imageView);
+            stackPane.setPadding(new Insets(5)); // Définissez la marge sur le StackPane
+        } else {
+            // Affichez un message d'erreur si la ressource n'est pas trouvée
+            System.err.println("Image resource not found: " + imageName);
+        }
+
         return imageView;
     }
+
+
+
 
     private void filtrerEvenements(ActionEvent event) {
         // Obtenez le critère de filtrage sélectionné
@@ -187,7 +205,6 @@ public class FrontController {
             afficherEvenements(events);
         }
     }
-
     @FXML
     public void Front_Events(ActionEvent actionEvent) {
         // Par exemple, ouvrir une nouvelle fenêtre pour afficher tous les événements
@@ -287,5 +304,7 @@ public class FrontController {
         // Show the login stage
         profileStage.show();
     }
+
+
 
 }

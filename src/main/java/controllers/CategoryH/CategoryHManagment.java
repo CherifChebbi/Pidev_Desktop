@@ -1,5 +1,6 @@
 package controllers.CategoryH;
 
+import javafx.scene.image.Image;
 import models.CategoryH;
 import services.ServiceCategoryH;
 import javafx.event.ActionEvent;
@@ -16,6 +17,8 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.DatagramPacket;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -121,16 +124,32 @@ public class CategoryHManagment {
 
     }
 
+    private File file;
     @FXML
-    void selectImage(ActionEvent event) {
+    private TextField imagePathTextField;
+    @FXML
+    private void selectImage() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Choisir une image");
-        // Set extension filters if needed
-        File selectedFile = fileChooser.showOpenDialog(null);
-        if (selectedFile != null) {
-            image.setText(selectedFile.getAbsolutePath());
+        file = fileChooser.showOpenDialog(null);
+        if (file != null) {
+            // Extraire le nom du fichier à partir du chemin complet
+            String imageName = file.getName();
+            // Enregistrer uniquement le nom de l'image dans le champ texte
+            image.setText(imageName);
+
+            // Définir le chemin de destination dans votre dossier upload
+            String destinationPath = "C:/Users/cheri/Documents/-- ESPRIT --/3eme/--- SEMESTRE  2 ----/-- PI_Java --/------- PI_JAVA_Finale -------/Integration/src/main/resources/Upload/" + imageName;
+            try {
+                // Copier le fichier vers le dossier Upload
+                Files.copy(file.toPath(), new File(destinationPath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+            } catch (IOException e) {
+                e.printStackTrace(); // Gérer les erreurs d'écriture de fichier
+            }
         }
     }
+
+
 
 
 
@@ -268,6 +287,5 @@ public class CategoryHManagment {
     }
 
 
-
-
 }
+

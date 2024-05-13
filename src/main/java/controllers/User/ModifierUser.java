@@ -64,7 +64,7 @@ public class ModifierUser implements Initializable {
             nationnaliteNouv.setText(selectedUser.getNationnalite());
             emailNouv.setText(selectedUser.getEmail());
             numtelNouv.setText(String.valueOf(selectedUser.getNumtel()));
-            if (selectedUser.getRoles().equals("ADMIN")) {
+            if (selectedUser.getRoles().equals("[\"ROLE_ADMIN\"]")) {
                 ad.setSelected(true);
             } else {
                 fo.setSelected(true);
