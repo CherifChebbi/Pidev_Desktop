@@ -107,7 +107,7 @@ public class UserService implements IServices<User> {
         }
         return users;
     }
-
+/*
     public User authenticateUser(String email, String password) {
         String query = "SELECT * FROM user WHERE email = ?";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
@@ -153,6 +153,58 @@ public class UserService implements IServices<User> {
             return null;
         }
     }
+    */
+    public User authenticateUser(String email, String password) {
+        String query = "SELECT * FROM user WHERE email = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, email);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                // User found, check password
+                String storedPassword = resultSet.getString("password");
+                // Check if the hash starts with $2y$
+                if (storedPassword.startsWith("$2y$")) {
+                    // Replace $2y$ with $2a$ to make it compatible with jBCrypt
+                    storedPassword = storedPassword.replaceFirst("\\$2y\\$", "\\$2a\\$");
+                }
+                try {
+                    if (BCrypt.checkpw(password, storedPassword)) {
+                        // Passwords match, create and return User object
+                        User user = new User();
+                        user.setId(resultSet.getInt("id"));
+                        user.setNom(resultSet.getString("nom"));
+                        user.setPrenom(resultSet.getString("prenom"));
+                        user.setNationnalite(resultSet.getString("nationnalite"));
+                        user.setEmail(resultSet.getString("email"));
+                        user.setPassword(resultSet.getString("password"));
+                        user.setRoles(resultSet.getString("roles"));
+                        user.setNumtel(resultSet.getInt("numtel"));
+                        user.setIsBanned(resultSet.getBoolean("is_banned"));
+                        return user;
+                    } else {
+                        // Passwords don't match
+                        System.out.println("Login failed: Incorrect password");
+                        return null;
+                    }
+                } catch (IllegalArgumentException e) {
+                    // Handle invalid salt version
+                    System.out.println("Invalid salt version");
+                    return null;
+                }
+            } else {
+                // No user found with the provided email address
+                System.out.println("Login failed: User not found");
+                return null;
+            }
+        } catch (SQLException e) {
+            System.err.println("Error during login: " + e.getMessage());
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     public boolean changePasswordByEmail(String email, String hashedPassword) {
         String query = "UPDATE user SET password = ? WHERE email = ?";
