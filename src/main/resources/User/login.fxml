@@ -10,36 +10,55 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: rgb(240, 243, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.User.login">
+<AnchorPane prefHeight="706.0" prefWidth="1300.0" style="-fx-background-color: rgb(238, 247, 255);" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.User.login">
    <children>
-      <AnchorPane layoutX="1.0" layoutY="75.0" opacity="0.56" prefHeight="631.0" prefWidth="1300.0" style="-fx-background-color: rgb(202, 244, 255);">
+      <AnchorPane layoutX="1.0" layoutY="67.0" prefHeight="645.0" prefWidth="1300.0" style="-fx-background-color: rgb(238, 247, 255);">
          <children>
-            <ImageView fitHeight="631.0" fitWidth="858.0" layoutX="33.0" layoutY="10.0" opacity="0.62" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="654.0" fitWidth="1300.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Upload/home7%20(1).jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="521.0" fitWidth="532.0" layoutX="735.0" layoutY="48.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/logo1.png" />
                </image>
             </ImageView>
-            <PasswordField fx:id="pass" layoutX="92.0" layoutY="206.0" prefHeight="69.0" prefWidth="565.0" promptText="Mot de passe" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;" />
-            <Button layoutX="435.0" layoutY="384.0" mnemonicParsing="false" onAction="#inscription" prefHeight="30.0" prefWidth="135.0" text="S'authentifier" />
-            <Hyperlink fx:id="forgetP" layoutX="367.0" layoutY="470.0" onAction="#forgetPassword" text="Mot de passe oublié ?" />
-            <Text layoutX="262.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous n'avez pas un compte ?" />
-            <ImageView fitHeight="616.0" fitWidth="548.0" layoutX="714.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/globe.jpg" />
-               </image>
-            </ImageView>
-            <Button fx:id="login" layoutX="438.0" layoutY="313.0" mnemonicParsing="false" onAction="#connecter" prefHeight="30.0" prefWidth="135.0" style="-fx-background-color: rgb(90, 178, 255);" text="Login" />
+            <PasswordField fx:id="pass" layoutX="773.0" layoutY="167.0" prefHeight="70.0" prefWidth="494.0" promptText="Mot de passe" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></PasswordField>
+            <Button fx:id="login" layoutX="1067.0" layoutY="294.0" mnemonicParsing="false" onAction="#connecter" prefHeight="31.0" prefWidth="199.0" style="-fx-background-color: rgb(196, 12, 12);" text="Login" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Button layoutX="1067.0" layoutY="338.0" mnemonicParsing="false" onAction="#inscription" prefHeight="30.0" prefWidth="199.0" style="-fx-background-color: rgb(154, 200, 205);" text="S'authentifier" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font></Button>
+            <Text layoutX="857.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vous n'avez pas un compte ?" wrappingWidth="162.22772216796875">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Text>
+            <Hyperlink fx:id="forgetP" layoutX="773.0" layoutY="400.0" onAction="#forgetPassword" prefHeight="31.0" prefWidth="208.0" text="Mot de passe oublié ?" textFill="#0000f4">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Hyperlink>
+            <TextField fx:id="name" layoutX="773.0" layoutY="65.0" prefHeight="75.0" prefWidth="494.0" promptText="Email" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="111.0" fitWidth="278.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="111.0" fitWidth="278.0" layoutX="-11.0" layoutY="-21.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/terra-removebg-preview.png" />
          </image>
       </ImageView>
-      <TextField fx:id="name" layoutX="93.0" layoutY="141.0" prefHeight="75.0" prefWidth="565.0" promptText="Email" style="-fx-background-color: transparant; -fx-border-color: #B4D4FF; -fx-border-width: 0px 0px 2px 0px;" />
-      <Button fx:id="home" layoutX="1191.0" layoutY="21.0" mnemonicParsing="false" onAction="#home" style="-fx-background-color: rgb(240, 243, 255);" text="HOME" textFill="#ef0606">
+      <Button fx:id="home" layoutX="1160.0" layoutY="11.0" mnemonicParsing="false" onAction="#home" prefHeight="47.0" prefWidth="126.0" style="-fx-background-color: rgb(240, 243, 255);" text="HOME" textFill="#ef0606">
          <font>
-            <Font name="System Bold" size="20.0" />
+            <Font name="Arial Nova Bold" size="20.0" />
          </font>
       </Button>
    </children>

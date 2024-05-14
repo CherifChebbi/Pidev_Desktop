@@ -90,78 +90,6 @@
                 <Image url="@../images/terra-removebg-preview.png" />
             </image>
         </ImageView>
-        <HBox layoutX="313.0" layoutY="14.0" prefHeight="40.0" prefWidth="792.0">
-            <children>
-                <HBox prefHeight="40.0" prefWidth="137.0">
-                    <children>
-                        <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/pays.png" />
-                            </image>
-                        </ImageView>
-                        <Button fx:id="Front_Pays" mnemonicParsing="false" onAction="#Front_Pays" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: rgb(240, 243, 255);" text="Pays">
-                            <font>
-                                <Font name="Arial Nova Bold" size="20.0" />
-                            </font>
-                            <HBox.margin>
-                                <Insets right="20.0" />
-                            </HBox.margin>
-                        </Button>
-                    </children>
-                </HBox>
-                <HBox prefHeight="40.0" prefWidth="202.0">
-                    <children>
-                        <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/restaurant.png" />
-                            </image>
-                        </ImageView>
-                        <Button mnemonicParsing="false" onAction="#Front_Restaurant" prefHeight="47.0" prefWidth="218.0" style="-fx-background-color: rgb(240, 243, 255);" text="Restaurants">
-                            <font>
-                                <Font name="Arial Nova Bold" size="20.0" />
-                            </font>
-                            <HBox.margin>
-                                <Insets right="20.0" />
-                            </HBox.margin>
-                        </Button>
-                    </children>
-                </HBox>
-                <HBox prefHeight="40.0" prefWidth="228.0">
-                    <children>
-                        <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/hotel.png" />
-                            </image>
-                        </ImageView>
-                        <Button mnemonicParsing="false" onAction="#Front_Hebergement" prefHeight="47.0" prefWidth="203.0" style="-fx-background-color: rgb(240, 243, 255);" text="Hebergements">
-                            <font>
-                                <Font name="Arial Nova Bold" size="20.0" />
-                            </font>
-                            <HBox.margin>
-                                <Insets right="20.0" />
-                            </HBox.margin>
-                        </Button>
-                    </children>
-                </HBox>
-                <HBox prefHeight="40.0" prefWidth="224.0">
-                    <children>
-                        <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/events.png" />
-                            </image>
-                        </ImageView>
-                        <Button fx:id="Front_Events" mnemonicParsing="false" onAction="#Front_Event" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
-                            <font>
-                                <Font name="Arial Nova Bold" size="20.0" />
-                            </font>
-                            <HBox.margin>
-                                <Insets right="20.0" />
-                            </HBox.margin>
-                        </Button>
-                    </children>
-                </HBox>
-            </children>
-        </HBox>
         <HBox layoutX="1150.0" layoutY="15.0" prefHeight="38.0" prefWidth="136.0">
             <children>
                 <Button fx:id="profil" mnemonicParsing="false" onAction="#editProfile" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: rgb(240, 243, 255);" text="Profil" textFill="#0289cf">
@@ -176,5 +104,77 @@
                 </ImageView>
             </children>
         </HBox>
+      <HBox layoutX="300.0" layoutY="15.0" prefHeight="40.0" prefWidth="792.0">
+         <children>
+            <HBox prefHeight="40.0" prefWidth="137.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/pays.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="Front_Pays" mnemonicParsing="false" onAction="#Front_Pays" prefHeight="55.0" prefWidth="82.0" style="-fx-background-color: rgb(240, 243, 255);" text="Pays">
+                     <font>
+                        <Font name="Arial Nova Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="202.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/restaurant.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="Front_Restaurants" mnemonicParsing="false" onAction="#Front_Restaurant" prefHeight="47.0" prefWidth="218.0" style="-fx-background-color: rgb(240, 243, 255);" text="Restaurants">
+                     <font>
+                        <Font name="Arial Nova Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="228.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="55.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/hotel.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="Front_Hebergements" mnemonicParsing="false" onAction="#Front_Hebergement" prefHeight="47.0" prefWidth="203.0" style="-fx-background-color: rgb(240, 243, 255);" text="Hebergements">
+                     <font>
+                        <Font name="Arial Nova Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="224.0">
+               <children>
+                  <ImageView fitHeight="40.0" fitWidth="50.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/events.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="Front_Events" mnemonicParsing="false" onAction="#Front_Event" prefHeight="40.0" prefWidth="147.0" style="-fx-background-color: rgb(240, 243, 255);" text="Evenements">
+                     <font>
+                        <Font name="Arial Nova Bold" size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
     </children>
 </AnchorPane>

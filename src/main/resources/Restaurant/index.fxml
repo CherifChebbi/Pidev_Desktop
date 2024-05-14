@@ -24,6 +24,11 @@
     <children>
         <AnchorPane layoutY="67.0" prefHeight="640.0" prefWidth="1300.0" style="-fx-background-color: rgb(233, 246, 255);">
             <children>
+            <ImageView fitHeight="254.0" fitWidth="294.0" layoutX="955.0" layoutY="-18.0" opacity="0.04" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/restaurant.png" />
+               </image>
+            </ImageView>
                 <MediaView fx:id="mediaView" fitHeight="400.0" fitWidth="600.0" />
                 <ImageView fitHeight="640.0" fitWidth="693.0" layoutX="317.0" layoutY="-7.0" opacity="0.17" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -31,7 +36,7 @@
                     </image>
                 </ImageView>
                 <HBox layoutX="678.0" layoutY="48.0" prefHeight="100.0" prefWidth="200.0" />
-                <TextArea fx:id="chatArea" editable="false" layoutX="496.0" layoutY="14.0" prefHeight="168.0" prefWidth="332.0" style="-fx-background-color: black;" wrapText="true" />
+                <TextArea fx:id="chatArea" editable="false" layoutX="496.0" layoutY="14.0" prefHeight="168.0" prefWidth="332.0" wrapText="true" />
                 <ScrollPane layoutX="11.0" layoutY="235.0" prefHeight="354.0" prefWidth="1278.0" style="-fx-background-color: transparent;">
                     <content>
                         <VBox fx:id="restaurantsContainer" spacing="20" style="-fx-background-color: transparent;" />
@@ -39,13 +44,18 @@
                 </ScrollPane>
                 <Pane layoutX="50.0" layoutY="14.0" prefHeight="168.0" prefWidth="332.0" style="-fx-background-color: transparent; -fx-border-radius: 20; -fx-background-radius: 20; -fx-border-width: 2; -fx-border-color: black;">
                     <children>
+                  <ImageView fitHeight="254.0" fitWidth="294.0" layoutX="-75.0" layoutY="-26.0" opacity="0.04" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/restaurant.png" />
+                     </image>
+                  </ImageView>
                         <TextField fx:id="searchNameField" layoutX="139.0" layoutY="19.0" prefHeight="25.0" prefWidth="90.0" promptText="Nom" />
                         <TextField fx:id="searchLocationField" layoutX="139.0" layoutY="88.0" prefHeight="25.0" prefWidth="90.0" promptText="Localisation" />
                         <Text layoutX="39.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
                         <Text layoutX="39.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Localisation" />
-                        <Button layoutX="224.0" layoutY="124.0" mnemonicParsing="false" onAction="#search" style="-fx-background-color: #E1FFEF; -fx-border-color: red; -fx-background-radius: 20; -fx-border-radius: 20; -fx-position-shape: 10;" text="Rechercher">
+                        <Button layoutX="191.0" layoutY="120.0" mnemonicParsing="false" onAction="#search" prefHeight="34.0" prefWidth="116.0" style="-fx-background-color: rgb(196, 12, 12); -fx-border-color: red; -fx-background-radius: 20; -fx-border-radius: 20; -fx-position-shape: 10;" text="Rechercher" textFill="WHITE">
                             <font>
-                                <Font name="Century Schoolbook" size="14.0" />
+                                <Font name="System Bold Italic" size="15.0" />
                             </font>
                         </Button>
                     </children>
@@ -53,7 +63,7 @@
                         <Insets />
                     </opaqueInsets>
                 </Pane>
-                <ChoiceBox fx:id="questionChoiceBox" layoutX="496.0" layoutY="186.0" onAction="#handleQuestionSelection" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black;">
+                <ChoiceBox fx:id="questionChoiceBox" layoutX="496.0" layoutY="186.0" onAction="#handleQuestionSelection" prefHeight="27.0" prefWidth="332.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black;">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Bonjour! Est-ce que je peux vous aider?" />
@@ -62,8 +72,14 @@
                         </FXCollections>
                     </items>
                 </ChoiceBox>
-                <Button fx:id="watchVideoButton" layoutX="1202.0" layoutY="14.0" mnemonicParsing="false" onAction="#watchVideo" style="-fx-background-color: #E1FFEF; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: black;" text="Watch Video" />
-                <Button fx:id="calendar" layoutX="857.0" layoutY="64.0" onAction="#openCalendar" text="Show Calendar" />
+                <Button fx:id="watchVideoButton" layoutX="1022.0" layoutY="48.0" mnemonicParsing="false" onAction="#watchVideo" prefHeight="34.0" prefWidth="264.0" style="-fx-background-color: rgb(196, 12, 12); -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: rgb(196, 12, 12);" text="Watch Video" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font></Button>
+                <Button fx:id="calendar" layoutX="1022.0" layoutY="91.0" onAction="#openCalendar" prefHeight="36.0" prefWidth="264.0" style="-fx-background-color: rgb(196, 12, 12); -fx-background-radius: 20;" text="Show Calendar" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font></Button>
 
 
             </children>
@@ -85,7 +101,7 @@
                 </VBox>
             </children>
         </HBox>
-      <HBox layoutX="354.0" layoutY="14.0" prefHeight="40.0" prefWidth="792.0">
+      <HBox layoutX="300.0" layoutY="15.0" prefHeight="40.0" prefWidth="792.0">
          <children>
             <HBox prefHeight="40.0" prefWidth="137.0">
                <children>
@@ -157,7 +173,7 @@
             </HBox>
          </children>
       </HBox>
-      <HBox layoutX="1139.0" layoutY="15.0" prefHeight="38.0" prefWidth="136.0">
+      <HBox layoutX="1150.0" layoutY="15.0" prefHeight="38.0" prefWidth="136.0">
          <children>
             <Button fx:id="profil" mnemonicParsing="false" onAction="#editProfile" prefHeight="47.0" prefWidth="95.0" style="-fx-background-color: rgb(240, 243, 255);" text="Profil" textFill="#0289cf">
                <font>

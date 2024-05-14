@@ -212,7 +212,7 @@ public class FrontController {
         Parent root;
         try {
             root = loader.load();
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException ex) {
@@ -249,7 +249,7 @@ public class FrontController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
         Parent profileInterface = loader.load();
         Scene profileScene = new Scene(profileInterface);
-        Stage profileStage = new Stage();
+        Stage profileStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         profileStage.setScene(profileScene);
 
         // Close the current stage (assuming verifierButton is accessible from here)
@@ -264,7 +264,7 @@ public class FrontController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/CategoryH/Front.fxml"));
         Parent profileInterface = loader.load();
         Scene profileScene = new Scene(profileInterface);
-        Stage profileStage = new Stage();
+        Stage profileStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         profileStage.setScene(profileScene);
 
         // Close the current stage (assuming verifierButton is accessible from here)
@@ -279,7 +279,7 @@ public class FrontController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/index.fxml"));
         Parent profileInterface = loader.load();
         Scene profileScene = new Scene(profileInterface);
-        Stage profileStage = new Stage();
+        Stage profileStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         profileStage.setScene(profileScene);
 
         // Close the current stage (assuming verifierButton is accessible from here)

@@ -16,7 +16,7 @@ public class FxMain extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass()
-                .getResource("/Pays/AfficherPays.fxml"));
+                .getResource("/Front/Home.fxml"));
         Parent parent = loader.load();
         AnchorPane root = new AnchorPane();
 

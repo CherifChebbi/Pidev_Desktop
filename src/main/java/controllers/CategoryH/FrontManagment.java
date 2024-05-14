@@ -131,6 +131,7 @@ public class FrontManagment {
         }
     }
 
+
     @FXML
     void Front_Pays(ActionEvent event) {
         try {
@@ -158,7 +159,7 @@ public class FrontManagment {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
         Parent profileInterface = loader.load();
         Scene profileScene = new Scene(profileInterface);
-        Stage profileStage = new Stage();
+        Stage profileStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         profileStage.setScene(profileScene);
 
         // Close the current stage (assuming verifierButton is accessible from here)
@@ -173,7 +174,7 @@ public class FrontManagment {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/CategoryH/Front.fxml"));
         Parent profileInterface = loader.load();
         Scene profileScene = new Scene(profileInterface);
-        Stage profileStage = new Stage();
+        Stage profileStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         profileStage.setScene(profileScene);
 
         // Close the current stage (assuming verifierButton is accessible from here)
@@ -188,7 +189,8 @@ public class FrontManagment {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/index.fxml"));
         Parent profileInterface = loader.load();
         Scene profileScene = new Scene(profileInterface);
-        Stage profileStage = new Stage();
+        Stage profileStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
         profileStage.setScene(profileScene);
 
         // Close the current stage (assuming verifierButton is accessible from here)

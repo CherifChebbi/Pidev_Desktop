@@ -344,7 +344,6 @@ public class FrontManagement {
         }
     }
 
-
     @FXML
     private void editProfile (ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/User/EditProfile.fxml"));
@@ -387,7 +386,7 @@ public class FrontManagement {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Event/indexEvent.fxml"));
         Parent profileInterface = loader.load();
         Scene profileScene = new Scene(profileInterface);
-        Stage profileStage = new Stage();
+        Stage profileStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         profileStage.setScene(profileScene);
 
         // Close the current stage (assuming verifierButton is accessible from here)
@@ -402,7 +401,7 @@ public class FrontManagement {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/CategoryH/Front.fxml"));
         Parent profileInterface = loader.load();
         Scene profileScene = new Scene(profileInterface);
-        Stage profileStage = new Stage();
+        Stage profileStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         profileStage.setScene(profileScene);
 
         // Close the current stage (assuming verifierButton is accessible from here)
@@ -417,7 +416,7 @@ public class FrontManagement {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/Restaurant/index.fxml"));
         Parent profileInterface = loader.load();
         Scene profileScene = new Scene(profileInterface);
-        Stage profileStage = new Stage();
+        Stage profileStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         profileStage.setScene(profileScene);
 
         // Close the current stage (assuming verifierButton is accessible from here)
